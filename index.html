@@ -154,6 +154,8 @@
   .lk-trans.none{color:var(--muted);font-family:var(--serif);font-style:italic;}
   .lk-loading{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:14px;}
   .lk-src{font-size:10px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+  .lk-sense{margin-top:3px;}
+  .lk-pos{color:var(--muted);font-size:10.5px;margin-right:5px;}
 
   .empty-feed{max-width:672px;margin:0 auto;font-style:italic;color:var(--muted);}
 
@@ -649,9 +651,10 @@ function checkDictation(box, expectedText){
 
 // ── SELECTION DICTIONARY ──
 // Select French text inside an entry → a small floating popup gives a quick gloss.
-// Hybrid source: the entries' own curated vocab first (instant, offline); anything
-// else — including multi-word phrases — is translated via the free, no-key MyMemory
-// API (CORS-enabled, so it works even when the file is opened via file://).
+// Sources, in order: the entries' own curated vocab (instant, offline) → English
+// Wiktionary's French section for single words (real senses + part of speech, follows
+// "form of" links) → Google Translate's public endpoint for phrases → MyMemory as a last
+// resort. All are CORS-enabled, keyless, and work when the file is opened via file://.
 const LOOKUP_CACHE = new Map();        // normalized term -> {trans, src}
 let lookupEl = null, lookupSeq = 0;
 
@@ -707,18 +710,82 @@ function renderLookup(term, bodyHTML, rect){
   };
 }
 
-async function lookupTranslate(term){
-  const key = normTerm(term);
-  if(LOOKUP_CACHE.has(key)) return LOOKUP_CACHE.get(key);
-  const hit = vocabIndex().get(key);                       // 1) curated vocab (offline, instant)
-  if(hit){ const r = {trans:hit, src:'Vocabulaire de la note'}; LOOKUP_CACHE.set(key,r); return r; }
-  try{                                                      // 2) free dictionary API (no key)
+// Clean a selection for lookup: straight apostrophes, no surrounding punctuation/quotes.
+function cleanTerm(s){
+  return s.replace(/[’]/g,"'")
+    .replace(/^[\s.,;:!?«»"“”()\[\]…—–-]+|[\s.,;:!?«»"“”()\[\]…—–-]+$/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+function sameAs(a,b){ return normTerm(a)===normTerm(b); }
+function stripHTML(h){ return h.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); }
+const ELISION = /^(l|d|j|n|s|c|m|t|qu)'(?=\S)/i;
+
+// 1) English Wiktionary, French section: real dictionary senses with part of speech.
+//    Inflected forms come back as "past participle of replier" → we follow the link once
+//    and append the base word's first sense. Tries: as typed, lowercased, without elision.
+async function wiktionaryOne(word, depth){
+  try{
+    const res = await fetch(`https://en.wiktionary.org/api/rest_v1/page/definition/${encodeURIComponent(word)}`);
+    if(!res.ok) return null;
+    const data = await res.json();
+    const fr = data && data.fr; if(!Array.isArray(fr) || !fr.length) return null;
+    const senses = [];
+    for(const e of fr.slice(0,2)){
+      const defs = (e.definitions||[]).map(d => stripHTML(d.definition||'')).filter(Boolean).slice(0,2);
+      if(!defs.length) continue;
+      let line = defs.join('; ');
+      const m = depth===0 && / of ([^\s,;()]+)$/.exec(defs[0]);
+      if(m){ const base = await wiktionaryOne(m[1], 1); if(base && base.first) line += ' → ' + base.first; }
+      senses.push({pos:(e.partOfSpeech||'').toLowerCase(), line});
+    }
+    if(!senses.length) return null;
+    return { first: senses[0].line, html: senses.map(x => `<div class="lk-sense"><span class="lk-pos">${escHTML(x.pos)}</span>${escHTML(x.line)}</div>`).join('') };
+  }catch(e){ return null; }
+}
+async function wiktionary(word){
+  const tries = [word];
+  if(word.toLowerCase()!==word) tries.push(word.toLowerCase());
+  const el = word.replace(ELISION,''); if(el!==word){ tries.push(el); tries.push(el.toLowerCase()); }
+  for(const w of [...new Set(tries)]){
+    const r = await wiktionaryOne(w, 0);
+    if(r) return {trans:r.html, src:'Wiktionnaire' + (w!==word ? ` · ${escHTML(w)}` : '')};
+  }
+  return null;
+}
+// 2) Google Translate's public endpoint (phrases). Unofficial, so treated as best-effort.
+async function googleTranslate(term){
+  try{
+    const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=fr&tl=en&dt=t&q=${encodeURIComponent(term)}`);
+    if(!res.ok) return null;
+    const d = await res.json();
+    const t = ((d && d[0]) || []).map(x => x && x[0]).filter(Boolean).join('').trim();
+    return (t && !sameAs(t, term)) ? {trans:escHTML(t), src:'Google Traduction'} : null;
+  }catch(e){ return null; }
+}
+// 3) MyMemory translation memory. Rejected when it echoes the source or the match is weak.
+async function myMemory(term){
+  try{
     const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(term)}&langpair=fr|en&de=arqbcode2026@gmail.com`);
     const data = await res.json();
-    const t = data && data.responseData && data.responseData.translatedText;
-    if(t){ const r = {trans:t, src:'Dictionnaire · MyMemory'}; LOOKUP_CACHE.set(key,r); return r; }
-  }catch(e){}
-  return {trans:null, src:null};
+    const rd = data && data.responseData; const t = rd && rd.translatedText;
+    if(!t || sameAs(t, term) || (typeof rd.match==='number' && rd.match < 0.5)) return null;
+    return {trans:escHTML(t), src:'MyMemory'};
+  }catch(e){ return null; }
+}
+
+async function lookupTranslate(raw){
+  const term = cleanTerm(raw); if(!term) return {trans:null, src:null};
+  const key = normTerm(term);
+  if(LOOKUP_CACHE.has(key)) return LOOKUP_CACHE.get(key);
+  const remember = r => { LOOKUP_CACHE.set(key, r); return r; };
+  const hit = vocabIndex().get(key);                                   // 0) curated vocab (offline, instant)
+  if(hit) return remember({trans:hit, src:'Vocabulaire de la note'});
+  const single = !/\s/.test(term);
+  let r = null;
+  if(single) r = await wiktionary(term);                                // 1) dictionary
+  if(!r) r = await googleTranslate(term);                               // 2) translation
+  if(!r) r = await myMemory(term);                                      // 3) last resort
+  return remember(r || {trans:null, src:null});
 }
 
 function runLookup(){

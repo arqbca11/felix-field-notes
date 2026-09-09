@@ -30,8 +30,9 @@ the topic; each one carries a level tag.
   current line highlighted. Adjustable speed. Optional ElevenLabs voices; the browser's French voice
   works with no setup.
 - **Select-to-translate** — highlight any word or phrase in the French text for a quick gloss, with a
-  🔊 button to hear it. The entry's own vocabulary answers first; anything else goes to a free online
-  dictionary.
+  🔊 button to hear it. The entry's own vocabulary answers first; single words then go to Wiktionary
+  (real senses with part of speech, and "past participle of replier → to fold" for inflected forms);
+  phrases go to an online translator.
 - **Dictation practice** — the ✎ button on any paragraph hides the text and opens a typing box. Play
   the audio, write what you hear, and **Vérifier** scores you word by word.
 - **A plain diary until you ask.** The page opens as text only: white page, black text, one column,
