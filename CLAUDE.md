@@ -168,14 +168,19 @@ more personal than in the blog, but not more decorated.
 | 9 | 2026-11-01 | portrait | Théo (Toussaint visit; the Vancouver→SF ride remembered; "Et le Canada ?" — "je ne sais pas") | friend / Canada | B1+ |
 | 10 | 2026-11-09 | plan | Le plan pour l'hiver (Bertrand's month-by-month; three rules; shop 5 Dec; Canada open; Addie once, via "mars") | guide / Canada / Addie | B2 |
 | 11 | 2026-12-03 | report | Cogne, première glace (Lillaz, −12°; the second-hand axes on real ice; a bad screw, "elle tenait ton chapeau"; the thawing fingers; Bertrand on Marcel: the Couturier, 1986, "tu n'as pas encore son silence"; first fiche) — *written by the entry-writer agent (Opus) from a brief* | guide / grandfather | B2 |
+| 12 | 2026-12-05 | note | Premier samedi au magasin (first rental-shop shift; a Lyon family's accent; a kid's too-long skis; "Vous êtes guide ?" — "Pas encore", first time to a stranger) | daily | B1 |
+| 13 | 2026-12-13 | entry | Premières traces (Grands Montets open, first ski day, a professional no to the thin off-piste; 6 Dec Crèmerie: ice not ready, Bertrand's two corrections — "une fiche, ça ne raconte pas, ça note"; Chloé announces Christmas: arrives 21 Dec, sleeps on the floor; parents 3 days in a hotel in Les Houches; David's insurance question via Chloé; "Tu es content ?" — "Je crois"; a skin-up to Lognan promised) | family | B1+ |
 
-**Open threads to pick up next:** first shop shift **Sat 5 Dec** (a customer, a colleague, the
-tourist season starting — good for a `note` or a light `entry`); Sunday 6 Dec ice again (Bertrand
-looks at the fiche); the Aiguille du Midi lift reopening mid-Dec → the January ski descents; a
-second "client" exercise; Marco (blog) might come for ice; Chloé at Christmas (family thread, Bath
-or Chamonix?); the Addie question, unresolved (natural triggers: a Californian client in the shop,
-or March itself); the "back to Canada, one day?" thought (Eric unasked); grandfather thread now
-carried by Bertrand ("son silence") — don't overuse it. Keep one one-line `note` every 3–4 entries.
+**Open threads to pick up next:** **Christmas in Argentière** — Chloé arrives **21 Dec** for a week (floor of the
+14 m²), parents **Marianne and David** come for three days over Christmas, hotel in **Les Houches** (a family `entry`
+or `portrait` of Chloé; the promised early **skin-up to Lognan** with her before a shop shift; David asks about
+insurance in person); shop shifts run through the school holidays (a Californian client in the shop is the natural
+Addie trigger — she has not appeared since entry 10, so one appearance is now due); the Crèmerie should be climbable
+before Christmas (second fiche, half the words — Bertrand's rule "ça ne raconte pas, ça note"); the Aiguille du
+Midi lift reopens mid-Dec → the **January ski descents** around the Vallée Blanche; Marco (blog) might come for ice;
+the "back to Canada, one day?" thought (Eric unasked, last voiced in entry 10); grandfather thread now carried by
+Bertrand ("son silence", entry 11) — don't overuse it. Kinds so far: 10 plan, 11 report, 12 note, 13 entry → the
+next long one may be a `report` or `memory`; keep one one-line `note` every 3–4 entries.
 
 ---
 

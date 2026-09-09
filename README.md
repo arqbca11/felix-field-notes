@@ -74,6 +74,8 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 9 | 1 Nov 2026 | Portrait | *Théo* — the childhood friend visits; the Vancouver–San Francisco ride remembered |
 | 10 | 9 Nov 2026 | Projet | *Le plan pour l'hiver* — Bertrand's winter, month by month; three rules; the open questions |
 | 11 | 3 Dec 2026 | Compte rendu | *Cogne, première glace* — first ice of the winter at Lillaz; a bad screw; the thawing fingers; Bertrand on Marcel |
+| 12 | 5 Dec 2026 | Note | *Premier samedi au magasin* — eight hours of ski boots; a family from Lyon; "Vous êtes guide ?" — "Pas encore" |
+| 13 | 13 Dec 2026 | Journal | *Premières traces* — the Grands Montets open; Bertrand's two corrections to the fiche; Chloé announces Christmas in Argentière |
 
 *Entries appear in order, oldest first.*
 
