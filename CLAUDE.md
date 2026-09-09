@@ -272,6 +272,16 @@ Manifest line (`notes/manifest.js`, chronological, newest last):
 ```
 
 ## 7. How to add an entry
+
+**Two-model workflow (preferred).** The main session (Fable) plans the batch, writes one brief per
+entry (`tools/brief-template.md`), delegates each brief to the **`entry-writer`** subagent
+(`.claude/agents/entry-writer.md`, pinned to Opus), optionally runs **`continuity-reviewer`** on
+the result, then registers, validates, and commits. `/new-entries N` (`.claude/skills/new-entries/`)
+runs the whole loop. Start the session **from this folder** so the agents and this file load.
+The writer never touches the manifest, this file, or other entries; new facts go into §2 only by
+the main agent's decision.
+
+**By hand (or what the workflow does):**
 1. Create `notes/NN-slug.js` (copy a previous one of the same `kind`). Follow §1–§2, pick the date
    and season honestly, give it the next `no`.
 2. Append one line to `notes/manifest.js` (bottom). It renders at the bottom of the page.
