@@ -1,5 +1,5 @@
 /* Entry 5 — Revelstoke, first snow. A `memory`: Eric sends a photo of the first snow on
-   Mount Mackenzie; Felix remembers his first Canadian season (Dec 2022), Eric's Québécois
+   Mount Mackenzie; Felix remembers his first Canadian season (Dec 2023), Eric's Québécois
    French at the avalanche course, and — lightly, for the first time in the notebook —
    Addie photographing snow on cedar branches; the professional line he never crossed; the
    last day, late March 2026. He never had her contact (bible §2c). B1+.
@@ -64,7 +64,7 @@ FelixNotes.register({
   ],
   gram:[
     {h:'<em>Plus-que-parfait</em>: the memory inside the memory',
-     p:'The entry is written today (passé composé: <span class="ex">Eric m\'a envoyé</span>, <span class="ex">j\'ai regardé</span>). Inside it, December 2022 is already the past — and what came <em>before</em> that needs one more step back: <span class="ex">la première fois que j\'<b>étais monté</b> là-haut</span>, <span class="ex">j\'<b>avais grandi</b> sur les skis</span>, <span class="ex">j\'<b>avais fait</b> de la peau de phoque</span>. Imparfait of <em>avoir/être</em> + participle; <em>être</em>-verbs agree (<em>montée</em> for a woman). Also after a past "whether": <span class="ex">je n\'ai jamais su si elle <b>avait</b> raison</span>.'},
+     p:'The entry is written today (passé composé: <span class="ex">Eric m\'a envoyé</span>, <span class="ex">j\'ai regardé</span>). Inside it, December 2023 is already the past — and what came <em>before</em> that needs one more step back: <span class="ex">la première fois que j\'<b>étais monté</b> là-haut</span>, <span class="ex">j\'<b>avais grandi</b> sur les skis</span>, <span class="ex">j\'<b>avais fait</b> de la peau de phoque</span>. Imparfait of <em>avoir/être</em> + participle; <em>être</em>-verbs agree (<em>montée</em> for a woman). Also after a past "whether": <span class="ex">je n\'ai jamais su si elle <b>avait</b> raison</span>.'},
     {h:'<em>Imparfait</em> for what used to happen',
      p:'Habits and repeated scenes live in the imparfait: <span class="ex">ceux qu\'Addie <b>photographiait</b> pendant que les autres <b>regardaient</b> la vue</span>, <span class="ex">elle <b>disait</b> que…</span>, <span class="ex">il le <b>disait</b> sans lever la voix, et tout le monde <b>se taisait</b></span>. English needs "used to" or "would"; French just switches tense. The one-off events of the same period stay in the passé composé: <span class="ex">c\'est Eric qui me l\'<b>a appris</b></span> (and there is the <em>c\'est … qui</em> spotlight from the summer).'},
     {h:'<em>J\'aurais dû</em> — the regret, and what he actually said',
