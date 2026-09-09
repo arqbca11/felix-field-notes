@@ -81,13 +81,12 @@ more personal than in the blog, but not more decorated.
 | 2002 | Born in England. Family moves to Lyon when he is small. |
 | 2006 | Grandfather puts him on skis in Chamonix. |
 | 2014–2020 | Teenage climbing (Aiguilles Rouges, Mont-Blanc granite with grandfather's friends), ski touring. Bac in Lyon, 2020. Parents return to England; Felix moves to Chamonix. |
-| 2020–2022 | Two winters as a Chamonix *saisonnier* (rental shop, lift work), summers climbing. Grandfather dies in 2021. |
-| **Dec 2022 – Apr 2023** | **Canada, season 1.** Revelstoke Mountain Resort, BC. CSIA Level 1 then 2; ski instructor. Meets **Eric**. Takes AST 1 / AST 2 (avalanche courses). Rogers Pass touring. |
-| Summer 2023 | Back in Chamonix; alpine climbing. |
-| **Dec 2023 – Apr 2024** | **Canada, season 2.** Private-lesson instructor. **Addie** is his client: three days in early Feb 2024, two more days in March 2024. |
-| **Aug–Sep 2024** | **Bikepacking Vancouver → San Francisco** (~3 weeks, the Pacific coast: Vancouver Island ferry, Olympic Peninsula, the Oregon coast, Highway 1, the redwoods, Big Sur is *south* of SF so not on route) with childhood friend **Théo**. Ends in San Francisco, where he sees Addie **once**, one evening (Sep 2024). |
-| **Dec 2024 – Apr 2025** | **Canada, season 3.** Addie comes back for one week in Feb 2025, including a touring day with Eric. Last time they see each other. Work permit ends; leaves Canada April 2025. |
-| Summer 2025 – Apr 2026 | Chamonix. Shop work, a lot of climbing and, in winter, ski touring. Saving. |
+| 2020–2023 | Three winters as a Chamonix *saisonnier* (rental shop, lift work), summers climbing. Grandfather dies in 2021. |
+| **Dec 2023 – Apr 2024** | **Canada, season 1 (2023/24).** Revelstoke Mountain Resort, BC. CSIA Level 1 then 2; ski instructor. Meets **Eric**. Takes AST 1 / AST 2 (avalanche courses). Rogers Pass touring. **Addie** is his private-lesson client for the first time: a few days in Feb 2024, again in March 2024. |
+| Summer 2024 | Stays in North America. **Bikepacking Vancouver → San Francisco** (~3 weeks, Aug–Sep 2024: Vancouver Island ferry, Olympic Peninsula, the Oregon coast, Highway 1, the redwoods) with childhood friend **Théo**. He does **not** see Addie: he never had her contact. The trip is just something they later *talk* about, because it's California. |
+| **Dec 2024 – Apr 2025** | **Canada, season 2 (2024/25).** Addie comes back for a week of lessons (Feb 2025). |
+| Summer 2025 | Chamonix; alpine climbing. |
+| **Dec 2025 – Apr 2026** | **Canada, season 3 (2025/26).** Addie comes back once more (March 2026). **Late March 2026, last day:** he tells her he doesn't know if he'll stay in Canada next season. She seems a bit disappointed; she doesn't push. He leaves Canada in **spring 2026**, straight into the blog journey. |
 | May – 13 Sep 2026 | **The blog journey** (18 weekly posts, see `../CLAUDE.md` §3): Chamonix → Dolomites → Slovenia → Croatia → Bosnia → Lofoten → Lapland → Sweden → Saxony → Bavaria → Austria → Slovenia → Montenegro → home → Tour du Mont-Blanc. |
 | **~16 Sep 2026** | Train to England (Bath). Family. |
 | **Late Sep 2026** | **The decision:** move to Chamonix full time and train to become a *guide de haute montagne* (ski mountaineering is the heart of it). |
@@ -105,15 +104,23 @@ more personal than in the blog, but not more decorated.
   **Anyu**, and uses it almost never (maybe once, when it matters). Chinese, grew up in China, came to
   California for graduate school, works in the Bay Area. Late twenties. Intermediate skier who wanted
   to learn off-piste properly: methodical, unafraid of steep terrain but wants to understand it, asks
-  real questions, quietly funny, photographs trees and snow textures rather than views. Client of
-  his three times at Revelstoke (Feb 2024, Mar 2024, Feb 2025) and one evening in San Francisco
-  (Sep 2024). **Mutual feelings, never a relationship**: wrong sides of an ocean, a work permit
-  ending, and two people who were careful. They still message, rarely; the last one was months ago.
-  **Rules:** restraint. She appears in maybe one entry in five, triggered by something concrete (a
-  photo, a snow texture, a message, a song in a café). Never sentimental narration, never a plot
-  twist without the user asking. The door stays open, not pushed.
+  real questions, quietly funny, photographs trees and snow textures rather than views. **His
+  private-lesson client** at Revelstoke across all three seasons (Feb + Mar 2024, Feb 2025, Mar 2026).
+  Great days every time; they talked a lot about skiing and the outdoors, and about their travels in
+  North America, since both had come to this continent from elsewhere (his bikepacking ride to
+  California was a *conversation*, not a meeting). **He never had her contact.** She was a client;
+  there was a professional line, and he probably cared too much to cross it. **Last seen late March
+  2026**: he told her he didn't know if he'd stay in Canada next season; she seemed a bit disappointed
+  and didn't push for more. **What he keeps circling:** whether she really liked him that way, and
+  whether he should have stepped outside the ski lesson. At the time he thought it wasn't appropriate.
+  He keeps thinking about her anyway.
+  **Rules:** restraint. No messages, no calls, no way to reach her (unless the user decides otherwise).
+  She appears in maybe one entry in five, triggered by something concrete (a photo from Eric, a snow
+  texture, a Californian in a café). Never sentimental narration, never a plot twist without the user
+  asking. The unanswered question *is* the thread; don't resolve it.
 - **Théo** — childhood friend from the Chamonix summers, son of a family friend, now in Lyon. The
-  Vancouver–SF bikepacking partner (Aug–Sep 2024). Talker, mechanic, terrible navigator.
+  Vancouver–SF bikepacking partner (Aug–Sep 2024; Théo flew over for it). Talker, mechanic, terrible
+  navigator.
 - **Bertrand** — Chamonix guide, 63, Compagnie des Guides since 1988, lives in Les Praz. **Knew
   Felix's grandfather** (they climbed together in the 80s). Dry, exact, few words; says *« on verra »*
   as a complete sentence; dislikes the verb *conquérir*. Agrees to take Felix out and vet his list.
@@ -138,6 +145,9 @@ more personal than in the blog, but not more decorated.
   ready (Bertrand: *« C'est juste. On verra. »*), otherwise 2028.
 - His list's gaps: **ice and mixed routes** and a few graded **ski descents**; rock is strong;
   glacier ski touring is strong. Autumn = rock and dry-tooling and running; winter = ski list.
+- **Canada, later?** He thinks about going back after Chamonix to continue his training there (the
+  ACMG path, Eric's world), but has no idea when: next year, in a few years, or never. Keep it as an
+  open, occasionally voiced thought, never a plan with dates.
 - Money: he has savings; picks up some ski-shop/rental shifts, and later some hut or race-marshal
   work. Don't over-detail finances; one honest line now and then is enough.
 
@@ -151,11 +161,12 @@ more personal than in the blog, but not more decorated.
 | 2 | 2026-09-26 | entry | La décision | family / guide | B1+ |
 | 3 | 2026-10-02 | entry | Argentière, quatorze mètres carrés | guide (move, studio, first run up to Lognan) | B1 |
 | 4 | 2026-10-06 | portrait | Bertrand | guide (the list, "on verra") — grandfather link | B2 |
-| 5 | 2026-10-11 | memory | Revelstoke, première neige (a photo from Eric) | Canada / Addie first appears, lightly | B1+ |
+| 5 | 2026-10-11 | memory | Revelstoke, première neige (a photo from Eric) | Canada / Addie first appears: the line he didn't cross, late March 2026 | B1+ |
 
 **Open threads to pick up next:** first real training outing with Bertrand (an Aiguilles Rouges
 ridge or a granite route while it's still dry); dry-tooling at the Crèmerie/Argentière ice park when
-it forms; a message to or from Addie (not yet answered); Théo visiting; first snow on the Grands
+it forms; the Addie question resurfacing (did she like him that way; should he have stepped outside
+the lesson) — never resolved; the "back to Canada, one day?" thought; Théo visiting; first snow on the Grands
 Montets; shop shifts; the December start of the ski list; a full trip report (`report`) around
 mid/late October.
 

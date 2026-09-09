@@ -67,7 +67,7 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 2 | 26 Sep 2026 | Journal | *La décision* — the dinner table in Bath; Chamonix for good; the guide exam |
 | 3 | 2 Oct 2026 | Journal | *Argentière, quatorze mètres carrés* — the studio, first run to Lognan |
 | 4 | 6 Oct 2026 | Portrait | *Bertrand* — the old guide reads the list: "La glace, il n'y a rien." |
-| 5 | 11 Oct 2026 | Souvenir | *Revelstoke, première neige* — a photo from Eric; Canada; a message unanswered |
+| 5 | 11 Oct 2026 | Souvenir | *Revelstoke, première neige* — a photo from Eric; the first Canadian winter; Addie, and the line he didn't cross |
 
 *Entries appear in order, oldest first.*
 
