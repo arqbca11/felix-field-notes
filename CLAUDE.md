@@ -162,13 +162,20 @@ more personal than in the blog, but not more decorated.
 | 3 | 2026-10-02 | entry | Argentière, quatorze mètres carrés | guide (move, studio, first run up to Lognan) | B1 |
 | 4 | 2026-10-06 | portrait | Bertrand | guide (the list, "on verra") — grandfather link | B2 |
 | 5 | 2026-10-11 | memory | Revelstoke, première neige (a photo from Eric) | Canada / Addie first appears: the line he didn't cross, late March 2026 | B1+ |
+| 6 | 2026-10-14 | report | Les Crochues, en guide (Bertrand plays the client; "Tu grimpes bien. Tu ne guides pas encore.") | guide | B2 |
+| 7 | 2026-10-19 | note | Une page que je referme (looks at the Canadian guide-course dates) | Canada, later? | B1+ |
+| 8 | 2026-10-27 | entry | Vingt centimètres (Toussaint snow, gear day, second-hand axes from a retired guide, money) | guide / daily | B1 |
+| 9 | 2026-11-01 | portrait | Théo (Toussaint visit; the Vancouver→SF ride remembered; "Et le Canada ?" — "je ne sais pas") | friend / Canada | B1+ |
+| 10 | 2026-11-09 | plan | Le plan pour l'hiver (Bertrand's month-by-month; three rules; shop 5 Dec; Canada open; Addie once, via "mars") | guide / Canada / Addie | B2 |
 
-**Open threads to pick up next:** first real training outing with Bertrand (an Aiguilles Rouges
-ridge or a granite route while it's still dry); dry-tooling at the Crèmerie/Argentière ice park when
-it forms; the Addie question resurfacing (did she like him that way; should he have stepped outside
-the lesson) — never resolved; the "back to Canada, one day?" thought; Théo visiting; first snow on the Grands
-Montets; shop shifts; the December start of the ski list; a full trip report (`report`) around
-mid/late October.
+**Open threads to pick up next:** the ice season — the Crèmerie forming (late Nov/Dec), a first
+day at Cogne with Bertrand (rules: never alone on ice, note everything after each route); shop
+shifts from **5 Dec** (weekends + school holidays); the Aiguille du Midi lift reopening mid-Dec →
+January ski descents; a second "client" exercise with Bertrand; Marco (blog) might visit for ice;
+the Addie question resurfacing, unresolved (next natural trigger: March itself, or a Californian
+client in the shop); the "back to Canada, one day?" thought (Eric hasn't been asked); Chloé at
+Christmas; grandfather's old axe somewhere in Josiane's cellar (unused idea, optional). The
+one-line notes are working well; keep one every 3–4 entries.
 
 ---
 

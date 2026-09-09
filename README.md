@@ -68,6 +68,11 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 3 | 2 Oct 2026 | Journal | *Argentière, quatorze mètres carrés* — the studio, first run to Lognan |
 | 4 | 6 Oct 2026 | Portrait | *Bertrand* — the old guide reads the list: "La glace, il n'y a rien." |
 | 5 | 11 Oct 2026 | Souvenir | *Revelstoke, première neige* — a photo from Eric; the first Canadian winter; Addie, and the line he didn't cross |
+| 6 | 14 Oct 2026 | Compte rendu | *Les Crochues, en guide* — Bertrand hands him the rope and plays the client |
+| 7 | 19 Oct 2026 | Note | *Une page que je referme* — the Canadian guide-course dates, looked at and closed |
+| 8 | 27 Oct 2026 | Journal | *Vingt centimètres* — Toussaint snow, a gear day, the sums until March |
+| 9 | 1 Nov 2026 | Portrait | *Théo* — the childhood friend visits; the Vancouver–San Francisco ride remembered |
+| 10 | 9 Nov 2026 | Projet | *Le plan pour l'hiver* — Bertrand's winter, month by month; three rules; the open questions |
 
 *Entries appear in order, oldest first.*
 

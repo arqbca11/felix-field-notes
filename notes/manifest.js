@@ -15,4 +15,9 @@ window.NOTES_MANIFEST = [
   { id:'argentiere',    file:'notes/03-argentiere.js',    date:'2026-10-02' },
   { id:'bertrand',      file:'notes/04-bertrand.js',      date:'2026-10-06' },
   { id:'revelstoke',    file:'notes/05-revelstoke.js',    date:'2026-10-11' },
+  { id:'crochues',      file:'notes/06-crochues.js',      date:'2026-10-14' },
+  { id:'une-page',      file:'notes/07-une-page.js',      date:'2026-10-19' },
+  { id:'vingt-centimetres', file:'notes/08-vingt-centimetres.js', date:'2026-10-27' },
+  { id:'theo',          file:'notes/09-theo.js',          date:'2026-11-01' },
+  { id:'le-plan',       file:'notes/10-le-plan.js',       date:'2026-11-09' },
 ];
