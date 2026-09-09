@@ -73,6 +73,7 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 8 | 27 Oct 2026 | Journal | *Vingt centimètres* — Toussaint snow, a gear day, the sums until March |
 | 9 | 1 Nov 2026 | Portrait | *Théo* — the childhood friend visits; the Vancouver–San Francisco ride remembered |
 | 10 | 9 Nov 2026 | Projet | *Le plan pour l'hiver* — Bertrand's winter, month by month; three rules; the open questions |
+| 11 | 3 Dec 2026 | Compte rendu | *Cogne, première glace* — first ice of the winter at Lillaz; a bad screw; the thawing fingers; Bertrand on Marcel |
 
 *Entries appear in order, oldest first.*
 

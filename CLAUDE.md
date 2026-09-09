@@ -167,15 +167,15 @@ more personal than in the blog, but not more decorated.
 | 8 | 2026-10-27 | entry | Vingt centimètres (Toussaint snow, gear day, second-hand axes from a retired guide, money) | guide / daily | B1 |
 | 9 | 2026-11-01 | portrait | Théo (Toussaint visit; the Vancouver→SF ride remembered; "Et le Canada ?" — "je ne sais pas") | friend / Canada | B1+ |
 | 10 | 2026-11-09 | plan | Le plan pour l'hiver (Bertrand's month-by-month; three rules; shop 5 Dec; Canada open; Addie once, via "mars") | guide / Canada / Addie | B2 |
+| 11 | 2026-12-03 | report | Cogne, première glace (Lillaz, −12°; the second-hand axes on real ice; a bad screw, "elle tenait ton chapeau"; the thawing fingers; Bertrand on Marcel: the Couturier, 1986, "tu n'as pas encore son silence"; first fiche) — *written by the entry-writer agent (Opus) from a brief* | guide / grandfather | B2 |
 
-**Open threads to pick up next:** the ice season — the Crèmerie forming (late Nov/Dec), a first
-day at Cogne with Bertrand (rules: never alone on ice, note everything after each route); shop
-shifts from **5 Dec** (weekends + school holidays); the Aiguille du Midi lift reopening mid-Dec →
-January ski descents; a second "client" exercise with Bertrand; Marco (blog) might visit for ice;
-the Addie question resurfacing, unresolved (next natural trigger: March itself, or a Californian
-client in the shop); the "back to Canada, one day?" thought (Eric hasn't been asked); Chloé at
-Christmas; grandfather's old axe somewhere in Josiane's cellar (unused idea, optional). The
-one-line notes are working well; keep one every 3–4 entries.
+**Open threads to pick up next:** first shop shift **Sat 5 Dec** (a customer, a colleague, the
+tourist season starting — good for a `note` or a light `entry`); Sunday 6 Dec ice again (Bertrand
+looks at the fiche); the Aiguille du Midi lift reopening mid-Dec → the January ski descents; a
+second "client" exercise; Marco (blog) might come for ice; Chloé at Christmas (family thread, Bath
+or Chamonix?); the Addie question, unresolved (natural triggers: a Californian client in the shop,
+or March itself); the "back to Canada, one day?" thought (Eric unasked); grandfather thread now
+carried by Bertrand ("son silence") — don't overuse it. Keep one one-line `note` every 3–4 entries.
 
 ---
 

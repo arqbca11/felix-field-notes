@@ -20,4 +20,5 @@ window.NOTES_MANIFEST = [
   { id:'vingt-centimetres', file:'notes/08-vingt-centimetres.js', date:'2026-10-27' },
   { id:'theo',          file:'notes/09-theo.js',          date:'2026-11-01' },
   { id:'le-plan',       file:'notes/10-le-plan.js',       date:'2026-11-09' },
+  { id:'cogne-glace',   file:'notes/11-cogne-glace.js',   date:'2026-12-03' },
 ];
