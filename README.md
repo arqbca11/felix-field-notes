@@ -34,8 +34,10 @@ the topic; each one carries a level tag.
   dictionary.
 - **Dictation practice** — the ✎ button on any paragraph hides the text and opens a typing box. Play
   the audio, write what you hear, and **Vérifier** scores you word by word.
-- **Nothing else.** White page, black text, one column, oldest entry first. No map, no calendar,
-  no header: just the notebook.
+- **A plain diary until you ask.** The page opens as text only: white page, black text, one column,
+  oldest entry first. Tap **Learn** (top right) to reveal all of the above: voices, level tags, the
+  read/translate/notes links, the per-paragraph buttons, and select-to-translate. Tap it again to go
+  back to reading. The choice is remembered.
 
 ---
 

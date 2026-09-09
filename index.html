@@ -22,7 +22,13 @@
   /* TOP LINE: name on the left, reading controls on the right */
   .top{max-width:720px;margin:0 auto;padding:26px 24px 0;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--sans);font-size:12px;color:var(--muted);}
   .top .name{color:var(--ink);letter-spacing:.2px;}
+  .top-right{display:flex;align-items:baseline;gap:14px;}
   .readbar{display:none;align-items:baseline;gap:14px;}
+  .learn-btn{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
+  .learn-btn:hover,body.learn .learn-btn{color:var(--ink);text-decoration-color:var(--ink);}
+  /* Learn mode: everything about language learning is hidden unless body.learn is set */
+  body:not(.learn) .learn-only{display:none !important;}
+  body:not(.learn) .article p{padding-left:0;}
   .rb-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .rb-link:hover{color:var(--ink);text-decoration-color:var(--ink);}
   .key-entry,.voice-picker{display:none;max-width:720px;margin:14px auto 0;padding:0 24px;font-family:var(--sans);font-size:13px;color:var(--soft);}
@@ -165,13 +171,16 @@
 
 <div class="top">
   <span class="name">Felix · Notes de terrain</span>
-  <div class="readbar" id="readbar">
+  <div class="top-right">
+  <button class="learn-btn" id="learnBtn" onclick="toggleLearn()">Learn</button>
+  <div class="readbar learn-only" id="readbar">
     <span>Voix : <span id="rbVoice">—</span></span>
     <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
     <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
   </div>
+  </div>
 </div>
-<div class="key-entry" id="keyEntry">
+<div class="key-entry learn-only" id="keyEntry">
   <div class="ke-label">Clé API ElevenLabs <span>(optionnel — sans clé, la voix du navigateur est utilisée)</span></div>
   <div class="ke-row">
     <input class="ke-input" id="keyInput" type="password" placeholder="Collez votre clé API…"/>
@@ -179,7 +188,7 @@
   </div>
   <div class="ke-msg" id="keyMsg"></div>
 </div>
-<div class="voice-picker" id="voicePicker">
+<div class="voice-picker learn-only" id="voicePicker">
   <div class="vp-label">Choisir une voix</div>
   <div class="vp-list" id="vpList"></div>
   <div class="vp-msg" id="vpMsg"></div>
@@ -244,9 +253,28 @@ const ICON_PEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 
 // ── SAFE STORAGE ──
 // The ElevenLabs key/voice keys are shared with the travel blog on purpose (same origin on GitHub Pages).
-const KEY_API='elevenlabs_api_key', KEY_VOICE='elevenlabs_voice_id', KEY_VNAME='elevenlabs_voice_name', KEY_SPEED='felix_notes_speed';
+const KEY_API='elevenlabs_api_key', KEY_VOICE='elevenlabs_voice_id', KEY_VNAME='elevenlabs_voice_name', KEY_SPEED='felix_notes_speed', KEY_LEARN='felix_notes_learn';
 function getLS(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
 function setLS(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+
+// ── LEARN MODE ──
+// Off = a plain diary page. On = voice controls, level tags, Lire/Traduction/Notes,
+// per-paragraph play + dictation, and select-to-translate. Remembered in localStorage.
+function setLearn(on){
+  document.body.classList.toggle('learn', on);
+  setLS(KEY_LEARN, on ? '1' : '0');
+  if(!on){
+    stopAll(); hideLookup();
+    document.querySelectorAll('.en-block.open, .notes.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.act.on').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.post.split').forEach(p => p.classList.remove('split'));
+    document.querySelectorAll('.article p.dictating').forEach(p => p.classList.remove('dictating'));
+    document.querySelectorAll('.dict-btn.on').forEach(b => b.classList.remove('on'));
+    document.getElementById('keyEntry').style.display='none';
+    document.getElementById('voicePicker').style.display='none'; pickerOpen=false;
+  }
+}
+function toggleLearn(){ setLearn(!document.body.classList.contains('learn')); }
 
 // ── DATES ──
 const MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
@@ -273,8 +301,8 @@ function buildFeed(){
 
   const frHTML = post.fr.map((p,i) =>
     `<p>`+
-      `<button class="pp-btn" data-play="para" data-id="${post.id}" data-i="${i}" aria-label="Lire">${ICON_PLAY}</button>`+
-      `<button class="dict-btn" data-dict="${post.id}:${i}" aria-label="Dictée" title="Dictée — écouter et écrire">${ICON_PEN}</button>`+
+      `<button class="pp-btn learn-only" data-play="para" data-id="${post.id}" data-i="${i}" aria-label="Lire">${ICON_PLAY}</button>`+
+      `<button class="dict-btn learn-only" data-dict="${post.id}:${i}" aria-label="Dictée" title="Dictée — écouter et écrire">${ICON_PEN}</button>`+
       `<span class="ptext">${p}</span>`+
       `<span class="dictation">`+
         `<textarea class="dict-input" rows="3" placeholder="Écoutez (▶) et écrivez ce que vous entendez…"></textarea>`+
@@ -301,9 +329,9 @@ function buildFeed(){
   const gramHTML = (post.gram||[]).map(g => `<div class="gram"><h4>${g.h}</h4><p>${g.p}</p></div>`).join('');
 
   const titleHTML = post.title
-    ? `<h2>${post.title}${post.titleEn ? `<span class="en-title">${post.titleEn}</span>` : ''}</h2>` : '';
+    ? `<h2>${post.title}${post.titleEn ? `<span class="en-title learn-only">${post.titleEn}</span>` : ''}</h2>` : '';
   const actionsHTML = `
-      <div class="post-actions">
+      <div class="post-actions learn-only">
         <button class="act act-read" data-play="all" data-id="${post.id}">Lire</button>
         <button class="act" data-toggle="en" data-id="${post.id}">Traduction</button>
         ${hasNotes ? `<button class="act" data-toggle="notes" data-id="${post.id}">Notes de français</button>` : ''}
@@ -316,7 +344,7 @@ function buildFeed(){
         <span class="pdate">${frFull(post.date)}</span>
         ${post.place ? `<span>${post.place}</span>` : ''}
         <span>${KIND_FR[kind] || kind}</span>
-        ${post.level ? `<span>${post.level}</span>` : ''}
+        ${post.level ? `<span class="learn-only">${post.level}</span>` : ''}
       </div>
       ${titleHTML}
       ${kind==='note' ? '' : actionsHTML}
@@ -687,6 +715,7 @@ async function lookupTranslate(term){
 }
 
 function runLookup(){
+  if(!document.body.classList.contains('learn')){ hideLookup(); return; }
   const sel = window.getSelection();
   if(!sel || sel.isCollapsed || !sel.rangeCount){ hideLookup(); return; }
   const raw = sel.toString().trim().replace(/\s+/g,' ');
@@ -736,6 +765,7 @@ window.addEventListener('scroll', hideLookup, true);
 
 // ── INIT ──
 window.addEventListener('load', () => {
+  setLearn(getLS(KEY_LEARN)==='1');   // plain diary by default
   showAll();                  // load + render every entry, oldest first
   const s=parseFloat(getLS(KEY_SPEED)); if(!isNaN(s)) speed=s;
   if(window.speechSynthesis) speechSynthesis.getVoices();
