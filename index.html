@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Felix — Notes de terrain</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<!-- Entry index (which entries exist + their order). Entries themselves load on demand from notes/*.js -->
+<script src="notes/manifest.js"></script>
+<style>
+  :root{
+    --bg:#f6f2ea; --wash:#efe9dd; --surface:#fbf9f4;
+    --ink:#1e1c19; --ink-soft:#4a463f; --muted:#8a847a;
+    --line:#e6dfd2; --line-2:#d8cfbf;
+    --accent:#2f6b4f; --accent-deep:#214d38; --accent-wash:#e3ede6;
+    --memory:#9b6b3c; --memory-wash:#f3e7d9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:'Schibsted Grotesk',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+
+  /* MASTHEAD */
+  .masthead{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:var(--bg);padding:48px 28px 30px;}
+  .masthead svg.topo{position:absolute;inset:0;width:100%;height:100%;}
+  .mh-inner{position:relative;max-width:1340px;margin:0 auto;padding:0 24px;}
+  .kicker{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px;}
+  .brand{font-family:'Fraunces',serif;font-weight:500;font-size:60px;line-height:.95;letter-spacing:-1.5px;color:var(--ink);}
+  .brand em{font-style:italic;font-weight:400;color:var(--accent);}
+  .blurb{font-family:'Newsreader',serif;font-size:18px;color:var(--ink-soft);margin-top:18px;max-width:560px;line-height:1.55;}
+  .tagline{font-size:12.5px;letter-spacing:.3px;color:var(--muted);margin-top:14px;}
+  .tagline a{color:var(--muted);}
+
+  /* READ ZONE (TTS) */
+  .readzone{max-width:1340px;margin:18px auto 0;padding:0 24px;}
+  .readbar{display:none;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 16px;}
+  .rb-left{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--ink-soft);}
+  .rb-left strong{color:var(--ink);font-weight:600;}
+  .rb-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+  .rb-right{display:flex;align-items:center;gap:8px;}
+  .rb-link{background:transparent;border:1px solid var(--line-2);border-radius:8px;padding:6px 12px;font-family:'Schibsted Grotesk',sans-serif;font-size:12.5px;font-weight:500;color:var(--ink-soft);cursor:pointer;transition:all .16s;}
+  .rb-link:hover{border-color:var(--accent);color:var(--accent);}
+  .key-entry,.voice-picker{display:none;margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .ke-label{font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:9px;}
+  .ke-label span{font-weight:400;color:var(--muted);}
+  .ke-row{display:flex;gap:8px;}
+  .ke-input{flex:1;border:1px solid var(--line-2);border-radius:8px;padding:9px 12px;font-size:14px;font-family:'Schibsted Grotesk',sans-serif;color:var(--ink);background:var(--surface);outline:none;}
+  .ke-input:focus{border-color:var(--accent);}
+  .ke-btn{background:var(--accent);border:none;color:#fff;border-radius:8px;padding:0 16px;font-family:'Schibsted Grotesk',sans-serif;font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;}
+  .ke-msg{font-size:12px;color:#b4453f;margin-top:8px;min-height:14px;}
+  .vp-label{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:10px;}
+  .vp-list{display:flex;flex-direction:column;gap:7px;max-height:230px;overflow-y:auto;}
+  .vitem{display:flex;align-items:center;gap:10px;padding:8px 11px;border-radius:9px;border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:all .15s;}
+  .vitem:hover{border-color:var(--accent);}
+  .vitem.selected{border-color:var(--accent);background:var(--accent-wash);}
+  .vdot{width:14px;height:14px;border-radius:50%;border:2px solid var(--line-2);flex-shrink:0;cursor:pointer;}
+  .vitem.selected .vdot{border-color:var(--accent);background:var(--accent);}
+  .vinfo{flex:1;min-width:0;}
+  .vname{font-size:13px;color:var(--ink);font-weight:500;}
+  .vitem.selected .vname{color:var(--accent-deep);}
+  .vmeta{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .vprev{width:28px;height:28px;border-radius:50%;border:1px solid var(--line-2);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .vprev:hover{border-color:var(--accent);color:var(--accent);}
+  .vprev svg{width:11px;height:11px;}
+  .vp-msg{font-size:12px;color:var(--muted);margin-top:9px;font-style:italic;min-height:14px;}
+
+  /* LAYOUT */
+  .layout{max-width:1340px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:36px;align-items:start;}
+  .feed{padding:28px 0 90px;min-width:0;}
+  .map-rail{position:sticky;top:24px;align-self:start;padding-top:28px;display:flex;flex-direction:column;gap:14px;}
+  .map-box{display:flex;flex-direction:column;height:calc(100vh - 250px);max-height:640px;min-height:420px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);box-shadow:0 16px 40px -30px rgba(0,0,0,.45);position:relative;}
+
+  /* CALENDAR */
+  .cal{flex:0 0 auto;border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:12px 14px 13px;box-shadow:0 16px 40px -34px rgba(0,0,0,.45);}
+  .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+  .cal-title{font-size:13px;font-weight:600;color:var(--ink);text-transform:capitalize;letter-spacing:.2px;}
+  .cal-nav{width:26px;height:26px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink-soft);font-size:15px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
+  .cal-nav:hover:not(:disabled){border-color:var(--accent);color:var(--accent);}
+  .cal-nav:disabled{opacity:.32;cursor:default;}
+  .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+  .cal-dow{font-size:10px;font-weight:600;letter-spacing:.5px;color:var(--muted);text-align:center;padding:2px 0 4px;}
+  .cal-day{position:relative;aspect-ratio:1;border:none;background:transparent;border-radius:8px;font-family:'Schibsted Grotesk',sans-serif;font-size:12.5px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .14s,color .14s;}
+  .cal-day:hover{background:var(--accent-wash);color:var(--accent-deep);}
+  .cal-day.empty{visibility:hidden;cursor:default;}
+  .cal-day.has-post{font-weight:600;color:var(--ink);}
+  .cal-day.has-post::after{content:"";position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--accent);}
+  .cal-day.selected{background:var(--accent);color:#fff;font-weight:600;}
+  .cal-day.selected::after{background:#fff;}
+  .cal-cap{margin-top:10px;font-size:11px;line-height:1.45;color:var(--muted);font-family:'Newsreader',serif;font-style:italic;}
+  .cal-cap b{font-style:normal;font-weight:600;color:var(--ink-soft);}
+  .map-cap{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px 8px 16px;font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);background:var(--surface);}
+  .map-scope{display:flex;gap:4px;}
+  .map-scope button{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-soft);border-radius:7px;padding:4px 9px;font-family:'Schibsted Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.3px;text-transform:none;cursor:pointer;transition:all .15s;}
+  .map-scope button:hover{border-color:var(--accent);color:var(--accent);}
+  .map-scope button.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  #map{flex:1 1 auto;width:100%;min-height:0;background:var(--wash);}
+  .map-close{display:none;position:absolute;top:9px;right:10px;z-index:5;background:var(--surface);border:1px solid var(--line-2);border-radius:8px;padding:6px 11px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;font-family:'Schibsted Grotesk',sans-serif;}
+  .map-legend{display:flex;gap:14px;padding:7px 16px;font-size:11px;color:var(--muted);border-top:1px solid var(--line);background:var(--surface);}
+  .map-legend span::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--accent);}
+  .map-legend span.mem::before{background:var(--memory);}
+
+  /* ENTRY — two-column reading */
+  .post{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 28px 22px;margin-bottom:22px;
+    scroll-margin-top:20px;transition:box-shadow .25s,border-color .25s;display:grid;grid-template-columns:minmax(0,1fr);column-gap:36px;}
+  .post:hover{box-shadow:0 18px 40px -30px rgba(0,0,0,.4);}
+  .post.active{border-color:var(--accent);box-shadow:0 18px 44px -28px rgba(47,107,79,.45);}
+  .post.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .post-head{grid-column:1/-1;margin-bottom:18px;}
+  .post.split .article{grid-column:1;grid-row:2;}
+  .post.split .post-side{grid-column:2;grid-row:2;}
+
+  .post-meta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap;}
+  .stop-no{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;
+    background:var(--accent-wash);color:var(--accent-deep);font-size:12.5px;font-weight:700;flex-shrink:0;}
+  .post.memory .stop-no{background:var(--memory-wash);color:var(--memory);}
+  .pdate{font-weight:600;color:var(--ink-soft);}
+  .pdate::first-letter{text-transform:uppercase;}
+  .place{color:var(--muted);}
+  .dot{color:var(--line-2);}
+  .kind-tag{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;padding:3px 9px;border-radius:999px;
+    background:var(--accent-wash);color:var(--accent-deep);}
+  .post.memory .kind-tag{background:var(--memory-wash);color:var(--memory);}
+  .level-tag{margin-left:auto;flex-shrink:0;font-size:11px;font-weight:600;letter-spacing:.3px;
+    padding:3px 10px;border-radius:999px;background:var(--surface);color:var(--ink-soft);
+    border:1px solid var(--line-2);white-space:nowrap;}
+  .post h2{font-family:'Fraunces',serif;font-weight:500;font-size:30px;line-height:1.12;letter-spacing:-.3px;margin:0 0 4px;color:var(--ink);}
+  .post h2 .en-title{display:block;font-family:'Schibsted Grotesk',sans-serif;font-size:13.5px;color:var(--muted);font-weight:400;letter-spacing:.2px;margin-top:7px;}
+  .post-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;}
+  .act{font-family:'Schibsted Grotesk',sans-serif;font-size:13px;font-weight:500;letter-spacing:.1px;padding:9px 15px;border-radius:9px;cursor:pointer;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--ink-soft);transition:all .16s;}
+  .act:hover{border-color:var(--ink-soft);color:var(--ink);}
+  .act.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .act.act-read{border-color:var(--accent);color:var(--accent);}
+  .act.act-read:hover{background:var(--accent-wash);}
+  .act.act-read.playing{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+  /* compact card for one-line notes */
+  .post.note{padding:18px 22px 16px;}
+  .post.note .post-head{margin-bottom:10px;}
+  .post.note .post-meta{margin-bottom:0;}
+  .post.note .post-actions{margin-top:0;grid-column:1/-1;gap:6px;order:3;padding-top:12px;margin-top:12px;border-top:1px dashed var(--line);}
+  .post.note .act{font-size:12px;padding:6px 11px;border-radius:7px;}
+  .post.note .article{font-size:18.5px;}
+  .post.note.split .post-side{grid-row:2;}
+  .post.note.split .article{grid-row:2;}
+
+  .article{font-family:'Newsreader',serif;font-size:19px;line-height:1.74;color:var(--ink);margin-top:0;min-width:0;}
+  .article p{position:relative;padding:3px 4px 3px 30px;margin:0 0 11px;border-radius:6px;transition:background .2s;}
+  .article p:last-child{margin-bottom:0;}
+  .article p.speaking{background:var(--accent-wash);}
+  .pp-btn{position:absolute;left:2px;top:6px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);background:var(--surface);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;opacity:.5;transition:all .16s;}
+  .pp-btn:hover{opacity:1;border-color:var(--accent);color:var(--accent);}
+  .pp-btn.playing{opacity:1;border-color:var(--accent);background:var(--accent);color:#fff;}
+  .pp-btn svg{width:10px;height:10px;}
+
+  /* DICTATION (per-paragraph) */
+  .dict-btn{position:absolute;left:2px;top:32px;width:22px;height:22px;border-radius:50%;border:1px solid var(--line-2);
+    background:var(--surface);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;
+    padding:0;opacity:.5;transition:all .16s;}
+  .dict-btn:hover{opacity:1;border-color:var(--accent);color:var(--accent);}
+  .dict-btn.on{opacity:1;border-color:var(--accent);background:var(--accent);color:#fff;}
+  .dict-btn svg{width:11px;height:11px;}
+  .dictation{display:none;}
+  .article p.dictating .ptext{display:none;}
+  .article p.dictating .dictation{display:block;margin:1px 0;}
+  .dict-input{width:100%;border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;background:var(--surface);
+    font-family:'Newsreader',serif;font-size:17px;line-height:1.6;color:var(--ink);outline:none;resize:vertical;}
+  .dict-input:focus{border-color:var(--accent);}
+  .dict-actions{display:flex;gap:8px;margin-top:9px;}
+  .dict-check,.dict-reveal{font-family:'Schibsted Grotesk',sans-serif;font-size:12.5px;font-weight:600;
+    border-radius:8px;padding:7px 14px;cursor:pointer;border:1px solid var(--line-2);transition:all .16s;}
+  .dict-check{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .dict-check:hover{background:var(--accent-deep);border-color:var(--accent-deep);}
+  .dict-reveal{background:var(--surface);color:var(--ink-soft);}
+  .dict-reveal:hover{border-color:var(--ink-soft);color:var(--ink);}
+  .dict-result{display:none;margin-top:11px;}
+  .dict-result.open{display:block;animation:fade .2s ease;}
+  .dict-score{display:block;font-family:'Schibsted Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .dict-lbl{display:block;font-family:'Schibsted Grotesk',sans-serif;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;
+    color:var(--muted);font-weight:600;margin:9px 0 4px;}
+  .dict-line{display:block;font-family:'Newsreader',serif;font-size:16px;line-height:1.7;color:var(--ink);}
+  .dict-msg{display:block;font-family:'Newsreader',serif;font-style:italic;font-size:14px;color:var(--muted);}
+  .w-ok{color:#1f8a4c;}
+  .w-miss{color:#b4453f;text-decoration:underline;text-decoration-style:wavy;text-underline-offset:2px;}
+  .w-bad{color:#b4453f;text-decoration:line-through;}
+
+  .post-side{display:none;min-width:0;}
+  .post.split .post-side{display:flex;flex-direction:column;gap:16px;}
+
+  .en-block{display:none;padding:15px 18px;background:var(--wash);border-radius:10px;font-size:15px;color:var(--ink-soft);line-height:1.6;}
+  .en-block.open{display:block;animation:fade .25s ease;}
+  .en-block p{margin-bottom:10px;}
+  .en-block p:last-child{margin-bottom:0;}
+
+  .notes{display:none;border:1px solid var(--line-2);border-radius:14px;overflow:hidden;background:var(--wash);}
+  .notes.open{display:block;animation:fade .25s ease;}
+  .notes-head{background:var(--accent-wash);padding:12px 18px;font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent-deep);font-weight:700;}
+  .notes-body{padding:16px 18px 18px;}
+  .nsec-label{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);font-weight:600;margin:4px 0 11px;}
+  table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  td{padding:8px 0;font-size:14.5px;vertical-align:top;border-bottom:1px solid var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.fr{font-family:'Newsreader',serif;font-style:italic;color:var(--accent-deep);width:44%;padding-right:14px;font-size:15.5px;}
+  td.en{color:var(--ink-soft);}
+  .gram{margin-bottom:15px;}
+  .gram:last-child{margin-bottom:0;}
+  .gram h4{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px;}
+  .gram p{font-size:14px;color:var(--ink-soft);line-height:1.65;}
+  .gram .ex{font-family:'Newsreader',serif;font-style:italic;color:var(--accent);}
+  .gram .arrow{color:var(--muted);font-style:normal;}
+
+  /* VERB CONJUGATION (vocab) */
+  .conj-btn{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-left:2px;
+    border:1px solid var(--line-2);background:var(--surface);color:var(--accent);border-radius:6px;font-size:10px;
+    line-height:1;cursor:pointer;padding:0;vertical-align:middle;transition:all .15s;font-family:'Schibsted Grotesk',sans-serif;}
+  .conj-btn:hover{border-color:var(--accent);background:var(--accent-wash);}
+  .conj-btn.open{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .conj-row{display:none;}
+  .conj-row.open{display:table-row;animation:fade .2s ease;}
+  .conj-row > td{padding:2px 0 12px;border-bottom:1px solid var(--line);}
+  .conj-panel{background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:12px 14px;}
+  .conj-inf{font-family:'Newsreader',serif;font-style:italic;color:var(--accent-deep);font-size:14.5px;font-weight:600;margin-bottom:9px;}
+  .conj-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 18px;}
+  .conj-tname{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px;}
+  .conj-tense ul{list-style:none;margin:0;padding:0;}
+  .conj-tense li{font-family:'Newsreader',serif;font-size:13px;color:var(--ink-soft);line-height:1.55;}
+
+  /* SELECTION DICTIONARY (select French text → quick gloss) */
+  .lookup{position:fixed;z-index:1500;max-width:300px;min-width:168px;background:var(--surface);
+    border:1px solid var(--line-2);border-radius:12px;box-shadow:0 16px 44px -14px rgba(0,0,0,.34);
+    padding:11px 13px 12px;font-family:'Schibsted Grotesk',sans-serif;display:none;}
+  .lookup.open{display:block;animation:fade .14s ease;}
+  .lk-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+  .lk-term{font-family:'Newsreader',serif;font-style:italic;font-size:16px;line-height:1.25;
+    color:var(--accent-deep);flex:1;min-width:0;word-break:break-word;}
+  .lk-speak{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line-2);
+    background:var(--surface);color:var(--muted);cursor:pointer;display:flex;align-items:center;
+    justify-content:center;padding:0;transition:all .15s;}
+  .lk-speak:hover{border-color:var(--accent);color:var(--accent);}
+  .lk-speak.playing{border-color:var(--accent);background:var(--accent);color:#fff;}
+  .lk-speak svg{width:10px;height:10px;}
+  .lk-trans{font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .lk-trans.none{color:var(--muted);font-family:'Newsreader',serif;font-style:italic;}
+  .lk-loading{font-family:'Newsreader',serif;font-style:italic;color:var(--muted);font-size:14px;}
+  .lk-src{font-size:10px;letter-spacing:1.1px;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:8px;}
+
+  .map-toggle{position:fixed;right:16px;bottom:16px;z-index:1200;background:var(--accent);color:#fff;border:none;border-radius:30px;
+    padding:13px 21px;font-family:'Schibsted Grotesk',sans-serif;font-size:14px;font-weight:600;cursor:pointer;
+    box-shadow:0 10px 26px -8px rgba(47,107,79,.5);display:none;align-items:center;gap:8px;}
+
+  .empty-feed{background:var(--surface);border:1px dashed var(--line-2);border-radius:16px;padding:48px 28px;text-align:center;color:var(--muted);font-family:'Newsreader',serif;font-style:italic;font-size:17px;}
+
+  .footer{text-align:center;padding:34px 20px 44px;color:var(--muted);font-size:13px;font-family:'Newsreader',serif;font-style:italic;}
+  .footer a{color:var(--muted);}
+
+  /* MARKER */
+  .pin{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+    background:var(--ink);border:2px solid #fff;box-shadow:0 3px 9px rgba(0,0,0,.3);}
+  .pin span{transform:rotate(45deg);color:#fff;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:13px;}
+  .pin.memory{background:var(--memory);}
+  .pin.active{background:var(--accent);}
+  .leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 10px 30px -10px rgba(0,0,0,.3);}
+  .leaflet-popup-content{font-family:'Schibsted Grotesk',sans-serif;margin:11px 14px;}
+  .pop-place{font-weight:600;color:var(--ink);font-size:14px;}
+  .pop-title{font-family:'Newsreader',serif;font-style:italic;color:var(--accent);font-size:13.5px;margin-top:3px;}
+
+  @keyframes fade{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  @media(max-width:1024px){
+    .readzone{padding:0 18px;}
+    .layout{grid-template-columns:1fr;padding:0 18px;gap:0;}
+    .feed{padding:26px 0 80px;}
+    .map-rail{position:fixed;inset:0;z-index:1000;padding:12px 12px 12px;gap:12px;background:var(--bg);transform:translateX(100%);transition:transform .3s ease;}
+    .map-rail.open{transform:none;}
+    .cal{border-radius:14px;}
+    .map-box{flex:1 1 auto;min-height:0;max-height:none;border-radius:14px;}
+    .map-close{display:block;}
+    .map-toggle{display:flex;}
+    .post.split{grid-template-columns:1fr;}
+    .post.split .article{grid-column:1;grid-row:auto;}
+    .post.split .post-side{grid-column:1;grid-row:auto;}
+    .post.note.split .article,.post.note.split .post-side{grid-row:auto;}
+    .brand{font-size:46px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <svg class="topo" viewBox="0 0 1200 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="#e8e1d3" stroke-width="1.2">
+      <path d="M-50 200 C 200 130, 380 250, 600 170 S 1000 90, 1260 180"/>
+      <path d="M-50 230 C 220 170, 400 280, 620 200 S 1020 130, 1260 210"/>
+      <path d="M-50 160 C 180 90, 420 210, 640 120 S 1010 50, 1260 140"/>
+      <path d="M-50 120 C 240 60, 460 170, 660 80 S 1040 20, 1260 110"/>
+      <path d="M-50 90 C 260 30, 480 140, 680 50 S 1060 -10, 1260 80"/>
+    </g>
+  </svg>
+  <div class="mh-inner">
+    <div class="kicker">Notes de terrain</div>
+    <div class="brand">Felix<em>, carnet privé</em></div>
+    <div class="blurb">Chamonix, depuis l'automne 2026. L'entraînement, les gens, les projets, et ce dont je me souviens. Des notes pour moi, en français — parfois une ligne, parfois une journée entière.</div>
+    <div class="tagline">La suite du <a href="https://arqbca11.github.io/felix-carnet-de-voyage/">carnet de voyage</a> · les dix dernières notes</div>
+  </div>
+</header>
+
+<div class="readzone">
+  <div class="readbar" id="readbar">
+    <div class="rb-left"><span class="rb-dot"></span><span>Lecture audio · voix <strong id="rbVoice">—</strong></span></div>
+    <div class="rb-right">
+      <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
+      <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
+    </div>
+  </div>
+  <div class="key-entry" id="keyEntry">
+    <div class="ke-label">🎙 Clé API ElevenLabs <span>(optionnel — sans clé, la voix du navigateur est utilisée)</span></div>
+    <div class="ke-row">
+      <input class="ke-input" id="keyInput" type="password" placeholder="Collez votre clé API…"/>
+      <button class="ke-btn" onclick="saveKey()">Connecter</button>
+    </div>
+    <div class="ke-msg" id="keyMsg"></div>
+  </div>
+  <div class="voice-picker" id="voicePicker">
+    <div class="vp-label">Choisir une voix</div>
+    <div class="vp-list" id="vpList"></div>
+    <div class="vp-msg" id="vpMsg"></div>
+  </div>
+</div>
+
+<div class="layout">
+  <main class="feed" id="feed"></main>
+  <aside class="map-rail" id="mapCol">
+    <div class="cal" id="cal"></div>
+    <div class="map-box">
+      <div class="map-cap"><span>Les lieux</span>
+        <span class="map-scope"><button data-scope="here" class="on">Ici</button><button data-scope="all">Tout</button></span>
+      </div>
+      <button class="map-close" onclick="toggleMap(false)">✕</button>
+      <div id="map"></div>
+      <div class="map-legend"><span>Maintenant</span><span class="mem">Souvenirs</span></div>
+    </div>
+  </aside>
+</div>
+
+<button class="map-toggle" id="mapToggle" onclick="toggleMap(true)">🗺 La carte</button>
+
+<div class="footer">Notes de Felix — un projet pour apprendre le français · <a href="https://arqbca11.github.io/felix-carnet-de-voyage/">le carnet de voyage de l'été</a></div>
+
+<script>
+/* ── ENTRY REGISTRY ─────────────────────────────────────────────────────────
+   This file is a TEMPLATE: it carries no entry content. Each entry lives in its
+   own resource file under notes/ (text, vocab, grammar, optional location) and
+   registers itself by calling FelixNotes.register(...). The loader pulls the
+   LATEST TEN entries from notes/manifest.js and injects only those scripts.
+   See CLAUDE.md §5–§7. */
+let POSTS = [];                           // the entries CURRENTLY displayed (rebuilt on date change)
+const POST_BY_ID = {};                    // id -> entry object, filled by FelixNotes.register
+const LOADED_FILES = new Set();           // entry files already injected (never inject twice)
+const HOW_MANY = 10;                      // how many of the latest entries to display
+
+window.FelixNotes = {
+  register(post){ POST_BY_ID[post.id] = post; },
+  // Helper for verb vocab entries: build a conjugation object the notes panel can render.
+  // Each tense is an array of the 6 persons (je…ils), already including pronoun + auxiliary.
+  verb(inf, pres, pc, imp, fut){
+    return { inf, conj:[['Présent',pres],['Passé composé',pc],['Imparfait',imp],['Futur simple',fut]] };
+  }
+};
+
+const KIND_FR = { note:'Note', entry:'Journal', report:'Compte rendu', portrait:'Portrait', memory:'Souvenir', plan:'Projet' };
+
+// Which manifest entries to show "as of" a given ISO day: the latest N with date <= cutoff.
+function entriesUpTo(cutoffISO){
+  const manifest = Array.isArray(window.NOTES_MANIFEST) ? window.NOTES_MANIFEST : [];
+  return manifest.filter(e => e.date <= cutoffISO).slice(-HOW_MANY);
+}
+
+// Ensure the given manifest entries' scripts are loaded, then run `done`.
+// Uses dynamic <script> tags (NOT fetch) so the page works opened directly via file://.
+function ensureLoaded(entries, done){
+  const todo = entries.filter(e => !LOADED_FILES.has(e.file));
+  if(!todo.length){ done(); return; }
+  let pending = todo.length;
+  const settle = () => { if(--pending === 0) done(); };
+  todo.forEach(entry => {
+    LOADED_FILES.add(entry.file);
+    const s = document.createElement('script');
+    s.src = entry.file;
+    s.onload = settle;
+    s.onerror = () => { console.error('Could not load entry:', entry.file); LOADED_FILES.delete(entry.file); settle(); };
+    document.head.appendChild(s);
+  });
+}
+
+// Load (if needed) and render the entries shown "as of" cutoffISO, newest first. Re-entrant.
+function showAsOf(cutoffISO){
+  const entries = entriesUpTo(cutoffISO);
+  ensureLoaded(entries, () => {
+    stopAll();
+    POSTS = entries.map(e => POST_BY_ID[e.id]).filter(Boolean).sort((a,b)=>b.no-a.no);
+    buildFeed();
+    drawPins();
+  });
+}
+
+// ── ICONS ──
+const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>';
+const ICON_STOP = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>';
+const ICON_SPIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="animation:spin .8s linear infinite"><path d="M12 3a9 9 0 1 0 9 9"/></svg>';
+const ICON_PEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+
+// ── SAFE STORAGE ──
+// The ElevenLabs key/voice keys are shared with the travel blog on purpose (same origin on GitHub Pages).
+const KEY_API='elevenlabs_api_key', KEY_VOICE='elevenlabs_voice_id', KEY_VNAME='elevenlabs_voice_name', KEY_SPEED='felix_notes_speed';
+function getLS(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
+function setLS(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+
+// ── DATES ──
+const MONTHS_FR = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+const DAYS_FR = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+const DOW_FR = ['L','M','M','J','V','S','D'];
+function isoOf(y,mo,d){ return `${y}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
+function frLong(isoStr){ const [y,mo,d]=isoStr.split('-').map(Number); return `${d} ${MONTHS_FR[mo-1]} ${y}`; }
+function frFull(isoStr){                         // "dimanche 20 septembre 2026"
+  const [y,mo,d]=isoStr.split('-').map(Number);
+  const dow = DAYS_FR[new Date(y,mo-1,d).getDay()];
+  return `${dow} ${d}${d===1?'er':''} ${MONTHS_FR[mo-1]} ${y}`;
+}
+
+// ── BUILD FEED ──
+const feed = document.getElementById('feed');
+function buildFeed(){
+  feed.innerHTML = '';
+  if(!POSTS.length){
+    feed.innerHTML = '<div class="empty-feed">Rien à cette date — le carnet n\'avait pas encore commencé.</div>';
+    return;
+  }
+  POSTS.forEach(post => {
+  const card = document.createElement('article');
+  const kind = post.kind || 'entry';
+  card.className = 'post ' + kind; card.id = post.id;
+  const hasNotes = (post.vocab && post.vocab.length) || (post.gram && post.gram.length);
+  const hasPin = typeof post.lat === 'number' && typeof post.lng === 'number';
+
+  const frHTML = post.fr.map((p,i) =>
+    `<p>`+
+      `<button class="pp-btn" data-play="para" data-id="${post.id}" data-i="${i}" aria-label="Lire">${ICON_PLAY}</button>`+
+      `<button class="dict-btn" data-dict="${post.id}:${i}" aria-label="Dictée" title="Dictée — écouter et écrire">${ICON_PEN}</button>`+
+      `<span class="ptext">${p}</span>`+
+      `<span class="dictation">`+
+        `<textarea class="dict-input" rows="3" placeholder="Écoutez (▶) et écrivez ce que vous entendez…"></textarea>`+
+        `<span class="dict-actions">`+
+          `<button class="dict-check" data-check="${post.id}:${i}">Vérifier</button>`+
+          `<button class="dict-reveal" data-reveal="${post.id}:${i}">Afficher le texte</button>`+
+        `</span>`+
+        `<span class="dict-result"></span>`+
+      `</span>`+
+    `</p>`).join('');
+  const enHTML = post.en.map(p => `<p>${p}</p>`).join('');
+  const vocabRows = (post.vocab||[]).map((v,vi) => {
+    const conj = v[2];                                 // present only on verb entries
+    const btn = conj ? ` <button class="conj-btn" data-conj="${post.id}:${vi}" aria-label="Voir la conjugaison" title="Conjugaison">▾</button>` : '';
+    let row = `<tr><td class="fr">${v[0]}${btn}</td><td class="en">${v[1]}</td></tr>`;
+    if(conj){
+      const tenses = conj.conj.map(t =>
+        `<div class="conj-tense"><div class="conj-tname">${t[0]}</div><ul>${t[1].map(f=>`<li>${f}</li>`).join('')}</ul></div>`).join('');
+      row += `<tr class="conj-row" id="conj-${post.id}-${vi}"><td colspan="2"><div class="conj-panel">`+
+             `<div class="conj-inf">${conj.inf}</div><div class="conj-grid">${tenses}</div></div></td></tr>`;
+    }
+    return row;
+  }).join('');
+  const gramHTML = (post.gram||[]).map(g => `<div class="gram"><h4>${g.h}</h4><p>${g.p}</p></div>`).join('');
+
+  const titleHTML = post.title
+    ? `<h2>${post.title}${post.titleEn ? `<span class="en-title">${post.titleEn}</span>` : ''}</h2>` : '';
+  const actionsHTML = `
+      <div class="post-actions">
+        <button class="act act-read" data-play="all" data-id="${post.id}">▶ Lire</button>
+        <button class="act" data-toggle="en" data-id="${post.id}">Traduction (EN)</button>
+        ${hasNotes ? `<button class="act" data-toggle="notes" data-id="${post.id}">Notes de français</button>` : ''}
+        ${hasPin ? `<button class="act" data-fly="${post.id}">Voir sur la carte</button>` : ''}
+      </div>`;
+
+  card.innerHTML = `
+    <div class="post-head">
+      <div class="post-meta">
+        <span class="stop-no">${post.no}</span>
+        <span class="pdate">${frFull(post.date)}</span>
+        ${post.place ? `<span class="dot">·</span><span class="place">${post.place}</span>` : ''}
+        <span class="kind-tag">${KIND_FR[kind] || kind}</span>
+        ${post.level ? `<span class="level-tag">${post.level}</span>` : ''}
+      </div>
+      ${titleHTML}
+      ${kind==='note' ? '' : actionsHTML}
+    </div>
+    <div class="article">${frHTML}</div>
+    <aside class="post-side">
+      <div class="en-block" id="en-${post.id}">${enHTML}</div>
+      ${hasNotes ? `<div class="notes" id="notes-${post.id}">
+        <div class="notes-head">Notes de français · vocabulaire & grammaire</div>
+        <div class="notes-body">
+          ${vocabRows ? `<div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table>` : ''}
+          ${gramHTML ? `<div class="nsec-label">Grammaire</div>${gramHTML}` : ''}
+        </div>
+      </div>` : ''}
+    </aside>
+    ${kind==='note' ? actionsHTML : ''}`;
+  feed.appendChild(card);
+}); }
+
+// ── INTERACTIONS ──
+feed.addEventListener('click', e => {
+  const playBtn = e.target.closest('[data-play]');
+  if (playBtn) { e.stopPropagation(); onPlay(playBtn); return; }
+  const conjBtn = e.target.closest('[data-conj]');
+  if (conjBtn) {
+    e.stopPropagation();
+    const [pid, vi] = conjBtn.dataset.conj.split(':');
+    const row = document.getElementById(`conj-${pid}-${vi}`);
+    const open = row.classList.toggle('open');
+    conjBtn.classList.toggle('open', open);
+    conjBtn.textContent = open ? '▴' : '▾';
+    return;
+  }
+  const dictBtn = e.target.closest('[data-dict]');
+  if (dictBtn) {
+    e.stopPropagation();
+    const p = dictBtn.closest('p');
+    const on = p.classList.toggle('dictating');
+    dictBtn.classList.toggle('on', on);
+    if (on) { const ta = p.querySelector('.dict-input'); if (ta) setTimeout(() => ta.focus(), 0); }
+    return;
+  }
+  const checkBtn = e.target.closest('[data-check]');
+  if (checkBtn) {
+    e.stopPropagation();
+    const [pid, i] = checkBtn.dataset.check.split(':');
+    const post = POSTS.find(x => x.id === pid);
+    if (post) checkDictation(checkBtn.closest('.dictation'), post.fr[+i]);
+    return;
+  }
+  const revealBtn = e.target.closest('[data-reveal]');
+  if (revealBtn) {
+    e.stopPropagation();
+    const [pid, i] = revealBtn.dataset.reveal.split(':');
+    const post = POSTS.find(x => x.id === pid);
+    if (post) {
+      const res = revealBtn.closest('.dictation').querySelector('.dict-result');
+      const showing = revealBtn.classList.toggle('on');     // toggle reveal on/off
+      if (showing) {
+        res.innerHTML = `<span class="dict-lbl">Texte original</span><span class="dict-line">${escHTML(post.fr[+i])}</span>`;
+        res.classList.add('open');
+        revealBtn.textContent = 'Masquer le texte';
+      } else {
+        res.innerHTML = ''; res.classList.remove('open');
+        revealBtn.textContent = 'Afficher le texte';
+      }
+    }
+    return;
+  }
+  const btn = e.target.closest('.act'); if (!btn) return;
+  if (btn.dataset.toggle) {
+    const block = document.getElementById(`${btn.dataset.toggle}-${btn.dataset.id}`);
+    if (!block) return;
+    const open = block.classList.toggle('open');
+    btn.classList.toggle('on', open);
+    const post = btn.closest('.post');
+    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open'));
+  } else if (btn.dataset.fly) {
+    flyTo(btn.dataset.fly);
+  }
+});
+
+// ── AUDIO ENGINE ──
+const AUDIO_CACHE = new Map();
+let curAudio=null, curUtter=null, seqToken=0, speed=1, activePlayer=null;
+
+async function fetchTTS(text){
+  const key=getLS(KEY_API), vid=getLS(KEY_VOICE);
+  if(!key||!vid) return null;
+  const ck = vid+'|'+text;
+  if(AUDIO_CACHE.has(ck)) return AUDIO_CACHE.get(ck);
+  try{
+    const res=await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${vid}`,{method:'POST',
+      headers:{'xi-api-key':key,'Content-Type':'application/json'},
+      body:JSON.stringify({text,model_id:'eleven_multilingual_v2',voice_settings:{stability:.5,similarity_boost:.75}})});
+    if(!res.ok) return null;
+    const url=URL.createObjectURL(await res.blob());
+    AUDIO_CACHE.set(ck,url);
+    return url;
+  }catch(e){ return null; }
+}
+
+function clearPlayingUI(){
+  document.querySelectorAll('.pp-btn').forEach(b=>{ b.classList.remove('playing'); b.innerHTML=ICON_PLAY; });
+  document.querySelectorAll('.article p.speaking').forEach(p=>p.classList.remove('speaking'));
+  document.querySelectorAll('.act-read').forEach(b=>{ b.classList.remove('playing'); b.textContent="▶ Lire"; });
+}
+function stopAll(){
+  seqToken++;
+  if(curAudio){ try{curAudio.pause();}catch(e){} curAudio=null; }
+  if(window.speechSynthesis){ try{speechSynthesis.cancel();}catch(e){} }
+  curUtter=null; activePlayer=null; clearPlayingUI();
+}
+
+function playOne(text,my,btn){
+  return new Promise(resolve=>{
+    const done=()=>resolve();
+    const key=getLS(KEY_API), vid=getLS(KEY_VOICE);
+    const fallback=()=>{
+      if(my!==seqToken) return done();
+      if(!('speechSynthesis' in window)) return done();
+      try{speechSynthesis.cancel();}catch(e){}
+      const u=new SpeechSynthesisUtterance(text); u.lang='fr-FR'; u.rate=Math.max(.5,Math.min(1.3,speed*0.95));
+      const vs=speechSynthesis.getVoices(); const fr=vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('fr')); if(fr)u.voice=fr;
+      if(btn)btn.innerHTML=ICON_STOP;
+      u.onend=done; u.onerror=done; curUtter=u; speechSynthesis.speak(u);
+    };
+    const start=(url)=>{
+      if(my!==seqToken) return done();
+      const a=new Audio(url); a.playbackRate=speed; curAudio=a;
+      if(btn)btn.innerHTML=ICON_STOP;
+      a.onended=done; a.onerror=()=>fallback();
+      a.play().catch(()=>fallback());
+    };
+    if(key&&vid){ fetchTTS(text).then(url=>{ if(my!==seqToken)return done(); url?start(url):fallback(); }).catch(fallback); }
+    else fallback();
+  });
+}
+
+async function speakSequence(items){
+  const my=++seqToken;
+  for(let i=0;i<items.length;i++){
+    if(my!==seqToken) return;
+    const {text,para,btn}=items[i];
+    if(para) para.classList.add('speaking');
+    if(btn){ btn.classList.add('playing'); btn.innerHTML=ICON_SPIN; }
+    if(items[i+1]) fetchTTS(items[i+1].text);
+    await playOne(text,my,btn);
+    if(para) para.classList.remove('speaking');
+    if(btn){ btn.classList.remove('playing'); btn.innerHTML=ICON_PLAY; }
+    if(my!==seqToken) return;
+  }
+}
+
+function onPlay(btn){
+  const kind=btn.dataset.play, id=btn.dataset.id;
+  const playerId = kind+':'+id+(btn.dataset.i!=null?(':'+btn.dataset.i):'');
+  if(activePlayer===playerId){ stopAll(); return; }
+  stopAll();
+  activePlayer=playerId;
+  const post=POSTS.find(p=>p.id===id);
+  const cardEl=document.getElementById(id);
+  const paras=[...cardEl.querySelectorAll('.article p')];
+  const ppBtns=[...cardEl.querySelectorAll('.pp-btn')];
+  let items;
+  if(kind==='all'){
+    items=post.fr.map((t,i)=>({text:t,para:paras[i],btn:ppBtns[i]}));
+    btn.classList.add('playing'); btn.textContent='■ Arrêter';
+  } else {
+    const i=+btn.dataset.i; items=[{text:post.fr[i],para:paras[i],btn:ppBtns[i]}];
+  }
+  speakSequence(items).then(()=>{ if(activePlayer===playerId) stopAll(); });
+}
+
+// ── VOICE / KEY UI ──
+let allVoices=[], pickerOpen=false;
+const SPEEDS=[0.75,0.9,1.0,1.1];
+
+function refreshReadbar(){
+  document.getElementById('readbar').style.display='flex';
+  const key=getLS(KEY_API);
+  document.getElementById('rbVoice').textContent = key ? (getLS(KEY_VNAME)||'ElevenLabs') : 'navigateur';
+  document.getElementById('voiceBtn').textContent = key ? 'Changer de voix' : 'Connecter ElevenLabs';
+  document.getElementById('rbSpeed').textContent = speed.toFixed(1)+'×';
+}
+function voiceBtnClick(){
+  if(getLS(KEY_API)){ toggleVoicePicker(); }
+  else { const ke=document.getElementById('keyEntry'); ke.style.display = ke.style.display==='block'?'none':'block'; }
+}
+function cycleSpeed(){
+  let i=SPEEDS.indexOf(speed); i=(i+1)%SPEEDS.length; if(i<0)i=2;
+  speed=SPEEDS[i]; setLS(KEY_SPEED,String(speed));
+  if(curAudio) curAudio.playbackRate=speed;
+  document.getElementById('rbSpeed').textContent=speed.toFixed(1)+'×';
+}
+async function saveKey(){
+  const v=document.getElementById('keyInput').value.trim().replace(/[\u200B-\u200D\uFEFF]/g,'');
+  if(!v) return;
+  document.getElementById('keyMsg').textContent='Connexion…';
+  const ok=await fetchVoices(v,true);
+  if(ok){ setLS(KEY_API,v); AUDIO_CACHE.clear(); document.getElementById('keyEntry').style.display='none'; document.getElementById('keyMsg').textContent=''; refreshReadbar(); }
+  else document.getElementById('keyMsg').textContent='Connexion impossible — vérifiez la clé.';
+}
+async function fetchVoices(key,showPicker){
+  try{
+    const res=await fetch('https://api.elevenlabs.io/v1/voices',{headers:{'xi-api-key':key}});
+    if(!res.ok) return false;
+    const data=await res.json(); allVoices=data.voices||[];
+    const saved=getLS(KEY_VOICE);
+    if(saved){ const v=allVoices.find(x=>x.voice_id===saved); if(v)setLS(KEY_VNAME,v.name); }
+    else if(allVoices.length){ setLS(KEY_VOICE,allVoices[0].voice_id); setLS(KEY_VNAME,allVoices[0].name); }
+    if(showPicker) renderVoicePicker();
+    refreshReadbar();
+    return true;
+  }catch(e){ return false; }
+}
+function toggleVoicePicker(){
+  pickerOpen=!pickerOpen;
+  document.getElementById('voicePicker').style.display = pickerOpen?'block':'none';
+  if(pickerOpen){
+    if(allVoices.length) renderVoicePicker();
+    else { document.getElementById('vpMsg').textContent='Chargement…'; fetchVoices(getLS(KEY_API),true); }
+  }
+}
+function renderVoicePicker(){
+  const c=document.getElementById('vpList'), saved=getLS(KEY_VOICE); c.innerHTML='';
+  allVoices.forEach(v=>{
+    const sel=v.voice_id===saved;
+    const d=document.createElement('div'); d.className='vitem'+(sel?' selected':'');
+    const desc=v.labels?Object.values(v.labels).slice(0,2).join(' · '):'';
+    d.innerHTML=`<div class="vdot"></div><div class="vinfo"><div class="vname">${v.name}</div>${desc?`<div class="vmeta">${desc.slice(0,52)}</div>`:''}</div><button class="vprev">${ICON_PLAY}</button>`;
+    d.querySelector('.vinfo').onclick=()=>{
+      setLS(KEY_VOICE,v.voice_id); setLS(KEY_VNAME,v.name); AUDIO_CACHE.clear();
+      document.querySelectorAll('.vitem').forEach(i=>i.classList.remove('selected')); d.classList.add('selected');
+      refreshReadbar(); document.getElementById('vpMsg').textContent='Voix : '+v.name;
+    };
+    d.querySelector('.vdot').onclick=()=>d.querySelector('.vinfo').click();
+    d.querySelector('.vprev').onclick=async ev=>{
+      ev.stopPropagation(); const b=ev.currentTarget; b.innerHTML=ICON_STOP;
+      try{
+        const r=await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${v.voice_id}`,{method:'POST',
+          headers:{'xi-api-key':getLS(KEY_API),'Content-Type':'application/json'},
+          body:JSON.stringify({text:"Argentière, un matin d'octobre. J'ouvre le carnet.",model_id:'eleven_multilingual_v2',voice_settings:{stability:.5,similarity_boost:.75}})});
+        if(!r.ok) throw 0;
+        const a=new Audio(URL.createObjectURL(await r.blob())); a.play();
+        a.onended=()=>{ b.innerHTML=ICON_PLAY; };
+      }catch(err){ b.innerHTML=ICON_PLAY; }
+    };
+    c.appendChild(d);
+  });
+  document.getElementById('vpMsg').textContent='';
+}
+
+// ── MAP ──
+// Pins only (no route: this is a notebook, not a journey). Entries without lat/lng have no pin.
+// "memory" entries get a muted pin. Scope buttons: "Ici" fits the present-day pins, "Tout" fits all.
+let map, markers = {}, mapScope = 'here';
+const CHAMONIX = [45.9237, 6.8694];
+function makeIcon(p, active){
+  const cls = 'pin' + (p.kind==='memory' ? ' memory' : '') + (active ? ' active' : '');
+  return L.divIcon({className:'', html:`<div class="${cls}"><span>${p.no}</span></div>`,
+    iconSize:[28,28], iconAnchor:[14,28], popupAnchor:[0,-28]});
+}
+function initMap(){
+  map = L.map('map', {scrollWheelZoom:true, zoomControl:true});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18, attribution:'© OSM'}).addTo(map);
+  map.setView(CHAMONIX, 10);
+}
+function pinned(){ return POSTS.filter(p => typeof p.lat==='number' && typeof p.lng==='number'); }
+function fitScope(){
+  if(!map) return;
+  let pts = pinned();
+  if(mapScope==='here') pts = pts.filter(p => p.kind!=='memory');
+  const ll = pts.map(p => [p.lat, p.lng]);
+  if(ll.length > 1) map.fitBounds(ll, {padding:[35,35], maxZoom:12});
+  else if(ll.length === 1) map.setView(ll[0], 11);
+  else map.setView(CHAMONIX, 10);
+  setTimeout(() => map.invalidateSize(), 60);
+}
+// (Re)draw the pins for the currently displayed POSTS. Safe to call on every date change.
+function drawPins(){
+  if(!map) return;
+  Object.values(markers).forEach(m => map.removeLayer(m));
+  markers = {};
+  pinned().forEach(p => {
+    const m = L.marker([p.lat, p.lng], {icon: makeIcon(p,false)}).addTo(map);
+    m.bindPopup(`<div class="pop-place">${p.place || ''}</div><div class="pop-title">${p.title || frLong(p.date)}</div>`);
+    m.on('click', () => { document.getElementById(p.id).scrollIntoView(); highlight(p.id); });
+    markers[p.id] = m;
+  });
+  fitScope();
+}
+function highlight(id){
+  document.querySelectorAll('.post').forEach(c => c.classList.toggle('active', c.id===id));
+  POSTS.forEach(p => { if(markers[p.id]) markers[p.id].setIcon(makeIcon(p, p.id===id)); });
+}
+function flyTo(id){
+  const p = POSTS.find(x => x.id===id);
+  if (!p || !markers[id]) return;
+  if (window.innerWidth <= 1024) toggleMap(true);
+  setTimeout(() => { map.invalidateSize(); map.flyTo([p.lat, p.lng], 10, {duration:1.1}); markers[id].openPopup(); }, 60);
+  highlight(id);
+}
+function toggleMap(open){
+  document.getElementById('mapCol').classList.toggle('open', open);
+  if (open) setTimeout(() => map.invalidateSize(), 120);
+}
+document.querySelector('.map-scope').addEventListener('click', e => {
+  const b = e.target.closest('[data-scope]'); if(!b) return;
+  mapScope = b.dataset.scope;
+  document.querySelectorAll('.map-scope button').forEach(x => x.classList.toggle('on', x===b));
+  fitScope();
+});
+
+// ── CALENDAR ──
+// A small month picker above the map. Clicking a day shows the latest ten entries
+// written on or before that day (entriesUpTo + showAsOf). Days with an entry get a dot.
+let calY, calM, selISO, calMin = 0, calMax = 0;   // shown month, selected ISO day, nav bounds (year*12+month)
+
+function manifestDates(){
+  const m = Array.isArray(window.NOTES_MANIFEST) ? window.NOTES_MANIFEST : [];
+  return new Set(m.map(e => e.date));
+}
+function setupCalendar(){
+  const m = Array.isArray(window.NOTES_MANIFEST) ? window.NOTES_MANIFEST : [];
+  const dates = m.map(e => e.date).filter(Boolean).sort();
+  const firstISO = dates[0] || isoOf(2026,8,1);
+  const lastISO  = dates[dates.length-1] || firstISO;
+  const [fy,fm] = firstISO.split('-').map(Number);
+  const [ly,lm] = lastISO.split('-').map(Number);
+  calMin = fy*12 + (fm-1);
+  calMax = ly*12 + (lm-1);
+  selISO = lastISO;            // default selection = newest day → opens on the latest entries
+  calY = ly; calM = lm-1;
+  renderCalendar();
+}
+function renderCalendar(){
+  const cal = document.getElementById('cal'); if(!cal) return;
+  const dates = manifestDates();
+  const monthIdx = calY*12 + calM;
+  const firstDow = (new Date(calY,calM,1).getDay()+6) % 7;   // Monday-first column
+  const daysInMonth = new Date(calY,calM+1,0).getDate();
+  const dow = DOW_FR.map(d => `<span class="cal-dow">${d}</span>`).join('');
+  let days = '';
+  for(let i=0;i<firstDow;i++) days += '<button class="cal-day empty" disabled></button>';
+  for(let d=1; d<=daysInMonth; d++){
+    const iso = isoOf(calY,calM,d);
+    const cls = ['cal-day'];
+    if(dates.has(iso)) cls.push('has-post');
+    if(iso===selISO) cls.push('selected');
+    days += `<button class="${cls.join(' ')}" data-day="${iso}">${d}</button>`;
+  }
+  cal.innerHTML = `
+    <div class="cal-head">
+      <button class="cal-nav" data-cal="prev"${monthIdx<=calMin?' disabled':''}>‹</button>
+      <div class="cal-title">${MONTHS_FR[calM]} ${calY}</div>
+      <button class="cal-nav" data-cal="next"${monthIdx>=calMax?' disabled':''}>›</button>
+    </div>
+    <div class="cal-grid">${dow}${days}</div>
+    <div class="cal-cap">Les ${HOW_MANY} dernières notes jusqu'au <b>${frLong(selISO)}</b>.</div>`;
+}
+document.getElementById('cal').addEventListener('click', e => {
+  const nav = e.target.closest('[data-cal]');
+  if(nav){
+    const monthIdx = calY*12 + calM;
+    if(nav.dataset.cal==='prev' && monthIdx>calMin){ calM--; if(calM<0){ calM=11; calY--; } }
+    if(nav.dataset.cal==='next' && monthIdx<calMax){ calM++; if(calM>11){ calM=0; calY++; } }
+    renderCalendar();
+    return;
+  }
+  const day = e.target.closest('[data-day]');
+  if(day){
+    selISO = day.dataset.day;
+    renderCalendar();
+    showAsOf(selISO);
+  }
+});
+
+// ── DICTATION ──
+// Each paragraph has a ✎ button that hides the text and shows a typing box. The
+// learner plays the audio with the paragraph's ▶ button, writes what they hear,
+// and "Vérifier" scores it with a word-by-word diff against the original.
+function escHTML(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function dictTokenize(s){ return s.trim().split(/\s+/).filter(Boolean); }
+// Compare-key for a token: lowercase, straight apostrophes, strip edge punctuation
+// (accents are kept significant — they're part of learning to spell French).
+function dictNorm(t){
+  return t.toLowerCase().replace(/[’]/g,"'")
+    .replace(/^[^0-9a-zà-ÿœæ']+|[^0-9a-zà-ÿœæ']+$/gi,'');
+}
+// Longest-common-subsequence alignment → which expected/typed tokens matched.
+function dictAlign(expTok, usrTok){
+  const a = expTok.map(dictNorm), b = usrTok.map(dictNorm);
+  const n = a.length, m = b.length;
+  const dp = Array.from({length:n+1}, () => new Array(m+1).fill(0));
+  for(let i=n-1;i>=0;i--) for(let j=m-1;j>=0;j--)
+    dp[i][j] = a[i]===b[j] ? dp[i+1][j+1]+1 : Math.max(dp[i+1][j], dp[i][j+1]);
+  const expMatch = new Array(n).fill(false), usrMatch = new Array(m).fill(false);
+  let i=0, j=0;
+  while(i<n && j<m){
+    if(a[i]===b[j]){ expMatch[i]=usrMatch[j]=true; i++; j++; }
+    else if(dp[i+1][j] >= dp[i][j+1]) i++;
+    else j++;
+  }
+  return {expMatch, usrMatch};
+}
+function checkDictation(box, expectedText){
+  const res = box.querySelector('.dict-result');
+  const rb = box.querySelector('.dict-reveal');             // a check result replaces any reveal
+  if(rb){ rb.classList.remove('on'); rb.textContent = 'Afficher le texte'; }
+  const typed = box.querySelector('.dict-input').value;
+  const expTok = dictTokenize(expectedText), usrTok = dictTokenize(typed);
+  res.classList.add('open');
+  if(!usrTok.length){ res.innerHTML = '<span class="dict-msg">Écrivez d\'abord ce que vous entendez.</span>'; return; }
+  const {expMatch, usrMatch} = dictAlign(expTok, usrTok);
+  const correct = expMatch.filter(Boolean).length;
+  const pct = Math.round(correct / expTok.length * 100);
+  const expHTML = expTok.map((t,k) => `<span class="${expMatch[k]?'w-ok':'w-miss'}">${escHTML(t)}</span>`).join(' ');
+  const usrHTML = usrTok.map((t,k) => `<span class="${usrMatch[k]?'w-ok':'w-bad'}">${escHTML(t)}</span>`).join(' ');
+  res.innerHTML =
+    `<span class="dict-score">${correct} / ${expTok.length} mots · ${pct} %</span>`+
+    `<span class="dict-lbl">Texte original</span><span class="dict-line">${expHTML}</span>`+
+    `<span class="dict-lbl">Votre réponse</span><span class="dict-line">${usrHTML}</span>`;
+}
+
+// ── SELECTION DICTIONARY ──
+// Select French text inside an entry → a small floating popup gives a quick gloss.
+// Hybrid source: the displayed entries' own curated vocab first (instant, offline);
+// anything else — including multi-word phrases — is translated via the free, no-key
+// MyMemory API (CORS-enabled, so it works even when the file is opened via file://).
+const LOOKUP_CACHE = new Map();        // normalized term -> {trans, src}
+let lookupEl = null, lookupSeq = 0;
+
+// Normalize for matching/caching: lowercase, straighten apostrophes, drop punctuation.
+function normTerm(s){
+  return s.toLowerCase()
+    .replace(/[’]/g,"'")
+    .replace(/[.,;:!?«»"“”()\[\]…]/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+
+// Gloss map from the vocab of every currently displayed entry (incl. verb infinitives).
+function vocabIndex(){
+  const idx = new Map();
+  POSTS.forEach(p => (p.vocab||[]).forEach(v => {
+    const k = normTerm(v[0]); if(k && !idx.has(k)) idx.set(k, v[1]);
+    if(v[2] && v[2].inf){ const ik = normTerm(v[2].inf); if(ik && !idx.has(ik)) idx.set(ik, v[1]); }
+  }));
+  return idx;
+}
+
+function ensureLookupEl(){
+  if(lookupEl) return lookupEl;
+  lookupEl = document.createElement('div');
+  lookupEl.className = 'lookup';
+  document.body.appendChild(lookupEl);
+  lookupEl.addEventListener('mousedown', e => e.preventDefault());  // don't drop the selection
+  return lookupEl;
+}
+function hideLookup(){ lookupSeq++; if(lookupEl) lookupEl.classList.remove('open'); }
+
+function positionLookup(rect){
+  const el = lookupEl, w = el.offsetWidth, h = el.offsetHeight;
+  let left = rect.left + rect.width/2 - w/2;
+  left = Math.max(8, Math.min(left, window.innerWidth - w - 8));
+  let top = rect.top - h - 10;                  // prefer above the selection
+  if(top < 8) top = rect.bottom + 10;           // flip below if there's no room
+  el.style.left = left+'px'; el.style.top = top+'px';
+}
+
+function renderLookup(term, bodyHTML, rect){
+  const el = ensureLookupEl();
+  el.innerHTML =
+    `<div class="lk-head"><div class="lk-term">${term}</div>`+
+    `<button class="lk-speak" aria-label="Écouter">${ICON_PLAY}</button></div>`+
+    `<div class="lk-body">${bodyHTML}</div>`;
+  el.classList.add('open');
+  positionLookup(rect);
+  el.querySelector('.lk-speak').onclick = () => {
+    stopAll();
+    const b = el.querySelector('.lk-speak'); b.classList.add('playing'); b.innerHTML = ICON_STOP;
+    speakSequence([{text:term}]).then(() => { b.classList.remove('playing'); b.innerHTML = ICON_PLAY; });
+  };
+}
+
+async function lookupTranslate(term){
+  const key = normTerm(term);
+  if(LOOKUP_CACHE.has(key)) return LOOKUP_CACHE.get(key);
+  const hit = vocabIndex().get(key);                       // 1) curated vocab (offline, instant)
+  if(hit){ const r = {trans:hit, src:'Vocabulaire de la note'}; LOOKUP_CACHE.set(key,r); return r; }
+  try{                                                      // 2) free dictionary API (no key)
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(term)}&langpair=fr|en&de=arqbcode2026@gmail.com`);
+    const data = await res.json();
+    const t = data && data.responseData && data.responseData.translatedText;
+    if(t){ const r = {trans:t, src:'Dictionnaire · MyMemory'}; LOOKUP_CACHE.set(key,r); return r; }
+  }catch(e){}
+  return {trans:null, src:null};
+}
+
+function runLookup(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed || !sel.rangeCount){ hideLookup(); return; }
+  const raw = sel.toString().trim().replace(/\s+/g,' ');
+  if(!raw || raw.length>80 || raw.split(' ').length>10){ hideLookup(); return; }
+  const node = sel.anchorNode;
+  const host = node && (node.nodeType===1 ? node : node.parentElement);
+  if(!host || !host.closest('.article')){ hideLookup(); return; }   // only the French reading text
+  const rect = sel.getRangeAt(0).getBoundingClientRect();
+  if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
+  const my = ++lookupSeq;
+  renderLookup(raw, '<span class="lk-loading">…</span>', rect);
+  lookupTranslate(raw).then(r => {
+    if(my!==lookupSeq || !lookupEl) return;
+    const body = lookupEl.querySelector('.lk-body');
+    body.innerHTML = r.trans
+      ? `<div class="lk-trans">${r.trans}</div><div class="lk-src">${r.src}</div>`
+      : '<div class="lk-trans none">Pas de traduction trouvée.</div>';
+    positionLookup(rect);                          // re-measure now that content changed
+  });
+}
+
+// Desktop reacts on mouse-up. Touch devices don't fire a reliable mouse-up at the
+// end of a text selection (you drag the selection handles), so once a touch is seen
+// we switch to a debounced `selectionchange` that waits for the handles to settle.
+let touchMode = false, selDebounce = null;
+document.addEventListener('mouseup', e => {
+  if(lookupEl && lookupEl.contains(e.target)) return;
+  if(touchMode) return;                            // touch is handled via selectionchange
+  setTimeout(runLookup, 0);                        // let the selection settle first
+});
+document.addEventListener('mousedown', e => {
+  if(lookupEl && lookupEl.contains(e.target)) return;
+  hideLookup();
+});
+document.addEventListener('touchstart', e => {
+  touchMode = true;
+  if(lookupEl && lookupEl.contains(e.target)) return;   // taps inside the popup keep it open
+  hideLookup();
+}, {passive:true});
+document.addEventListener('selectionchange', () => {
+  if(!touchMode) return;
+  clearTimeout(selDebounce);
+  selDebounce = setTimeout(runLookup, 420);        // wait out the selection-handle drag
+});
+document.addEventListener('keydown', e => { if(e.key==='Escape') hideLookup(); });
+window.addEventListener('scroll', hideLookup, true);
+
+// ── INIT ──
+window.addEventListener('load', () => {
+  initMap();                  // create the Leaflet map once
+  setupCalendar();            // render the picker (selects the newest day by default)
+  showAsOf(selISO);           // load + render the latest entries as of that day
+  const s=parseFloat(getLS(KEY_SPEED)); if(!isNaN(s)) speed=s;
+  if(window.speechSynthesis) speechSynthesis.getVoices();
+  const key=getLS(KEY_API);
+  if(key) fetchVoices(key,false);
+  refreshReadbar();
+});
+window.addEventListener('resize', () => { if(map) map.invalidateSize(); });
+</script>
+</body>
+</html>
