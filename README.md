@@ -9,7 +9,7 @@ people he meets, plans, and memories of three winters working in the mountains o
 
 Not a blog. He writes for himself, so the entries are as long or as short as the day was: one sentence,
 a page, a full trip report, a portrait of a mentor, a memory. Each one comes in natural French with an
-English translation, vocabulary, grammar notes, read-aloud audio, and a map.
+English translation, vocabulary, grammar notes, and read-aloud audio.
 
 Built for a learner heading toward **TCF Canada (B2)**. Entries sit between **B1 and B2** depending on
 the topic; each one carries a level tag.
@@ -20,8 +20,8 @@ the topic; each one carries a level tag.
 
 - **Entries in French, varied in length and kind** — *note*, *journal*, *compte rendu*, *portrait*,
   *souvenir*, *projet*. A real diary voice: named routes, named people, opinions, regrets.
-- **Side-by-side English** — tap **Traduction (EN)** and the entry splits into two columns, French
-  left, English right, paragraph-aligned.
+- **Side-by-side English** — tap **Traduction** and the entry widens into two columns, French left,
+  English right, paragraph-aligned.
 - **Vocabulary & grammar notes** — tap **Notes de français**. Verbs open a full conjugation panel
   (présent, passé composé, imparfait, futur simple). Grammar notes build on the blog's keystone
   (*passé composé vs imparfait*) and push into B1–B2: *plus-que-parfait*, *subjonctif*, *conditionnel
@@ -34,9 +34,8 @@ the topic; each one carries a level tag.
   dictionary.
 - **Dictation practice** — the ✎ button on any paragraph hides the text and opens a typing box. Play
   the audio, write what you hear, and **Vérifier** scores you word by word.
-- **Map** — a pin for every entry that has a place. Green pins are now (Chamonix and around); brown
-  pins are memories (Canada, elsewhere). **Ici** fits the map to the present, **Tout** shows everything.
-- **Calendar** — pick a day to see the ten most recent entries as of that date.
+- **Nothing else.** White page, black text, one column, oldest entry first. No map, no calendar,
+  no header: just the notebook.
 
 ---
 
@@ -67,7 +66,7 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 4 | 6 Oct 2026 | Portrait | *Bertrand* — the old guide reads the list: "La glace, il n'y a rien." |
 | 5 | 11 Oct 2026 | Souvenir | *Revelstoke, première neige* — a photo from Eric; Canada; a message unanswered |
 
-*The page shows the ten most recent entries.*
+*Entries appear in order, oldest first.*
 
 ---
 
@@ -77,7 +76,7 @@ Each entry is a small, self-contained file — you don't touch `index.html`.
 
 1. Copy a file in `notes/` of the same kind (e.g. `notes/01-bath-cuisine.js` for a short note) to
    `notes/06-yourslug.js` and edit the content: French paragraphs (`fr`), English (`en`), `vocab`,
-   `gram`, optional `place` and `lat`/`lng`.
+   `gram`, optional `place`.
 2. Add one line to `notes/manifest.js`, at the **bottom** (newest last), with the entry's ISO date.
 3. Run `node tools/validate.mjs`, then reopen `index.html`.
 
@@ -88,10 +87,10 @@ Full schema, the character bible, and the writing rules are in [`CLAUDE.md`](CLA
 ## 📁 Project structure
 
 ```
-index.html           The app — open this. Engine only: layout, map, audio, reading UI.
+index.html           The app — open this. Engine only: layout, audio, reading UI.
 notes/
-  manifest.js        Index of all entries, oldest → newest. The last ten are displayed.
-  01-bath-cuisine.js One file per entry: text + translation + vocab + grammar + optional location.
+  manifest.js        Index of all entries, oldest → newest. All are displayed, in this order.
+  01-bath-cuisine.js One file per entry: text + translation + vocab + grammar.
   02-decision.js
   …
 tools/validate.mjs   Syntax + data checks for the engine and every entry.

@@ -2,11 +2,11 @@
 
 A single-file French-learning web app, the **sequel** to *Felix · Carnet de voyage* (the parent folder's
 blog, `../felix_blog.html`). Same engine idea (French text + English translation + vocab/grammar notes,
-text-to-speech, dictation, select-to-translate, map), but this is **Felix's private notebook**, not a
+text-to-speech, dictation, select-to-translate), but this is **Felix's private notebook**, not a
 blog: entries of any length, written for himself, after the summer journey ended.
 
 `index.html` is an engine-only **template**. Each entry lives in its own `notes/NN-slug.js` resource
-file, indexed by `notes/manifest.js`. The page shows the **latest ten** entries. No build step — open
+file, indexed by `notes/manifest.js`. The page shows **every entry, oldest first**, in one plain column. No build step — open
 the HTML directly. This folder is its **own git repo** (remote: `felix-field-notes`); the parent repo
 ignores it.
 
@@ -184,38 +184,37 @@ pulls the next layers forward naturally — assign them by what the entry is *ab
 
 ## 5. Technical architecture
 
-Forked from the blog engine (`../felix_blog.html`) and adapted. Everything the blog could do still
-works: ElevenLabs TTS with browser `speechSynthesis` fallback, per-paragraph play + "Lire" sequential
-reader with highlight, voice picker with previews, speed cycle, in-memory audio cache with prefetch,
-select-to-translate (curated vocab first, MyMemory fallback), per-paragraph dictation with diff
-scoring, translation and notes toggles (split layout), per-verb conjugation panels, calendar.
+Forked from the blog engine (`../felix_blog.html`), then **stripped to the minimum** (user request,
+8 Sep 2026): white page, black text, one column, no masthead, **no map, no calendar**. Everything the
+blog could do for *reading* still works: ElevenLabs TTS with browser `speechSynthesis` fallback,
+per-paragraph play + "Lire" sequential reader with highlight, voice picker with previews, speed
+cycle, in-memory audio cache with prefetch, select-to-translate (curated vocab first, MyMemory
+fallback), per-paragraph dictation with diff scoring, translation and notes toggles (the entry widens
+to two columns), per-verb conjugation panels.
 
-**What's different from the blog:**
+**How it differs from the blog:**
 - **Registry:** `window.FelixNotes` (`register`, `verb`) and `window.NOTES_MANIFEST`. Different
   globals from the blog so files can never collide.
-- **Latest ten**, not three (`HOW_MANY = 10`). Calendar shows the latest ten *as of* a chosen day.
-- **`kind` per entry** drives the card: `note` renders compact (no title required, meta line + text,
-  small inline actions); the other kinds render the full card. Card chrome only shows what exists
-  (no "Notes" button if `gram` and `vocab` are empty).
-- **Map:** pins only, **no route line**. Only entries with `lat`/`lng` get a pin. `memory` entries
-  get a muted "souvenir" pin; present-day entries get the accent pin. Pins are labelled by entry
-  number. Click → scroll + highlight; "Voir sur la carte" flies to it.
-- **Identity:** warm paper palette, a serif display face (`Fraunces`) for the masthead and titles,
-  `Newsreader` for the French reading body, `Schibsted Grotesk` for UI. Accent is a deep alpine
-  green. Distinct from the blog's white-and-bright-blue.
+- **All entries, oldest first.** `showAll()` injects every file in the manifest and renders them
+  sorted by `no` ascending. No "latest N" cap, no date navigation. (If the notebook grows large,
+  add a "load older" control then; don't pre-build it.)
+- **`kind` per entry** drives the card: `note` renders compact (meta line, text, actions below);
+  the other kinds render meta, title, actions, text. Chrome only shows what exists (no "Notes"
+  link if `gram` and `vocab` are empty). `lat`/`lng` are kept in the data but **not rendered**.
+- **Identity:** deliberately none. `Newsreader` for all reading text, the system sans for the small
+  UI labels. Hairline rules between entries. Buttons are underlined text, not pills. The only
+  non-grey colour is the dictation red for mistakes.
 - Load order, `file://` compatibility (injected `<script>` tags, never `fetch` for local files),
-  delegation on `#feed` (`data-play`, `data-toggle`, `data-fly`, `data-conj`, `data-dict`,
-  `data-check`, `data-reveal`), `getLS/setLS` try/catch wrappers, `map.invalidateSize()` after size
-  changes — all as in the blog.
+  delegation on `#feed` (`data-play`, `data-toggle`, `data-conj`, `data-dict`, `data-check`,
+  `data-reveal`), `getLS/setLS` try/catch wrappers — all as in the blog.
 
 ### Design tokens (`:root`)
 ```
---bg:#f6f2ea  --wash:#efe9dd  --surface:#fbf9f4
---ink:#1e1c19  --ink-soft:#4a463f  --muted:#8a847a
---line:#e6dfd2  --line-2:#d8cfbf
---accent:#2f6b4f  --accent-deep:#214d38  --accent-wash:#e3ede6   /* alpine green */
---memory:#9b6b3c  --memory-wash:#f3e7d9                          /* souvenir pins / tags */
+--ink:#000000  --soft:#4a4a4a  --muted:#8a8a8a
+--line:#e6e6e6  --wash:#f4f4f4          /* hairlines; the "speaking" paragraph highlight */
+--serif: Newsreader   --sans: system sans
 ```
+Keep it this way: no accent colour, no cards, no shadows, no rounded pills.
 
 ---
 
@@ -231,7 +230,7 @@ FelixNotes.register({
   title:'Bath, dans la cuisine',     // optional for `note`, required otherwise
   titleEn:'Bath, in the kitchen',    // optional
   place:'Bath, Angleterre',          // optional, shown in the meta line
-  lat:51.3811, lng:-2.3590,          // optional; present → a map pin
+  lat:51.3811, lng:-2.3590,          // optional; kept for the record, not rendered (no map)
   fr:[ "…", … ],                     // 1..N paragraphs
   en:[ "…", … ],                     // 1:1 translation (same length)
   vocab:[ ['mot fr','gloss'], ['verbe','to …', FelixNotes.verb('verbe', pres, pc, imp, fut)], … ],
@@ -250,7 +249,7 @@ Manifest line (`notes/manifest.js`, chronological, newest last):
 ## 7. How to add an entry
 1. Create `notes/NN-slug.js` (copy a previous one of the same `kind`). Follow §1–§2, pick the date
    and season honestly, give it the next `no`.
-2. Append one line to `notes/manifest.js` (bottom).
+2. Append one line to `notes/manifest.js` (bottom). It renders at the bottom of the page.
 3. `fr` and `en` same length. Vocab and grammar sized by kind (§4). Keep one future-tense or
    subjunctive beat in play across neighbouring entries.
 4. Append a line to the **entry log** (§3) and update *open threads*.
@@ -264,7 +263,6 @@ Manifest line (`notes/manifest.js`, chronological, newest last):
 
 ## 9. Other gotchas
 - `localStorage` via `getLS/setLS` only (try/catch). Keep it that way.
-- `map.invalidateSize()` after the map container changes size (wired).
 - `notes/*.js` are plain scripts (no `import`/`export`), registering via `FelixNotes.register`.
 
 ## 10. Validate

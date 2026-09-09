@@ -1,14 +1,13 @@
 /* ─────────────────────────────────────────────────────────────────────────
    Felix · Notes de terrain — ENTRY MANIFEST
    The index of all entries, in CHRONOLOGICAL order (oldest → newest).
-   The page shows the LATEST TEN entries = the last ten lines of this list.
-   The calendar reads `date` (ISO yyyy-mm-dd, same as the entry's own `date`)
-   to show "the latest ten entries up to a chosen day".
+   The page renders EVERY entry in this order, oldest at the top.
+   `date` is ISO yyyy-mm-dd and must match the entry's own `date`.
 
    To add an entry:
      1. Add notes/NN-slug.js  (copy an existing one of the same kind — see CLAUDE.md §6)
      2. Append ONE line below, at the bottom (newest last), with its `date`.
-   Nothing else to touch — the template loads the latest ten automatically.
+   Nothing else to touch — the template loads them all automatically.
    ───────────────────────────────────────────────────────────────────────── */
 window.NOTES_MANIFEST = [
   { id:'bath-cuisine',  file:'notes/01-bath-cuisine.js',  date:'2026-09-20' },

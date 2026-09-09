@@ -13,7 +13,6 @@ import { spawnSync } from 'node:child_process';
 const ROOT = process.cwd();
 const KINDS = new Set(['note','entry','report','portrait','memory','plan']);
 const LEVELS = new Set(['B1','B1+','B2']);
-const HOW_MANY = 10;
 let bad = 0;
 const fail = (...m) => { console.log('  ✗', ...m); bad++; };
 
@@ -83,6 +82,6 @@ M.forEach((e, i) => {
   console.log(`  #${String(p.no).padStart(2)} ${p.date} ${p.kind.padEnd(8)} ${p.level.padEnd(3)} ${String(words).padStart(4)} words  ${(p.vocab||[]).length} vocab  ${(p.gram||[]).length} gram  ${p.lat!=null?'📍':'  '} ${p.title || '(note)'}`);
 });
 
-console.log('Displayed (latest ' + HOW_MANY + '):', M.slice(-HOW_MANY).map(e => e.id).join(', '));
+console.log('Displayed (all, oldest first):', M.map(e => e.id).join(', '));
 console.log(bad ? 'FAILURES: ' + bad : 'ALL DATA CHECKS PASS');
 process.exit(bad ? 1 : 0);
