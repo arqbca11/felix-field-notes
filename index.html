@@ -22,7 +22,9 @@
   /* TOP LINE: name on the left, reading controls on the right */
   .top{max-width:720px;margin:0 auto;padding:26px 24px 0;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--sans);font-size:12px;color:var(--muted);}
   .top .name{color:var(--ink);letter-spacing:.2px;}
-  .top-right{display:flex;align-items:baseline;gap:14px;}
+  .controls{position:fixed;top:0;right:0;z-index:1000;display:flex;flex-direction:column;align-items:flex-end;padding:22px 24px 0 0;font-family:var(--sans);font-size:12px;color:var(--muted);pointer-events:none;}
+  .controls > *{pointer-events:auto;}
+  .top-right{display:flex;align-items:baseline;gap:14px;background:#fff;padding:4px 0 6px 12px;}
   .readbar{display:none;align-items:baseline;gap:14px;}
   .learn-btn{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .learn-btn:hover,body.learn .learn-btn{color:var(--ink);text-decoration-color:var(--ink);}
@@ -31,7 +33,7 @@
   body:not(.learn) .article p{padding-left:0;}
   .rb-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .rb-link:hover{color:var(--ink);text-decoration-color:var(--ink);}
-  .key-entry,.voice-picker{display:none;max-width:720px;margin:14px auto 0;padding:0 24px;font-family:var(--sans);font-size:13px;color:var(--soft);}
+  .key-entry,.voice-picker{display:none;width:min(340px,calc(100vw - 36px));margin-top:8px;padding:12px 14px 13px;background:#fff;border:1px solid var(--line);font-family:var(--sans);font-size:13px;color:var(--soft);}
   .ke-label{margin-bottom:8px;}
   .ke-label span{color:var(--muted);}
   .ke-row{display:flex;gap:8px;}
@@ -162,7 +164,9 @@
     .post.split .article,.post.split .post-side{grid-column:1;grid-row:auto;}
   }
   @media(max-width:600px){
-    .top,.feed,.key-entry,.voice-picker{padding-left:18px;padding-right:18px;}
+    .top,.feed{padding-left:18px;padding-right:18px;}
+    .controls{padding:16px 18px 0 0;}
+    .top-right{gap:10px;}
     .article{font-size:18.5px;}
   }
 </style>
@@ -171,27 +175,30 @@
 
 <div class="top">
   <span class="name">Felix · Notes de terrain</span>
+</div>
+<!-- Fixed to the top-right corner of the viewport: stays put while scrolling -->
+<div class="controls" id="controls">
   <div class="top-right">
-  <button class="learn-btn" id="learnBtn" onclick="toggleLearn()">Learn</button>
-  <div class="readbar learn-only" id="readbar">
-    <span>Voix : <span id="rbVoice">—</span></span>
-    <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
-    <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
+    <button class="learn-btn" id="learnBtn" onclick="toggleLearn()">Learn</button>
+    <div class="readbar learn-only" id="readbar">
+      <span>Voix : <span id="rbVoice">—</span></span>
+      <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
+      <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
+    </div>
   </div>
+  <div class="key-entry learn-only" id="keyEntry">
+    <div class="ke-label">Clé API ElevenLabs <span>(optionnel — sans clé, la voix du navigateur est utilisée)</span></div>
+    <div class="ke-row">
+      <input class="ke-input" id="keyInput" type="password" placeholder="Collez votre clé API…"/>
+      <button class="ke-btn" onclick="saveKey()">Connecter</button>
+    </div>
+    <div class="ke-msg" id="keyMsg"></div>
   </div>
-</div>
-<div class="key-entry learn-only" id="keyEntry">
-  <div class="ke-label">Clé API ElevenLabs <span>(optionnel — sans clé, la voix du navigateur est utilisée)</span></div>
-  <div class="ke-row">
-    <input class="ke-input" id="keyInput" type="password" placeholder="Collez votre clé API…"/>
-    <button class="ke-btn" onclick="saveKey()">Connecter</button>
+  <div class="voice-picker learn-only" id="voicePicker">
+    <div class="vp-label">Choisir une voix</div>
+    <div class="vp-list" id="vpList"></div>
+    <div class="vp-msg" id="vpMsg"></div>
   </div>
-  <div class="ke-msg" id="keyMsg"></div>
-</div>
-<div class="voice-picker learn-only" id="voicePicker">
-  <div class="vp-label">Choisir une voix</div>
-  <div class="vp-list" id="vpList"></div>
-  <div class="vp-msg" id="vpMsg"></div>
 </div>
 
 <main class="feed" id="feed"></main>

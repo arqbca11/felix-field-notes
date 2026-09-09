@@ -192,7 +192,7 @@ cycle, in-memory audio cache with prefetch, select-to-translate (curated vocab f
 fallback), per-paragraph dictation with diff scoring, translation and notes toggles (the entry widens
 to two columns), per-verb conjugation panels.
 
-**Learn toggle (top right).** The page opens as a **plain diary**: name, number + date, title, French
+**Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
 `localStorage` as `felix_notes_learn`) reveals everything language-related: voice/speed controls,
 level tag, English subtitle, Lire/Traduction/Notes de français, per-paragraph play + dictation,
