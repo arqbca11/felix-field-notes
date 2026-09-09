@@ -23,4 +23,5 @@ window.NOTES_MANIFEST = [
   { id:'cogne-glace',   file:'notes/11-cogne-glace.js',   date:'2026-12-03' },
   { id:'premier-samedi', file:'notes/12-premier-samedi.js', date:'2026-12-05' },
   { id:'premieres-traces', file:'notes/13-premieres-traces.js', date:'2026-12-13' },
+  { id:'bay-area',      file:'notes/14-bay-area.js',      date:'2026-12-19' },
 ];

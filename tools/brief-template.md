@@ -27,4 +27,6 @@ Vocab: N–N entries; every verb with FelixNotes.verb; suggested verbs: …
 
 Ending: motion toward … (no moral, no bucket-list line)
 Do NOT: … (anything the writer must avoid this time)
+Date anchoring: the entry is written ON its date — use "ce matin / ce soir / hier / dimanche dernier"
+  relative to that date, never a weekday name for the entry's own day
 ```

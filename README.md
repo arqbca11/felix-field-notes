@@ -76,6 +76,7 @@ ElevenLabs. If you already connected it on the travel blog, it is picked up here
 | 11 | 3 Dec 2026 | Compte rendu | *Cogne, première glace* — first ice of the winter at Lillaz; a bad screw; the thawing fingers; Bertrand on Marcel |
 | 12 | 5 Dec 2026 | Note | *Premier samedi au magasin* — eight hours of ski boots; a family from Lyon; "Vous êtes guide ?" — "Pas encore" |
 | 13 | 13 Dec 2026 | Journal | *Premières traces* — the Grands Montets open; Bertrand's two corrections to the fiche; Chloé announces Christmas in Argentière |
+| 14 | 19 Dec 2026 | Souvenir | *Bay Area* — a San Francisco couple in the shop; Addie, remembered: the two visits of the last winter, what he told her, what he didn't ask, and why Canada keeps coming back |
 
 *Entries appear in order, oldest first.*
 

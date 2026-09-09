@@ -86,7 +86,7 @@ more personal than in the blog, but not more decorated.
 | Summer 2024 | Stays in North America. **Bikepacking Vancouver → San Francisco** (~3 weeks, Aug–Sep 2024: Vancouver Island ferry, Olympic Peninsula, the Oregon coast, Highway 1, the redwoods) with childhood friend **Théo**. He does **not** see Addie: he never had her contact. The trip is just something they later *talk* about, because it's California. |
 | **Dec 2024 – Apr 2025** | **Canada, season 2 (2024/25).** Addie comes back for a week of lessons (Feb 2025). |
 | Summer 2025 | Chamonix; alpine climbing. |
-| **Dec 2025 – Apr 2026** | **Canada, season 3 (2025/26).** Addie comes back once more (March 2026). **Late March 2026, last day:** he tells her he doesn't know if he'll stay in Canada next season. She seems a bit disappointed; she doesn't push. He leaves Canada in **spring 2026**, straight into the blog journey. |
+| **Dec 2025 – Apr 2026** | **Canada, season 3 (2025/26).** Addie comes back **twice** this season (a week in **January 2026**, then again in **March 2026**); he kept wondering whether she came back for the skiing or for him, and never asked. **Late March 2026, last day:** he tells her he doesn't know if he'll stay in Canada next season. She seems a bit disappointed; she doesn't push. He leaves Canada in **spring 2026**, straight into the blog journey. |
 | May – 13 Sep 2026 | **The blog journey** (18 weekly posts, see `../CLAUDE.md` §3): Chamonix → Dolomites → Slovenia → Croatia → Bosnia → Lofoten → Lapland → Sweden → Saxony → Bavaria → Austria → Slovenia → Montenegro → home → Tour du Mont-Blanc. |
 | **~16 Sep 2026** | Train to England (Bath). Family. |
 | **Late Sep 2026** | **The decision:** move to Chamonix full time and train to become a *guide de haute montagne* (ski mountaineering is the heart of it). |
@@ -105,10 +105,17 @@ more personal than in the blog, but not more decorated.
   California for graduate school, works in the Bay Area. Late twenties. Intermediate skier who wanted
   to learn off-piste properly: methodical, unafraid of steep terrain but wants to understand it, asks
   real questions, quietly funny, photographs trees and snow textures rather than views. **His
-  private-lesson client** at Revelstoke across all three seasons (Feb + Mar 2024, Feb 2025, Mar 2026).
+  private-lesson client** at Revelstoke across all three seasons (Feb + Mar 2024, Feb 2025, **Jan + Mar 2026**).
   Great days every time; they talked a lot about skiing and the outdoors, and about their travels in
   North America, since both had come to this continent from elsewhere (his bikepacking ride to
-  California was a *conversation*, not a meeting). **He never had her contact.** She was a client;
+  California was a *conversation*, not a meeting). **Who she is, as he remembers her (added entry 14):**
+  smart, well travelled (had seen more countries than he had), **proud of her Chinese roots and just as
+  attached to her North American years**, both at once, without choosing. She **listened to everything he
+  told her about himself with real curiosity** (Lyon, Chamonix, the grandfather, the ride to California),
+  and he suspects **he talked too much about himself**. He isn't sure he didn't already cross the line
+  *without saying it*, by telling her things one doesn't tell a client. **He has admitted to himself
+  (entry 14, once) that the "back to Canada, one day?" thought is partly the hope of meeting her there
+  again**, with no idea how, since he has no way to reach her. **He never had her contact.** She was a client;
   there was a professional line, and he probably cared too much to cross it. **Last seen late March
   2026**: he told her he didn't know if he'd stay in Canada next season; she seemed a bit disappointed
   and didn't push for more. **What he keeps circling:** whether she really liked him that way, and
@@ -170,17 +177,19 @@ more personal than in the blog, but not more decorated.
 | 11 | 2026-12-03 | report | Cogne, première glace (Lillaz, −12°; the second-hand axes on real ice; a bad screw, "elle tenait ton chapeau"; the thawing fingers; Bertrand on Marcel: the Couturier, 1986, "tu n'as pas encore son silence"; first fiche) — *written by the entry-writer agent (Opus) from a brief* | guide / grandfather | B2 |
 | 12 | 2026-12-05 | note | Premier samedi au magasin (first rental-shop shift; a Lyon family's accent; a kid's too-long skis; "Vous êtes guide ?" — "Pas encore", first time to a stranger) | daily | B1 |
 | 13 | 2026-12-13 | entry | Premières traces (Grands Montets open, first ski day, a professional no to the thin off-piste; 6 Dec Crèmerie: ice not ready, Bertrand's two corrections — "une fiche, ça ne raconte pas, ça note"; Chloé announces Christmas: arrives 21 Dec, sleeps on the floor; parents 3 days in a hotel in Les Houches; David's insurance question via Chloé; "Tu es content ?" — "Je crois"; a skin-up to Lognan promised) | family | B1+ |
+| 14 | 2026-12-19 | memory | Bay Area (a San Francisco couple in the shop says "the Bay Area"; Addie's two visits of the last winter, Jan + Mar 2026; her portrait — well travelled, proud of her roots and attached to North America, listened to everything; "j'ai peut-être trop parlé de moi"; the line maybe crossed without a word; si + pqp → conditionnel passé; the admission: Canada is partly the hope of seeing her again, with no way to reach her; **Anyu used once**) — *user-requested Addie entry; bible §2b/§2c updated* | Addie | B2 |
 
 **Open threads to pick up next:** **Christmas in Argentière** — Chloé arrives **21 Dec** for a week (floor of the
 14 m²), parents **Marianne and David** come for three days over Christmas, hotel in **Les Houches** (a family `entry`
 or `portrait` of Chloé; the promised early **skin-up to Lognan** with her before a shop shift; David asks about
-insurance in person); shop shifts run through the school holidays (a Californian client in the shop is the natural
-Addie trigger — she has not appeared since entry 10, so one appearance is now due); the Crèmerie should be climbable
-before Christmas (second fiche, half the words — Bertrand's rule "ça ne raconte pas, ça note"); the Aiguille du
-Midi lift reopens mid-Dec → the **January ski descents** around the Vallée Blanche; Marco (blog) might come for ice;
-the "back to Canada, one day?" thought (Eric unasked, last voiced in entry 10); grandfather thread now carried by
-Bertrand ("son silence", entry 11) — don't overuse it. Kinds so far: 10 plan, 11 report, 12 note, 13 entry → the
-next long one may be a `report` or `memory`; keep one one-line `note` every 3–4 entries.
+insurance in person); the Crèmerie should be climbable before Christmas (second fiche, half the words — Bertrand's
+rule "ça ne raconte pas, ça note"); the Aiguille du Midi lift reopens mid-Dec → the **January ski descents** around
+the Vallée Blanche; Marco (blog) might come for ice. **Addie: entry 14 was her full entry** (the admission is on
+paper now, "Anyu" has been used once — don't reuse it); she should now go quiet for **at least four entries**, and
+come back only on a concrete trigger, never to resolve anything. The "back to Canada, one day?" thought is now
+openly tied to her — keep it unplanned. Grandfather thread carried by Bertrand ("son silence", entry 11) — don't
+overuse it. Kinds so far: 11 report, 12 note, 13 entry, 14 memory → next: a `note` or a short family `entry` for
+Chloé's arrival, then a `report` (ice or the first Vallée Blanche descent in January).
 
 ---
 
