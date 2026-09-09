@@ -342,8 +342,8 @@ function buildFeed(){
       <div class="post-meta">
         <span>${post.no}</span>
         <span class="pdate">${frFull(post.date)}</span>
-        ${post.place ? `<span>${post.place}</span>` : ''}
-        <span>${KIND_FR[kind] || kind}</span>
+        ${post.place ? `<span class="learn-only">${post.place}</span>` : ''}
+        <span class="learn-only">${KIND_FR[kind] || kind}</span>
         ${post.level ? `<span class="learn-only">${post.level}</span>` : ''}
       </div>
       ${titleHTML}
