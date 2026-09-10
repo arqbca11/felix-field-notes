@@ -231,7 +231,8 @@ gloss, and a play button in the right column (`.simple-block`, one `.simp-para` 
 so it stays aligned with the article like the translation does). Clicked sentences accumulate;
 click again to remove; closing the toggle clears the column. The rewrites are **data, not live
 generation** — the entry's `simple` field (§6) — so the page stays offline and stable; only the
-read-aloud uses TTS (`data-play="simple"` reuses `playOne` and the audio cache). Entries without a
+read-aloud uses TTS (`data-play="simple"` reuses `playOne` and the audio cache). Select-to-translate
+works on the simplified French too (`runLookup` accepts `.simp-fr` as well as `.article`). Entries without a
 matching `simple` block show no button. Learn-only, like everything else language-related.
 
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French

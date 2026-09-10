@@ -859,7 +859,7 @@ function runLookup(){
   if(!raw || raw.length>80 || raw.split(' ').length>10){ hideLookup(); return; }
   const node = sel.anchorNode;
   const host = node && (node.nodeType===1 ? node : node.parentElement);
-  if(!host || !host.closest('.article')){ hideLookup(); return; }   // only the French reading text
+  if(!host || !host.closest('.article, .simp-fr')){ hideLookup(); return; }   // the French reading text, or a simplified sentence
   const rect = sel.getRangeAt(0).getBoundingClientRect();
   if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
   const my = ++lookupSeq;
