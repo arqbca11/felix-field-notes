@@ -22,22 +22,41 @@ Use `tools/brief-template.md`. A brief must be **self-contained**: the writer ha
 this conversation. Give concrete beats, names only from the bible, the reflective-line budget,
 the grammar targets, the vocab count, the length, and the ending's direction.
 
-## 3. Delegate
-For each brief, call the Agent tool with `subagent_type: "entry-writer"` and the brief as the
-prompt. Entries that do not reference each other may run **in parallel**; entries that build
-on one another run in order so the later writer can read the earlier file.
+## 3. Delegate — a pipeline, writers in sequence
+The **writers run one at a time, in story order**: writer N+1 starts only after entry N has
+been written and accepted, so it can read the finished file and keep the flow (voice, open
+threads, the last line's direction). Never run two writers at once, even if the briefs look
+independent.
+
+The **simplifier and the reviewer run in the background** alongside the next writer: the moment
+entry N is accepted, launch `simplifier` on `notes/N-slug.js` and (optionally) `continuity-reviewer`
+on it, then immediately launch writer N+1. They only read/edit their own file, so they never
+conflict with the writer working on N+1. Concretely, for each brief in order:
+
+1. `Agent(subagent_type: "entry-writer", prompt: brief N)` — **wait** for it.
+2. Review entry N (§4). Fix small things yourself; send the writer back for structural ones.
+3. `Agent(subagent_type: "simplifier", prompt: "Add the `simple` block to notes/N-slug.js …")`
+   — **don't wait**; it runs in the background.
+4. Go to step 1 with brief N+1.
+
+Collect the simplifier results as their notifications arrive (they may land while a later writer
+is still working). The batch is done when the last writer has returned and every simplifier has
+reported `ALL DATA CHECKS PASS`.
 
 ## 4. Review
 For each returned file: run `continuity-reviewer` on it (or review yourself against the bible).
 Fix small things directly (a wrong form, an escaping slip). Send the writer back for anything
 structural (a bible conflict, wrong level, an invented fact). Never let a new fact into an
-entry without adding it to the bible on purpose.
+entry without adding it to the bible on purpose. The review of entry N happens **before** writer
+N+1 starts, because N+1 reads N's file as canon.
 
 ## 4b. Simplify
-For each accepted file, run the `simplifier` subagent on it (`subagent_type: "simplifier"`, prompt
-= the file path) so the entry ships with its `simple` block (the Simplifier layer). Files that do
-not depend on each other can run in parallel. The validator checks the block; if it reports
-`SIMPLE ¶n` mismatches, send the simplifier back with the message.
+The `simplifier` subagent (`subagent_type: "simplifier"`, prompt = the file path) writes the
+entry's `simple` block (the Simplifier layer). It is launched per entry from step 3 above, in the
+background, right after that entry is accepted. If a simplifier is sent back (the validator
+reports `SIMPLE ¶n` mismatches), re-run it with the validator's message; if you edited an entry's
+French **after** its simplifier ran, run the simplifier again on that file (its block must match
+the final sentence split).
 
 ## 5. Register and ship
 1. Append one line per entry to `notes/manifest.js` (chronological, newest last).
