@@ -25,7 +25,7 @@ the topic; each one carries a level tag.
 - **Simplifier** — tap **Simplifier**, then any sentence of the entry: an A1/A2 French version of
   it appears on the right, with its English and a play button. Click as many sentences as you like;
   they stack in paragraph order. (Entries get this layer one by one; the first three have it.)
-- **Vocabulary & grammar notes** — tap **Notes de français**. Verbs open a full conjugation panel
+- **Vocabulary & grammar notes** — tap **Vocabulaire** or **Grammaire** (separate, so long entries stay readable). Verbs open a full conjugation panel
   (présent, passé composé, imparfait, futur simple). Grammar notes build on the blog's keystone
   (*passé composé vs imparfait*) and push into B1–B2: *plus-que-parfait*, *subjonctif*, *conditionnel
   passé*, reported speech, *dont / lequel*, *si* clauses.

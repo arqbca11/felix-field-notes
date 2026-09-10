@@ -224,7 +224,11 @@ cycle, in-memory audio cache with prefetch, select-to-translate (curated vocab �
 "form of" links → Google Translate endpoint for phrases → MyMemory last, echoes rejected), per-paragraph dictation with diff scoring, translation and notes toggles (the entry widens
 to two columns), per-verb conjugation panels.
 
-**Simplifier (added 9 Sep 2026).** A third action button next to *Traduction* / *Notes de français*.
+**Action buttons (9 Sep 2026):** *Lire · Traduction · Simplifier · Vocabulaire · Grammaire*. Vocabulary
+and grammar are **separate toggles** (long entries made the combined "Notes de français" too tall);
+each opens its own `.notes` block (`vocab-<id>`, `gram-<id>`) and either one widens the entry.
+
+**Simplifier (added 9 Sep 2026).** A third action button next to *Traduction*.
 When on, every sentence of the article becomes clickable (`.sent`, wrapped at build time from the
 shared splitter `engine/sentences.js`); clicking one shows its A1/A2 French rewrite, the English
 gloss, and a play button in the right column (`.simple-block`, one `.simp-para` slot per paragraph,
@@ -238,7 +242,7 @@ matching `simple` block show no button. Learn-only, like everything else languag
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
 `localStorage` as `felix_notes_learn`) reveals everything language-related: voice/speed controls,
-level tag, English subtitle, Lire/Traduction/Notes de français, per-paragraph play + dictation,
+level tag, English subtitle, Lire/Traduction/Simplifier/Vocabulaire/Grammaire, per-paragraph play + dictation,
 select-to-translate. Anything learning-related must carry the `learn-only` class (or be gated in JS
 like `runLookup`) so plain mode stays plain. Turning Learn off closes open panels and stops audio.
 
@@ -249,8 +253,8 @@ like `runLookup`) so plain mode stays plain. Turning Learn off closes open panel
   sorted by `no` ascending. No "latest N" cap, no date navigation. (If the notebook grows large,
   add a "load older" control then; don't pre-build it.)
 - **`kind` per entry** drives the card: `note` renders compact (meta line, text, actions below);
-  the other kinds render meta, title, actions, text. Chrome only shows what exists (no "Notes"
-  link if `gram` and `vocab` are empty). `lat`/`lng` are kept in the data but **not rendered**.
+  the other kinds render meta, title, actions, text. Chrome only shows what exists (no *Vocabulaire*
+  button without `vocab`, no *Grammaire* without `gram`). `lat`/`lng` are kept in the data but **not rendered**.
 - **Identity:** deliberately none. `Newsreader` for all reading text, the system sans for the small
   UI labels. Hairline rules between entries. Buttons are underlined text, not pills. The only
   non-grey colour is the dictation red for mistakes.

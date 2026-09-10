@@ -324,7 +324,7 @@ function buildFeed(){
   const card = document.createElement('article');
   const kind = post.kind || 'entry';
   card.className = 'post ' + kind; card.id = post.id;
-  const hasNotes = (post.vocab && post.vocab.length) || (post.gram && post.gram.length);
+  const hasVocab = !!(post.vocab && post.vocab.length), hasGram = !!(post.gram && post.gram.length);
 
   // Sentences are wrapped only when the entry ships a `simple` block that matches the split
   // (a data slip must never break plain reading).
@@ -368,7 +368,8 @@ function buildFeed(){
         <button class="act act-read" data-play="all" data-id="${post.id}">Lire</button>
         <button class="act" data-toggle="en" data-id="${post.id}">Traduction</button>
         ${simpleOK ? `<button class="act" data-toggle="simple" data-id="${post.id}">Simplifier</button>` : ''}
-        ${hasNotes ? `<button class="act" data-toggle="notes" data-id="${post.id}">Notes de français</button>` : ''}
+        ${hasVocab ? `<button class="act" data-toggle="vocab" data-id="${post.id}">Vocabulaire</button>` : ''}
+        ${hasGram ? `<button class="act" data-toggle="gram" data-id="${post.id}">Grammaire</button>` : ''}
       </div>`;
 
   card.innerHTML = `
@@ -390,10 +391,8 @@ function buildFeed(){
           <p class="simple-hint">Cliquez une phrase à gauche pour lire une version plus simple.</p>
           ${post.fr.map((_,i) => `<p class="simp-para" data-i="${i}"></p>`).join('')}
       </div>` : ''}
-      ${hasNotes ? `<div class="notes" id="notes-${post.id}">
-          ${vocabRows ? `<div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table>` : ''}
-          ${gramHTML ? `<div class="nsec-label">Grammaire</div>${gramHTML}` : ''}
-      </div>` : ''}
+      ${hasVocab ? `<div class="notes" id="vocab-${post.id}"><div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table></div>` : ''}
+      ${hasGram ? `<div class="notes" id="gram-${post.id}"><div class="nsec-label">Grammaire</div>${gramHTML}</div>` : ''}
     </aside>
     ${kind==='note' ? actionsHTML : ''}`;
   feed.appendChild(card);
