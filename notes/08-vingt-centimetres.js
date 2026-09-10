@@ -18,6 +18,31 @@ FelixNotes.register({
     "Gear day. I spread everything out on the bed: the crampons to sharpen, the skins to re-glue, the new rope still in its packaging, and the two ice axes I bought second-hand from a friend of Bertrand's, an old guide selling his kit \"because the knees decided for him.\" They're twenty years old and they're perfect. I sharpened, re-glued, put away. Then I did the sums: I have enough left to last until March, if I don't break anything and don't fall ill. It's tight, but it's possible.",
     "In the afternoon I ran up to Lognan anyway, in big fresh tracks — not mine, those of a chamois who'd had the same idea. Up top everything was white, silent, closed. The phone rang in the forest: Théo. He arrives Saturday, for the Toussaint weekend, \"without the bike, for once.\" I'll have to tidy the studio. Above all I'll have to work out where to put him to sleep, in fourteen square metres."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Il a neigé cette nuit. Vingt centimètres à Argentière. Cinquante à Lognan, dit la webcam.", en:"It snowed last night. Twenty centimetres in Argentière. Fifty at Lognan, the webcam says."},
+      {fr:"Les arbres sont encore jaunes. Mais il y a déjà de la neige sur eux. Ils sont jaunes et blancs.", en:"The trees are still yellow. But there is already snow on them. They are yellow and white."},
+      {fr:"Josiane est dans l'escalier avec son seau. Elle dit : « Ça, c'est la neige de novembre.", en:"Josiane is on the stairs with her bucket. She says: “This is November snow."},
+      {fr:"Elle ne va pas rester. »", en:"It is not going to stay.”"},
+      {fr:"Elle a sûrement raison. Mais j'ai regardé la neige tomber. Je suis resté une heure à la fenêtre, avec mon café.", en:"She is probably right. But I watched the snow fall. I stayed an hour at the window, with my coffee."}
+    ],
+    [ // ¶ 1
+      {fr:"Aujourd'hui, je m'occupe de mon matériel.", en:"Today, I take care of my gear."},
+      {fr:"J'ai mis tout mon matériel sur le lit. Les crampons, les peaux, la corde neuve. Et deux piolets, des outils pour monter sur la glace. Je les ai achetés à un ami de Bertrand. C'est un vieux guide qui vend ses affaires.", en:"I put all my gear on the bed. The crampons, the skins, the new rope. And two ice axes, tools to climb on ice. I bought them from a friend of Bertrand. He is an old guide who sells his things."},
+      {fr:"Les piolets ont vingt ans. Mais ils sont parfaits.", en:"The ice axes are twenty years old. But they are perfect."},
+      {fr:"J'ai préparé mon matériel et je l'ai rangé.", en:"I got my gear ready and put it away."},
+      {fr:"Puis j'ai compté mon argent. J'ai assez pour vivre jusqu'en mars. Mais je ne dois rien casser et je ne dois pas être malade.", en:"Then I counted my money. I have enough to live until March. But I must not break anything and I must not be ill."},
+      {fr:"C'est un peu juste, mais c'est possible.", en:"It is a bit tight, but it is possible."}
+    ],
+    [ // ¶ 2
+      {fr:"L'après-midi, je suis monté à Lognan en courant. J'ai suivi des traces dans la neige. Ce n'étaient pas mes traces. C'était un chamois qui avait eu la même idée.", en:"In the afternoon, I ran up to Lognan. I followed tracks in the snow. They were not my tracks. It was a chamois with the same idea."},
+      {fr:"En haut, tout était blanc et silencieux.", en:"Up there, everything was white and silent."},
+      {fr:"Mon téléphone a sonné dans la forêt. C'était Théo.", en:"My phone rang in the forest. It was Théo."},
+      {fr:"Il arrive samedi pour le week-end. Cette fois, il vient sans son vélo.", en:"He arrives Saturday for the weekend. This time, he comes without his bike."},
+      {fr:"Je vais devoir ranger mon studio.", en:"I am going to have to tidy my studio."},
+      {fr:"Et surtout, je dois trouver un lit pour lui. Mon studio est tout petit : quatorze mètres carrés.", en:"And above all, I must find a bed for him. My studio is very small: fourteen square metres."}
+    ]
+  ],
   vocab:[
     ['d\'après','according to'],
     ['un seau','a bucket'],

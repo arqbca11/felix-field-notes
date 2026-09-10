@@ -22,6 +22,40 @@ FelixNotes.register({
     "On Sunday we walked up to the Col des Montets, in last week's snow, Théo in town shoes. He complained for two hours, which, with him, is a form of happiness. At the top he asked: \"And Canada, is that over?\" I said I didn't know. He laughed: \"You say that about everything these days.\" He's right, and he's the only one who can tell me so like that. He knew me before I could do anything at all; that gives you rights.",
     "He leaves tomorrow morning on the first train. He left a new inner tube on my table. I don't have a bike here. I don't know why. With Théo you never know why, and you keep it anyway."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Théo est arrivé samedi. Il a pris le train de Lyon. Son sac était trop grand. Il n'avait pas de plan. Il a parlé sans arrêt jusqu'au studio.", en:"Théo arrived on Saturday. He took the train from Lyon. His bag was too big. He had no plan. He talked nonstop all the way to the studio."},
+      {fr:"Il n'a pas changé.", en:"He hasn't changed."},
+      {fr:"Il peut tout réparer : un vélo, une machine à café, une amitié. Mais il ne sait pas lire une carte.", en:"He can fix anything: a bike, a coffee machine, a friendship. But he can't read a map."},
+      {fr:"On se connaît depuis l'âge de douze ans. Moi, je trouve le chemin. Lui, il trouve les gens.", en:"We have known each other since we were twelve. I find the way. He finds the people."}
+    ],
+    [ // ¶ 1
+      {fr:"On a parlé du Canada, bien sûr.", en:"We talked about Canada, of course."},
+      {fr:"Pas de Revelstoke. On a parlé du vélo.", en:"Not Revelstoke. We talked about the bike."},
+      {fr:"En août 2024, il a pris l'avion pour Vancouver. Son vélo était dans un carton. Ensuite, on est allés jusqu'à San Francisco. Le voyage a duré trois semaines.", en:"In August 2024, he flew to Vancouver. His bike was in a cardboard box. Then we went down to San Francisco. The trip lasted three weeks."},
+      {fr:"Il a plu quatre jours sur la côte de l'Oregon.", en:"It rained for four days on the Oregon coast."},
+      {fr:"On avait une crevaison chaque jour dans les grands arbres.", en:"We had a flat tyre every day among the big trees."},
+      {fr:"Près d'Astoria, on a fait quarante kilomètres dans le mauvais sens. Théo pensait connaître la route.", en:"Near Astoria, we went forty kilometres the wrong way. Théo thought he knew the road."},
+      {fr:"Il y avait du brouillard sur le Golden Gate. On ne l'a pas vu du tout.", en:"There was fog on the Golden Gate. We did not see it at all."},
+      {fr:"C'est le seul voyage où je n'ai rien décidé. Je crois que je l'aime pour ça.", en:"It's the only trip where I decided nothing. I think I love it for that."}
+    ],
+    [ // ¶ 2
+      {fr:"Dimanche, on est montés à pied au col des Montets. Il y avait la neige de la semaine dernière. Théo portait des chaussures de ville.", en:"On Sunday, we walked up to the Col des Montets. There was snow from last week. Théo was wearing town shoes."},
+      {fr:"Il s'est plaint pendant deux heures. Pour lui, c'est une forme de bonheur.", en:"He complained for two hours. For him, that's a kind of happiness."},
+      {fr:"En haut, il a demandé : « Et le Canada, c'est fini ? »", en:"At the top, he asked: “And Canada, is it over?”"},
+      {fr:"J'ai dit : « Je ne sais pas. »", en:"I said: “I don't know.”"},
+      {fr:"Il a ri et il a dit : « En ce moment, tu dis ça pour tout. »", en:"He laughed and said: “These days, you say that about everything.”"},
+      {fr:"Il a raison. Il est le seul qui peut me le dire comme ça.", en:"He's right. He's the only one who can tell me that like that."},
+      {fr:"Il me connaît depuis très longtemps. À l'époque, je ne savais rien faire. Ça lui donne des droits.", en:"He has known me for a very long time. Back then, I couldn't do anything. That gives him rights."}
+    ],
+    [ // ¶ 3
+      {fr:"Il repart demain matin. Il va prendre le premier train.", en:"He leaves tomorrow morning. He is going to take the first train."},
+      {fr:"Il a laissé une chambre à air neuve sur ma table.", en:"He left a new inner tube on my table."},
+      {fr:"Je n'ai pas de vélo ici.", en:"I don't have a bike here."},
+      {fr:"Je ne sais pas pourquoi.", en:"I don't know why."},
+      {fr:"Avec Théo, on ne sait jamais pourquoi. Mais on garde les choses quand même.", en:"With Théo, you never know why. But you keep things anyway."}
+    ]
+  ],
   vocab:[
     ['un quai','a platform (station); a quay'],
     ['n\'importe quoi','anything (at all)'],

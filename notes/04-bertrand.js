@@ -22,6 +22,47 @@ FelixNotes.register({
     "At one point I talked about a face I wanted to \"conquer.\" He raised one eyebrow, nothing more, and I understood the word was wrong. You don't conquer anything up there. You pass through, if the mountain is willing, and you come back down. My grandfather used to say the same thing, in other words. These are men whose modesty is not a politeness: it's a method.",
     "As I left he shook my hand and looked at the sky. \"Thursday, if it holds, a ridge in the Aiguilles Rouges. To see how you walk.\" I walk well. But I think that isn't what he'll be looking at."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Bertrand habite aux Praz. Sa maison n'a pas changé depuis longtemps. Il a posé ma liste de courses sur la table. Il ne l'a pas ouverte.", en:"Bertrand lives in Les Praz. His house hasn't changed for a long time. He put my climbing list on the table. He did not open it."},
+      {fr:"Il a regardé mes mains, puis mes chaussures, puis moi.", en:"He looked at my hands, then my shoes, then me."},
+      {fr:"Il a soixante-trois ans. Il a de grosses épaules. Sa voix ne monte jamais.", en:"He is sixty-three. He has big shoulders. His voice never rises."},
+      {fr:"Il est guide depuis 1988.", en:"He has been a guide since 1988."},
+      {fr:"Il a grimpé avec mon grand-père. C'est la seule chose qu'il a dite sur lui. Il l'a dite comme on parle du temps.", en:"He climbed with my grandfather. It's the only thing he said about him. He said it the way you talk about the weather."}
+    ],
+    [ // ¶ 1
+      {fr:"Ensuite, il a lu.", en:"Then he read."},
+      {fr:"Pendant longtemps.", en:"For a long time."},
+      {fr:"Il a tourné les pages avec un doigt. Il s'est arrêté sur certaines lignes. Il n'a jamais levé les yeux.", en:"He turned the pages with one finger. He stopped on certain lines. He never looked up."},
+      {fr:"Je n'ai rien dit.", en:"I said nothing."},
+      {fr:"J'ai appris ça au Canada, avec Eric. Quand un homme lit ta liste, tu ne dis rien.", en:"I learned that in Canada, with Eric. When a man reads your list, you say nothing."},
+      {fr:"Après dix minutes, il a plié la feuille. Il a dit : « Le rocher, ça va.", en:"After ten minutes, he folded the sheet. He said: “The rock is fine."},
+      {fr:"Le ski, ça va.", en:"The skiing is fine."},
+      {fr:"La glace, il n'y a rien. »", en:"The ice, there is nothing.”"}
+    ],
+    [ // ¶ 2
+      {fr:"Ce n'était pas une question. Alors je n'ai pas répondu.", en:"It wasn't a question. So I didn't answer."},
+      {fr:"Il a continué. Je dois faire des couloirs de glace cet hiver. Je dois faire deux ou trois courses de glace avant l'examen. Et quelques descentes difficiles aussi.", en:"He went on. I must do ice gullies this winter. I must do two or three ice climbs before the exam. And a few hard descents too."},
+      {fr:"Il ne pense pas que ma liste soit assez bonne pour mars.", en:"He doesn't think my list is good enough for March."},
+      {fr:"Mais il ne pense pas qu'elle soit impossible.", en:"But he doesn't think it's impossible."},
+      {fr:"Il a dit : « on verra ». Chez lui, c'est une phrase complète.", en:"He said: “we'll see.” For him, that is a complete sentence."}
+    ],
+    [ // ¶ 3
+      {fr:"À un moment, j'ai parlé d'une face que je voulais « conquérir ».", en:"At one point, I talked about a face I wanted to “conquer.”"},
+      {fr:"Il a levé un sourcil, rien de plus. J'ai compris que le mot était mauvais.", en:"He raised one eyebrow, nothing more. I understood the word was wrong."},
+      {fr:"Là-haut, on ne conquiert rien.", en:"Up there, you conquer nothing."},
+      {fr:"On passe, si la montagne veut bien. Puis on redescend.", en:"You pass, if the mountain is willing. Then you come back down."},
+      {fr:"Mon grand-père disait la même chose, avec d'autres mots.", en:"My grandfather said the same thing, with other words."},
+      {fr:"Ces hommes sont modestes. Pour eux, ce n'est pas de la politesse : c'est une méthode.", en:"These men are modest. For them, it's not politeness: it's a method."}
+    ],
+    [ // ¶ 4
+      {fr:"En partant, il m'a serré la main. Il a regardé le ciel.", en:"As he left, he shook my hand. He looked at the sky."},
+      {fr:"« Jeudi, si le temps tient, on fait une arête aux Aiguilles Rouges.", en:"“Thursday, if the weather holds, we do a ridge in the Aiguilles Rouges."},
+      {fr:"Pour voir comment tu marches. »", en:"To see how you walk.”"},
+      {fr:"Je marche bien.", en:"I walk well."},
+      {fr:"Mais je crois que ce n'est pas ça qu'il va regarder.", en:"But I think that's not what he will look at."}
+    ]
+  ],
   vocab:[
     ['sur laquelle','on which (lequel/laquelle after a preposition)'],
     ['un porteur','a porter (here: broad, load-carrying shoulders)'],

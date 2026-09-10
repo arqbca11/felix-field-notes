@@ -29,6 +29,62 @@ FelixNotes.register({
     "Home at dusk, condensation on the windscreen, the tunnel the other way. That's when Bertrand talked about my grandfather, at length for him: three minutes. They had done the Couturier couloir, on the Aiguille Verte, in 1986. Marcel in front, fifty-five degrees of snow and ice, and not ten words all day; at the top he only said: \"Right, we go down.\" Then: \"You have his hands. You don't have his silence yet.\" I didn't answer, which was the answer.",
     "Eight in the evening, Argentière, first record card, as the second rule requires. Conditions: minus twelve, brittle ice in the morning, softer in the afternoon. Timings: four hours of climbing. Gear: eight screws, six placed. What worked: the feet, two old axes. What didn't work: the second screw, which I didn't trust for a second, and the idea that you only get caught out on hard icefalls. When I have twenty cards like that one, I'll know what I'm worth on ice. I'll show it to him on Sunday. Saturday, the shop. Sunday, we'll see about the ice."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Je suis parti des Praz à cinq heures et demie. J'étais dans la voiture de Bertrand.", en:"I left Les Praz at half past five. I was in Bertrand's car."},
+      {fr:"Nous avons pris le tunnel du Mont-Blanc. Après, la vallée d'Aoste était encore noire.", en:"We took the Mont-Blanc tunnel. After, the Aosta valley was still dark."},
+      {fr:"À Cogne, il faisait moins douze sur le parking. Les cascades de glace se sont formées tôt cette année.", en:"At Cogne, it was minus twelve in the car park. The ice waterfalls formed early this year."},
+      {fr:"La première règle de Bertrand : jamais seul en glace. Ce n'est plus juste une phrase. C'est un homme de soixante-trois ans qui conduit à côté de moi.", en:"Bertrand's first rule: never alone on ice. It is no longer just a sentence. It is a sixty-three-year-old man who drives beside me."}
+    ],
+    [ // ¶ 1
+      {fr:"On a mis le matériel avec la lampe frontale. Le coffre de la voiture était ouvert.", en:"We put on the gear by headtorch. The car boot was open."},
+      {fr:"J'ai deux vieux piolets d'occasion. Un ami de Bertrand me les a vendus. Ils allaient toucher de la vraie glace pour la première fois. Ils ont vingt ans.", en:"I have two old second-hand ice axes. A friend of Bertrand's sold them to me. They were going to touch real ice for the first time. They are twenty years old."},
+      {fr:"J'avais affûté les crampons la veille.", en:"I had sharpened the crampons the day before."},
+      {fr:"Il a regardé les piolets une seconde de trop. Il n'a rien dit.", en:"He looked at the axes a second too long. He said nothing."},
+      {fr:"Pour lui, ça veut dire oui.", en:"For him, that means yes."}
+    ],
+    [ // ¶ 2
+      {fr:"La première cascade était une III. Elle avait deux longueurs.", en:"The first icefall was a grade III. It had two pitches."},
+      {fr:"Bertrand a mené la première longueur. Les autres grimpeurs avaient déjà taillé les premiers mètres la veille.", en:"Bertrand led the first pitch. The other climbers had already cut the first metres the day before."},
+      {fr:"La deuxième longueur était pour moi.", en:"The second pitch was for me."},
+      {fr:"Avec ce froid, la glace était cassante. Des morceaux tombaient sur mon casque.", en:"With that cold, the ice was brittle. Pieces fell on my helmet."},
+      {fr:"J'ai vissé trois broches à glace.", en:"I screwed in three ice screws."},
+      {fr:"La deuxième broche, je l'ai mal placée. Je le savais déjà quand j'ai clippé la dégaine.", en:"The second screw, I placed it badly. I already knew it when I clipped the quickdraw."},
+      {fr:"Il a tout vu.", en:"He saw everything."},
+      {fr:"Il n'a rien dit jusqu'au relais. Puis il a dit une phrase : « Cette broche tenait ton chapeau.", en:"He said nothing until the belay. Then he said one sentence: “That screw was holding your hat."},
+      {fr:"Pas toi. »", en:"Not you.”"}
+    ],
+    [ // ¶ 3
+      {fr:"Ensuite, il y a eu les mains.", en:"Then, there were the hands."},
+      {fr:"Le sang revient quand les doigts dégèlent. Pendant dix minutes, on ne peut rien serrer et rien lâcher. On ne peut penser à rien d'autre.", en:"The blood comes back when the fingers thaw. For ten minutes, you cannot grip anything or let go of anything. You cannot think about anything else."},
+      {fr:"Je connais ça du ski. Mais là, c'était pire.", en:"I know this from skiing. But this time, it was worse."},
+      {fr:"Bertrand a attendu à côté de moi, sans un mot. Il avait mal aussi.", en:"Bertrand waited beside me, without a word. His hands hurt too."},
+      {fr:"Je crois qu'on se connaît mieux comme ça. Mieux qu'en parlant.", en:"I think we know each other better like this. Better than by talking."},
+      {fr:"L'après-midi, on a fait une deuxième cascade, plus facile. C'était pour travailler les pieds. Bertrand a dit : « La glace, c'est les pieds, pas les bras. »", en:"In the afternoon, we did a second icefall, easier. It was to work the feet. Bertrand said: “Ice is the feet, not the arms.”"},
+      {fr:"J'ai grimpé beaucoup mieux. Les piolets avaient l'air de bien connaître la glace.", en:"I climbed much better. The axes looked like they knew the ice well."}
+    ],
+    [ // ¶ 4
+      {fr:"On est rentrés le soir. Il y avait de la buée sur le pare-brise. On a repris le tunnel dans l'autre sens.", en:"We drove home in the evening. There was condensation on the windscreen. We took the tunnel the other way."},
+      {fr:"C'est là que Bertrand a parlé de mon grand-père. Il a parlé trois minutes, c'est long pour lui.", en:"That is when Bertrand talked about my grandfather. He talked for three minutes, which is long for him."},
+      {fr:"Ils avaient fait le couloir Couturier, à l'Aiguille Verte, en 1986.", en:"They had done the Couturier couloir, on the Aiguille Verte, in 1986."},
+      {fr:"Marcel était devant, sur une pente très raide de neige et de glace. Il n'a presque rien dit de la journée. En haut, il a seulement dit : « Bon, on descend. »", en:"Marcel was in front, on a very steep slope of snow and ice. He said almost nothing all day. At the top, he only said: “Right, we go down.”"},
+      {fr:"Puis Bertrand a dit : « Tu as ses mains.", en:"Then Bertrand said: “You have his hands."},
+      {fr:"Tu n'as pas encore son silence. »", en:"You don't have his silence yet.”"},
+      {fr:"Je n'ai pas répondu. C'était la réponse.", en:"I didn't answer. That was the answer."}
+    ],
+    [ // ¶ 5
+      {fr:"Vingt heures, à Argentière. J'écris ma première fiche, comme la deuxième règle le demande.", en:"Eight in the evening, in Argentière. I write my first record card, as the second rule asks."},
+      {fr:"Conditions : moins douze. La glace était cassante le matin, et plus souple l'après-midi.", en:"Conditions: minus twelve. The ice was brittle in the morning, and softer in the afternoon."},
+      {fr:"Horaire : quatre heures de grimpe.", en:"Timing: four hours of climbing."},
+      {fr:"Matériel : huit broches, six posées.", en:"Gear: eight screws, six placed."},
+      {fr:"Ce qui a marché : les pieds, et deux vieux piolets.", en:"What worked: the feet, and two old ice axes."},
+      {fr:"Ce qui n'a pas marché : la deuxième broche. Je ne lui ai pas fait confiance une seconde. Et je croyais qu'on a des problèmes seulement sur les cascades difficiles. C'est faux.", en:"What didn't work: the second screw. I didn't trust it for one second. And I thought you only have problems on hard icefalls. That is false."},
+      {fr:"Quand j'aurai vingt fiches comme celle-là, je saurai ce que je vaux sur la glace.", en:"When I have twenty cards like that one, I will know what I am worth on ice."},
+      {fr:"Je vais la montrer à Bertrand dimanche.", en:"I am going to show it to Bertrand on Sunday."},
+      {fr:"Samedi, je travaille au magasin.", en:"Saturday, I work at the shop."},
+      {fr:"Dimanche, on retournera sur la glace.", en:"Sunday, we will go back on the ice."}
+    ]
+  ],
   vocab:[
     ['un piolet','an ice axe'],
     ['les crampons','crampons'],

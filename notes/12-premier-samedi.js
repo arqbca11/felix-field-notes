@@ -17,6 +17,19 @@ FelixNotes.register({
   en:[
     "Eight hours adjusting ski boots, and I've just got home. The rental shop smelled of hot plastic and boot-dryers; the season's first tourists were already there. I'm only in on weekends and school holidays, but it'll pay for the studio. A family from Lyon: I recognised the accent before the name of the town. A kid wanted skis far too long; I gave him the right size, and one single sentence — too long, it won't turn any more. A customer asked me whether I was a guide. I answered \"Not yet.\" It's the first time I've answered that to a stranger. Tomorrow, the Crèmerie with Bertrand; the card is already in the pack."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"J'ai réglé des chaussures de ski pendant huit heures. Je viens de rentrer à la maison.", en:"I adjusted ski boots for eight hours. I have just come home."},
+      {fr:"Le magasin sentait le plastique chaud. Les premiers touristes de la saison étaient déjà là.", en:"The shop smelled of hot plastic. The season's first tourists were already there."},
+      {fr:"Je travaille ici seulement le week-end et les vacances. Mais ça va payer mon studio.", en:"I work here only on weekends and holidays. But it will pay for my studio."},
+      {fr:"Une famille est venue de Lyon. J'ai reconnu leur accent tout de suite.", en:"A family came from Lyon. I recognised their accent right away."},
+      {fr:"Un enfant voulait des skis trop longs. Je lui ai donné la bonne taille. Des skis trop longs, ça ne tourne pas bien.", en:"A kid wanted skis that were too long. I gave him the right size. Skis that are too long do not turn well."},
+      {fr:"Un client m'a demandé : « Tu es guide ? »", en:"A customer asked me: “Are you a guide?”"},
+      {fr:"J'ai répondu : « Pas encore. »", en:"I answered: “Not yet.”"},
+      {fr:"C'est la première fois que je dis ça à une personne que je ne connais pas.", en:"It is the first time I say that to a person I do not know."},
+      {fr:"Demain, je vais à la Crèmerie avec Bertrand. La fiche est déjà dans mon sac.", en:"Tomorrow, I am going to the Crèmerie with Bertrand. The card is already in my bag."}
+    ]
+  ],
   vocab:[
     ['un magasin de location','a rental shop'],
     ['un sèche-chaussures','a boot-dryer, a boot-warmer'],

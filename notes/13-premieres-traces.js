@@ -23,6 +23,43 @@ FelixNotes.register({
     "This evening Chloé called from Edinburgh. She had just finished her exams. She didn't ask, she announced: she said she would come for Christmas, that she would arrive on the 21st, for a week. I answered that there was only one bed; she said she would sleep on the floor, and that she had slept in worse. She added that our parents would come for three days and that they would take a hotel in Les Houches, mum's village. And dad wanted to know whether my insurance covered ice — it was Chloé who asked the question, laughing. She told me not to tidy the studio for her.",
     "Before hanging up, she asked whether I was content. I said: \"I think so.\" Content, here, means tired, clear, and in the right valley. She wants to learn ski touring, the real climb on skins. When she's here, one morning, before the shop, I'll take her up to Lognan on the old skis. We'll have to leave early, so that she sees the glacier at first light. I'm already counting the days."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"La station de ski a ouvert ce week-end.", en:"The ski resort opened this weekend."},
+      {fr:"Ce matin, j'ai pris le premier téléphérique. J'étais avant tout le monde.", en:"This morning I took the first cable car. I was before everyone."},
+      {fr:"C'est mon premier jour de ski cette année. Mes jambes se souviennent avant ma tête.", en:"It's my first ski day this year. My legs remember before my head."},
+      {fr:"Le froid sur le visage était sec et fort.", en:"The cold on my face was dry and strong."},
+      {fr:"J'ai fait trois descentes rapides sur la piste. J'ai fait de grandes courbes.", en:"I did three fast runs on the piste. I made big curves."},
+      {fr:"Puis j'ai regardé le hors-piste et j'ai dit non. La neige est encore mince. Les cailloux sont juste sous la surface.", en:"Then I looked at the off-piste and said no. The snow is still thin. The stones are just under the surface."},
+      {fr:"Ce n'est pas de la peur. C'est lire la montagne.", en:"It's not fear. It's reading the mountain."},
+      {fr:"La montagne ne compte pas les mois sans moi.", en:"The mountain doesn't count the months without me."}
+    ],
+    [ // ¶ 1
+      {fr:"Dimanche dernier, on est allés à la Crèmerie. La glace se formait, mais elle ne tenait pas encore.", en:"Last Sunday, we went to the Crèmerie. The ice was forming, but it didn't hold yet."},
+      {fr:"Bertrand a lu ma première fiche debout dans la neige. Il a gardé ses gants.", en:"Bertrand read my first card standing in the snow. He kept his gloves on."},
+      {fr:"Il me l'a rendue avec deux corrections.", en:"He gave it back to me with two corrections."},
+      {fr:"Elle était trop longue. Une fiche note, elle ne raconte pas. Et j'avais oublié de noter l'heure du retour à la voiture.", en:"It was too long. A card notes, it doesn't tell a story. And I had forgotten to write the time we got back to the car."},
+      {fr:"Le soir, je l'ai réécrite avec moins de mots. J'ai gardé seulement l'important.", en:"In the evening, I rewrote it with fewer words. I kept only what mattered."}
+    ],
+    [ // ¶ 2
+      {fr:"Ce soir, Chloé a appelé d'Édimbourg.", en:"This evening, Chloé called from Edinburgh."},
+      {fr:"Elle venait de finir ses examens.", en:"She had just finished her exams."},
+      {fr:"Elle n'a pas demandé. Elle a dit : « Je viens pour Noël. J'arrive le 21, pour une semaine. »", en:"She didn't ask. She said: “I'm coming for Christmas. I arrive on the 21st, for a week.”"},
+      {fr:"J'ai dit : « Il y a seulement un lit. » Elle a répondu : « Je dormirai par terre. J'ai dormi dans pire. »", en:"I said: “There is only one bed.” She answered: “I'll sleep on the floor. I've slept in worse.”"},
+      {fr:"Elle a ajouté : « Les parents viennent trois jours. Ils prennent un hôtel aux Houches, le village de maman. »", en:"She added: “The parents come for three days. They take a hotel in Les Houches, mum's village.”"},
+      {fr:"Papa voulait savoir si mon assurance couvrait la glace. C'est Chloé qui a posé la question, en riant.", en:"Dad wanted to know if my insurance covered ice. It was Chloé who asked the question, laughing."},
+      {fr:"Elle m'a dit : « Ne range pas le studio pour moi. »", en:"She told me: “Don't tidy the studio for me.”"}
+    ],
+    [ // ¶ 3
+      {fr:"Avant de raccrocher, elle a demandé si j'étais content.", en:"Before hanging up, she asked if I was happy."},
+      {fr:"J'ai dit : « Je crois. »", en:"I said: “I think so.”"},
+      {fr:"Ici, content veut dire fatigué, calme, et dans la bonne vallée.", en:"Here, happy means tired, calm, and in the right valley."},
+      {fr:"Elle veut apprendre le ski de randonnée. C'est monter la montagne avec des peaux sous les skis.", en:"She wants to learn ski touring. It's climbing the mountain with skins under the skis."},
+      {fr:"Quand elle sera là, je l'emmènerai à Lognan un matin, avant le travail. Elle prendra les vieux skis.", en:"When she's here, I'll take her to Lognan one morning, before work. She'll take the old skis."},
+      {fr:"Il faudra partir tôt. Comme ça, elle verra le glacier le matin.", en:"We'll have to leave early. That way, she'll see the glacier in the morning."},
+      {fr:"Je compte déjà les jours.", en:"I'm already counting the days."}
+    ]
+  ],
   vocab:[
     ['une benne','the cable car (colloquial; le téléphérique)'],
     ['une piste damée','a groomed / pisted run'],

@@ -28,6 +28,54 @@ FelixNotes.register({
     "What I didn't do fits in two sentences. On the last day, in March, I had told her I didn't know whether I'd come back the following winter; she had looked a little disappointed, and she hadn't asked for anything more. If I had asked, in January, what would she have answered? I could have asked for an address, the way you do with anyone. I tell myself it wasn't appropriate, at the time. I'm not sure that was the real reason.",
     "So I'm writing it for the first time. When I think about going back to Canada, it isn't only for the training; it's also the idea that I might see her again over there. And how would it even work? She came to Revelstoke; me, I might not be there. I don't even have her number, or an email address, or the name of the company she works for. You can keep someone for years without the slightest way to reach them. A woman whose address I don't know, and whose Chinese name I do — Anyu. The couple left. Tomorrow, the ice; Chloé arrives on the 21st. The question stays open."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"C'est samedi. Je travaille au magasin. Ce sont les premières vacances scolaires.", en:"It's Saturday. I work at the shop. These are the first school holidays."},
+      {fr:"Il y a une longue file jusqu'à la porte. Je dois régler des chaussures.", en:"There's a long line up to the door. I have to adjust boots."},
+      {fr:"Un couple vient de San Francisco. Ils arrivent tout juste, encore en habits de ville.", en:"A couple comes from San Francisco. They have just arrived, still in city clothes."},
+      {fr:"J'ai serré ses chaussures. J'ai réglé les fixations. J'ai vérifié le flex.", en:"I tightened her boots. I set the bindings. I checked the flex."},
+      {fr:"À un moment, elle a dit « the Bay Area ». Elle l'a dit comme les gens de là-bas.", en:"At one point she said “the Bay Area.” She said it like the people from there."},
+      {fr:"J'ai bien fini le travail. Je leur ai souhaité une bonne journée.", en:"I finished the work well. I wished them a good day."},
+      {fr:"Ce soir, j'écris. Et le reste est revenu dans ma tête.", en:"This evening, I write. And the rest came back into my head."}
+    ],
+    [ // ¶ 1
+      {fr:"La saison dernière, elle est venue deux fois. Une fois en janvier, une fois en mars.", en:"Last season she came twice. Once in January, once in March."},
+      {fr:"Elle était déjà venue deux hivers avant. Je n'avais jamais eu une cliente qui revenait comme ça.", en:"She had already come two winters before. I had never had a client who came back like that."},
+      {fr:"En janvier, je me suis posé une question. Est-ce qu'elle revenait pour la neige, ou pour autre chose ?", en:"In January, I asked myself a question. Was she coming back for the snow, or for something else?"},
+      {fr:"Je n'ai jamais osé lui demander.", en:"I never dared to ask her."},
+      {fr:"On partait tôt le matin.", en:"We used to leave early in the morning."},
+      {fr:"Elle photographiait la neige sur les branches. Jamais les sommets.", en:"She photographed the snow on the branches. Never the summits."},
+      {fr:"Elle ne lâchait pas une pente. D'abord, elle voulait la comprendre.", en:"She wouldn't let go of a slope. First, she wanted to understand it."}
+    ],
+    [ // ¶ 2
+      {fr:"Je me souviens d'elle. Elle était méthodique. Elle n'avait pas peur des pentes raides, mais elle voulait les comprendre.", en:"I remember her. She was methodical. She wasn't afraid of steep slopes, but she wanted to understand them."},
+      {fr:"Elle avait vu plus de pays que moi. Elle était fière de ses racines. Et elle aimait ses années en Amérique du Nord.", en:"She had seen more countries than me. She was proud of her roots. And she loved her years in North America."},
+      {fr:"Elle écoutait tout ce que je racontais. Lyon, la vallée, mon grand-père, le vélo jusqu'à San Francisco.", en:"She listened to everything I told her. Lyon, the valley, my grandfather, the bike to San Francisco."},
+      {fr:"J'ai peut-être trop parlé de moi.", en:"Maybe I talked about myself too much."},
+      {fr:"On croit donner une leçon. Mais on finit par parler de soi.", en:"You think you're giving a lesson. But you end up talking about yourself."},
+      {fr:"Je suis sûr d'une seule chose. J'ai peut-être franchi la ligne. J'ai raconté des choses qu'on ne dit pas à une cliente.", en:"I'm sure of one thing only. Maybe I crossed the line. I told her things you don't tell a client."}
+    ],
+    [ // ¶ 3
+      {fr:"Ce que je n'ai pas fait est simple. Je peux le dire en deux phrases.", en:"What I didn't do is simple. I can say it in two sentences."},
+      {fr:"Le dernier jour, en mars, je lui ai dit une chose. Je ne savais pas si je reviendrais l'hiver suivant. Elle a eu l'air un peu déçue, mais elle n'a rien demandé.", en:"On the last day, in March, I told her one thing. I didn't know if I would come back the next winter. She looked a little disappointed, but she asked nothing."},
+      {fr:"Et si j'avais demandé en janvier ? Qu'est-ce qu'elle aurait répondu ?", en:"And if I had asked in January? What would she have answered?"},
+      {fr:"J'aurais pu demander une adresse. On le fait avec n'importe qui.", en:"I could have asked for an address. You do it with anyone."},
+      {fr:"Je me dis que ce n'était pas correct, à l'époque.", en:"I tell myself it wasn't proper, at the time."},
+      {fr:"Mais je ne suis pas sûr que c'est la vraie raison.", en:"But I'm not sure that's the real reason."}
+    ],
+    [ // ¶ 4
+      {fr:"Alors je l'écris pour la première fois.", en:"So I write it for the first time."},
+      {fr:"Je pense à retourner au Canada. Ce n'est pas seulement pour la formation. C'est aussi parce que je pourrais la revoir là-bas.", en:"I think about going back to Canada. It's not only for the training. It's also because I could see her again there."},
+      {fr:"Mais comment est-ce que ça marcherait ?", en:"But how would that work?"},
+      {fr:"Elle venait à Revelstoke. Mais moi, je n'y serai peut-être pas.", en:"She used to come to Revelstoke. But me, maybe I won't be there."},
+      {fr:"Je n'ai même pas son numéro. Je n'ai pas son mail. Je ne sais pas où elle travaille.", en:"I don't even have her number. I don't have her email. I don't know where she works."},
+      {fr:"On peut penser à quelqu'un pendant des années. Et on n'a aucun moyen de le joindre.", en:"You can think about someone for years. And you have no way to reach them."},
+      {fr:"Je ne connais pas son adresse. Mais je connais son prénom chinois : Anyu.", en:"I don't know her address. But I know her Chinese first name: Anyu."},
+      {fr:"Le couple est reparti.", en:"The couple left."},
+      {fr:"Demain, je vais faire de la glace. Chloé arrive le 21.", en:"Tomorrow, I'm going to do ice climbing. Chloé arrives on the 21st."},
+      {fr:"La question reste ouverte.", en:"The question stays open."}
+    ]
+  ],
   vocab:[
     ['une file d\'attente','a queue, a line of people'],
     ['un moniteur / une monitrice','a (ski) instructor'],

@@ -26,6 +26,53 @@ FelixNotes.register({
     "Copying out the sheet, I stopped on \"March.\" March is the month she used to come to Revelstoke, every year. If I'm not there in March, I won't know whether she came back. I wouldn't know anyway: I never had her number. I wrote \"March\" on my sheet, and moved on to April.",
     "The Crèmerie hasn't formed yet. So, while waiting for the ice to be willing: running in the morning, the climbing gym in the evening, and the sheet on the wall, above the table, where I'll see it every day."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Je suis chez Bertrand, dans sa cuisine. C'est la deuxième fois.", en:"I am at Bertrand's place, in his kitchen. It is the second time."},
+      {fr:"Cette fois, il a pris une feuille de papier. Il a écrit le plan, mois par mois. Son écriture est petite.", en:"This time, he took a sheet of paper. He wrote the plan, month by month. His handwriting is small."},
+      {fr:"En décembre : la glace.", en:"In December: ice."},
+      {fr:"Je vais grimper à la Crèmerie, près d'Argentière, quand la glace arrive. Et aussi à Cogne, de l'autre côté du tunnel. Là-bas, les cascades de glace restent tout l'hiver.", en:"I am going to climb at the Crèmerie, near Argentière, when the ice comes. And also at Cogne, on the other side of the tunnel. There, the ice waterfalls stay all winter."},
+      {fr:"En janvier : le ski. Il me manque des descentes pour ma liste. Je vais les faire autour de la Vallée Blanche, quand le téléphérique de l'Aiguille du Midi va rouvrir.", en:"In January: skiing. I am missing some descents for my list. I am going to do them around the Vallée Blanche, when the Aiguille du Midi cable car reopens."},
+      {fr:"En février : des sorties de ski plus longues, du côté d'Argentière. Et un ou deux couloirs de glace difficiles.", en:"In February: longer ski trips, on the Argentière side. And one or two hard ice gullies."},
+      {fr:"En mars : un grand voyage à ski de plusieurs jours, de Chamonix à Zermatt. Mais seulement s'il y a de la neige et un partenaire.", en:"In March: a big multi-day ski trip, from Chamonix to Zermatt. But only if there is snow and a partner."},
+      {fr:"Après, c'est le printemps, et l'examen.", en:"After that, it is spring, and the exam."}
+    ],
+    [ // ¶ 1
+      {fr:"Il a donné trois règles. Il n'a pas levé le stylo.", en:"He gave three rules. He did not lift his pen."},
+      {fr:"Un : je ne vais jamais grimper la glace seul.", en:"One: I am never going to climb ice alone."},
+      {fr:"Deux : après chaque sortie, je vais tout écrire. Les conditions, l'heure, le matériel. Ce qui a bien marché et ce qui n'a pas marché.", en:"Two: after each outing, I am going to write everything down. The conditions, the time, the gear. What went well and what did not work."},
+      {fr:"Trois : je ne vais pas compter les sorties. Je vais compter les jours dehors.", en:"Three: I am not going to count the outings. I am going to count the days outside."},
+      {fr:"« Quand tu auras fait tout ça, on va reparler. »", en:"“When you have done all that, we will talk again.”"},
+      {fr:"« Si tu ne l'as pas fait, on va parler aussi. Mais pas de la même chose. »", en:"“If you have not done it, we will talk too. But not about the same thing.”"}
+    ],
+    [ // ¶ 2
+      {fr:"Pour l'argent : je commence à travailler au magasin le 5 décembre. Je travaille les week-ends et les vacances scolaires.", en:"For money: I start working at the shop on 5 December. I work weekends and school holidays."},
+      {fr:"J'ai payé mon studio jusqu'en mars.", en:"I have paid for my studio until March."},
+      {fr:"Ce n'est pas facile, mais c'est clair. Et j'aime ce qui est clair.", en:"It is not easy, but it is clear. And I like what is clear."}
+    ],
+    [ // ¶ 3
+      {fr:"Et après ?", en:"And after?"},
+      {fr:"Après, je ne sais pas.", en:"After, I don't know."},
+      {fr:"Peut-être le Canada, un jour. Je veux continuer là-bas ce que je commence ici.", en:"Maybe Canada, one day. I want to continue over there what I am starting here."},
+      {fr:"Eric dirait oui tout de suite.", en:"Eric would say yes right away."},
+      {fr:"Mais il ne va rien dire. Parce que cette année, je ne vais pas lui demander.", en:"But he will not say anything. Because this year, I am not going to ask him."},
+      {fr:"L'année prochaine ?", en:"Next year?"},
+      {fr:"Dans cinq ans ?", en:"In five years?"},
+      {fr:"Jamais ?", en:"Never?"},
+      {fr:"Je n'ai pas de réponse. Et pour une fois, ça ne me dérange pas.", en:"I have no answer. And for once, it does not bother me."}
+    ],
+    [ // ¶ 4
+      {fr:"J'ai recopié la feuille. Je me suis arrêté sur le mot « mars ».", en:"I copied out the sheet. I stopped on the word “March.”"},
+      {fr:"Mars, c'est le mois où elle venait à Revelstoke, chaque année.", en:"March is the month when she came to Revelstoke, every year."},
+      {fr:"Si je ne suis pas là-bas en mars, je ne saurai pas si elle est revenue.", en:"If I am not there in March, I will not know if she came back."},
+      {fr:"De toute façon, je ne le saurais pas : je n'ai jamais eu son numéro.", en:"Anyway, I would not know: I never had her number."},
+      {fr:"J'ai écrit « mars » sur ma feuille. Puis je suis passé à avril.", en:"I wrote “March” on my sheet. Then I moved on to April."}
+    ],
+    [ // ¶ 5
+      {fr:"La glace de la Crèmerie n'est pas encore là.", en:"The ice at the Crèmerie is not there yet."},
+      {fr:"Alors j'attends la glace. En attendant, je cours le matin et je vais à la salle d'escalade le soir. La feuille est sur le mur, au-dessus de la table. Je la verrai tous les jours.", en:"So I wait for the ice. While I wait, I run in the morning and I go to the climbing gym in the evening. The sheet is on the wall, above the table. I will see it every day."}
+    ]
+  ],
   vocab:[
     ['une feuille','a sheet of paper; a leaf'],
     ['une écriture serrée','cramped, tight handwriting'],

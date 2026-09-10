@@ -11,6 +11,15 @@ FelixNotes.register({
   en:[
     "On the list of things I tell no one: from time to time I look up the dates of the guide training in Canada, the one Eric did. Not for next year. Maybe in a few years. Maybe never. I look anyway, and I close the page before I've finished reading."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Il y a des choses que je ne dis à personne. Parfois, je regarde les dates de la formation de guide au Canada. C'est la formation d'Eric.", en:"There are things I tell no one. Sometimes I look at the dates of the guide training in Canada. It is Eric's training."},
+      {fr:"Ce n'est pas pour l'année prochaine.", en:"It is not for next year."},
+      {fr:"Peut-être dans quelques années.", en:"Maybe in a few years."},
+      {fr:"Peut-être jamais.", en:"Maybe never."},
+      {fr:"Je regarde quand même. Puis je ferme la page. Je n'ai pas fini de lire.", en:"I look anyway. Then I close the page. I have not finished reading."}
+    ]
+  ],
   vocab:[
     ['de temps en temps','from time to time'],
     ['une formation','a training course, a programme'],

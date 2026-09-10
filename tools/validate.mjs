@@ -20,7 +20,7 @@ const fail = (...m) => { console.log('  ✗', ...m); bad++; };
 // ── 1) syntax ──
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-const tmp = path.join(ROOT, 'check.js');
+const tmp = path.join(ROOT, `.check-${process.pid}.js`);   // unique per process (parallel runs)
 fs.writeFileSync(tmp, scripts[scripts.length - 1]);
 const engine = spawnSync('node', ['--check', tmp], { encoding: 'utf8' });
 fs.unlinkSync(tmp);

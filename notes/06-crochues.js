@@ -25,6 +25,52 @@ FelixNotes.register({
     "Down at the edge of the frozen Lac Blanc he ate his sandwich and gave his verdict, as short as the rest: \"You climb well. You don't guide yet. You climb for yourself; a guide climbs for the one behind him. When you've understood that in your legs, and not only in your head, we'll talk again.\" It wasn't a criticism. It was a description, and it was accurate.",
     "We walked back down to the Col des Montets in silence, at nightfall. In the car he put the radio on. I have a red stone from the Crochues in my pocket, which is silly for a mountain I know by heart. But today I didn't climb it: I guided it, badly, for the first time. That counts."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Jeudi dernier, le temps était mauvais. Il y avait de la pluie en bas et de la neige en haut. Bertrand a écrit un seul mot : « mardi ».", en:"Last Thursday, the weather was bad. There was rain low down and snow high up. Bertrand wrote just one word: “Tuesday.”"},
+      {fr:"Alors, ce sera mardi.", en:"So it will be Tuesday."},
+      {fr:"On se retrouve à six heures au col des Montets. Il fait encore nuit. Il y a du gel sur les voitures.", en:"We meet at six at the Col des Montets. It is still dark. There is frost on the cars."},
+      {fr:"Le télésiège est fermé depuis un mois. Alors nous sommes montés à pied. Nous avons marché deux heures et demie avec le sac et la corde.", en:"The chairlift has been closed for a month. So we went up on foot. We walked two and a half hours with the pack and the rope."},
+      {fr:"Bertrand marche comme il parle. Il ne dit pas un mot de trop.", en:"Bertrand walks the way he talks. He doesn't say one word too many."}
+    ],
+    [ // ¶ 1
+      {fr:"Au col des Crochues, il a sorti la corde. Il l'a mise dans mes mains. Il a dit : « Aujourd'hui, le guide, c'est toi.", en:"At the Col des Crochues, he took out the rope. He put it in my hands. He said: “Today, you are the guide."},
+      {fr:"Moi, je suis le client. »", en:"Me, I am the client.”"},
+      {fr:"Puis il a joué le client.", en:"Then he played the client."},
+      {fr:"Un vrai client.", en:"A real one."},
+      {fr:"Il s'arrêtait au mauvais moment pour prendre des photos. Il posait des questions bêtes sur l'altitude. Il s'asseyait pour se reposer. Une fois, il a fait semblant d'avoir peur du vide.", en:"He stopped at the wrong moment to take photos. He asked silly questions about the altitude. He sat down to rest. Once, he pretended to be afraid of the drop."},
+      {fr:"D'abord, j'ai cru qu'il se moquait de moi.", en:"At first, I thought he was making fun of me."},
+      {fr:"Puis j'ai compris : il faisait comme les vrais clients.", en:"Then I understood: he was doing like real clients do."}
+    ],
+    [ // ¶ 2
+      {fr:"La traversée des Crochues n'est pas difficile. La roche rouge était sèche, même avec la neige. Il y a quelques passages raides et un petit rappel.", en:"The Crochues traverse is not hard. The red rock was dry, even with the snow. There are a few steep bits and a short abseil."},
+      {fr:"Je l'ai grimpée beaucoup de fois.", en:"I have climbed it many times."},
+      {fr:"Mais je ne l'avais jamais faite comme guide. Je tenais quelqu'un au bout d'une corde courte. Je choisissais chaque arrêt pour lui, pas pour moi. Je me retournais tout le temps.", en:"But I had never done it as a guide. I was holding someone on the end of a short rope. I chose each stop for him, not for me. I turned around all the time."},
+      {fr:"À midi, j'avais mal au cou. C'était parce que je regardais toujours derrière.", en:"By noon, my neck hurt. It was because I kept looking back."}
+    ],
+    [ // ¶ 3
+      {fr:"Il a parlé deux fois.", en:"He spoke twice."},
+      {fr:"La première fois, j'ai tendu la corde trop tard. Il a dit : « Là, ton client est déjà tombé. »", en:"The first time, I tightened the rope too late. He said: “There, your client has already fallen.”"},
+      {fr:"La deuxième fois, je suis descendu trop vite. Il n'a rien dit. Il s'est arrêté, et j'ai senti la corde tirer dans mon dos.", en:"The second time, I climbed down too fast. He said nothing. He stopped, and I felt the rope pull at my back."},
+      {fr:"J'ai ralenti.", en:"I slowed down."},
+      {fr:"Il est reparti.", en:"He set off again."}
+    ],
+    [ // ¶ 4
+      {fr:"En bas, au bord du Lac Blanc gelé, il a mangé son sandwich. Puis il a donné son avis, très court : « Tu grimpes bien.", en:"Down below, by the frozen Lac Blanc, he ate his sandwich. Then he gave his opinion, very short: “You climb well."},
+      {fr:"Mais tu ne guides pas encore.", en:"But you don't guide yet."},
+      {fr:"Tu grimpes pour toi. Un guide grimpe pour la personne derrière lui.", en:"You climb for yourself. A guide climbs for the person behind him."},
+      {fr:"Quand tu comprendras ça avec le corps, pas seulement avec la tête, on en reparlera. »", en:"When you understand that with the body, not only with the head, we will talk about it again.”"},
+      {fr:"Ce n'était pas une critique.", en:"It was not a criticism."},
+      {fr:"C'était vrai, tout simplement.", en:"It was simply true."}
+    ],
+    [ // ¶ 5
+      {fr:"Nous sommes redescendus au col des Montets en silence. La nuit tombait.", en:"We came back down to the Col des Montets in silence. Night was falling."},
+      {fr:"Dans la voiture, il a mis la radio.", en:"In the car, he put the radio on."},
+      {fr:"J'ai une petite pierre rouge des Crochues dans la poche. C'est bête, parce que je connais très bien cette montagne.", en:"I have a small red stone from the Crochues in my pocket. It's silly, because I know this mountain very well."},
+      {fr:"Mais aujourd'hui, je ne l'ai pas seulement grimpée. Je l'ai guidée, mal, pour la première fois.", en:"But today, I didn't just climb it. I guided it, badly, for the first time."},
+      {fr:"Ça compte.", en:"That counts."}
+    ]
+  ],
   vocab:[
     ['ça n\'a pas tenu','it didn\'t hold (the weather)'],
     ['le gel','frost'],

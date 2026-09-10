@@ -21,6 +21,43 @@ FelixNotes.register({
     "In the photo, at the bottom, there are the cedars at the edge of the piste, the ones Addie used to photograph while the other clients were looking at the view. She said snow on a branch was more interesting than a summit, because it changed every hour. I never found out whether she was right. I never had her number either: she was my client, I was her instructor, and there was a line I didn't want to cross. At the end of March, on the last day, I told her I didn't know whether I'd be back the following winter. She looked a little disappointed, but she didn't ask for more. I should have said something else. I know it, I didn't do it, and I still don't know whether I was right.",
     "I answered Eric: \"Here. Home. I'm doing the list.\" He put a thumbs-up and nothing else, which, coming from him, is a long speech. Then I put the phone down and went out for a run. The snow, here too, won't be long."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Eric m'a envoyé une photo ce matin. Il n'a presque rien écrit : « Ça commence. »", en:"Eric sent me a photo this morning. He wrote almost nothing: “It's starting.”"},
+      {fr:"« Tu skies où cet hiver ? »", en:"“Where are you skiing this winter?”"},
+      {fr:"Sur la photo, le mont Mackenzie est tout blanc en haut. Les arbres sont encore verts en bas. Entre les deux, il y a une ligne nette que je connais bien.", en:"In the photo, Mount Mackenzie is all white on top. The trees are still green below. Between the two, there is a sharp line that I know well."},
+      {fr:"À Revelstoke, la première neige arrive toujours d'un coup. Elle tombe une nuit d'octobre. Le lendemain, toute la ville parle plus fort.", en:"In Revelstoke, the first snow always comes all at once. It falls one October night. The next day, the whole town talks louder."}
+    ],
+    [ // ¶ 1
+      {fr:"J'ai regardé la photo longtemps.", en:"I looked at the photo for a long time."},
+      {fr:"La première fois, je suis monté là-haut en décembre 2023. Je ne savais rien.", en:"The first time, I went up there in December 2023. I knew nothing."},
+      {fr:"Je croyais savoir. J'ai grandi sur les skis. J'ai fait du ski avec mon grand-père depuis l'âge de douze ans.", en:"I thought I knew. I grew up on skis. I skied with my grandfather from the age of twelve."},
+      {fr:"Mais la neige du Canada n'est pas comme la neige des Alpes.", en:"But Canadian snow is not like Alpine snow."},
+      {fr:"Elle est plus profonde et plus lourde. Elle cache mieux le danger.", en:"It is deeper and heavier. It hides the danger better."},
+      {fr:"C'est Eric qui me l'a appris. C'était pendant le cours d'avalanche. Il parlait le français du Québec, et je comprenais à moitié.", en:"It was Eric who taught me that. It was during the avalanche course. He spoke Québec French, and I half understood."},
+      {fr:"« La montagne te dit non. »", en:"“The mountain tells you no.”"},
+      {fr:"« Toi, tu l'écoutes. »", en:"“You, you listen to it.”"},
+      {fr:"Il parlait sans lever la voix. Tout le monde se taisait.", en:"He spoke without raising his voice. Everyone went quiet."}
+    ],
+    [ // ¶ 2
+      {fr:"Sur la photo, en bas, il y a les arbres au bord de la piste. Addie les photographiait souvent. Les autres clients regardaient la vue.", en:"In the photo, at the bottom, there are the trees at the edge of the piste. Addie photographed them often. The other clients looked at the view."},
+      {fr:"Elle disait que la neige sur une branche était très intéressante. Elle changeait toutes les heures.", en:"She said that snow on a branch was very interesting. It changed every hour."},
+      {fr:"Je n'ai jamais su si elle avait raison.", en:"I never found out if she was right."},
+      {fr:"Je n'ai jamais eu son numéro. Elle était ma cliente et j'étais son moniteur. Il y avait une ligne, et je n'ai pas voulu la passer.", en:"I never had her number. She was my client and I was her instructor. There was a line, and I didn't want to cross it."},
+      {fr:"Fin mars, le dernier jour, je lui ai parlé. Je lui ai dit : « Je ne sais pas si je vais revenir l'hiver prochain. »", en:"At the end of March, the last day, I talked to her. I told her: “I don't know if I'll come back next winter.”"},
+      {fr:"Elle a eu l'air un peu déçue. Mais elle n'a rien demandé de plus.", en:"She looked a little disappointed. But she didn't ask for more."},
+      {fr:"Je n'ai pas dit ce que je voulais dire.", en:"I didn't say what I wanted to say."},
+      {fr:"Je le sais. Je ne l'ai pas fait. Et je ne sais toujours pas si j'ai eu raison.", en:"I know it. I didn't do it. And I still don't know if I was right."}
+    ],
+    [ // ¶ 3
+      {fr:"J'ai répondu à Eric : « Ici. »", en:"I answered Eric: “Here.”"},
+      {fr:"« Chez moi. »", en:"“At home.”"},
+      {fr:"« Je fais ma liste. »", en:"“I'm doing my list.”"},
+      {fr:"Il a mis un pouce et rien d'autre. Pour lui, c'est un long discours.", en:"He put a thumbs-up and nothing else. For him, that is a long speech."},
+      {fr:"Puis j'ai posé le téléphone. Je suis sorti courir.", en:"Then I put the phone down. I went out for a run."},
+      {fr:"Ici aussi, la neige va bientôt arriver.", en:"Here too, the snow will arrive soon."}
+    ]
+  ],
   vocab:[
     ['c\'t\'hiver (québécois)','this winter (spoken Québec contraction of cet hiver)'],
     ['un cèdre','a cedar (the red cedars of the BC interior)'],
