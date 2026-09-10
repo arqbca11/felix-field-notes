@@ -11,6 +11,13 @@ FelixNotes.register({
   en:[
     "Bath, seven in the morning. It's raining, obviously. My mother set the coffee down in front of me without a word, and I understood that she already knew what I hadn't yet said out loud."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Je suis à Bath. Il est sept heures du matin.", en:"I am in Bath. It is seven in the morning."},
+      {fr:"Il pleut, bien sûr.", en:"It is raining, of course."},
+      {fr:"Ma mère a mis le café devant moi. Elle n'a rien dit. J'ai compris : elle savait déjà. Je n'ai pas encore parlé, mais elle savait.", en:"My mother put the coffee in front of me. She said nothing. I understood: she already knew. I have not spoken yet, but she knew."}
+    ]
+  ],
   vocab:[
     ['évidemment','obviously, of course'],
     ['sans rien dire','without saying anything'],

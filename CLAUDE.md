@@ -224,6 +224,16 @@ cycle, in-memory audio cache with prefetch, select-to-translate (curated vocab �
 "form of" links → Google Translate endpoint for phrases → MyMemory last, echoes rejected), per-paragraph dictation with diff scoring, translation and notes toggles (the entry widens
 to two columns), per-verb conjugation panels.
 
+**Simplifier (added 9 Sep 2026).** A third action button next to *Traduction* / *Notes de français*.
+When on, every sentence of the article becomes clickable (`.sent`, wrapped at build time from the
+shared splitter `engine/sentences.js`); clicking one shows its A1/A2 French rewrite, the English
+gloss, and a play button in the right column (`.simple-block`, one `.simp-para` slot per paragraph,
+so it stays aligned with the article like the translation does). Clicked sentences accumulate;
+click again to remove; closing the toggle clears the column. The rewrites are **data, not live
+generation** — the entry's `simple` field (§6) — so the page stays offline and stable; only the
+read-aloud uses TTS (`data-play="simple"` reuses `playOne` and the audio cache). Entries without a
+matching `simple` block show no button. Learn-only, like everything else language-related.
+
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
 `localStorage` as `felix_notes_learn`) reveals everything language-related: voice/speed controls,
@@ -272,6 +282,10 @@ FelixNotes.register({
   lat:51.3811, lng:-2.3590,          // optional; kept for the record, not rendered (no map)
   fr:[ "…", … ],                     // 1..N paragraphs
   en:[ "…", … ],                     // 1:1 translation (same length)
+  simple:[                           // optional — the Simplifier layer (§5): one array per paragraph,
+    [ {fr:"…", en:"…"}, … ],         //   one {fr,en} per SENTENCE of engine/sentences.js's split
+    …                                //   (fr = A1/A2 rewrite, en = gloss of that rewrite)
+  ],
   vocab:[ ['mot fr','gloss'], ['verbe','to …', FelixNotes.verb('verbe', pres, pc, imp, fut)], … ],
   gram:[ {h:'Heading', p:'Explanation with <span class="ex">…</span>'}, … ]
 });
@@ -279,6 +293,11 @@ FelixNotes.register({
 `FelixNotes.verb(inf, présent, passéComposé, imparfait, futur)`: each tense is an array of the **6
 persons** with pronoun and auxiliary baked in (`"j'ai skié"`, `"je suis parti(e)"`). Double-quote the
 form strings. Mark a vocab entry as a verb only when you give real conjugations.
+
+`simple` must match the shared sentence split exactly: run `node tools/split.mjs notes/NN-slug.js`
+to see the numbered sentences, then write one `{fr,en}` per line. The validator checks the counts;
+the page silently hides the *Simplifier* button if they don't match. The **`simplifier`** subagent
+(`.claude/agents/simplifier.md`, Opus) writes this block for one file — run it after `entry-writer`.
 
 Manifest line (`notes/manifest.js`, chronological, newest last):
 ```js
@@ -301,6 +320,7 @@ the main agent's decision.
 2. Append one line to `notes/manifest.js` (bottom). It renders at the bottom of the page.
 3. `fr` and `en` same length. Vocab and grammar sized by kind (§4). Keep one future-tense or
    subjunctive beat in play across neighbouring entries.
+3b. Run the `simplifier` subagent on the new file so it ships with its `simple` block.
 4. Append a line to the **entry log** (§3) and update *open threads*.
 5. Run `node tools/validate.mjs` (§10).
 

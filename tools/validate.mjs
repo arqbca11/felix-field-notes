@@ -3,7 +3,8 @@
    1) syntax-checks the inline engine script in index.html and every notes/*.js file
    2) loads the manifest + every entry in a sandbox and asserts the data shape:
       fr/en aligned, known kind + level, ISO date matches the manifest, manifest is
-      chronological and numbered in order, conjugation objects have 6 persons per tense.
+      chronological and numbered in order, conjugation objects have 6 persons per tense,
+      and an optional `simple` block has one {fr,en} per sentence of engine/sentences.js's split.
    Prints which entries the page would display. Exit code 1 on any failure. */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -40,6 +41,8 @@ const sb = { window: {}, console, FelixNotes: {
 } };
 sb.window.FelixNotes = sb.FelixNotes;
 vm.createContext(sb);
+vm.runInContext(fs.readFileSync(path.join(ROOT, 'engine/sentences.js'), 'utf8'), sb);
+const splitSentences = sb.window.splitSentences;
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'notes/manifest.js'), 'utf8'), sb);
 const M = sb.window.NOTES_MANIFEST;
 if (!Array.isArray(M) || !M.length) { fail('manifest missing or empty'); process.exit(1); }
@@ -76,10 +79,21 @@ M.forEach((e, i) => {
     }
   });
   (p.gram || []).forEach((g, gi) => { if (!g.h || !g.p) fail('gram note incomplete', p.id, gi); });
+  // `simple` (optional): one array per paragraph, one {fr,en} per sentence of the shared split
+  let simpleTag = '  ';
+  if (p.simple != null) {
+    simpleTag = 'S ';
+    if (!Array.isArray(p.simple) || p.simple.length !== p.fr.length) fail('SIMPLE: need one array per paragraph', p.id, (p.simple||[]).length, 'vs', p.fr.length);
+    else p.fr.forEach((para, i) => {
+      const n = splitSentences(para).length, arr = p.simple[i];
+      if (!Array.isArray(arr) || arr.length !== n) { fail(`SIMPLE ¶${i}: ${Array.isArray(arr)?arr.length:'?'} items vs ${n} sentences`, p.id, '— run node tools/split.mjs', p.id); return; }
+      arr.forEach((it, j) => { if (!it || typeof it.fr !== 'string' || typeof it.en !== 'string' || !it.fr.trim() || !it.en.trim()) fail(`SIMPLE ${i}:${j} needs {fr,en}`, p.id); });
+    });
+  }
   const minGram = p.kind === 'note' ? 1 : 3;
   if ((p.gram || []).length < minGram) fail('gram <', minGram, 'for kind', p.kind, p.id);
   const words = p.fr.join(' ').split(/\s+/).length;
-  console.log(`  #${String(p.no).padStart(2)} ${p.date} ${p.kind.padEnd(8)} ${p.level.padEnd(3)} ${String(words).padStart(4)} words  ${(p.vocab||[]).length} vocab  ${(p.gram||[]).length} gram  ${p.lat!=null?'📍':'  '} ${p.title || '(note)'}`);
+  console.log(`  #${String(p.no).padStart(2)} ${p.date} ${p.kind.padEnd(8)} ${p.level.padEnd(3)} ${String(words).padStart(4)} words  ${(p.vocab||[]).length} vocab  ${(p.gram||[]).length} gram  ${simpleTag}${p.lat!=null?'📍':'  '} ${p.title || '(note)'}`);
 });
 
 console.log('Displayed (all, oldest first):', M.map(e => e.id).join(', '));

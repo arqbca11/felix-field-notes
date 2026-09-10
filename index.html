@@ -6,6 +6,7 @@
 <title>Felix — Notes de terrain</title>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <!-- Entry index (which entries exist + their order). Entries themselves load from notes/*.js -->
+<script src="engine/sentences.js"></script>
 <script src="notes/manifest.js"></script>
 <style>
   :root{
@@ -114,6 +115,22 @@
   .en-block.open{display:block;}
   .en-block p{margin-bottom:12px;}
   .en-block p:last-child{margin-bottom:0;}
+
+  /* SIMPLIFY — click a sentence on the left, its A1/A2 version appears on the right */
+  .post.simple-on .sent{cursor:pointer;border-bottom:1px dotted var(--line);transition:background .15s;}
+  .post.simple-on .sent:hover{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
+  .post.simple-on .sent.on{background:var(--wash);box-shadow:0 0 0 3px var(--wash);border-bottom-color:var(--ink);}
+  .simple-block{display:none;}
+  .simple-block.open{display:block;}
+  .simple-hint{font-family:var(--sans);font-size:12.5px;color:var(--muted);margin:0 0 12px;}
+  .simple-block.has-items .simple-hint{display:none;}
+  .simp-para{margin:0 0 14px;}
+  .simp-para:empty{display:none;}
+  .simp{position:relative;display:block;padding:2px 0 2px 34px;margin:0 0 12px;}
+  .simp:last-child{margin-bottom:0;}
+  .simp .pp-btn{top:8px;}
+  .simp-fr{display:block;font-size:20px;line-height:1.72;color:var(--ink);}
+  .simp-en{display:block;font-size:15px;line-height:1.6;color:var(--soft);margin-top:2px;}
 
   .notes{display:none;}
   .notes.open{display:block;}
@@ -274,7 +291,8 @@ function setLearn(on){
   setLS(KEY_LEARN, on ? '1' : '0');
   if(!on){
     stopAll(); hideLookup();
-    document.querySelectorAll('.en-block.open, .notes.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.post.simple-on').forEach(p => clearSimple(p));
     document.querySelectorAll('.act.on').forEach(b => b.classList.remove('on'));
     document.querySelectorAll('.post.split').forEach(p => p.classList.remove('split'));
     document.querySelectorAll('.article p.dictating').forEach(p => p.classList.remove('dictating'));
@@ -308,11 +326,17 @@ function buildFeed(){
   card.className = 'post ' + kind; card.id = post.id;
   const hasNotes = (post.vocab && post.vocab.length) || (post.gram && post.gram.length);
 
+  // Sentences are wrapped only when the entry ships a `simple` block that matches the split
+  // (a data slip must never break plain reading).
+  const simpleOK = hasSimple(post);
+  const ptext = (p,i) => simpleOK
+    ? splitSentences(p).map((t,j) => `<span class="sent" data-sent="${i}:${j}">${t}</span>`).join(' ')
+    : p;
   const frHTML = post.fr.map((p,i) =>
     `<p>`+
       `<button class="pp-btn learn-only" data-play="para" data-id="${post.id}" data-i="${i}" aria-label="Lire">${ICON_PLAY}</button>`+
       `<button class="dict-btn learn-only" data-dict="${post.id}:${i}" aria-label="Dictée" title="Dictée — écouter et écrire">${ICON_PEN}</button>`+
-      `<span class="ptext">${p}</span>`+
+      `<span class="ptext">${ptext(p,i)}</span>`+
       `<span class="dictation">`+
         `<textarea class="dict-input" rows="3" placeholder="Écoutez (▶) et écrivez ce que vous entendez…"></textarea>`+
         `<span class="dict-actions">`+
@@ -343,6 +367,7 @@ function buildFeed(){
       <div class="post-actions learn-only">
         <button class="act act-read" data-play="all" data-id="${post.id}">Lire</button>
         <button class="act" data-toggle="en" data-id="${post.id}">Traduction</button>
+        ${simpleOK ? `<button class="act" data-toggle="simple" data-id="${post.id}">Simplifier</button>` : ''}
         ${hasNotes ? `<button class="act" data-toggle="notes" data-id="${post.id}">Notes de français</button>` : ''}
       </div>`;
 
@@ -361,6 +386,10 @@ function buildFeed(){
     <div class="article">${frHTML}</div>
     <aside class="post-side">
       <div class="en-block" id="en-${post.id}">${enHTML}</div>
+      ${simpleOK ? `<div class="simple-block" id="simple-${post.id}">
+          <p class="simple-hint">Cliquez une phrase à gauche pour lire une version plus simple.</p>
+          ${post.fr.map((_,i) => `<p class="simp-para" data-i="${i}"></p>`).join('')}
+      </div>` : ''}
       ${hasNotes ? `<div class="notes" id="notes-${post.id}">
           ${vocabRows ? `<div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table>` : ''}
           ${gramHTML ? `<div class="nsec-label">Grammaire</div>${gramHTML}` : ''}
@@ -370,8 +399,39 @@ function buildFeed(){
   feed.appendChild(card);
 }); }
 
+// ── SIMPLIFY ──
+function hasSimple(post){
+  if(!Array.isArray(post.simple) || post.simple.length !== post.fr.length) return false;
+  return post.fr.every((p,i) => Array.isArray(post.simple[i]) && post.simple[i].length === splitSentences(p).length);
+}
+function clearSimple(postEl){
+  postEl.classList.remove('simple-on');
+  postEl.querySelectorAll('.sent.on').forEach(s => s.classList.remove('on'));
+  postEl.querySelectorAll('.simp-para').forEach(p => { p.innerHTML = ''; });
+  const block = postEl.querySelector('.simple-block'); if(block) block.classList.remove('has-items');
+}
+function renderSimplePara(postEl, post, i){
+  const slot = postEl.querySelector(`.simp-para[data-i="${i}"]`); if(!slot) return;
+  const on = [...postEl.querySelectorAll(`.sent.on[data-sent^="${i}:"]`)]
+    .map(el => +el.dataset.sent.split(':')[1]).sort((a,b)=>a-b);
+  slot.innerHTML = on.map(j => {
+    const it = post.simple[i][j];
+    return `<span class="simp" data-sent="${i}:${j}">`+
+      `<button class="pp-btn" data-play="simple" data-id="${post.id}" data-i="${i}" data-j="${j}" aria-label="Lire">${ICON_PLAY}</button>`+
+      `<span class="simp-fr">${it.fr}</span><span class="simp-en">${it.en}</span></span>`;
+  }).join('');
+  const block = postEl.querySelector('.simple-block');
+  block.classList.toggle('has-items', !!postEl.querySelector('.sent.on'));
+}
+
 // ── INTERACTIONS ──
 feed.addEventListener('click', e => {
+  const sent = e.target.closest('.sent');
+  if (sent && sent.closest('.post.simple-on')) {
+    const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
+    if (post) { sent.classList.toggle('on'); renderSimplePara(postEl, post, +sent.dataset.sent.split(':')[0]); }
+    return;
+  }
   const playBtn = e.target.closest('[data-play]');
   if (playBtn) { e.stopPropagation(); onPlay(playBtn); return; }
   const conjBtn = e.target.closest('[data-conj]');
@@ -427,7 +487,8 @@ feed.addEventListener('click', e => {
     const open = block.classList.toggle('open');
     btn.classList.toggle('on', open);
     const post = btn.closest('.post');
-    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open'));
+    if (btn.dataset.toggle === 'simple') { if (open) post.classList.add('simple-on'); else clearSimple(post); }
+    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open'));
   }
 });
 
@@ -505,7 +566,7 @@ async function speakSequence(items){
 
 function onPlay(btn){
   const kind=btn.dataset.play, id=btn.dataset.id;
-  const playerId = kind+':'+id+(btn.dataset.i!=null?(':'+btn.dataset.i):'');
+  const playerId = [kind,id,btn.dataset.i,btn.dataset.j].filter(x=>x!=null).join(':');
   if(activePlayer===playerId){ stopAll(); return; }
   stopAll();
   activePlayer=playerId;
@@ -517,6 +578,8 @@ function onPlay(btn){
   if(kind==='all'){
     items=post.fr.map((t,i)=>({text:t,para:paras[i],btn:ppBtns[i]}));
     btn.classList.add('playing'); btn.textContent='Arrêter';
+  } else if(kind==='simple'){
+    items=[{text:post.simple[+btn.dataset.i][+btn.dataset.j].fr,btn}];
   } else {
     const i=+btn.dataset.i; items=[{text:post.fr[i],para:paras[i],btn:ppBtns[i]}];
   }

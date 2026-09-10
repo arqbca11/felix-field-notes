@@ -17,6 +17,31 @@ FelixNotes.register({
     "I moved in within an hour: skis under the bed, ropes on the wall, boots in the entrance. Then I ran up to Lognan, by the trail that cuts through the forest. Old larches are starting to turn yellow; the air smells of resin and cold. Up top, the Grands Montets were empty, the gondolas stopped until December. I touched the snow at the edge of the path: barely a few centimetres, hard as salt.",
     "What struck me was the silence. Not the summer kind, full of people and bicycle bells, but a silence that is waiting. The valley is getting ready, like me. I've signed up for weekends at a rental shop in Chamonix, from December; that will pay for the studio. Tomorrow I'm calling Bertrand. My mother texted me his number with a single word: \"Go.\""
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"Mon studio est très petit. Il y a un lit, une table, une petite cuisine et une fenêtre.", en:"My studio is very small. There is a bed, a table, a little kitchen and a window."},
+      {fr:"Mais la fenêtre est belle. En face, je vois l'Aiguille Verte et les Drus. En haut, il y a la première neige de l'année.", en:"But the window is beautiful. Across from it, I see the Aiguille Verte and the Drus. Up top, there is the first snow of the year."},
+      {fr:"Josiane est la propriétaire. Elle a soixante-douze ans. Elle a tout de suite compris qui je suis.", en:"Josiane is the landlady. She is seventy-two years old. She understood right away who I am."},
+      {fr:"Elle m'a dit : « Tu es le petit-fils de Marcel. »", en:"She said to me: “You are Marcel's grandson.”"},
+      {fr:"« Tu as les mêmes mains que lui. »", en:"“You have the same hands as him.”"},
+      {fr:"Je ne savais pas que ça se voyait.", en:"I didn't know that it showed."}
+    ],
+    [ // ¶ 1
+      {fr:"J'ai rangé mes affaires en une heure. Les skis sont sous le lit, les cordes au mur, les chaussures à l'entrée.", en:"I put my things away in an hour. The skis are under the bed, the ropes on the wall, the boots by the door."},
+      {fr:"Après, j'ai couru jusqu'à Lognan. J'ai pris le petit chemin dans la forêt.", en:"Afterwards, I ran up to Lognan. I took the little path through the forest."},
+      {fr:"Les vieux arbres deviennent jaunes. L'air sent la forêt et le froid.", en:"The old trees are turning yellow. The air smells of the forest and of cold."},
+      {fr:"En haut, il n'y avait personne aux Grands Montets. Les télécabines ne marchent pas avant décembre.", en:"Up top, there was nobody at the Grands Montets. The gondolas don't run before December."},
+      {fr:"J'ai touché la neige au bord du chemin. Il y a seulement quelques centimètres, et elle est dure comme du sel.", en:"I touched the snow at the edge of the path. There are only a few centimetres, and it is hard like salt."}
+    ],
+    [ // ¶ 2
+      {fr:"Pour moi, le plus important, c'est le silence.", en:"For me, the most important thing is the silence."},
+      {fr:"Ce n'est pas le silence de l'été, avec les gens et les vélos. C'est un silence qui attend.", en:"It is not the silence of summer, with the people and the bicycles. It is a silence that waits."},
+      {fr:"La vallée se prépare, et moi aussi.", en:"The valley is getting ready, and me too."},
+      {fr:"À partir de décembre, je vais travailler le week-end dans un magasin de location à Chamonix. Avec cet argent, je vais payer le studio.", en:"From December, I am going to work at the weekend in a rental shop in Chamonix. With that money, I am going to pay for the studio."},
+      {fr:"Demain, je téléphone à Bertrand.", en:"Tomorrow, I am calling Bertrand."},
+      {fr:"Ma mère m'a envoyé son numéro par SMS. Elle a écrit un seul mot : « Vas-y. »", en:"My mother sent me his number by text message. She wrote a single word: “Go on.”"}
+    ]
+  ],
   vocab:[
     ['une plaque de cuisson','a hob, a cooktop'],
     ['la propriétaire','the landlady (le propriétaire: the landlord, the owner)'],

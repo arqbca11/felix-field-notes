@@ -21,6 +21,44 @@ FelixNotes.register({
     "So there it is, in writing: I'm going back to Chamonix for good, and I'm preparing the guide entrance exam. I need to find a studio, call Bertrand (an old guide who climbed with my grandfather), and look my climbing list squarely in the face. I'm short on ice, on mixed, on a few serious descents. I have one winter for that.",
     "Train on Thursday. Bath, London, Paris, Saint-Gervais, then the little red train that climbs into the valley. I know every bend. This time I won't be leaving again."
   ],
+  simple:[
+    [ // ¶ 0
+      {fr:"J'ai cette idée depuis trois ans.", en:"I have had this idea for three years."},
+      {fr:"Un jour, Eric a parlé de cette idée à voix haute. C'était au bord de la piste. Il enlevait ses peaux de ski et il a dit : « Tu dois faire ça pour de vrai. »", en:"One day, Eric said this idea out loud. It was at the edge of the ski run. He was taking off his ski skins and he said: “You must do this for real.”"},
+      {fr:"Je n'ai pas répondu.", en:"I did not answer."},
+      {fr:"Je suis parti en Europe. J'ai passé tout l'été sur les routes et dans les montagnes. Et l'idée est restée là, dans mon sac, avec les cailloux.", en:"I left for Europe. I spent the whole summer on the roads and in the mountains. And the idea stayed there, in my bag, with the pebbles."}
+    ],
+    [ // ¶ 1
+      {fr:"Hier soir, j'ai parlé de ça à table.", en:"Last night, I talked about it at the table."},
+      {fr:"D'abord, mon père a demandé : « Tu vas gagner de l'argent comment ? »", en:"First, my father asked: “How are you going to earn money?”"},
+      {fr:"C'est sa façon d'être inquiet. Il pose des questions pratiques.", en:"That is his way of being worried. He asks practical questions."},
+      {fr:"J'ai répondu : « J'ai de l'argent de côté. Je vais travailler dans un magasin de ski en décembre. Je ne vais rien demander à personne. »", en:"I answered: “I have money put aside. I am going to work in a ski shop in December. I am not going to ask anyone for anything.”"},
+      {fr:"Il a fait oui avec la tête.", en:"He nodded his head."},
+      {fr:"Puis il a demandé : « Tu es bien assuré ? » Chez lui, cette question veut dire oui.", en:"Then he asked: “Are you properly insured?” With him, that question means yes."}
+    ],
+    [ // ¶ 2
+      {fr:"Ma mère n'a presque rien dit.", en:"My mother said almost nothing."},
+      {fr:"Elle a regardé la fenêtre et la pluie, et elle a dit : « Chamonix. »", en:"She looked at the window and the rain, and she said: “Chamonix.”"},
+      {fr:"Juste ce mot.", en:"Just that word."},
+      {fr:"Elle est née là-bas. Elle sait que c'est dur et elle sait que c'est beau.", en:"She was born there. She knows it is hard and she knows it is beautiful."},
+      {fr:"Chloé, au téléphone, a été plus directe : « Tu as décidé ça il y a trois ans.", en:"Chloé, on the phone, was more direct: “You decided that three years ago."},
+      {fr:"Tu le remarques seulement maintenant. »", en:"You are only noticing it now.”"},
+      {fr:"Elle a probablement raison.", en:"She is probably right."},
+      {fr:"C'est souvent vrai, et ça m'énerve un peu.", en:"That is often true, and it annoys me a little."}
+    ],
+    [ // ¶ 3
+      {fr:"Donc voilà, c'est écrit : je rentre à Chamonix pour toujours, et je vais préparer l'examen de guide.", en:"So there it is, it is written: I am going back to Chamonix for good, and I am going to prepare for the guide exam."},
+      {fr:"Je dois trouver un petit appartement. Je dois appeler Bertrand, un vieux guide qui grimpait avec mon grand-père. Et je dois regarder ma liste de courses, la liste de toutes mes montagnes.", en:"I must find a small flat. I must call Bertrand, an old guide who used to climb with my grandfather. And I must look at my liste de courses, the list of all my mountains."},
+      {fr:"Il me manque de la glace, du mixte (de la glace et du rocher), et quelques descentes à ski difficiles.", en:"I am short of ice, of mixed climbing (ice and rock), and of a few difficult ski descents."},
+      {fr:"J'ai un hiver pour faire ça.", en:"I have one winter to do that."}
+    ],
+    [ // ¶ 4
+      {fr:"Je prends le train jeudi.", en:"I am taking the train on Thursday."},
+      {fr:"Bath, Londres, Paris, Saint-Gervais, et puis le petit train rouge qui monte dans la vallée.", en:"Bath, London, Paris, Saint-Gervais, and then the little red train that goes up into the valley."},
+      {fr:"Je connais chaque virage.", en:"I know every bend."},
+      {fr:"Cette fois, je ne vais pas repartir.", en:"This time, I am not going to leave again."}
+    ]
+  ],
   vocab:[
     ['tourner autour de','to circle around (an idea)'],
     ['une peau (de phoque)','a climbing skin (for ski touring)'],

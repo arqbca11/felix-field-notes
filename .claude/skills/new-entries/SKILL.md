@@ -33,6 +33,12 @@ Fix small things directly (a wrong form, an escaping slip). Send the writer back
 structural (a bible conflict, wrong level, an invented fact). Never let a new fact into an
 entry without adding it to the bible on purpose.
 
+## 4b. Simplify
+For each accepted file, run the `simplifier` subagent on it (`subagent_type: "simplifier"`, prompt
+= the file path) so the entry ships with its `simple` block (the Simplifier layer). Files that do
+not depend on each other can run in parallel. The validator checks the block; if it reports
+`SIMPLE ¶n` mismatches, send the simplifier back with the message.
+
 ## 5. Register and ship
 1. Append one line per entry to `notes/manifest.js` (chronological, newest last).
 2. Append the entries to the **entry log** in `CLAUDE.md` §3 and rewrite **open threads**.
