@@ -316,8 +316,8 @@ entry (`tools/brief-template.md`), delegates each brief to the **`entry-writer`*
 (`.claude/agents/entry-writer.md`, pinned to Opus), optionally runs **`continuity-reviewer`** on
 the result, then registers, validates, and commits. `/new-entries N` (`.claude/skills/new-entries/`)
 runs the whole loop as a **pipeline**: writers strictly **in sequence** (N+1 starts after N is accepted,
-so it can read N), while each entry's `simplifier` (and reviewer) runs in the **background** beside the
-next writer. Start the session **from this folder** so the agents and this file load.
+and reviewed, so it can read N as canon), while each entry's `simplifier` runs in the **background**
+beside the next writer. The review is never backgrounded. Start the session **from this folder** so the agents and this file load.
 The writer never touches the manifest, this file, or other entries; new facts go into §2 only by
 the main agent's decision.
 

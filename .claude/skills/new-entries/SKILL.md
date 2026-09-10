@@ -24,31 +24,33 @@ the grammar targets, the vocab count, the length, and the ending's direction.
 
 ## 3. Delegate — a pipeline, writers in sequence
 The **writers run one at a time, in story order**: writer N+1 starts only after entry N has
-been written and accepted, so it can read the finished file and keep the flow (voice, open
+been written, **reviewed, and accepted**, so it reads the finished file as canon (voice, open
 threads, the last line's direction). Never run two writers at once, even if the briefs look
 independent.
 
-The **simplifier and the reviewer run in the background** alongside the next writer: the moment
-entry N is accepted, launch `simplifier` on `notes/N-slug.js` and (optionally) `continuity-reviewer`
-on it, then immediately launch writer N+1. They only read/edit their own file, so they never
-conflict with the writer working on N+1. Concretely, for each brief in order:
+Only the **simplifier** runs in the background. The review is not backgrounded: if it finds a
+structural problem, entry N changes, and a writer N+1 already running would have built on a
+stale version. So, for each brief in order:
 
 1. `Agent(subagent_type: "entry-writer", prompt: brief N)` — **wait** for it.
-2. Review entry N (§4). Fix small things yourself; send the writer back for structural ones.
+2. Review entry N (§4): `continuity-reviewer` and/or your own read against the bible — **wait**,
+   apply fixes, send the writer back if needed, until the entry is accepted.
 3. `Agent(subagent_type: "simplifier", prompt: "Add the `simple` block to notes/N-slug.js …")`
-   — **don't wait**; it runs in the background.
-4. Go to step 1 with brief N+1.
+   — **don't wait**; it only edits its own file and needs the French to be final, which it now is.
+4. Go to step 1 with brief N+1 while the simplifier for N works.
 
 Collect the simplifier results as their notifications arrive (they may land while a later writer
-is still working). The batch is done when the last writer has returned and every simplifier has
-reported `ALL DATA CHECKS PASS`.
+is still working). The batch is done when the last writer has returned, every entry is accepted,
+and every simplifier has reported `ALL DATA CHECKS PASS`.
 
 ## 4. Review
 For each returned file: run `continuity-reviewer` on it (or review yourself against the bible).
 Fix small things directly (a wrong form, an escaping slip). Send the writer back for anything
 structural (a bible conflict, wrong level, an invented fact). Never let a new fact into an
-entry without adding it to the bible on purpose. The review of entry N happens **before** writer
-N+1 starts, because N+1 reads N's file as canon.
+entry without adding it to the bible on purpose. The review of entry N (including the
+`continuity-reviewer` run, if used) finishes **before** writer N+1 starts, because N+1 reads N's
+file as canon; and it finishes before N's simplifier starts, because the block must match the
+final French.
 
 ## 4b. Simplify
 The `simplifier` subagent (`subagent_type: "simplifier"`, prompt = the file path) writes the
