@@ -42,6 +42,9 @@ the topic; each one carries a level tag.
   oldest entry first. Tap **Learn** (top right) to reveal all of the above: voices, level tags, the
   read/translate/notes links, the per-paragraph buttons, and select-to-translate. Tap it again to go
   back to reading. The choice is remembered.
+- **A time axis** — a small vertical line on the left, one grey dot per entry placed by date. Drag it
+  (or click) to jump to an entry; the black dot follows as you scroll. It grows a little with every
+  entry added.
 
 ---
 
@@ -99,6 +102,37 @@ Full schema, the character bible, and the writing rules are in [`CLAUDE.md`](CLA
 
 ---
 
+## 🎬 How the entries get written — a writers' room of agents
+
+The entries aren't written by hand, and they aren't written by one model in one go either. They
+come out of something that grew, over a few months, into a **TV writers' room** — with one human
+in charge and a room of agents that each know only what their job needs:
+
+| Role | Who | Knows |
+|---|---|---|
+| Lead writer & producer | the human | everything; decides what is *true* |
+| Series bible | `CLAUDE.md` | the record of what is true — timeline, people, rules, and the *author knowledge* the character must never have |
+| Story editor | the main Claude Code session | plans arcs, writes one brief per entry, keeps the bible |
+| Episode writer | `entry-writer` agent | the bible + one brief. No memory of anything else. |
+| Script supervisor | `continuity-reviewer` agent | the bible + the entry; reports, changes nothing |
+| Subtitler | `simplifier` agent | one entry; writes its A1/A2 layer |
+| The readers | zero-context agents (`tools/reader.sh`) | **only the entries**, in order, nothing else |
+
+`/new-entries N details…` runs a batch: writers strictly in sequence (each reads the last accepted
+entry as canon), the review before the next writer, the simplifier in the background. Details you
+hand in are canon whether an entry uses them or not; unused ones wait in `seeds.md`. After the
+batch, the readers re-read everything and write [`READER.md`](READER.md) — what an audience that
+can't see the bible currently knows, suspects, and is waiting for. That's how dramatic irony gets
+measured instead of guessed.
+
+Why a room and not a pipeline, what turned out to be different from writing code this way (the
+spec is allowed to lie; some facts are hidden from the character but not the writer; validation is
+mostly a matter of taste), and what was learned the hard way: [`WRITERS-ROOM.md`](WRITERS-ROOM.md).
+None of it was designed up front — every rule in the room is there because of a specific failure
+it prevents.
+
+---
+
 ## 📁 Project structure
 
 ```
@@ -109,5 +143,13 @@ notes/
   02-decision.js
   …
 tools/validate.mjs   Syntax + data checks for the engine and every entry.
-CLAUDE.md            Author/maintainer guide (voice, timeline, people, schema).
+tools/reader.sh      Rebuilds READER.md with a zero-context reader agent.
+tools/brief-template.md  The brief a writer agent gets — the whole interface.
+.claude/agents/      entry-writer · continuity-reviewer · simplifier
+.claude/skills/new-entries/  The batch workflow (/new-entries N details…).
+CLAUDE.md            The series bible + maintainer guide (voice, timeline, people, schema).
+WRITERS-ROOM.md      How the room works and why it looks like this.
+READER.md            The reader's memory — what the audience knows so far.
+seeds.md             Details supplied for future entries, waiting for their episode.
+notes.md             The learner's study questions (sentence, grammar, vocab).
 ```
