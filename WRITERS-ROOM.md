@@ -1,7 +1,7 @@
 # The writers' room — how this notebook is written
 
 *Notes on the pattern, not the plot. The plot lives in `CLAUDE.md`. This file says how a serial
-piece of fiction gets written by a room of agents and one reader-author, and what turned out to be
+piece of fiction gets written by a room of agents under one lead writer, and what turned out to be
 different from writing code the same way.*
 
 Written 21 Sep 2026, after the session that added the spine (§2d of the bible).
@@ -14,14 +14,15 @@ The system that produces the entries maps onto a TV writers' room almost role fo
 
 | Room | Here | What it owns |
 |---|---|---|
-| Series bible | `CLAUDE.md` §2 (character, timeline, people, pathway) | What is **true**. Every writer reads it cold. |
-| Showrunner | The main session | Arcs, briefs, **author knowledge**, decisions about new facts, the engine. |
+| Lead writer & producer | The user | Owns the series. Controls the bible through the story editor; decides what is **true**; supplies details, arcs, and the story's meaning. |
+| Series bible | `CLAUDE.md` §2 (character, timeline, people, pathway) | The record of what is true. Every writer reads it cold. |
+| Story editor | The main session | Runs the room for the producer: arcs, briefs, **author knowledge**, keeps the bible, proposes new facts and records the producer's decisions, the engine. |
 | Episode writer | `entry-writer` agent (Opus) | One entry from one brief. No memory of anything else. |
 | Script supervisor | `continuity-reviewer` agent | Facts vs bible, voice, level, French, restraint budgets. |
 | Subtitler | `simplifier` agent | The A1/A2 layer, after the French is final. |
 | The whiteboard | `seeds.md` | Ideas that haven't found their episode. |
-| The reader's memory | `READER.md` | What a reader currently knows, suspects, and hasn't been told. |
-| The reader | The user | The only one who decides what is *true*. |
+| The readers | Zero-context agents (`tools/reader.sh`) | Read only the entries, in order, knowing nothing else. Stand in for the audience. |
+| The reader's memory | `READER.md` | What those readers currently know, suspect, and haven't been told. |
 
 A code pipeline assumes its modules are independent. A room assumes the opposite: **each episode
 creates canon for the next one.** That single difference explains most of the design below.
@@ -43,20 +44,20 @@ reviewed and accepted, because it reads N as canon — voice, last line, what wa
 simplifier runs in the background, and only after the French is final. (This was a bug once: the
 review had been backgrounded and a writer built on a stale entry.)
 
-**New facts go through the showrunner, on purpose.** A writer may not invent a person, a date, a
-message. If an entry asserts something the bible doesn't contain, the reviewer flags it and the
-showrunner decides: into the bible, or out of the entry. The reader's own additions (a
-conversation, a motive) go into the bible *before* any brief is written, since the writer sees
-nothing else.
+**New facts go through the story editor to the producer, on purpose.** A writer may not invent a
+person, a date, a message. If an entry asserts something the bible doesn't contain, the reviewer
+flags it and the story editor decides — or asks the producer — whether it goes into the bible or
+out of the entry. The producer's own additions (a conversation, a motive) go into the bible
+*before* any brief is written, since the writer sees nothing else.
 
-**Details supplied by the reader are canon whether used or not.** `/new-entries N details…`:
+**Details supplied by the producer are canon whether used or not.** `/new-entries N details…`:
 each detail is used where it belongs or banked in `seeds.md`; it is never dropped silently and never
 contradicted.
 
 **Restraint is a budget, and budgets are enforced by review.** One or two reflective lines per entry,
 *earned by a concrete scene*. Addie in at most one entry in five. No "she'd have loved this" as a
 reflex. No motto-ending, no bucket-list line. These are constraints on the **quality of restraint**;
-`validate.mjs` can't check them, a reader can.
+`validate.mjs` can't check them; a reviewer, or a reader, can.
 
 ## 3. Where literature differs from code — and the design has to differ
 
@@ -77,14 +78,16 @@ reflex. No motto-ending, no bucket-list line. These are constraints on the **qua
    persons per tense, escaping. Whether a reflective line is earned, whether a reason "sounds slightly
    too reasonable", whether the French sits at B1+ — only a reader can judge. Review is the test suite.
 
-4. **The reader is in the loop as an author.** The session that changed the story most (the
-   last-day conversation, the spine) produced no entry at all. The work was deciding what is true.
-   No agent should do that; the system routes it to the reader by design.
+4. **The producer writes by deciding, not by drafting.** The session that changed the story most
+   (the last-day conversation, the spine) produced no entry at all. The work was deciding what is
+   true. No agent should do that; the system routes every question of truth to the producer by
+   design, and the story editor's job is to ask it well.
 
-5. **Dramatic irony needs bookkeeping.** Irony is the gap between what the reader has seen and what
-   the character has admitted. Someone has to track that gap or it drifts. That is what `READER.md`
-   is for: a running account of what a reader who has read *only the entries* knows, suspects, and
-   is waiting for — rebuilt by an agent with no access to the bible, so it can't cheat.
+5. **Dramatic irony needs bookkeeping, and the audience has to be simulated.** Irony is the gap
+   between what a reader has seen and what the character has admitted. The producer can't measure
+   that gap from inside — they know the bible. So the audience is played by agents that read only
+   the entries, with no access to the bible, and `READER.md` is their running account of what they
+   know, suspect, and are waiting for. It's the only view of the story from outside.
 
 ## 4. The layers (as of entry 14)
 
@@ -92,7 +95,7 @@ reflex. No motto-ending, no bucket-list line. These are constraints on the **qua
 2. **What he says about why** — roots, passport, ENSA. All true. Slightly too true.
 3. **What Addie saw** — *"You're just…"* — a man building an exit. The sentence nobody finished.
 4. **What the year does to him** — he misses the quiet. Not loudly; in what he notices.
-5. **What the reader knows** — *« pour de bon »* is going to age; attachment is the subject.
+5. **What the readers know** — *« pour de bon »* is going to age; attachment is the subject.
 
 The notebook is the record of someone not quite telling himself the truth, in a language he chose
 on purpose to keep his head in France. Even the French is part of the self-persuasion.
@@ -112,8 +115,9 @@ on purpose to keep his head in France. Even the French is part of the self-persu
 ## 6. The reader's memory — how to use it
 
 `READER.md` is rebuilt from the entries alone (no bible, no briefs) by a fresh agent — see
-`tools/reader.sh`. It records, entry by entry, what a reader now believes, what they suspect, what
+`tools/reader.sh`. It records, entry by entry, what the readers now believe, what they suspect, what
 questions are open, and what the writer seems to be avoiding. Before planning a batch, read it: if
-the reader already suspects what you're about to reveal, you're late; if they have no idea, you're
-early. It is also the honest test of the spine — the fear of attachment should be visible to a
-reader before Felix admits it, and `READER.md` says whether it is.
+the readers already suspect what you're about to reveal, you're late; if they have no idea, you're
+early. It is also the honest test of the spine — the fear of attachment should be visible to the
+readers before Felix admits it, and `READER.md` says whether it is. When the readers find a hole
+("he could ask Eric"), it goes to the producer as a question, not to a writer as a beat.
