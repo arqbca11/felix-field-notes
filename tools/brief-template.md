@@ -11,6 +11,12 @@ Place: …                                   Coords: lat, lng   (omit both if no
 Threads touched: guide | Canada | Addie | family | friend | daily   (usually ONE; never all)
 Addie: no  |  yes — trigger: …  (one restrained paragraph max; the question stays open)
 
+Supplied details (user-provided; canon whether used or not — never contradict):
+  use here: … (how: as a beat / a prop / a remembered remark)      | none
+  canon, NOT for this entry (don't spend, don't contradict): …     | none
+  narrator device: none | Felix writes "…" although the detail says …  (only for his own
+    wants / plans / feelings — never for facts of the world)
+
 Beats (concrete, in order):
   1. …
   2. …

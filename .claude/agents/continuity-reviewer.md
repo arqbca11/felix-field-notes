@@ -14,6 +14,11 @@ Then check, in this order, and report each as PASS or a concrete finding (quote 
    The timeline in §2b and the people in §2c are the truth. Flag anything that contradicts
    them, and anything *new* the entry asserts that the bible does not contain (new facts must
    go back to the main agent for a decision).
+1b. **Supplied details.** If your prompt carries a `Supplied details` block (user-provided
+   canon from the batch), check that the entry uses the ones marked *use here* with real weight,
+   contradicts none of them, and doesn't spend the ones marked *NOT for this entry*. A
+   `narrator device` line licenses Felix to *write* something at odds with a detail about his
+   own wants/plans/feelings — that is not a finding; bending a fact of the world is.
 2. **Addie rules.** No contact, no messages, no meetings outside lessons; at most one
    restrained paragraph; the question stays open.
 3. **Voice.** Private notebook (no reader address), competent Felix, dry humour, motion at the

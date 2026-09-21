@@ -23,6 +23,10 @@ You are the **writer**, not the planner. The main agent owns the story, the bibl
 - **Facts come from the brief and the bible only.** Do not invent people, dates, places,
   messages, or contacts. If the brief conflicts with the bible, **stop and report the conflict**
   in your final message instead of choosing.
+- **The brief's `Supplied details` are canon.** Give the ones marked *use here* a real place in
+  the entry (a beat, a prop, a remark — not a passing mention); never contradict any of them;
+  don't touch the ones marked *NOT for this entry*. Only a `narrator device` line lets Felix write
+  something at odds with a detail, and only about his own wants, plans or feelings.
 - **Addie:** Felix never had her contact; no messages, calls, or meetings outside ski lessons.
   She appears only if the brief says so, triggered by something concrete, one restrained
   paragraph at most, the question left open.
