@@ -33,6 +33,11 @@ Rules for details (both new and banked):
 
 ## 1. Plan the batch
 - Read `CLAUDE.md` §3 (entry log + **open threads**) and the last three entries in `notes/`.
+- Read **`READER.md`** (the reader's memory, rebuilt from the entries alone — see
+  `WRITERS-ROOM.md` §6): what a reader who has seen only the pages currently knows, suspects and
+  is waiting for. Plan against that gap: if the reader already suspects what the next entry
+  reveals, you're late; if they have no idea, you're early. Anything the reader flags as a hole
+  ("he could ask Eric") is either a story decision for the user or a beat to answer.
 - Lay the working set of details against the N slots: which detail lands in which entry (and
   how — as a beat, a prop, a remembered remark), which are held for later. Details shape the
   plan; they don't replace it (the calendar, the kinds, the threads, the one-in-five Addie rule
@@ -104,4 +109,7 @@ the final sentence split).
    *Retired* with the reason. Tell the user, in one line, which details were used where and
    which are banked.
 5. `node tools/validate.mjs` must print `ALL DATA CHECKS PASS`.
-6. Commit (one commit for the batch, listing the entries) and push.
+6. Rebuild the reader's memory: `bash tools/reader.sh` (a fresh zero-context run over all
+   entries; a few minutes). Skim the new sections and tell the user in a few lines what the
+   reader now suspects that they didn't before — that is the batch's real result.
+7. Commit (one commit for the batch, listing the entries and `READER.md`) and push.
