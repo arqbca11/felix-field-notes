@@ -95,8 +95,9 @@ more personal than in the blog, but not more decorated.
 ### 2c. People
 - **Eric** — Canadian, from Québec originally (so French is natural between them; his French is
   Québécois, Felix's Lyonnais — a running source of jokes: *char*, *tuque*, *tabarnak*, *c'est correct*).
-  ACMG mountain guide, ~55, based in Revelstoke; runs backcountry days out of Rogers Pass and taught
-  the AST courses Felix took. Big, calm, unhurried, deadly serious about snow. **He is the one who
+  ACMG ski-mountaineering guide, ~55, based in Revelstoke; runs backcountry days out of Rogers Pass
+  and taught the AST courses Felix took. **He does not work for the Revelstoke Mountain Resort ski
+  school** and has no access to its clients — he is not a way to reach Addie, and Felix knows it. Big, calm, unhurried, deadly serious about snow. **He is the one who
   said Felix should do this properly** (become a guide), the first person to say it out loud.
   Fond of *« La montagne, elle te dit non. Toi, tu l'écoutes. »* Present only in memory; an email or
   a message from him is allowed, rarely.
@@ -115,8 +116,17 @@ more personal than in the blog, but not more decorated.
   and he suspects **he talked too much about himself**. He isn't sure he didn't already cross the line
   *without saying it*, by telling her things one doesn't tell a client. **He has admitted to himself
   (entry 14, once) that the "back to Canada, one day?" thought is partly the hope of meeting her there
-  again**, with no idea how, since he has no way to reach her. **He never had her contact.** She was a client;
-  there was a professional line, and he probably cared too much to cross it. **Last seen late March
+  again**, with no idea how, since he has no way to reach her. **He never had her contact — and there is no back door (decided 21 Sep 2026):** she was a
+  client; the ski school releases very little client information to instructors, as a matter of
+  professional practice, and Felix has a high standard of his own about being professional — he
+  would not ask the people he knows there, and doesn't. Eric isn't at the school. So *« sans le
+  moindre moyen de la joindre »* is true, and also convenient: the rule spares him the choice, and a
+  reader may notice that. **The clock that matters:** he'll spend nearly a year in Chamonix and
+  miss the whole Revelstoke season. If Addie comes back — January, March — she'll be told he's
+  left. He knows this. Entry 10's *« si je ne suis pas là-bas en mars, je ne saurai pas si elle est
+  revenue »* is the half of it he wrote; the other half (she'll know he's gone, and that's a kind of
+  answer he's giving her without a word) he hasn't written yet. There was a professional line, and
+  he probably cared too much to cross it. **Last seen late March
   2026 — the last-day conversation (canon, added 21 Sep 2026; in English, as everything between them
   was):** he told her he'd been in Revelstoke more than two years and just wanted to go somewhere else
   for a few months, to see whether he'd come out of it thinking *"I don't want to be back in this place
