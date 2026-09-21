@@ -86,7 +86,7 @@ more personal than in the blog, but not more decorated.
 | Summer 2024 | Stays in North America. **Bikepacking Vancouver → San Francisco** (~3 weeks, Aug–Sep 2024: Vancouver Island ferry, Olympic Peninsula, the Oregon coast, Highway 1, the redwoods) with childhood friend **Théo**. He does **not** see Addie: he never had her contact. The trip is just something they later *talk* about, because it's California. |
 | **Dec 2024 – Apr 2025** | **Canada, season 2 (2024/25).** Addie comes back for a week of lessons (Feb 2025). |
 | Summer 2025 | Chamonix; alpine climbing. |
-| **Dec 2025 – Apr 2026** | **Canada, season 3 (2025/26).** Addie comes back **twice** this season (a week in **January 2026**, then again in **March 2026**); he kept wondering whether she came back for the skiing or for him, and never asked. **Late March 2026, last day:** he tells her he doesn't know if he'll stay in Canada next season. She seems a bit disappointed; she doesn't push. He leaves Canada in **spring 2026**, straight into the blog journey. |
+| **Dec 2025 – Apr 2026** | **Canada, season 3 (2025/26).** Addie comes back **twice** this season (a week in **January 2026**, then again in **March 2026**); he kept wondering whether she came back for the skiing or for him, and never asked. **Late March 2026, last day — the conversation (canon, see §2c):** he tells her he's been in Revelstoke over two years and wants to go elsewhere for a few months, to see whether he ends up *not* wanting to come back. She doesn't push, but she does answer — and leaves a sentence unfinished. He leaves Canada in **spring 2026**, straight into the blog journey. |
 | May – 13 Sep 2026 | **The blog journey** (18 weekly posts, see `../CLAUDE.md` §3): Chamonix → Dolomites → Slovenia → Croatia → Bosnia → Lofoten → Lapland → Sweden → Saxony → Bavaria → Austria → Slovenia → Montenegro → home → Tour du Mont-Blanc. |
 | **~16 Sep 2026** | Train to England (Bath). Family. |
 | **Late Sep 2026** | **The decision:** move to Chamonix full time and train to become a *guide de haute montagne* (ski mountaineering is the heart of it). |
@@ -117,10 +117,21 @@ more personal than in the blog, but not more decorated.
   (entry 14, once) that the "back to Canada, one day?" thought is partly the hope of meeting her there
   again**, with no idea how, since he has no way to reach her. **He never had her contact.** She was a client;
   there was a professional line, and he probably cared too much to cross it. **Last seen late March
-  2026**: he told her he didn't know if he'd stay in Canada next season; she seemed a bit disappointed
-  and didn't push for more. **What he keeps circling:** whether she really liked him that way, and
-  whether he should have stepped outside the ski lesson. At the time he thought it wasn't appropriate.
-  He keeps thinking about her anyway.
+  2026 — the last-day conversation (canon, added 21 Sep 2026; in English, as everything between them
+  was):** he told her he'd been in Revelstoke more than two years and just wanted to go somewhere else
+  for a few months, to see whether he'd come out of it thinking *"I don't want to be back in this place
+  any more."* She sniffed: *"That's impossible! I think you like it here. You're just…"* — and didn't
+  finish. He went quiet, thinking, and **couldn't ask her what she hadn't said**. He told her he'd been
+  moving around since leaving home at eighteen, six months here, six there — *"like a social
+  butterfly"* — and that this time a lot of his best friends were leaving Revelstoke too. *"You can
+  always make new friends, I know that, but…"* — his own sentence, also unfinished. She seemed a bit
+  disappointed and asked nothing more. **The two unfinished sentences are the thread**: *"You're
+  just…"* is the thing he can't stop turning over. Entries 5 and 14 give the compressed version (*« elle
+  n'a rien demandé de plus »*, true); the notebook has **not yet written down what she actually said**
+  — that's a beat to spend once, on a concrete trigger, and when he does, her English words may stand
+  in italics inside the French, because that's how he remembers them. **What he keeps circling:**
+  whether she really liked him that way, and whether he should have stepped outside the ski lesson. At
+  the time he thought it wasn't appropriate. He keeps thinking about her anyway.
   **Rules:** restraint. No messages, no calls, no way to reach her (unless the user decides otherwise).
   She appears in maybe one entry in five, triggered by something concrete (a photo from Eric, a snow
   texture, a Californian in a café). Never sentimental narration, never a plot twist without the user
@@ -152,9 +163,47 @@ more personal than in the blog, but not more decorated.
   ready (Bertrand: *« C'est juste. On verra. »*), otherwise 2028.
 - His list's gaps: **ice and mixed routes** and a few graded **ski descents**; rock is strong;
   glacier ski touring is strong. Autumn = rock and dry-tooling and running; winter = ski list.
+- **Why Chamonix was the natural choice:** roots (his mother's valley, the grandfather's mountains,
+  Josiane on the stairs), a **French passport** through his mother, a place he could genuinely settle
+  in, and the ENSA is *there*. Canada is unsure in exactly that sense: no long-term status, friends
+  scattering, a life that was always seasonal. Chamonix is the reasonable answer; that's part of why
+  it isn't the whole answer.
 - **Canada, later?** He thinks about going back after Chamonix to continue his training there (the
   ACMG path, Eric's world), but has no idea when: next year, in a few years, or never. Keep it as an
   open, occasionally voiced thought, never a plan with dates.
+- **Long arc (author knowledge, NOT character knowledge — decided 21 Sep 2026):** Felix *will*
+  eventually decide to go back to Canada to continue the guide path there (Eric's world, and whatever
+  else pulls him: the place he left mid-sentence; Addie is inside that pull but not the whole of it).
+  He doesn't know this yet, and **the notebook must not know it either**: no dates, no plan, no
+  foreshadowing that reads as foreshadowing. The pull surfaces only as it does now, in passing, on
+  concrete triggers. Entry 2's *« je rentre à Chamonix pour de bon »* is **meant to age**; don't
+  soften or contradict it early. Chamonix has to give him something first (the probatoire, Bertrand's
+  verdict, the grandfather's mountains done properly) so that leaving reads as the next leg, not a
+  retreat — the same shape as the blog, every stop turning toward the next one.
+- **The spine underneath (author knowledge — decided 21 Sep 2026):** Felix left Canada because he
+  was **afraid of growing too attached** to the place (and to a person), and he **built reasons to
+  leave** — "over two years here," "my friends are leaving anyway," "let's see if I stop wanting to
+  come back," "social butterfly." That is what Addie saw and didn't say (*"You're just…"* scared /
+  running). **He still can't fully face this**, and the notebook shouldn't hand it to him: the reader
+  is allowed to see through the reasons before he does (the same dramatic irony as *« pour de bon »*).
+  The Chamonix year is where he finds out, slowly, that he **loves and misses the quiet, down-to-earth
+  nature of Canada** — Eric's silence about snow, flat voices, no one performing the mountains. And the
+  lesson is not Addie herself but what her memory proves: **attachment is an unavoidable part of life.**
+  He left, he was out of contact for more than a year, and the memory of skiing and talking with her
+  didn't go away. **Rules:** never stated as a thesis; it shows as behaviour, understatement and
+  what he notices (this *is* the Bouvier/Saint-Exupéry register — the journey works on you — never
+  named). The self-diagnosis, if it ever lands on the page, comes late, once, in plain B1 words, and
+  after Chamonix has paid off (probatoire / Bertrand). Until then he keeps giving the reasonable
+  reasons, and they keep sounding slightly too reasonable.
+  **How the writer carries it (craft, not plot):** (a) make Canada *physical*, never a feeling —
+  small specific things, spread thin: Eric's *« c'est correct »* meaning ten different things, nobody
+  talking on the skin track at Rogers Pass, the flat light in the cedars, a bakery; (b) let events
+  quietly contradict his reasons without him noticing — "my friends are leaving" (so who writes to
+  him?), "social butterfly" (a 14 m² studio and the same three people); (c) **Bertrand is the
+  counterweight**: a man who stayed, forty years in one valley — the living case for Chamonix, never
+  argued aloud; Chamonix must be worth staying for before leaving can be a choice rather than a drift;
+  (d) the book is about a man learning he is the kind of person who gets attached — Addie is the
+  evidence, not the subject; the one-in-five rule protects that.
 - Money: he has savings; picks up some ski-shop/rental shifts, and later some hut or race-marshal
   work. Don't over-detail finances; one honest line now and then is enough.
 

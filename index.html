@@ -174,6 +174,18 @@
   .lk-sense{margin-top:3px;}
   .lk-pos{color:var(--muted);font-size:10.5px;margin-right:5px;}
 
+  /* TIME AXIS — a small vertical scrollbar fixed on the left. One tick per entry, placed by
+     date; it grows a little with every entry. Drag (or click) to jump to that entry. */
+  .axis{position:fixed;left:14px;top:50%;transform:translateY(-50%);width:24px;z-index:900;
+    font-family:var(--sans);font-size:11px;color:var(--muted);touch-action:none;cursor:pointer;user-select:none;-webkit-user-select:none;}
+  .axis-line{position:absolute;left:11px;top:0;width:1px;height:100%;background:var(--line);}
+  .axis-tick{position:absolute;left:10px;width:3px;height:3px;border-radius:50%;background:#c4c4c4;transform:translateY(-50%);}
+  .axis-knob{position:absolute;left:8px;width:7px;height:7px;border-radius:50%;background:var(--ink);transform:translateY(-50%);cursor:grab;}
+  .axis.dragging,.axis.dragging .axis-knob{cursor:grabbing;}
+  .axis-label{position:absolute;left:28px;transform:translateY(-50%);white-space:nowrap;background:#fff;padding:1px 4px;
+    opacity:0;transition:opacity .15s;pointer-events:none;}
+  .axis:hover .axis-label,.axis.dragging .axis-label{opacity:1;}
+
   .empty-feed{max-width:672px;margin:0 auto;font-style:italic;color:var(--muted);}
 
   @keyframes spin{to{transform:rotate(360deg);}}
@@ -184,6 +196,8 @@
   }
   @media(max-width:600px){
     .top,.feed{padding-left:18px;padding-right:18px;}
+    .feed{padding-left:30px;}
+    .axis{left:4px;}
     .controls{padding:16px 18px 0 0;}
     .top-right{gap:10px;}
     .article{font-size:18.5px;}
@@ -221,6 +235,12 @@
 </div>
 
 <main class="feed" id="feed"></main>
+<div class="axis" id="axis" style="display:none">
+  <div class="axis-line"></div>
+  <div class="axis-ticks" id="axisTicks"></div>
+  <div class="axis-knob" id="axisKnob"></div>
+  <div class="axis-label" id="axisLabel"></div>
+</div>
 
 <script>
 /* ── ENTRY REGISTRY ─────────────────────────────────────────────────────────
@@ -268,6 +288,7 @@ function showAll(){
     stopAll();
     POSTS = manifest.map(e => POST_BY_ID[e.id]).filter(Boolean).sort((a,b)=>a.no-b.no);
     buildFeed();
+    buildAxis();
   });
 }
 
@@ -397,6 +418,73 @@ function buildFeed(){
     ${kind==='note' ? actionsHTML : ''}`;
   feed.appendChild(card);
 }); }
+
+// ── TIME AXIS ──
+// Ticks sit on the axis in proportion to their dates; the knob tracks the entry currently in
+// view. Dragging snaps the knob to the nearest tick and scrolls the page to that entry.
+const axis = document.getElementById('axis'), axisTicks = document.getElementById('axisTicks'),
+      axisKnob = document.getElementById('axisKnob'), axisLabel = document.getElementById('axisLabel');
+let AXIS = [], axisH = 0, axisDragging = false, axisCur = null;
+function buildAxis(){
+  axisTicks.innerHTML = ''; AXIS = [];
+  if(!POSTS.length){ axis.style.display = 'none'; return; }
+  axis.style.display = '';
+  // Small at first, a little longer per entry, never more than ~60% of the viewport.
+  axisH = Math.min(Math.round(innerHeight * .6), 48 + 16 * POSTS.length);
+  axis.style.height = axisH + 'px';
+  const t = p => new Date(p.date).getTime();
+  const t0 = t(POSTS[0]), span = t(POSTS[POSTS.length-1]) - t0;
+  AXIS = POSTS.map(p => ({ post:p, y: span > 0 ? (t(p)-t0)/span*axisH : axisH/2 }));
+  // Keep a minimum gap between ticks written a day or two apart, then refit to the axis length.
+  for(let i=1;i<AXIS.length;i++) AXIS[i].y = Math.max(AXIS[i].y, AXIS[i-1].y + 4);
+  const last = AXIS[AXIS.length-1].y;
+  if(last > axisH) AXIS.forEach(a => { a.y = a.y / last * axisH; });
+  AXIS.forEach(a => {
+    const el = document.createElement('div');
+    el.className = 'axis-tick'; el.style.top = a.y + 'px';
+    axisTicks.appendChild(el);
+  });
+  axisCur = null; syncAxis();
+}
+function setAxisKnob(a){
+  axisCur = a;
+  axisKnob.style.top = a.y + 'px';
+  axisLabel.style.top = a.y + 'px';
+  axisLabel.textContent = frFull(a.post.date);
+}
+// Which entry is in view: the last one whose top has passed a third of the viewport.
+function syncAxis(){
+  if(axisDragging || !AXIS.length) return;
+  const mark = innerHeight * .35;
+  let cur = AXIS[0];
+  for(const a of AXIS){
+    const el = document.getElementById(a.post.id);
+    if(el && el.getBoundingClientRect().top <= mark) cur = a;
+  }
+  if(cur !== axisCur) setAxisKnob(cur);
+}
+function axisPick(clientY){
+  const y = Math.min(Math.max(clientY - axis.getBoundingClientRect().top, 0), axisH);
+  let best = AXIS[0];
+  for(const a of AXIS) if(Math.abs(a.y - y) < Math.abs(best.y - y)) best = a;
+  if(best === axisCur) return;
+  setAxisKnob(best);
+  const el = document.getElementById(best.post.id);
+  if(el) window.scrollTo({ top: el.offsetTop - 20, behavior:'instant' });
+}
+axis.addEventListener('pointerdown', e => {
+  if(!AXIS.length) return;
+  e.preventDefault();
+  axisDragging = true; axis.classList.add('dragging');
+  axis.setPointerCapture(e.pointerId);
+  axisPick(e.clientY);
+});
+axis.addEventListener('pointermove', e => { if(axisDragging) axisPick(e.clientY); });
+function axisRelease(){ if(!axisDragging) return; axisDragging = false; axis.classList.remove('dragging'); }
+axis.addEventListener('pointerup', axisRelease);
+axis.addEventListener('pointercancel', axisRelease);
+window.addEventListener('scroll', syncAxis, { passive:true });
+window.addEventListener('resize', buildAxis);
 
 // ── SIMPLIFY ──
 function hasSimple(post){
