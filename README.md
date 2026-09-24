@@ -29,8 +29,10 @@ the topic; each one carries a level tag.
   (présent, passé composé, imparfait, futur simple). Grammar notes build on the blog's keystone
   (*passé composé vs imparfait*) and push into B1–B2: *plus-que-parfait*, *subjonctif*, *conditionnel
   passé*, reported speech, *dont / lequel*, *si* clauses.
-- **Read aloud** — a play button on every paragraph, plus **▶ Lire** for the whole entry with the
-  current line highlighted. Adjustable speed. Optional ElevenLabs voices; the browser's French voice
+- **Read aloud** — a play button on every paragraph. **Lire** makes every sentence clickable: click
+  one to hear it, and it comes back on the right with its hard spots underlined (new words, liaisons,
+  linked sounds, silent letters, tricky vowels); click a spot to hear just that bit and read a short
+  note. **Tout lire** (in that panel) reads the whole entry with the current line highlighted. Adjustable speed. Optional ElevenLabs voices; the browser's French voice
   works with no setup.
 - **Select-to-translate** — highlight any word or phrase in the French text for a quick gloss, with a
   🔊 button to hear it. The entry's own vocabulary answers first; single words then go to Wiktionary

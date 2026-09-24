@@ -30,6 +30,43 @@ FelixNotes.register({
       {fr:"Demain, je vais à la Crèmerie avec Bertrand. La fiche est déjà dans mon sac.", en:"Tomorrow, I am going to the Crèmerie with Bertrand. The card is already in my bag."}
     ]
   ],
+  read:[
+    [ // ¶ 0
+      [ {t:"Huit heures à", k:"enchainement", n:"The t of huit is said and runs into heures (mute h), then the r runs on: “ui-teu-ra” /ɥi.tœ.ʁa/."},
+        {t:"régler", k:"son", n:"“ré-glé”: r silent in -er."},
+        {t:"chaussures", k:"son", n:"au = o, ss = s, u = /y/: “sho-sur”."},
+        {t:"viens de rentrer", k:"son", n:"ien nasal, the e of de drops: “vyin d'ran-tré”."} ],
+      [ {t:"magasin", k:"son", n:"s between vowels = z: “ma-ga-zin”."},
+        {t:"location", k:"son", n:"-tion = “syon”: “lo-ka-syon”."},
+        {t:"chaud et", k:"muet", n:"d silent, and no liaison before et: “sho é”."},
+        {t:"sèche-chaussures", k:"mot", n:"Boot dryers. Two sh sounds close together: “sèsh sho-sur”."},
+        {t:"premiers touristes", k:"muet", n:"r and s of premiers silent, final s of touristes silent: “pre-myé tou-rist”."},
+        {t:"étaient", k:"muet", n:"-aient = just “è”: “é-tè”."} ],
+      [ {t:"week-end", k:"mot", n:"Borrowed English, said the French way: “wi-kènd” /wi.kɛnd/, d pronounced."},
+        {t:"et les", k:"muet", n:"No liaison after et: “é lé”."},
+        {t:"vacances scolaires", k:"muet", n:"The plural s's are silent: “va-kans sko-lèr”."},
+        {t:"paiera", k:"son", n:"The e is silent: “pè-ra” /pɛ.ʁa/."},
+        {t:"studio", k:"mot", n:"u = /y/: “stu-dyo” /sty.djo/, not “stoo-dio”."} ],
+      [ {t:"famille", k:"son", n:"ill = y sound: “fa-miy” /fa.mij/."},
+        {t:"Lyon", k:"mot", n:"One syllable: “lyon” /ljɔ̃/. The n is nasal, not pronounced."},
+        {t:"l'accent", k:"son", n:"cc before e = ks; t silent: “lak-san” /lak.sɑ̃/."},
+        {t:"ville", k:"son", n:"Here ll is a plain l: “vil”. Compare famille, a few words back."} ],
+      [ {t:"gamin", k:"son", n:"-in = nasal /ɛ̃/: “ga-min”, the n not said."},
+        {t:"skis trop longs", k:"muet", n:"All the final consonants are silent: “ski tro lon”."},
+        {t:"bonne taille", k:"son", n:"bonne is not nasal: “bon”. taille = “tay” /taj/."},
+        {t:"et une", k:"muet", n:"No liaison after et: “é un”."},
+        {t:"ne tourne plus", k:"muet", n:"In ne…plus the s is silent: “n' tourn plu”."} ],
+      [ {t:"client", k:"muet", n:"t silent, two syllables: “kli-yan” /kli.jɑ̃/."},
+        {t:"demandé", k:"son", n:"First e often drops: “d'man-dé”."} ],
+      [ {t:"Pas encore", k:"liaison", n:"Optional liaison: careful “pa-zan-kor”, everyday “pa an-kor”."} ],
+      [ {t:"réponds", k:"muet", n:"d and s silent: “ré-pon”."},
+        {t:"à un inconnu", k:"liaison", n:"Required liaison after un: “a un-nin-ko-nu” /a œ̃.n‿ɛ̃.kɔ.ny/."} ],
+      [ {t:"Crèmerie", k:"mot", n:"The middle e drops: “krèm-ri” /kʁɛm.ʁi/."},
+        {t:"Bertrand", k:"muet", n:"d silent: “bèr-tran”."},
+        {t:"fiche est", k:"enchainement", n:"The sh sound slides onto est: “fi-shè”."},
+        {t:"sac", k:"son", n:"Final c is said: “sak”."} ]
+    ]
+  ],
   vocab:[
     ['un magasin de location','a rental shop'],
     ['un sèche-chaussures','a boot-dryer, a boot-warmer'],

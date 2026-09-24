@@ -59,6 +59,74 @@ FelixNotes.register({
       {fr:"Cette fois, je ne vais pas repartir.", en:"This time, I am not going to leave again."}
     ]
   ],
+  read:[
+    [ // ¶ 0
+      [ {t:"trois ans", k:"liaison", n:"Required liaison: the silent s wakes up as a z. “troi-z-an” /tʁwa.z‿ɑ̃/."},
+        {t:"tourne autour", k:"enchainement", n:"The final e of tourne is silent, so the n slides onto autour: “tour-no-tour”."},
+        {t:"cette idée", k:"enchainement", n:"The t sound slides onto idée: “sè-ti-dé” /sɛ.ti.de/."} ],
+      [ {t:"dite à", k:"enchainement", n:"Feminine dite ends in a pronounced t, which links: “di-ta”. Compare entry 1, dit à = “di a”."},
+        {t:"voix haute", k:"liaison", n:"Aspirated h again: no link. “vwa | ot”."},
+        {t:"en enlevant", k:"liaison", n:"Required liaison after en: “an-nan-l'van” /ɑ̃.n‿ɑ̃l.vɑ̃/. The middle e of enlevant usually drops."},
+        {t:"peaux", k:"son", n:"eau = /o/, the x is silent: “po”. Same sound as pot, beau."} ],
+      [ {t:"répondu", k:"son", n:"on = nasal /ɔ̃/; u = /y/ (say “ee” with rounded lips): “ré-pon-du” /ʁe.pɔ̃.dy/."} ],
+      [ {t:"en Europe", k:"liaison", n:"Required liaison: “an-neu-rop” /ɑ̃.n‿ø.ʁɔp/."},
+        {t:"un été", k:"liaison", n:"Required liaison after un: “un-né-té” /œ̃.n‿e.te/."},
+        {t:"et l'idée", k:"muet", n:"The t of et is always silent, and et never makes a liaison: “é li-dé”."},
+        {t:"cailloux", k:"mot", n:"ill = a “y” sound, x silent: “ka-you” /ka.ju/."} ]
+    ],
+    [ // ¶ 1
+      [ {t:"Hier", k:"mot", n:"One syllable: “yèr” /jɛʁ/. The h is silent, the r is said."},
+        {t:"dit à", k:"muet", n:"t silent: “di a”."} ],
+      [ {t:"père a d'abord", k:"enchainement", n:"The r links forward and the final d of abord is silent: “pè-ra da-bor”."},
+        {t:"demandé", k:"son", n:"The first e often drops: “d'man-dé” /dmɑ̃.de/."} ],
+      [ {t:"d'être inquiet", k:"enchainement", n:"être ends in a pronounced -tr that runs into inquiet: “dè-trin-kyè”. in = nasal /ɛ̃/; the final t is silent."},
+        {t:"questions", k:"son", n:"After s, -tion is “tyon”, not “syon”: “kès-tyon” /kɛs.tjɔ̃/."} ],
+      [ {t:"des économies", k:"liaison", n:"Required: “dé-zé-ko-no-mi” /de.z‿e.kɔ.nɔ.mi/."},
+        {t:"des heures", k:"liaison", n:"Mute h, so the liaison happens: “dé-zeur” /de.z‿œʁ/. Compare voix haute, where the h blocks it."},
+        {t:"dans un magasin", k:"liaison", n:"Required liaison: “dan-zun”. magasin: single s between vowels = z, “ma-ga-zin”."},
+        {t:"rien à personne", k:"liaison", n:"Liaison after rien, usual in careful speech: “ryin-na pèr-son”."} ],
+      [ {t:"Il a hoché", k:"enchainement", n:"The l links onto a (“i-la”), but hocher has an aspirated h: no link after it. “i-la | o-ché”."} ],
+      [ {t:"Puis il a", k:"muet", n:"The s of puis is silent and makes no liaison: “pui i-la”. ui is one quick glide /ɥi/."},
+        {t:"bien assuré", k:"liaison", n:"Liaison after bien: “byin-na-su-ré” /bjɛ̃.n‿a.sy.ʁe/. ss = s sound."},
+        {t:"veut dire", k:"muet", n:"t silent before a consonant: “veu dir” /vø diʁ/."} ]
+    ],
+    [ // ¶ 2
+      [ {t:"presque", k:"son", n:"One syllable: “presk” /pʁɛsk/. The final e is silent."} ],
+      [ {t:"Elle a regardé", k:"enchainement", n:"The l links onto a: “è-la”. The e of regardé often drops: “r'gar-dé”."},
+        {t:"et elle", k:"muet", n:"Never a liaison after et: “é èl”."},
+        {t:"Chamonix", k:"mot", n:"The x is silent: “sha-mo-ni” /ʃa.mɔ.ni/."} ],
+      [ {t:"mot", k:"muet", n:"Final t silent: “mo” /mo/."} ],
+      [ {t:"Elle y est née", k:"enchainement", n:"One smooth chain: “è-li-è né”. y and est are two vowels meeting, no consonant between."},
+        {t:"coûte", k:"son", n:"oû = /u/: “koot” /kut/. The circumflex does not change the sound."} ],
+      [ {t:"Chloé", k:"mot", n:"ch = k here (Greek origin): “klo-é” /klɔ.e/."},
+        {t:"a été", k:"son", n:"Three vowel sounds in a row with no consonant: “a-é-té” /a.e.te/. Say each one."},
+        {t:"il y a trois ans", k:"liaison", n:"Spoken, il y a often shrinks to “ya”; trois ans keeps its required z: “troi-z-an”."} ],
+      [ {t:"seulement de le", k:"son", n:"Fast speech drops the e's: “seul-man d'le”."} ],
+      [ {t:"raison", k:"son", n:"Single s between vowels = z: “rè-zon” /ʁɛ.zɔ̃/."} ],
+      [ {t:"c'est agaçant", k:"liaison", n:"Optional liaison: careful “sè-ta-ga-san” /sɛ.t‿a.ga.sɑ̃/, often skipped. ç = s."} ]
+    ],
+    [ // ¶ 3
+      [ {t:"Donc", k:"muet", n:"At the start of a sentence the c is usually said: “donk” /dɔ̃k/."},
+        {t:"c'est écrit", k:"liaison", n:"Common liaison: “sè-té-kri” /sɛ.t‿e.kʁi/. The t of écrit is silent."},
+        {t:"rentre à", k:"enchainement", n:"The -tr of rentre runs straight into à: “ran-tra”."},
+        {t:"guide", k:"son", n:"gu = hard g, the u is silent: “gid” /gid/."} ],
+      [ {t:"trouve un", k:"enchainement", n:"The v slides onto un: “trou-vun”."},
+        {t:"Bertrand", k:"mot", n:"Final d silent: “bèr-tran” /bɛʁ.tʁɑ̃/."},
+        {t:"vieux guide", k:"muet", n:"x silent before a consonant: “vyeu gid”. (Before a vowel, vieux becomes vieil: un vieil ami.)"},
+        {t:"grand-père", k:"muet", n:"d silent: “gran-pèr”. (Before a vowel, grand links with a t sound: un grand‿homme.)"} ],
+      [ {t:"mixte", k:"mot", n:"x = ks: one syllable, “mikst” /mikst/."},
+        {t:"quelques descentes sérieuses", k:"muet", n:"All the plural s's are silent: “kèl-k' dé-sant sé-ryeuz”. The sc of descentes is one s sound."} ],
+      [ {t:"un hiver", k:"liaison", n:"Mute h, so liaison: “un-ni-vèr” /œ̃.n‿i.vɛʁ/."} ]
+    ],
+    [ // ¶ 4
+      [ {t:"jeudi", k:"son", n:"eu = /ø/: “jeu-di” /ʒø.di/."} ],
+      [ {t:"Londres", k:"mot", n:"London in French: “londr” /lɔ̃dʁ/, the s silent."},
+        {t:"Saint-Gervais", k:"mot", n:"“sin-jèr-vè” /sɛ̃.ʒɛʁ.vɛ/. Both the t and the s are silent."},
+        {t:"petit train", k:"son", n:"The first e of petit drops: “p'ti trin” /pti tʁɛ̃/."} ],
+      [ {t:"virage", k:"son", n:"ge = “zh” /ʒ/: “vi-raj” /vi.ʁaʒ/."} ],
+      [ {t:"je ne repartirai pas", k:"son", n:"Spoken, the little e's fall: roughly “jeun' r'par-ti-ré pa”. -rai (futur) = /ʁe/."} ]
+    ]
+  ],
   vocab:[
     ['tourner autour de','to circle around (an idea)'],
     ['une peau (de phoque)','a climbing skin (for ski touring)'],

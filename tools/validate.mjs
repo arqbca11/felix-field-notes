@@ -90,7 +90,22 @@ M.forEach((e, i) => {
       arr.forEach((it, j) => { if (!it || typeof it.fr !== 'string' || typeof it.en !== 'string' || !it.fr.trim() || !it.en.trim()) fail(`SIMPLE ${i}:${j} needs {fr,en}`, p.id); });
     });
   }
-  const minGram = p.kind === 'note' ? 1 : 3;
+  // `read` (optional): one array per paragraph, one array of marks per sentence; each mark's
+  // text must occur in its sentence, with a known kind and a note
+  if (p.read != null) {
+    simpleTag += 'R ';
+    const KINDS_R = new Set(['mot','liaison','enchainement','muet','son']);
+    if (!Array.isArray(p.read) || p.read.length !== p.fr.length) fail('READ: need one array per paragraph', p.id);
+    else p.fr.forEach((para, i) => {
+      const sents = splitSentences(para), arr = p.read[i];
+      if (!Array.isArray(arr) || arr.length !== sents.length) { fail(`READ ¶${i}: ${Array.isArray(arr)?arr.length:'?'} items vs ${sents.length} sentences`, p.id); return; }
+      arr.forEach((marks, j) => (marks || []).forEach((m, k) => {
+        if (!m || !m.t || !m.n || !KINDS_R.has(m.k)) fail(`READ ${i}:${j}:${k} needs {t,k,n} with a known kind`, p.id);
+        else if (!sents[j].includes(m.t)) fail(`READ ${i}:${j}:${k} "${m.t}" not found in sentence`, p.id);
+      }));
+    });
+  } else simpleTag += '  ';
+  const minGram =p.kind === 'note' ? 1 : 3;
   if ((p.gram || []).length < minGram) fail('gram <', minGram, 'for kind', p.kind, p.id);
   const words = p.fr.join(' ').split(/\s+/).length;
   console.log(`  #${String(p.no).padStart(2)} ${p.date} ${p.kind.padEnd(8)} ${p.level.padEnd(3)} ${String(words).padStart(4)} words  ${(p.vocab||[]).length} vocab  ${(p.gram||[]).length} gram  ${simpleTag}${p.lat!=null?'📍':'  '} ${p.title || '(note)'}`);

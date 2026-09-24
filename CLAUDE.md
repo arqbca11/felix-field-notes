@@ -298,6 +298,16 @@ read-aloud uses TTS (`data-play="simple"` reuses `playOne` and the audio cache).
 works on the simplified French too (`runLookup` accepts `.simp-fr` as well as `.article`). Entries without a
 matching `simple` block show no button. Learn-only, like everything else language-related.
 
+**Lire (reworked 24 Sep 2026).** *Lire* is now a toggle like *Simplifier*. When on, clicking a
+sentence plays it (`.sent.reading`) and shows it in the `.read-block`, which is **sticky at the top of
+the right column** (one `.read-slot`, only the last clicked sentence), with its **hard spots**
+underlined (`.hard`); clicking one plays just that fragment and shows its note. Side panels stack in
+the order they were opened, except Lire, which is always moved to the top. *Simplifier* can be on at
+the same time: then the simplified column mirrors the sentence being read (`mirrorSimple`).
+The whole-entry sequential reader moved into that panel as *Tout lire*. Hard spots are **data** — the
+entry's optional `read` field (§6); entries without it still read sentence by sentence, with no
+underlines. Sentences are now wrapped in `.sent` on every entry, not only those with `simple`.
+
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
 `localStorage` as `felix_notes_learn`) reveals everything language-related: voice/speed controls,
@@ -311,8 +321,8 @@ like `runLookup`) so plain mode stays plain. Turning Learn off closes open panel
 - **All entries, oldest first.** `showAll()` injects every file in the manifest and renders them
   sorted by `no` ascending. No "latest N" cap, no date navigation. (If the notebook grows large,
   add a "load older" control then; don't pre-build it.)
-- **`kind` per entry** drives the card: `note` renders compact (meta line, text, actions below);
-  the other kinds render meta, title, actions, text. Chrome only shows what exists (no *Vocabulaire*
+- **`kind` per entry** drives the card: `note` renders compact (tighter spacing; actions sit above the text like every other kind — changed 24 Sep 2026);
+  all kinds render meta, title, actions, text. Chrome only shows what exists (no *Vocabulaire*
   button without `vocab`, no *Grammaire* without `gram`). `lat`/`lng` are kept in the data but **not rendered**.
 - **Identity:** deliberately none. `Newsreader` for all reading text, the system sans for the small
   UI labels. Hairline rules between entries. Buttons are underlined text, not pills. The only
@@ -350,6 +360,10 @@ FelixNotes.register({
     [ {fr:"…", en:"…"}, … ],         //   one {fr,en} per SENTENCE of engine/sentences.js's split
     …                                //   (fr = A1/A2 rewrite, en = gloss of that rewrite)
   ],
+  read:[                             // optional — Lire's hard spots (§5): one array per paragraph,
+    [ [ {t:"trois ans", k:"liaison", n:"Required liaison: “troi-z-an”."} ], [], … ],  // one array per SENTENCE
+    …                                //   t = exact text in the sentence; k = mot | liaison | enchainement |
+  ],                                 //   muet | son; n = short English note; say = optional text to speak
   vocab:[ ['mot fr','gloss'], ['verbe','to …', FelixNotes.verb('verbe', pres, pc, imp, fut)], … ],
   gram:[ {h:'Heading', p:'Explanation with <span class="ex">…</span>'}, … ]
 });
@@ -362,6 +376,12 @@ form strings. Mark a vocab entry as a verb only when you give real conjugations.
 to see the numbered sentences, then write one `{fr,en}` per line. The validator checks the counts;
 the page silently hides the *Simplifier* button if they don't match. The **`simplifier`** subagent
 (`.claude/agents/simplifier.md`, Opus) writes this block for one file — run it after `entry-writer`.
+
+`read` uses the same sentence split (validator checks counts and that every `t` occurs in its
+sentence). **Every entry has one (1–14, 24 Sep 2026); new entries should ship with it.** Good hard spots: required/optional/forbidden liaisons
+(incl. *h aspiré*), *enchaînement*, silent final letters, *e* that drops in speech, nasal and *eu/u*
+vowels, place names. Notes in plain English with a rough respelling, IPA only when sure. Use curly
+quotes “ ” inside `n` (the strings are double-quoted).
 
 Manifest line (`notes/manifest.js`, chronological, newest last):
 ```js
@@ -387,6 +407,7 @@ the main agent's decision.
 3. `fr` and `en` same length. Vocab and grammar sized by kind (§4). Keep one future-tense or
    subjunctive beat in play across neighbouring entries.
 3b. Run the `simplifier` subagent on the new file so it ships with its `simple` block.
+3c. Add the `read` block (Lire's hard spots, §6) — 2–4 marks per sentence, accuracy over quantity.
 4. Append a line to the **entry log** (§3) and update *open threads*.
 5. Run `node tools/validate.mjs` (§10).
 

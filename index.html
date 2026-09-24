@@ -74,7 +74,6 @@
   .act{color:var(--soft);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);padding:2px 0;}
   .act:hover{color:var(--ink);text-decoration-color:var(--ink);}
   .act.on,.act.playing{color:var(--ink);text-decoration-color:var(--ink);}
-  .post.note .post-actions{grid-column:1/-1;order:3;margin-top:16px;}
 
   .article{font-size:20px;line-height:1.72;margin-top:22px;min-width:0;}
   .post.note .article{margin-top:14px;}
@@ -131,6 +130,34 @@
   .simp .pp-btn{top:8px;}
   .simp-fr{display:block;font-size:20px;line-height:1.72;color:var(--ink);}
   .simp-en{display:block;font-size:15px;line-height:1.6;color:var(--soft);margin-top:2px;}
+
+  /* READ — Lire: click a sentence on the left to hear it; on the right it comes back with its
+     hard spots underlined (new word, liaison, linking, silent letters, a tricky sound) */
+  .post.read-on .sent{cursor:pointer;border-bottom:1px dotted var(--line);transition:background .15s;}
+  .post.read-on .sent:hover{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
+  .post.read-on .sent.reading{border-bottom-color:var(--ink);}
+  .sent.speaking,.hard.speaking{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
+  /* The Lire panel stays at the top of the right column while you scroll; panels opened after it
+     (translation, simplified sentence, notes) flow underneath. */
+  .read-block{display:none;}
+  .read-block.open{display:block;position:sticky;top:56px;z-index:2;background:#fff;
+    max-height:calc(100vh - 76px);overflow-y:auto;padding-bottom:14px;border-bottom:1px solid var(--line);
+    box-shadow:0 -60px 0 0 #fff;}   /* white band above it, so text scrolling under doesn't show */
+  .read-top{display:flex;gap:18px;align-items:baseline;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin:0 0 12px;}
+  .read-all{color:var(--soft);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
+  .read-all:hover,.read-all.playing{color:var(--ink);text-decoration-color:var(--ink);}
+  .read-block.has-items .read-hint{display:none;}
+  .read-slot:empty{display:none;}
+  .read-card{position:relative;display:block;padding:2px 0 2px 34px;}
+  .read-card .pp-btn{top:8px;}
+  .read-fr{display:block;font-size:20px;line-height:1.72;color:var(--ink);}
+  .hard{cursor:pointer;border-bottom:1.5px solid var(--ink);}
+  .hard:hover,.hard.on{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
+  .read-none{display:block;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .read-note{display:block;font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--soft);margin-top:8px;}
+  .read-note:empty{display:none;}
+  .read-note .rn-t{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);}
+  .read-note .rn-k{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 6px;}
 
   .notes{display:none;}
   .notes.open{display:block;}
@@ -312,8 +339,9 @@ function setLearn(on){
   setLS(KEY_LEARN, on ? '1' : '0');
   if(!on){
     stopAll(); hideLookup();
-    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open').forEach(el => el.classList.remove('open'));
     document.querySelectorAll('.post.simple-on').forEach(p => clearSimple(p));
+    document.querySelectorAll('.post.read-on').forEach(p => clearRead(p));
     document.querySelectorAll('.act.on').forEach(b => b.classList.remove('on'));
     document.querySelectorAll('.post.split').forEach(p => p.classList.remove('split'));
     document.querySelectorAll('.article p.dictating').forEach(p => p.classList.remove('dictating'));
@@ -347,12 +375,10 @@ function buildFeed(){
   card.className = 'post ' + kind; card.id = post.id;
   const hasVocab = !!(post.vocab && post.vocab.length), hasGram = !!(post.gram && post.gram.length);
 
-  // Sentences are wrapped only when the entry ships a `simple` block that matches the split
-  // (a data slip must never break plain reading).
+  // Every sentence is wrapped (Lire plays sentences on click; Simplifier rewrites them).
+  // The Simplifier button only shows when the entry's `simple` block matches the split.
   const simpleOK = hasSimple(post);
-  const ptext = (p,i) => simpleOK
-    ? splitSentences(p).map((t,j) => `<span class="sent" data-sent="${i}:${j}">${t}</span>`).join(' ')
-    : p;
+  const ptext = (p,i) => splitSentences(p).map((t,j) => `<span class="sent" data-sent="${i}:${j}">${t}</span>`).join(' ');
   const frHTML = post.fr.map((p,i) =>
     `<p>`+
       `<button class="pp-btn learn-only" data-play="para" data-id="${post.id}" data-i="${i}" aria-label="Lire">${ICON_PLAY}</button>`+
@@ -386,7 +412,7 @@ function buildFeed(){
     ? `<h2>${post.title}${post.titleEn ? `<span class="en-title learn-only">${post.titleEn}</span>` : ''}</h2>` : '';
   const actionsHTML = `
       <div class="post-actions learn-only">
-        <button class="act act-read" data-play="all" data-id="${post.id}">Lire</button>
+        <button class="act" data-toggle="read" data-id="${post.id}">Lire</button>
         <button class="act" data-toggle="en" data-id="${post.id}">Traduction</button>
         ${simpleOK ? `<button class="act" data-toggle="simple" data-id="${post.id}">Simplifier</button>` : ''}
         ${hasVocab ? `<button class="act" data-toggle="vocab" data-id="${post.id}">Vocabulaire</button>` : ''}
@@ -403,19 +429,23 @@ function buildFeed(){
         ${post.level ? `<span class="learn-only">${post.level}</span>` : ''}
       </div>
       ${titleHTML}
-      ${kind==='note' ? '' : actionsHTML}
+      ${actionsHTML}
     </div>
     <div class="article">${frHTML}</div>
     <aside class="post-side">
       <div class="en-block" id="en-${post.id}">${enHTML}</div>
+      <div class="read-block" id="read-${post.id}">
+          <p class="read-top"><button class="read-all" data-play="all" data-id="${post.id}">Tout lire</button>
+            <span class="read-hint">Cliquez une phrase pour l\'écouter.</span></p>
+          <p class="read-slot"></p>
+      </div>
       ${simpleOK ? `<div class="simple-block" id="simple-${post.id}">
           <p class="simple-hint">Cliquez une phrase à gauche pour lire une version plus simple.</p>
           ${post.fr.map((_,i) => `<p class="simp-para" data-i="${i}"></p>`).join('')}
       </div>` : ''}
       ${hasVocab ? `<div class="notes" id="vocab-${post.id}"><div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table></div>` : ''}
       ${hasGram ? `<div class="notes" id="gram-${post.id}"><div class="nsec-label">Grammaire</div>${gramHTML}</div>` : ''}
-    </aside>
-    ${kind==='note' ? actionsHTML : ''}`;
+    </aside>`;
   feed.appendChild(card);
 }); }
 
@@ -511,9 +541,88 @@ function renderSimplePara(postEl, post, i){
   block.classList.toggle('has-items', !!postEl.querySelector('.sent.on'));
 }
 
+// ── READ (Lire) ──
+// Optional `read` data per entry: read[i][j] = the hard spots of sentence j of paragraph i,
+// each {t, k, n, say?}: t = exact text inside the sentence, k = kind (READ_KINDS), n = short
+// English note, say = what to speak for it if not t. Entries without it still read sentence
+// by sentence; they just show no underlines.
+const READ_KINDS = { mot:'mot', liaison:'liaison', enchainement:'enchaînement', muet:'lettres muettes', son:'son' };
+function readMarks(post, i, j){ return (post.read && post.read[i] && post.read[i][j]) || []; }
+// Sentence HTML with each mark wrapped (in order; a mark not found, or overlapping, is skipped).
+function markSentence(sent, marks){
+  const found = [];
+  let pos = 0;
+  marks.forEach((m,k) => {
+    let at = sent.indexOf(m.t, pos); if(at < 0) at = sent.indexOf(m.t);
+    if(at < 0 || found.some(f => at < f.end && at + m.t.length > f.at)) return;
+    found.push({at, end: at + m.t.length, k}); pos = at + m.t.length;
+  });
+  found.sort((a,b) => a.at - b.at);
+  let out = '', cur = 0;
+  found.forEach(f => {
+    out += escHTML(sent.slice(cur, f.at)) + `<span class="hard" data-k="${f.k}">${escHTML(sent.slice(f.at, f.end))}</span>`;
+    cur = f.end;
+  });
+  return out + escHTML(sent.slice(cur));
+}
+function clearRead(postEl){
+  postEl.classList.remove('read-on');
+  postEl.querySelectorAll('.sent.reading').forEach(s => s.classList.remove('reading'));
+  postEl.querySelector('.read-slot').innerHTML = '';
+  const block = postEl.querySelector('.read-block'); if(block) block.classList.remove('has-items');
+}
+// Show one sentence (the last one clicked) at the top of the right column, then play it.
+function showReadSentence(postEl, post, i, j){
+  postEl.querySelectorAll('.sent.reading').forEach(s => s.classList.remove('reading'));
+  const sentEl = postEl.querySelector(`.sent[data-sent="${i}:${j}"]`); if(sentEl) sentEl.classList.add('reading');
+  const marks = readMarks(post, i, j);
+  const slot = postEl.querySelector('.read-slot');
+  slot.innerHTML = `<span class="read-card" data-sent="${i}:${j}">`+
+    `<button class="pp-btn" data-play="sent" data-id="${post.id}" data-i="${i}" data-j="${j}" aria-label="Lire">${ICON_PLAY}</button>`+
+    `<span class="read-fr">${markSentence(splitSentences(post.fr[i])[j], marks)}</span>`+
+    (marks.length || !post.read ? '' : '<span class="read-none">Rien de difficile ici.</span>')+
+    `<span class="read-note"></span></span>`;
+  postEl.querySelector('.read-block').classList.add('has-items');
+  mirrorSimple(postEl, post);
+  onPlay(slot.querySelector('.pp-btn'));
+}
+// With Lire and Simplifier both on, the simplified column follows the sentence being read.
+function mirrorSimple(postEl, post){
+  if(!postEl.classList.contains('simple-on') || !postEl.classList.contains('read-on')) return;
+  const cur = postEl.querySelector('.sent.reading');
+  postEl.querySelectorAll('.sent.on').forEach(s => s.classList.remove('on'));
+  if(cur) cur.classList.add('on');
+  post.fr.forEach((_,i) => renderSimplePara(postEl, post, i));
+}
+// Click on an underlined spot: show its note, play just that bit.
+function onHard(hardEl){
+  const card = hardEl.closest('.read-card'), postEl = hardEl.closest('.post');
+  const post = POSTS.find(x => x.id === postEl.id); if(!post) return;
+  const [i,j] = card.dataset.sent.split(':').map(Number), k = +hardEl.dataset.k;
+  const m = readMarks(post, i, j)[k]; if(!m) return;
+  card.querySelectorAll('.hard.on').forEach(h => h.classList.remove('on'));
+  hardEl.classList.add('on');
+  card.querySelector('.read-note').innerHTML =
+    `<span class="rn-t">${escHTML(m.t)}</span><span class="rn-k">${READ_KINDS[m.k] || m.k}</span>${m.n}`;
+  const playerId = `frag:${post.id}:${i}:${j}:${k}`;
+  if(activePlayer === playerId){ stopAll(); return; }
+  stopAll(); activePlayer = playerId;
+  speakSequence([{text: m.say || m.t, para: hardEl}]).then(() => { if(activePlayer === playerId) stopAll(); });
+}
+
 // ── INTERACTIONS ──
 feed.addEventListener('click', e => {
+  const hard = e.target.closest('.hard');
+  if (hard) { onHard(hard); return; }
   const sent = e.target.closest('.sent');
+  const sel = window.getSelection();
+  if (sent && sel && !sel.isCollapsed) return;           // a text selection is a lookup, not a click
+  if (sent && sent.closest('.post.read-on')) {
+    const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
+    const [i,j] = sent.dataset.sent.split(':').map(Number);
+    if (post) showReadSentence(postEl, post, i, j);
+    return;
+  }
   if (sent && sent.closest('.post.simple-on')) {
     const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
     if (post) { sent.classList.toggle('on'); renderSimplePara(postEl, post, +sent.dataset.sent.split(':')[0]); }
@@ -574,8 +683,14 @@ feed.addEventListener('click', e => {
     const open = block.classList.toggle('open');
     btn.classList.toggle('on', open);
     const post = btn.closest('.post');
-    if (btn.dataset.toggle === 'simple') { if (open) post.classList.add('simple-on'); else clearSimple(post); }
-    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open'));
+    // Panels stack in the order they were opened, except Lire, which always sits on top.
+    if (open) { const side = block.parentNode; if (btn.dataset.toggle === 'read') side.prepend(block); else side.appendChild(block); }
+    if (btn.dataset.toggle === 'simple') {
+      if (open) { post.classList.add('simple-on'); const p = POSTS.find(x => x.id === post.id); if (p) mirrorSimple(post, p); }
+      else clearSimple(post);
+    }
+    if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } }
+    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open'));
   }
 });
 
@@ -601,8 +716,8 @@ async function fetchTTS(text){
 
 function clearPlayingUI(){
   document.querySelectorAll('.pp-btn').forEach(b=>{ b.classList.remove('playing'); b.innerHTML=ICON_PLAY; });
-  document.querySelectorAll('.article p.speaking').forEach(p=>p.classList.remove('speaking'));
-  document.querySelectorAll('.act-read').forEach(b=>{ b.classList.remove('playing'); b.textContent='Lire'; });
+  document.querySelectorAll('.speaking').forEach(p=>p.classList.remove('speaking'));
+  document.querySelectorAll('.read-all').forEach(b=>{ b.classList.remove('playing'); b.textContent='Tout lire'; });
 }
 function stopAll(){
   seqToken++;
@@ -660,11 +775,14 @@ function onPlay(btn){
   const post=POSTS.find(p=>p.id===id);
   const cardEl=document.getElementById(id);
   const paras=[...cardEl.querySelectorAll('.article p')];
-  const ppBtns=[...cardEl.querySelectorAll('.pp-btn')];
+  const ppBtns=[...cardEl.querySelectorAll('.article .pp-btn')];
   let items;
   if(kind==='all'){
     items=post.fr.map((t,i)=>({text:t,para:paras[i],btn:ppBtns[i]}));
     btn.classList.add('playing'); btn.textContent='Arrêter';
+  } else if(kind==='sent'){
+    const i=+btn.dataset.i, j=+btn.dataset.j;
+    items=[{text:splitSentences(post.fr[i])[j],para:cardEl.querySelector(`.sent[data-sent="${i}:${j}"]`),btn}];
   } else if(kind==='simple'){
     items=[{text:post.simple[+btn.dataset.i][+btn.dataset.j].fr,btn}];
   } else {
@@ -946,7 +1064,7 @@ function runLookup(){
   if(!raw || raw.length>80 || raw.split(' ').length>10){ hideLookup(); return; }
   const node = sel.anchorNode;
   const host = node && (node.nodeType===1 ? node : node.parentElement);
-  if(!host || !host.closest('.article, .simp-fr')){ hideLookup(); return; }   // the French reading text, or a simplified sentence
+  if(!host || !host.closest('.article, .simp-fr, .read-fr')){ hideLookup(); return; }   // the French reading text, or a simplified sentence
   const rect = sel.getRangeAt(0).getBoundingClientRect();
   if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
   const my = ++lookupSeq;

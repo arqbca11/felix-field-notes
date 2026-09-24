@@ -20,6 +20,23 @@ FelixNotes.register({
       {fr:"Je regarde quand même. Puis je ferme la page. Je n'ai pas fini de lire.", en:"I look anyway. Then I close the page. I have not finished reading."}
     ]
   ],
+  read:[
+    [ // ¶ 0
+      [ {t:"dis à personne", k:"muet", n:"The s of dis is silent, no link: “di a pèr-son”."},
+        {t:"de temps en temps", k:"liaison", n:"Fixed expression with a required liaison: “d'tan-zan-tan” /də tɑ̃.z‿ɑ̃ tɑ̃/. The p is silent."},
+        {t:"formation", k:"son", n:"-tion = “syon”: “for-ma-syon” /fɔʁ.ma.sjɔ̃/."},
+        {t:"guide", k:"son", n:"gu = hard g, u silent: “gid”."},
+        {t:"qu'Eric a faite", k:"enchainement", n:"One chain: “kè-ri-ka fèt”. The feminine t of faite is pronounced."} ],
+      [ {t:"l'année prochaine", k:"son", n:"nn is a single n: “la-né”. -aine = “èn”: “pro-shèn”."} ],
+      [ {t:"Peut-être", k:"enchainement", n:"The t of peut is said here and slides onto être: “peu-tètr”."},
+        {t:"quelques années", k:"liaison", n:"Required liaison: “kèl-k'-za-né” /kɛl.kə.z‿a.ne/."} ],
+      [],
+      [ {t:"quand même", k:"muet", n:"d silent before a consonant: “kan mèm”."},
+        {t:"et je", k:"muet", n:"t of et always silent: “é j'”."},
+        {t:"referme", k:"son", n:"First e drops in speech: “r'fèrm”."},
+        {t:"avant d'avoir", k:"muet", n:"t of avant silent: “a-van da-vwar”."} ]
+    ]
+  ],
   vocab:[
     ['de temps en temps','from time to time'],
     ['une formation','a training course, a programme'],

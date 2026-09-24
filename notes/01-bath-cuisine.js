@@ -18,6 +18,19 @@ FelixNotes.register({
       {fr:"Ma mère a mis le café devant moi. Elle n'a rien dit. J'ai compris : elle savait déjà. Je n'ai pas encore parlé, mais elle savait.", en:"My mother put the coffee in front of me. She said nothing. I understood: she already knew. I have not spoken yet, but she knew."}
     ]
   ],
+  read:[
+    [ // ¶ 0
+      [ {t:"sept heures", k:"enchainement", n:"The p is silent; the t is said and slides onto heures (mute h): “sè-teur” /sɛ.tœʁ/."} ],
+      [ {t:"pleut", k:"son", n:"eu = /ø/: lips rounded as for “oo”, tongue as for “ay”. Final t silent: /plø/."},
+        {t:"évidemment", k:"mot", n:"-emment is said “a-man”: “é-vi-da-man” /e.vi.da.mɑ̃/. Same ending in récemment, prudemment."} ],
+      [ {t:"Ma mère a posé", k:"enchainement", n:"The r of mère is pronounced and carries onto a: “ma mè-ra po-zé”. Single s between vowels = z."},
+        {t:"sans rien dire", k:"muet", n:"The s of sans is silent: “san ryin dir” /sɑ̃ ʁjɛ̃ diʁ/ — two nasal vowels in a row."},
+        {t:"ce que je n'avais", k:"son", n:"Read slowly, every little e is there. Spoken, they fall away: roughly “s'keuj na-vè”."},
+        {t:"pas encore", k:"liaison", n:"Optional liaison. A careful reading voice says “pa-z-an-cor” /pa.z‿ɑ̃.kɔʁ/; everyday speech usually skips it."},
+        {t:"dit à", k:"muet", n:"The t of dit stays silent here: “di a”, two vowels side by side."},
+        {t:"voix haute", k:"liaison", n:"No liaison: haute starts with an aspirated h, which blocks linking. “vwa | ot”, never “vwa-z-ot”. The x of voix is silent."} ]
+    ]
+  ],
   vocab:[
     ['évidemment','obviously, of course'],
     ['sans rien dire','without saying anything'],
