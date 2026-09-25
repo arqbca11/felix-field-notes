@@ -301,8 +301,9 @@ matching `simple` block show no button. Learn-only, like everything else languag
 **Lire (reworked 24 Sep 2026).** *Lire* is now a toggle like *Simplifier*. When on, clicking a
 sentence plays it (`.sent.reading`) and shows it in the `.read-block`, which is **sticky at the top of
 the right column** (one `.read-slot`, only the last clicked sentence), with its **hard spots**
-underlined (`.hard`); clicking one plays just that fragment and shows its note. Side panels stack in
-the order they were opened, except Lire, which is always moved to the top. *Simplifier* can be on at
+underlined (`.hard`); clicking one plays just that fragment and shows its note. Lire and Simplifier
+live together in `.side-top` at the top of the right column (always Lire first), sticky while Lire
+is on; the other panels stack underneath in the order they were opened. *Simplifier* can be on at
 the same time: then the simplified column mirrors the sentence being read (`mirrorSimple`).
 The whole-entry sequential reader moved into that panel as *Tout lire*. Hard spots are **data** — the
 entry's optional `read` field (§6); entries without it still read sentence by sentence, with no

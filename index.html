@@ -139,12 +139,16 @@
   .post.read-on .sent:hover{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
   .post.read-on .sent.reading{border-bottom-color:var(--ink);}
   .sent.speaking,.hard.speaking{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
-  /* The Lire panel stays at the top of the right column while you scroll; panels opened after it
-     (translation, simplified sentence, notes) flow underneath. */
-  .read-block{display:none;}
-  .read-block.open{display:block;position:sticky;top:56px;z-index:2;background:#fff;
+  /* Lire and Simplifier sit together at the top of the right column (.side-top), always in that
+     order; other panels stack underneath in the order they were opened. With Lire on, the pair
+     stays in view while you scroll. */
+  .side-top{display:flex;flex-direction:column;gap:22px;}
+  .side-top:not(:has(> .open)){display:none;}
+  .post.read-on .side-top{position:sticky;top:56px;z-index:2;background:#fff;
     max-height:calc(100vh - 76px);overflow-y:auto;padding-bottom:14px;border-bottom:1px solid var(--line);
     box-shadow:0 -60px 0 0 #fff;}   /* white band above it, so text scrolling under doesn't show */
+  .read-block{display:none;}
+  .read-block.open{display:block;}
   .read-top{display:flex;gap:18px;align-items:baseline;font-family:var(--sans);font-size:12.5px;color:var(--muted);margin:0 0 12px;}
   .read-all{color:var(--soft);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .read-all:hover,.read-all.playing{color:var(--ink);text-decoration-color:var(--ink);}
@@ -476,7 +480,7 @@ function buildFeed(){
     </div>
     <div class="article">${frHTML}</div>
     <aside class="post-side">
-      <div class="en-block" id="en-${post.id}">${enHTML}</div>
+      <div class="side-top">
       <div class="read-block" id="read-${post.id}">
           <p class="read-top"><button class="read-all" data-play="all" data-id="${post.id}">Tout lire</button>
             <span class="read-hint">Cliquez une phrase pour l\'écouter.</span></p>
@@ -486,6 +490,8 @@ function buildFeed(){
           <p class="simple-hint">Cliquez une phrase à gauche pour lire une version plus simple.</p>
           ${post.fr.map((_,i) => `<p class="simp-para" data-i="${i}"></p>`).join('')}
       </div>` : ''}
+      </div>
+      <div class="en-block" id="en-${post.id}">${enHTML}</div>
       ${hasVocab ? `<div class="notes" id="vocab-${post.id}"><div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table></div>` : ''}
       ${hasGram ? `<div class="notes" id="gram-${post.id}"><div class="nsec-label">Grammaire</div>${gramHTML}</div>` : ''}
       <div class="ask-block" id="ask-${post.id}">
@@ -740,8 +746,8 @@ feed.addEventListener('click', e => {
     const open = block.classList.toggle('open');
     btn.classList.toggle('on', open);
     const post = btn.closest('.post');
-    // Panels stack in the order they were opened, except Lire, which always sits on top.
-    if (open) { const side = block.parentNode; if (btn.dataset.toggle === 'read') side.prepend(block); else side.appendChild(block); }
+    // Lire + Simplifier keep their fixed place in .side-top; other panels go to the bottom when opened.
+    if (open && !block.closest('.side-top')) block.parentNode.appendChild(block);
     if (btn.dataset.toggle === 'simple') {
       if (open) { post.classList.add('simple-on'); const p = POSTS.find(x => x.id === post.id); if (p) mirrorSimple(post, p); }
       else clearSimple(post);
