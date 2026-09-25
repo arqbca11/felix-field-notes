@@ -11,13 +11,13 @@ FelixNotes.register({
   place:'Revelstoke, Colombie-Britannique (souvenir)', lat:50.9981, lng:-118.1957,
   fr:[
     "Eric m'a envoyé une photo ce matin, sans texte, ou presque : « Ça commence. Tu skies où c't'hiver ? » Le mont Mackenzie tout blanc en haut, les cèdres encore verts en bas, et entre les deux cette ligne nette que je connais par cœur. À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort.",
-    "J'ai regardé la photo longtemps. La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien. Je croyais savoir : j'avais grandi sur les skis, j'avais fait de la peau de phoque avec mon grand-père depuis l'âge de douze ans. Mais la neige du Canada n'est pas la neige des Alpes. Elle est plus profonde, plus lourde, et elle ment mieux. C'est Eric qui me l'a appris, pendant le cours d'avalanche, avec son français du Québec que je ne comprenais qu'à moitié. « La montagne, elle te dit non. Toi, tu l'écoutes. » Il le disait sans lever la voix, et tout le monde se taisait.",
+    "J'ai regardé la photo longtemps. La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien. Je croyais savoir : j'avais grandi sur les skis, j'avais fait de la peau de phoque avec mon grand-père depuis l'âge de douze ans. Mais la neige du Canada n'est pas la neige des Alpes. Elle est plus profonde, plus lourde, et elle ment mieux. C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié. « La montagne, elle te dit non. Toi, tu l'écoutes. » Il le disait sans lever la voix, et tout le monde se taisait.",
     "Sur la photo, en bas, il y a les cèdres du bord de la piste, ceux qu'Addie photographiait pendant que les autres clients regardaient la vue. Elle disait que la neige sur une branche était plus intéressante qu'un sommet, parce qu'elle changeait toutes les heures. Je n'ai jamais su si elle avait raison. Je n'ai jamais eu son numéro non plus : elle était ma cliente, j'étais son moniteur, et il y avait une ligne que je n'ai pas voulu franchir. Fin mars, le dernier jour, je lui ai dit que je ne savais pas si je reviendrais l'hiver suivant. Elle a eu l'air un peu déçue, mais elle n'a rien demandé de plus. J'aurais dû dire autre chose. Je le sais, je ne l'ai pas fait, et je ne sais toujours pas si j'ai eu raison.",
     "J'ai répondu à Eric : « Ici. Chez moi. Je fais la liste. » Il a mis un pouce et rien d'autre, ce qui, venant de lui, est un long discours. Puis j'ai posé le téléphone et je suis sorti courir. La neige, ici aussi, ne va pas tarder."
   ],
   en:[
     "Eric sent me a photo this morning, with no text, or almost none: \"It's starting. Where are you skiing this winter?\" Mount Mackenzie all white on top, the cedars still green below, and between the two that sharp line I know by heart. In Revelstoke the first snow always comes like that, all at once, one October night, and the next day the whole town talks louder.",
-    "I looked at the photo for a long time. The first time I had gone up there, in December 2023, I knew nothing. I thought I knew: I had grown up on skis, I had been skinning with my grandfather since the age of twelve. But Canadian snow is not Alpine snow. It is deeper, heavier, and it lies better. It was Eric who taught me that, during the avalanche course, in his Québec French that I only half understood. \"The mountain tells you no. You, you listen.\" He said it without raising his voice, and everyone went quiet.",
+    "I looked at the photo for a long time. The first time I had gone up there, in December 2023, I knew nothing. I thought I knew: I had grown up on skis, I had been skinning with my grandfather since the age of twelve. But Canadian snow is not Alpine snow. It is deeper, heavier, and it lies better. It was Eric who taught me that, during the avalanche course at Rogers Pass, on the mornings when the army fired its guns at the slopes above the highway, in his Québec French that I only half understood. \"The mountain tells you no. You, you listen.\" He said it without raising his voice, and everyone went quiet.",
     "In the photo, at the bottom, there are the cedars at the edge of the piste, the ones Addie used to photograph while the other clients were looking at the view. She said snow on a branch was more interesting than a summit, because it changed every hour. I never found out whether she was right. I never had her number either: she was my client, I was her instructor, and there was a line I didn't want to cross. At the end of March, on the last day, I told her I didn't know whether I'd be back the following winter. She looked a little disappointed, but she didn't ask for more. I should have said something else. I know it, I didn't do it, and I still don't know whether I was right.",
     "I answered Eric: \"Here. Home. I'm doing the list.\" He put a thumbs-up and nothing else, which, coming from him, is a long speech. Then I put the phone down and went out for a run. The snow, here too, won't be long."
   ],
@@ -34,7 +34,7 @@ FelixNotes.register({
       {fr:"Je croyais savoir. J'ai grandi sur les skis. J'ai fait du ski avec mon grand-père depuis l'âge de douze ans.", en:"I thought I knew. I grew up on skis. I skied with my grandfather from the age of twelve."},
       {fr:"Mais la neige du Canada n'est pas comme la neige des Alpes.", en:"But Canadian snow is not like Alpine snow."},
       {fr:"Elle est plus profonde et plus lourde. Elle cache mieux le danger.", en:"It is deeper and heavier. It hides the danger better."},
-      {fr:"C'est Eric qui me l'a appris. C'était pendant le cours d'avalanche. Il parlait le français du Québec, et je comprenais à moitié.", en:"It was Eric who taught me that. It was during the avalanche course. He spoke Québec French, and I half understood."},
+      {fr:"C'est Eric qui me l'a appris. C'était pendant le cours d'avalanche, au col Rogers. Le matin, l'armée tirait au canon sur la montagne, au-dessus de la route, pour faire tomber les avalanches. Il parlait le français du Québec, et je comprenais à moitié.", en:"It was Eric who taught me that. It was during the avalanche course, at Rogers Pass. In the morning, the army fired cannons at the mountain, above the road, to bring the avalanches down. He spoke Québec French, and I half understood."},
       {fr:"« La montagne te dit non. »", en:"“The mountain tells you no.”"},
       {fr:"« Toi, tu l'écoutes. »", en:"“You, you listen to it.”"},
       {fr:"Il parlait sans lever la voix. Tout le monde se taisait.", en:"He spoke without raising his voice. Everyone went quiet."}
@@ -98,7 +98,7 @@ FelixNotes.register({
       [ {t:"C'est Eric", k:"liaison", n:"Liaison usually made after c'est: “sè-té-rik”."},
         {t:"l'a appris", k:"son", n:"Two a's meet: say both, lightly: “la-a-pri”. The s is silent."},
         {t:"cours d'avalanche", k:"muet", n:"The s of cours is silent: “kour da-va-lansh”."},
-        {t:"Québec", k:"mot", n:"“ké-bèk” /ke.bɛk/: qu = k, final c pronounced."} ],
+        {t:"Québec", k:"mot", n:"“ké-bèk” /ke.bɛk/: qu = k, final c pronounced."}, {t:"col Rogers", k:"mot", n:"col = “kol”, the l is said; Rogers keeps its English name."}, {t:"l'armée tirait au canon", k:"son", n:"armée = “ar-mé”, tirait = “ti-rè”; canon has one n and a nasal end: “ka-non” /ka.nɔ̃/."}, {t:"au-dessus", k:"son", n:"The e drops, the final s is silent, and u is the French /y/: “o-d'su” /od.sy/."} ],
       [ {t:"montagne", k:"son", n:"gn = “ny” as in canyon: “mon-tagn” /mɔ̃.taɲ/."},
         {t:"dit non", k:"muet", n:"t silent: “di non”."} ],
       [ {t:"l'écoutes", k:"muet", n:"-es is silent: “lé-kout”."} ],
@@ -152,6 +152,9 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['le col Rogers','Rogers Pass (British Columbia), where the army fires artillery to bring avalanches down'],
+    ['tirer au canon','to fire (artillery)'],
+    ['au-dessus de','above'],
     ['c\'t\'hiver (québécois)','this winter (spoken Québec contraction of cet hiver)'],
     ['un cèdre','a cedar (the red cedars of the BC interior)'],
     ['net / nette','sharp, clean-cut (a line)'],

@@ -238,12 +238,15 @@ more personal than in the blog, but not more decorated.
 | 13 | 2026-12-13 | entry | Premières traces (Grands Montets open, first ski day, a professional no to the thin off-piste; 6 Dec Crèmerie: ice not ready, Bertrand's two corrections — "une fiche, ça ne raconte pas, ça note"; Chloé announces Christmas: arrives 21 Dec, sleeps on the floor; parents 3 days in a hotel in Les Houches; David's insurance question via Chloé; "Tu es content ?" — "Je crois"; a skin-up to Lognan promised) | family | B1+ |
 | 14 | 2026-12-19 | memory | Bay Area (a San Francisco couple in the shop says "the Bay Area"; Addie's two visits of the last winter, Jan + Mar 2026; her portrait — well travelled, proud of her roots and attached to North America, listened to everything; "j'ai peut-être trop parlé de moi"; the line maybe crossed without a word; si + pqp → conditionnel passé; the admission: Canada is partly the hope of seeing her again, with no way to reach her; **Anyu used once**) — *user-requested Addie entry; bible §2b/§2c updated* | Addie | B2 |
 
-**Real-world texture (added 25 Sep 2026 from `knowledge_pool.md`, one line each in entries 2, 3, 4, 6, 8, 10, 13):**
+**Real-world texture (added 25 Sep 2026 from `knowledge_pool.md`, one line each in entries 2, 3, 4, 5, 6, 7, 8, 10, 13, 14):**
 the ENSA's longer probatoire list since 2025 (2); the **new Argentière–Lognan gondola, due for Christmas**
 (3, and 13: Chloé's skin-up may come back down in it "if it has opened" — the Christmas entry should
 settle whether it did); Bertrand's Compagnie, 200 years in 2021 (4); the Goûter summer on the radio (6);
 new Petzl axes cost more than a month's rent (8); the Grands Montets top cable car gone since the 2018
 fire, so February's Argentière tours start on skins (10).
+Canada/Addie, same day: Eric's avalanche course at Rogers Pass on mornings when the army fired its
+avalanche guns above the highway (5); the Canadian training named as the ACMG (7); Addie photographed
+the lichen hanging from the old cedars as well as the snow (14).
 
 **Open threads to pick up next:** **Christmas in Argentière** — Chloé arrives **21 Dec** for a week (floor of the
 14 m²), parents **Marianne and David** come for three days over Christmas, hotel in **Les Houches** (a family `entry`

@@ -6,14 +6,14 @@ FelixNotes.register({
   id:'une-page', no:7, date:'2026-10-19', kind:'note', level:'B1+',
   title:'Une page que je referme', titleEn:'A page I close',
   fr:[
-    "Sur la liste des choses que je ne dis à personne : de temps en temps, je regarde les dates de la formation de guide au Canada, celle qu'Eric a faite. Pas pour l'année prochaine. Peut-être dans quelques années. Peut-être jamais. Je regarde quand même, et je referme la page avant d'avoir fini de lire."
+    "Sur la liste des choses que je ne dis à personne : de temps en temps, je regarde les dates de la formation de guide au Canada, à l'ACMG, celle qu'Eric a faite. Pas pour l'année prochaine. Peut-être dans quelques années. Peut-être jamais. Je regarde quand même, et je referme la page avant d'avoir fini de lire."
   ],
   en:[
-    "On the list of things I tell no one: from time to time I look up the dates of the guide training in Canada, the one Eric did. Not for next year. Maybe in a few years. Maybe never. I look anyway, and I close the page before I've finished reading."
+    "On the list of things I tell no one: from time to time I look up the dates of the guide training in Canada, with the ACMG, the one Eric did. Not for next year. Maybe in a few years. Maybe never. I look anyway, and I close the page before I've finished reading."
   ],
   simple:[
     [ // ¶ 0
-      {fr:"Il y a des choses que je ne dis à personne. Parfois, je regarde les dates de la formation de guide au Canada. C'est la formation d'Eric.", en:"There are things I tell no one. Sometimes I look at the dates of the guide training in Canada. It is Eric's training."},
+      {fr:"Il y a des choses que je ne dis à personne. Parfois, je regarde les dates de la formation de guide au Canada, à l'ACMG. C'est la formation d'Eric.", en:"There are things I tell no one. Sometimes I look at the dates of the guide training in Canada, at the ACMG. It is Eric's training."},
       {fr:"Ce n'est pas pour l'année prochaine.", en:"It is not for next year."},
       {fr:"Peut-être dans quelques années.", en:"Maybe in a few years."},
       {fr:"Peut-être jamais.", en:"Maybe never."},
@@ -26,7 +26,7 @@ FelixNotes.register({
         {t:"de temps en temps", k:"liaison", n:"Fixed expression with a required liaison: “d'tan-zan-tan” /də tɑ̃.z‿ɑ̃ tɑ̃/. The p is silent."},
         {t:"formation", k:"son", n:"-tion = “syon”: “for-ma-syon” /fɔʁ.ma.sjɔ̃/."},
         {t:"guide", k:"son", n:"gu = hard g, u silent: “gid”."},
-        {t:"qu'Eric a faite", k:"enchainement", n:"One chain: “kè-ri-ka fèt”. The feminine t of faite is pronounced."} ],
+        {t:"qu'Eric a faite", k:"enchainement", n:"One chain: “kè-ri-ka fèt”. The feminine t of faite is pronounced."}, {t:"à l'ACMG", k:"mot", n:"Letter by letter, the French way: “a la-sé-èm-jé” (Association of Canadian Mountain Guides)."} ],
       [ {t:"l'année prochaine", k:"son", n:"nn is a single n: “la-né”. -aine = “èn”: “pro-shèn”."} ],
       [ {t:"Peut-être", k:"enchainement", n:"The t of peut is said here and slides onto être: “peu-tètr”."},
         {t:"quelques années", k:"liaison", n:"Required liaison: “kèl-k'-za-né” /kɛl.kə.z‿a.ne/."} ],
@@ -38,6 +38,7 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['l\'ACMG','the Association of Canadian Mountain Guides, which trains and certifies guides in Canada'],
     ['de temps en temps','from time to time'],
     ['une formation','a training course, a programme'],
     ['quand même','anyway, all the same'],

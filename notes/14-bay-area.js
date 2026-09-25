@@ -16,14 +16,14 @@ FelixNotes.register({
   place:'Chamonix', lat:45.9237, lng:6.8694,
   fr:[
     "Samedi au magasin, le premier des vacances scolaires. Une file d'attente jusqu'à la porte, des chaussures à régler. Un couple de San Francisco : ils venaient d'arriver, encore en habits de ville. J'ai serré ses chaussures, réglé les fixations, vérifié le flex. À un moment, elle a dit « the Bay Area », de cette manière particulière qu'ont les gens de là-bas de le prononcer. J'ai fini le travail proprement et je leur ai souhaité une bonne journée. Ce n'est que ce soir, en écrivant, que le reste est remonté.",
-    "La saison dernière, elle est venue deux fois : en janvier, puis de nouveau en mars. Elle était déjà venue deux hivers quand elle a réservé pour janvier ; jamais je n'avais eu une cliente qui revenait comme ça. Dès ce mois de janvier, je me suis demandé si elle revenait pour la neige ou pour autre chose. Je n'ai jamais osé le demander. On partait tôt. Elle photographiait la neige sur les branches, jamais les sommets. Elle ne lâchait pas une pente avant de l'avoir comprise.",
+    "La saison dernière, elle est venue deux fois : en janvier, puis de nouveau en mars. Elle était déjà venue deux hivers quand elle a réservé pour janvier ; jamais je n'avais eu une cliente qui revenait comme ça. Dès ce mois de janvier, je me suis demandé si elle revenait pour la neige ou pour autre chose. Je n'ai jamais osé le demander. On partait tôt. Elle photographiait la neige sur les branches, et le lichen qui pend des vieux cèdres, jamais les sommets. Elle ne lâchait pas une pente avant de l'avoir comprise.",
     "Je me souviens d'elle : méthodique, sans peur de la pente raide mais voulant la comprendre. Elle avait vu plus de pays que moi, fière de ses racines et attachée à ses années en Amérique du Nord, les deux à la fois. Et elle écoutait tout ce que je lui racontais : Lyon, la vallée, mon grand-père, le vélo jusqu'à San Francisco, sa côte. J'ai peut-être trop parlé de moi. On croit donner une leçon, et l'on finit par se raconter. La seule chose dont je suis sûr, c'est que j'ai peut-être franchi la ligne sans rien dire, en racontant des choses qu'on ne dit pas à une cliente.",
     "Ce que je n'ai pas fait tient en deux phrases. Le dernier jour, en mars, je lui avais dit que je ne savais pas si je reviendrais l'hiver suivant ; elle avait eu l'air un peu déçue, et elle n'avait rien demandé de plus. Si j'avais demandé, moi, en janvier, elle aurait répondu quoi ? J'aurais pu demander une adresse, comme on le fait avec n'importe qui. Je me dis que ce n'était pas convenable, à l'époque. Je ne suis pas sûr que ce soit la vraie raison.",
     "Alors je l'écris pour la première fois. Quand je pense à retourner au Canada, ce n'est pas seulement pour la formation ; c'est aussi l'idée que je pourrais la revoir là-bas. Et comment cela marcherait-il ? Elle venait à Revelstoke ; moi, je n'y serai peut-être pas. Je n'ai même pas son numéro, ni une adresse mail, ni le nom de la boîte pour laquelle elle travaille. On peut garder quelqu'un des années sans le moindre moyen de le joindre. Une femme dont je ne connais pas l'adresse, et dont je connais le prénom chinois — Anyu. Le couple est reparti. Demain, la glace ; Chloé arrive le 21. La question reste ouverte."
   ],
   en:[
     "Saturday at the shop, the first of the school holidays. A queue right to the door, boots to adjust. A couple from San Francisco: they had just arrived, still in city clothes. I tightened her boots, set the bindings, checked the flex. At one point she said \"the Bay Area,\" in that particular way people from there have of pronouncing it. I finished the job properly and wished them a good day. It's only this evening, writing, that the rest came back.",
-    "Last season she came twice: in January, then again in March. She had already come two winters when she booked for January; I had never had a client who came back like that. From that January on, I wondered whether she was coming back for the snow or for something else. I never dared to ask. We left early. She photographed the snow on the branches, never the summits. She wouldn't let go of a slope before she had understood it.",
+    "Last season she came twice: in January, then again in March. She had already come two winters when she booked for January; I had never had a client who came back like that. From that January on, I wondered whether she was coming back for the snow or for something else. I never dared to ask. We left early. She photographed the snow on the branches, and the lichen hanging from the old cedars, never the summits. She wouldn't let go of a slope before she had understood it.",
     "I remember her: methodical, unafraid of steep terrain but wanting to understand it. She had seen more countries than I had, proud of her roots and attached to her years in North America, both at once. And she listened to everything I told her: Lyon, the valley, my grandfather, the bike ride to San Francisco, her coast. I may have talked about myself too much. You think you're giving a lesson, and you end up telling your own story. The only thing I'm sure of is that I may have crossed the line without saying anything, by telling her things you don't tell a client.",
     "What I didn't do fits in two sentences. On the last day, in March, I had told her I didn't know whether I'd come back the following winter; she had looked a little disappointed, and she hadn't asked for anything more. If I had asked, in January, what would she have answered? I could have asked for an address, the way you do with anyone. I tell myself it wasn't appropriate, at the time. I'm not sure that was the real reason.",
     "So I'm writing it for the first time. When I think about going back to Canada, it isn't only for the training; it's also the idea that I might see her again over there. And how would it even work? She came to Revelstoke; me, I might not be there. I don't even have her number, or an email address, or the name of the company she works for. You can keep someone for years without the slightest way to reach them. A woman whose address I don't know, and whose Chinese name I do — Anyu. The couple left. Tomorrow, the ice; Chloé arrives on the 21st. The question stays open."
@@ -44,7 +44,7 @@ FelixNotes.register({
       {fr:"En janvier, je me suis posé une question. Est-ce qu'elle revenait pour la neige, ou pour autre chose ?", en:"In January, I asked myself a question. Was she coming back for the snow, or for something else?"},
       {fr:"Je n'ai jamais osé lui demander.", en:"I never dared to ask her."},
       {fr:"On partait tôt le matin.", en:"We used to leave early in the morning."},
-      {fr:"Elle photographiait la neige sur les branches. Jamais les sommets.", en:"She photographed the snow on the branches. Never the summits."},
+      {fr:"Elle photographiait la neige sur les branches. Et aussi le lichen gris qui pend des vieux arbres. Jamais les sommets.", en:"She photographed the snow on the branches. And also the grey lichen that hangs from the old trees. Never the summits."},
       {fr:"Elle ne lâchait pas une pente. D'abord, elle voulait la comprendre.", en:"She wouldn't let go of a slope. First, she wanted to understand it."}
     ],
     [ // ¶ 2
@@ -117,7 +117,7 @@ FelixNotes.register({
       [ {t:"jamais osé", k:"liaison", n:"Optional liaison: careful “ja-mè-zo-zé”; often “ja-mè o-zé”. The s of osé = z."} ],
       [ {t:"partait tôt", k:"muet", n:"Both final t's silent: “par-tè to”. ô = closed /o/."} ],
       [ {t:"photographiait", k:"son", n:"ph = f, -iait = “yè”: “fo-to-gra-fyè”."},
-        {t:"sommets", k:"muet", n:"ts silent: “so-mè”."} ],
+        {t:"sommets", k:"muet", n:"ts silent: “so-mè”."}, {t:"lichen", k:"mot", n:"ch = k here: “li-kèn” /li.kɛn/."}, {t:"qui pend des vieux cèdres", k:"muet", n:"pend = “pan”, d silent; vieux cèdres = “vyeu sèdr”, x and s silent."} ],
       [ {t:"lâchait", k:"son", n:"“la-shè”: â is a plain a in most speech."},
         {t:"pas une", k:"liaison", n:"Optional liaison: “pa-zun”, common in careful reading."},
         {t:"comprise", k:"son", n:"Feminine: the s is said, as z: “kon-priz”."} ]
@@ -197,6 +197,8 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['un lichen','lichen (here: the grey strands hanging from old cedars)'],
+    ['pendre','to hang (down)'],
     ['une file d\'attente','a queue, a line of people'],
     ['un moniteur / une monitrice','a (ski) instructor'],
     ['une fixation','a (ski) binding'],
