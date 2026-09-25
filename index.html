@@ -36,6 +36,8 @@
   body:not(.learn) .article p{padding-left:0;}
   .rb-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .rb-link:hover{color:var(--ink);text-decoration-color:var(--ink);}
+  #ghEntry.open{display:block;}
+  #ghMsg{color:var(--muted);} #ghMsg.err{color:#a33;}
   .key-entry,.voice-picker{display:none;width:min(340px,calc(100vw - 36px));margin-top:8px;padding:12px 14px 13px;background:#fff;border:1px solid var(--line);font-family:var(--sans);font-size:13px;color:var(--soft);}
   .ke-label{margin-bottom:8px;}
   .ke-label span{color:var(--muted);}
@@ -182,6 +184,8 @@
   .ask-a ul{margin:0 0 8px 18px;}
   .ask-a em{font-family:var(--serif);font-size:15px;color:var(--ink);}
   .ask-a .err{color:#a33;}
+  .ask-saved{font-size:11px;color:var(--muted);margin-top:4px;}
+  .ask-saved:empty{display:none;}
   .ask-input{width:100%;border:1px solid var(--line);padding:9px 11px;font:inherit;font-size:14px;color:var(--ink);background:#fff;outline:none;resize:vertical;}
   .ask-input:focus{border-color:var(--ink);}
   .ask-row{display:flex;gap:16px;align-items:baseline;margin-top:8px;font-size:12.5px;}
@@ -285,7 +289,21 @@
       <span>Voix : <span id="rbVoice">—</span></span>
       <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
       <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
+      <button class="rb-link" id="ghBtn" onclick="toggleGhEntry()">GitHub</button>
     </div>
+  </div>
+  <div class="key-entry learn-only" id="ghEntry">
+    <div class="ke-label">Jeton GitHub <span>(optionnel — enregistre vos questions dans questions.md du dépôt)</span></div>
+    <div id="ghFields">
+      <div class="ke-row">
+        <input class="ke-input" id="ghTokenInput" type="password" placeholder="github_pat_…"/>
+        <button class="ke-btn" onclick="saveGhSettings()">Enregistrer</button>
+      </div>
+      <div class="ke-label" style="margin:10px 0 6px">Dépôt</div>
+      <div class="ke-row"><input class="ke-input" id="ghRepoInput" type="text"/></div>
+    </div>
+    <div class="ke-msg" id="ghMsg"></div>
+    <div class="ke-label" style="margin:8px 0 0"><span>Jeton « fine-grained », ce seul dépôt, permission Contents en lecture et écriture. Il reste dans ce navigateur.</span></div>
   </div>
   <div class="key-entry learn-only" id="keyEntry">
     <div class="ke-label">Clé API ElevenLabs <span>(optionnel — sans clé, la voix du navigateur est utilisée)</span></div>
@@ -378,7 +396,7 @@ function cleanKey(k){ return (k || '').replace(/[^\x21-\x7E]/g, ''); }
 function fromSecrets(name){ const s = window.FELIX_SECRETS; return (s && typeof s[name] === 'string') ? cleanKey(s[name]) : ''; }
 function elevenKey(){ return fromSecrets('elevenlabsKey') || cleanKey(getLS(KEY_API)) || null; }
 function claudeKey(){ return fromSecrets('claudeKey') || cleanKey(getLS(KEY_CLAUDE)) || null; }
-function githubToken(){ return fromSecrets('githubToken') || cleanKey(getLS('felix_github_token')) || null; }
+function githubToken(){ return fromSecrets('githubToken') || cleanKey(getLS(KEY_GH)) || null; }
 
 // ── LEARN MODE ──
 // Off = a plain diary page. On = voice controls, level tags, Lire/Traduction/Notes,
@@ -397,6 +415,7 @@ function setLearn(on){
     document.querySelectorAll('.dict-btn.on').forEach(b => b.classList.remove('on'));
     document.getElementById('keyEntry').style.display='none';
     document.getElementById('voicePicker').style.display='none'; pickerOpen=false;
+    document.getElementById('ghEntry').classList.remove('open');
   }
 }
 function toggleLearn(){ setLearn(!document.body.classList.contains('learn')); }
@@ -868,6 +887,41 @@ function refreshReadbar(){
   document.getElementById('rbVoice').textContent = key ? (getLS(KEY_VNAME)||'ElevenLabs') : 'navigateur';
   document.getElementById('voiceBtn').textContent = key ? 'Changer de voix' : 'Connecter ElevenLabs';
   document.getElementById('rbSpeed').textContent = speed.toFixed(1)+'×';
+  document.getElementById('ghBtn').textContent = githubToken() ? 'GitHub ✓' : 'GitHub';
+}
+// ── GITHUB TOKEN (for saving questions to the repo) ──
+const KEY_GH = 'felix_github_token', KEY_GH_REPO = 'felix_github_repo', GH_DEFAULT_REPO = 'arqbca11/felix-field-notes';
+function ghRepo(){ return cleanKey(getLS(KEY_GH_REPO)) || GH_DEFAULT_REPO; }
+function toggleGhEntry(){
+  const el = document.getElementById('ghEntry'), open = !el.classList.contains('open');
+  el.classList.toggle('open', open);
+  if(!open) return;
+  const fromFile = !!fromSecrets('githubToken');
+  document.getElementById('ghTokenInput').value = fromFile ? '' : (getLS(KEY_GH) || '');
+  document.getElementById('ghTokenInput').placeholder = fromFile ? 'Jeton lu depuis secrets.js' : 'github_pat_…';
+  document.getElementById('ghTokenInput').disabled = fromFile;
+  document.getElementById('ghRepoInput').value = ghRepo();
+  ghSay(fromFile ? 'Le jeton vient du fichier local secrets.js.' : '');
+}
+function ghSay(t, err){ const m = document.getElementById('ghMsg'); m.textContent = t; m.classList.toggle('err', !!err); }
+function saveGhSettings(){
+  const repo = cleanKey(document.getElementById('ghRepoInput').value);
+  if(!/^[\w.-]+\/[\w.-]+$/.test(repo)){ ghSay('Dépôt : écrivez-le sous la forme propriétaire/nom.', true); return; }
+  setLS(KEY_GH_REPO, repo);
+  if(!fromSecrets('githubToken')){
+    const t = cleanKey(document.getElementById('ghTokenInput').value);
+    if(t && !/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(t)){ ghSay('Ça ne ressemble pas à un jeton GitHub (github_pat_…).', true); return; }
+    setLS(KEY_GH, t);
+  }
+  ghSay('');
+  refreshReadbar();
+  // Send anything that was waiting, and say what happened.
+  const waiting = readQueue().length;
+  if(!githubToken() || !waiting){ document.getElementById('ghEntry').classList.remove('open'); return; }
+  ghSay(`Envoi de ${waiting} question(s) en attente…`);
+  flushQueue().then(r => {
+    if(r.ok) ghSay(`${waiting} question(s) enregistrée(s) dans ${GH_FILE} ✓`); else ghSay(`Échec (${r.why}) — vérifiez le jeton et le dépôt.`, true);
+  });
 }
 function voiceBtnClick(){
   if(elevenKey()){ toggleVoicePicker(); }
@@ -1349,6 +1403,8 @@ async function sendAsk(postEl, post){
       st.history = [...st.history, userMsg, { role:'assistant', content: final.content, model: final.model }];
       // A question that went through clears the failed attempts shown before it (they were never in the history).
       postEl.querySelectorAll('.ask-thread .ask-failed').forEach(el => el.remove());
+      const saved = document.createElement('div'); saved.className = 'ask-saved'; item.appendChild(saved);
+      saveAsk(post, q, st.ctx, text, model.id, saved);
     }
   }catch(err){
     const status = err && err.status;
@@ -1362,6 +1418,62 @@ async function sendAsk(postEl, post){
   }finally{
     st.busy = false; sendBtn.disabled = false;
   }
+}
+
+// ── SAVE Q&A TO THE REPO ──
+// Each finished question + answer is appended to questions.md in the learner's GitHub repo
+// (GitHub's contents API allows browser calls; the token is theirs, limited to that repo).
+// Records wait in a localStorage queue first, so nothing is lost if a save fails: the queue is
+// flushed on the next answer, or when the GitHub settings are saved. /new-entries reads the file.
+const KEY_ASK_QUEUE = 'felix_ask_queue', GH_FILE = 'questions.md';
+const GH_HEADER = '# Questions\n\nQuestions asked from the page (Demander), appended automatically after each answer.\n'+
+  'Read by /new-entries to shape the next entries. Newest at the bottom.\n\n';
+function readQueue(){ try{ return JSON.parse(getLS(KEY_ASK_QUEUE) || '[]'); }catch(e){ return []; } }
+function writeQueue(q){ setLS(KEY_ASK_QUEUE, JSON.stringify(q)); }
+function askRecord(post, q, ctx, answer, model){
+  const lines = [`## ${new Date().toISOString().slice(0,10)} · #${post.no} ${post.title || '(note)'} · ${model}`];
+  if(ctx.sentence) lines.push(`**Phrase :** « ${ctx.sentence} »`);
+  if(ctx.expr) lines.push(`**Expression :** « ${ctx.expr} »`);
+  lines.push(`**Q :** ${q}`, '', answer.trim(), '', '---', '');
+  return lines.join('\n');
+}
+// UTF-8-safe base64 (the contents API speaks base64; the file is full of accents).
+function b64encode(str){ let s = ''; new TextEncoder().encode(str).forEach(b => { s += String.fromCharCode(b); }); return btoa(s); }
+function b64decode(b64){ const s = atob(b64.replace(/\s/g,'')); return new TextDecoder().decode(Uint8Array.from(s, c => c.charCodeAt(0))); }
+
+let ghFlushing = null;
+async function flushQueue(){
+  if(ghFlushing) return ghFlushing;                    // one flush at a time
+  ghFlushing = (async () => {
+    const token = githubToken(), pending = readQueue();
+    if(!token) return { ok:false, why:'nokey', pending: pending.length };
+    if(!pending.length) return { ok:true, pending: 0 };
+    const url = `https://api.github.com/repos/${ghRepo()}/contents/${GH_FILE}`;
+    const headers = { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' };
+    for(let attempt = 0; attempt < 3; attempt++){        // a 409 means the file moved on: re-read and retry
+      const cur = await fetch(url, { headers, cache:'no-store' });
+      if(!cur.ok && cur.status !== 404) return { ok:false, why:'http ' + cur.status, pending: pending.length };
+      const file = cur.ok ? await cur.json() : null;
+      const body = (file ? b64decode(file.content) : GH_HEADER).replace(/\n*$/, '\n\n') + pending.join('\n');
+      const put = await fetch(url, { method:'PUT', headers, body: JSON.stringify({
+        message: `questions: ${pending.length} new`, content: b64encode(body), ...(file ? { sha: file.sha } : {}) }) });
+      if(put.ok){ writeQueue(readQueue().slice(pending.length)); return { ok:true, pending: 0, saved: pending.length }; }
+      if(put.status !== 409) return { ok:false, why:'http ' + put.status, pending: pending.length };
+    }
+    return { ok:false, why:'conflit', pending: pending.length };
+  })().catch(e => ({ ok:false, why: e.message, pending: readQueue().length }))
+     .finally(() => { ghFlushing = null; });
+  return ghFlushing;
+}
+async function saveAsk(post, q, ctx, answer, model, statusEl){
+  writeQueue([...readQueue(), askRecord(post, q, ctx, answer, model)]);
+  const r = await flushQueue();
+  if(!statusEl) return;
+  statusEl.textContent = r.ok ? `Enregistrée dans ${GH_FILE} ✓`
+    : r.why === 'nokey' ? 'Gardée dans ce navigateur (pas de jeton GitHub).'
+    : (r.why === 'http 401' || r.why === 'http 403' || r.why === 'http 404')
+      ? `Pas enregistrée : jeton refusé ou dépôt introuvable (${r.why}). Vérifiez GitHub en haut à droite.`
+      : `Pas encore enregistrée (${r.why}) — nouvel essai à la prochaine question.`;
 }
 
 // ── INIT ──

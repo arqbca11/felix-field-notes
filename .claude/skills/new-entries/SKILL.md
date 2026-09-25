@@ -31,6 +31,22 @@ Rules for details (both new and banked):
   bent this way. When a brief uses the device, it must say so explicitly (see the template's
   `Supplied details` block) so the reviewer doesn't flag it.
 
+## 0b. Pull, then read the learner's questions
+The page's **Demander** panel commits every question + answer to **`questions.md`** on GitHub, so
+start with `git pull --rebase` (the local copy is behind whenever the learner has asked something).
+Then read the entries in `questions.md` dated **after** the *Learner questions read through* date in
+`CLAUDE.md` §4. They are the best signal of where the learner actually is:
+- **Patterns, not single questions.** Two or more questions on the same point (a tense, a
+  construction, a sound, a family of expressions) → give it weight in this batch: a grammar note
+  that answers it from a new angle, and sentences that use it again in a fresh context (the
+  puzzle-piece effect, §4). A one-off question can seed one vocab row or one example.
+- **Don't answer them in the story.** Felix never "explains" French; the entries just use the
+  pattern naturally, and the notes do the explaining.
+- **Level check.** Many questions about basics → pull the next entries' `level` down a notch;
+  questions about fine nuance → the learner is ready for more B2.
+- Put what you take from them into each brief's grammar/vocab targets (say "from the learner's
+  questions" so the writer weights it).
+
 ## 1. Plan the batch
 - Read `CLAUDE.md` §3 (entry log + **open threads**) and the last three entries in `notes/`.
 - Read **`READER.md`** (the reader's memory, rebuilt from the entries alone — see
@@ -99,6 +115,17 @@ reports `SIMPLE ¶n` mismatches), re-run it with the validator's message; if you
 French **after** its simplifier ran, run the simplifier again on that file (its block must match
 the final sentence split).
 
+## 4c. Hard spots (Lire)
+Every entry ships a **`read`** block (CLAUDE.md §6): for each sentence of the shared split, 0–4
+pronunciation hard spots `{t, k, n}` (liaisons required / optional / forbidden, enchaînement,
+silent letters, tricky sounds, names). Once an entry's French is final, delegate it to a
+`general-purpose` agent in the **background** (like the simplifier; they edit different fields of
+the same file, so run them one after the other on a given file, not at the same time): tell it to
+read the `read` blocks of `notes/01-bath-cuisine.js` and `notes/02-decision.js` as the model, use
+`node tools/split.mjs`, put the block after `simple` and before `vocab`, prefer accuracy over
+quantity (call a liaison optional when speakers vary), and finish with `ALL DATA CHECKS PASS`.
+Spot-check the calls it flags as uncertain.
+
 ## 5. Register and ship
 1. Append one line per entry to `notes/manifest.js` (chronological, newest last).
 2. Append the entries to the **entry log** in `CLAUDE.md` §3 and rewrite **open threads**.
@@ -112,4 +139,10 @@ the final sentence split).
 6. Rebuild the reader's memory: `bash tools/reader.sh` (a fresh zero-context run over all
    entries; a few minutes). Skim the new sections and tell the user in a few lines what the
    reader now suspects that they didn't before — that is the batch's real result.
-7. Commit (one commit for the batch, listing the entries and `READER.md`) and push.
+7. **Learner questions:** copy the Q&As from this batch's reading of `questions.md` that are worth
+   keeping into `notes.md` (the study log, its usual format: sentence, grammar, vocab), then move
+   the *Learner questions read through* date in `CLAUDE.md` §4 to the newest question read. Tell
+   the user in one line which questions shaped which entries. Never edit `questions.md` itself
+   (the page appends to it; local edits would conflict).
+8. Commit (one commit for the batch, listing the entries and `READER.md`), then `git pull --rebase`
+   (the page may have committed questions meanwhile), then push. `secrets.js` must never be staged.

@@ -270,6 +270,9 @@ pulls the next layers forward naturally — assign them by what the entry is *ab
   10–16 vocab; `report` → 4–5 points, 16–22 vocab. Every entry reuses at least one earlier pattern.
   English explanation + French examples in `<span class="ex">…</span>`, glosses after
   `<span class="arrow">→</span>`.
+- **The learner's own questions** (`questions.md`, appended by the page's *Demander* panel) steer
+  the next batch: recurring points get weight in grammar notes and fresh example sentences
+  (`/new-entries` step 0b). **Learner questions read through: — (none read yet)**
 
 ---
 
@@ -319,8 +322,13 @@ to any other model (so switching mid-thread is safe). The learner's own key is i
 `localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
 French + English (system prompt), the sentence open in Lire and the last highlighted expression
 (removable chips). The selection popup has a *Demander à Claude* link that opens the panel with
-that expression. The thread lives in memory per entry until reload. Nothing is saved yet (saving
-to the repo is the planned next step).
+that expression. The thread lives in memory per entry until reload. **Saving:** every answered
+question is appended to **`questions.md`** in the GitHub repo through GitHub's contents API, with the
+learner's fine-grained token (this repo only, Contents read/write) from `secrets.js` or the
+**GitHub** panel in the top-right corner (`felix_github_token`, repo in `felix_github_repo`).
+Records wait in a localStorage queue (`felix_ask_queue`) and go out on the next answer if a save
+fails; a 409 re-reads the file and retries. Each save is a commit on GitHub, so **the local repo
+falls behind: `git pull --rebase` before pushing**. Never edit `questions.md` locally.
 
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
