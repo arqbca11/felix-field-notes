@@ -1343,9 +1343,12 @@ async function sendAsk(postEl, post){
     const final = await stream.finalMessage();
     if(final.stop_reason === 'refusal' || !text.trim()){
       ansEl.innerHTML = '<span class="err">Pas de réponse pour cette question. Reformulez-la ?</span>';
+      item.classList.add('ask-failed');
     } else {
       if(final.stop_reason === 'max_tokens') ansEl.innerHTML += '<p class="err">(réponse coupée)</p>';
       st.history = [...st.history, userMsg, { role:'assistant', content: final.content, model: final.model }];
+      // A question that went through clears the failed attempts shown before it (they were never in the history).
+      postEl.querySelectorAll('.ask-thread .ask-failed').forEach(el => el.remove());
     }
   }catch(err){
     const status = err && err.status;
@@ -1354,6 +1357,7 @@ async function sendAsk(postEl, post){
       : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
       : 'Erreur : ' + ((err && err.message) || err);
     ansEl.innerHTML = `<span class="err">${escHTML(msg)}</span>`;
+    item.classList.add('ask-failed');
     ta.value = q;
   }finally{
     st.busy = false; sendBtn.disabled = false;
