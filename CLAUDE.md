@@ -308,6 +308,19 @@ The whole-entry sequential reader moved into that panel as *Tout lire*. Hard spo
 entry's optional `read` field (§6); entries without it still read sentence by sentence, with no
 underlines. Sentences are now wrapped in `.sent` on every entry, not only those with `simple`.
 
+**Demander (added 24 Sep 2026).** An action button that opens a question box in the right column
+(`.ask-block`, stacks like the other panels). Questions go to the **Claude API straight from the
+browser** (the official SDK loaded on first use from jsDelivr as ESM, `dangerouslyAllowBrowser`,
+streaming). A picker next to *Envoyer* chooses the model (`CLAUDE_MODELS`: Opus 5 default, Sonnet 5,
+Haiku 4.5, Fable 5.1; remembered as `felix_claude_model`); `fallbacks:"default"` is sent only for
+Opus 5 / Fable 5.1. Earlier answers go back unchanged to the model that wrote them, as plain text
+to any other model (so switching mid-thread is safe). The learner's own key is in
+`localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
+French + English (system prompt), the sentence open in Lire and the last highlighted expression
+(removable chips). The selection popup has a *Demander à Claude* link that opens the panel with
+that expression. The thread lives in memory per entry until reload. Nothing is saved yet (saving
+to the repo is the planned next step).
+
 **Learn toggle (fixed to the top-right corner of the viewport, `.controls`, stays put on scroll; the voice/speed bar and the key/voice panels drop down under it).** The page opens as a **plain diary**: name, number + date, title, French
 text. Nothing else (place and kind are learning-mode metadata too). Clicking **Learn** (`body.learn`, remembered in
 `localStorage` as `felix_notes_learn`) reveals everything language-related: voice/speed controls,
@@ -419,6 +432,12 @@ the main agent's decision.
 
 ## 9. Other gotchas
 - `localStorage` via `getLS/setLS` only (try/catch). Keep it that way.
+- **API keys: `secrets.js`** (repo root, **git-ignored**; format in `secrets.example.js`) holds the
+  learner's local keys: `claudeKey`, `elevenlabsKey`, `githubToken`. `index.html` loads it with a
+  plain `<script>` (missing on the published site → harmless 404), and every key read goes through
+  `claudeKey()` / `elevenKey()` / `githubToken()`: the file wins, else the key pasted into the page
+  (localStorage). **Never read, print, or commit `secrets.js`**; before any commit, confirm it isn't
+  staged (`git check-ignore secrets.js`).
 - `notes/*.js` are plain scripts (no `import`/`export`), registering via `FelixNotes.register`.
 
 ## 10. Validate

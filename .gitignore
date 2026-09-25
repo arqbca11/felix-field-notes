@@ -1,3 +1,6 @@
 check.js
 .DS_Store
 *.swp
+
+# Local API keys — never commit (see secrets.example.js)
+secrets.js

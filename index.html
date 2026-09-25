@@ -6,6 +6,8 @@
 <title>Felix — Notes de terrain</title>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <!-- Entry index (which entries exist + their order). Entries themselves load from notes/*.js -->
+<!-- Optional local API keys (git-ignored; see secrets.example.js). Absent on the published site. -->
+<script src="secrets.js"></script>
 <script src="engine/sentences.js"></script>
 <script src="notes/manifest.js"></script>
 <style>
@@ -158,6 +160,41 @@
   .read-note:empty{display:none;}
   .read-note .rn-t{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);}
   .read-note .rn-k{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 6px;}
+
+  /* ASK — Demander: questions about the entry, answered by Claude */
+  .ask-block{display:none;font-family:var(--sans);font-size:13.5px;color:var(--soft);}
+  .ask-block.open{display:block;}
+  .ask-ctx{display:flex;flex-direction:column;gap:4px;margin:0 0 10px;}
+  .ask-ctx:empty{display:none;}
+  .ask-chip{display:flex;gap:8px;align-items:baseline;}
+  .ask-chip .k{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
+  .ask-chip .v{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);flex:1;min-width:0;}
+  .ask-chip button{color:var(--muted);flex-shrink:0;} .ask-chip button:hover{color:var(--ink);}
+  .ask-thread{display:flex;flex-direction:column;gap:14px;margin:0 0 12px;}
+  .ask-thread:empty{display:none;}
+  .ask-q{color:var(--ink);font-weight:600;}
+  .ask-a{font-size:14px;line-height:1.65;color:var(--soft);margin-top:3px;}
+  .ask-a p{margin:0 0 8px;} .ask-a p:last-child{margin-bottom:0;}
+  .ask-a ul{margin:0 0 8px 18px;}
+  .ask-a em{font-family:var(--serif);font-size:15px;color:var(--ink);}
+  .ask-a .err{color:#a33;}
+  .ask-input{width:100%;border:1px solid var(--line);padding:9px 11px;font:inherit;font-size:14px;color:var(--ink);background:#fff;outline:none;resize:vertical;}
+  .ask-input:focus{border-color:var(--ink);}
+  .ask-row{display:flex;gap:16px;align-items:baseline;margin-top:8px;font-size:12.5px;}
+  .ask-send{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .ask-send:disabled{color:var(--muted);cursor:default;}
+  .ask-model{font:inherit;font-size:12px;color:var(--soft);background:#fff;border:none;border-bottom:1px solid var(--line);padding:0 2px 1px;cursor:pointer;outline:none;max-width:100%;}
+  .ask-model:hover,.ask-model:focus{border-bottom-color:var(--ink);color:var(--ink);}
+  .ask-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
+  .ask-link:hover{color:var(--ink);}
+  .ask-setup{display:none;margin:0 0 12px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ask-setup.open{display:block;}
+  .ask-setup label{display:block;font-size:12px;color:var(--muted);margin:0 0 3px;}
+  .ask-setup input{width:100%;border:1px solid var(--line);padding:7px 9px;font:inherit;font-size:13px;color:var(--ink);outline:none;}
+  .ask-setup input:focus{border-color:var(--ink);}
+  .ask-setup .hint{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5;}
+  .lk-ask{display:inline-block;margin-top:8px;font-size:12px;color:var(--soft);text-decoration:underline;text-underline-offset:3px;}
+  .lk-ask:hover{color:var(--ink);}
 
   .notes{display:none;}
   .notes.open{display:block;}
@@ -330,6 +367,11 @@ const ICON_PEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" str
 const KEY_API='elevenlabs_api_key', KEY_VOICE='elevenlabs_voice_id', KEY_VNAME='elevenlabs_voice_name', KEY_SPEED='felix_notes_speed', KEY_LEARN='felix_notes_learn';
 function getLS(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
 function setLS(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+// API keys: the local, git-ignored secrets.js wins; otherwise the key pasted into the page.
+function fromSecrets(name){ const s = window.FELIX_SECRETS; return (s && typeof s[name] === 'string' && s[name].trim()) || ''; }
+function elevenKey(){ return fromSecrets('elevenlabsKey') || getLS(KEY_API); }
+function claudeKey(){ return fromSecrets('claudeKey') || getLS(KEY_CLAUDE); }
+function githubToken(){ return fromSecrets('githubToken') || getLS('felix_github_token'); }
 
 // ── LEARN MODE ──
 // Off = a plain diary page. On = voice controls, level tags, Lire/Traduction/Notes,
@@ -339,7 +381,7 @@ function setLearn(on){
   setLS(KEY_LEARN, on ? '1' : '0');
   if(!on){
     stopAll(); hideLookup();
-    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open').forEach(el => el.classList.remove('open'));
     document.querySelectorAll('.post.simple-on').forEach(p => clearSimple(p));
     document.querySelectorAll('.post.read-on').forEach(p => clearRead(p));
     document.querySelectorAll('.act.on').forEach(b => b.classList.remove('on'));
@@ -417,6 +459,7 @@ function buildFeed(){
         ${simpleOK ? `<button class="act" data-toggle="simple" data-id="${post.id}">Simplifier</button>` : ''}
         ${hasVocab ? `<button class="act" data-toggle="vocab" data-id="${post.id}">Vocabulaire</button>` : ''}
         ${hasGram ? `<button class="act" data-toggle="gram" data-id="${post.id}">Grammaire</button>` : ''}
+        <button class="act" data-toggle="ask" data-id="${post.id}">Demander</button>
       </div>`;
 
   card.innerHTML = `
@@ -445,6 +488,18 @@ function buildFeed(){
       </div>` : ''}
       ${hasVocab ? `<div class="notes" id="vocab-${post.id}"><div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table></div>` : ''}
       ${hasGram ? `<div class="notes" id="gram-${post.id}"><div class="nsec-label">Grammaire</div>${gramHTML}</div>` : ''}
+      <div class="ask-block" id="ask-${post.id}">
+        <div class="nsec-label">Demander à Claude</div>
+        <div class="ask-setup"></div>
+        <div class="ask-ctx"></div>
+        <div class="ask-thread"></div>
+        <textarea class="ask-input" rows="2" placeholder="Une question sur une expression, une phrase, la grammaire…"></textarea>
+        <div class="ask-row">
+          <button class="ask-send" data-ask="send">Envoyer</button>
+          <select class="ask-model" aria-label="Modèle"></select>
+          <button class="ask-link" data-ask="setup">Clé API</button>
+        </div>
+      </div>
     </aside>`;
   feed.appendChild(card);
 }); }
@@ -676,6 +731,8 @@ feed.addEventListener('click', e => {
     }
     return;
   }
+  const askBtn = e.target.closest('[data-ask]');
+  if (askBtn) { e.stopPropagation(); onAskClick(askBtn); return; }
   const btn = e.target.closest('.act'); if (!btn) return;
   if (btn.dataset.toggle) {
     const block = document.getElementById(`${btn.dataset.toggle}-${btn.dataset.id}`);
@@ -690,7 +747,8 @@ feed.addEventListener('click', e => {
       else clearSimple(post);
     }
     if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } }
-    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open'));
+    if (btn.dataset.toggle === 'ask' && open) openAsk(post);
+    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open'));
   }
 });
 
@@ -699,7 +757,7 @@ const AUDIO_CACHE = new Map();
 let curAudio=null, curUtter=null, seqToken=0, speed=1, activePlayer=null;
 
 async function fetchTTS(text){
-  const key=getLS(KEY_API), vid=getLS(KEY_VOICE);
+  const key=elevenKey(), vid=getLS(KEY_VOICE);
   if(!key||!vid) return null;
   const ck = vid+'|'+text;
   if(AUDIO_CACHE.has(ck)) return AUDIO_CACHE.get(ck);
@@ -729,7 +787,7 @@ function stopAll(){
 function playOne(text,my,btn){
   return new Promise(resolve=>{
     const done=()=>resolve();
-    const key=getLS(KEY_API), vid=getLS(KEY_VOICE);
+    const key=elevenKey(), vid=getLS(KEY_VOICE);
     const fallback=()=>{
       if(my!==seqToken) return done();
       if(!('speechSynthesis' in window)) return done();
@@ -797,13 +855,13 @@ const SPEEDS=[0.75,0.9,1.0,1.1];
 
 function refreshReadbar(){
   document.getElementById('readbar').style.display='flex';
-  const key=getLS(KEY_API);
+  const key=elevenKey();
   document.getElementById('rbVoice').textContent = key ? (getLS(KEY_VNAME)||'ElevenLabs') : 'navigateur';
   document.getElementById('voiceBtn').textContent = key ? 'Changer de voix' : 'Connecter ElevenLabs';
   document.getElementById('rbSpeed').textContent = speed.toFixed(1)+'×';
 }
 function voiceBtnClick(){
-  if(getLS(KEY_API)){ toggleVoicePicker(); }
+  if(elevenKey()){ toggleVoicePicker(); }
   else { const ke=document.getElementById('keyEntry'); ke.style.display = ke.style.display==='block'?'none':'block'; }
 }
 function cycleSpeed(){
@@ -838,7 +896,7 @@ function toggleVoicePicker(){
   document.getElementById('voicePicker').style.display = pickerOpen?'block':'none';
   if(pickerOpen){
     if(allVoices.length) renderVoicePicker();
-    else { document.getElementById('vpMsg').textContent='Chargement…'; fetchVoices(getLS(KEY_API),true); }
+    else { document.getElementById('vpMsg').textContent='Chargement…'; fetchVoices(elevenKey(),true); }
   }
 }
 function renderVoicePicker(){
@@ -858,7 +916,7 @@ function renderVoicePicker(){
       ev.stopPropagation(); const b=ev.currentTarget; b.innerHTML=ICON_STOP;
       try{
         const r=await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${v.voice_id}`,{method:'POST',
-          headers:{'xi-api-key':getLS(KEY_API),'Content-Type':'application/json'},
+          headers:{'xi-api-key':elevenKey(),'Content-Type':'application/json'},
           body:JSON.stringify({text:"Argentière, un matin d'octobre. J'ouvre le carnet.",model_id:'eleven_multilingual_v2',voice_settings:{stability:.5,similarity_boost:.75}})});
         if(!r.ok) throw 0;
         const a=new Audio(URL.createObjectURL(await r.blob())); a.play();
@@ -1067,14 +1125,19 @@ function runLookup(){
   if(!host || !host.closest('.article, .simp-fr, .read-fr')){ hideLookup(); return; }   // the French reading text, or a simplified sentence
   const rect = sel.getRangeAt(0).getBoundingClientRect();
   if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
+  const selPost = host.closest('.post');
+  lastSel = selPost ? { postId: selPost.id, text: raw } : null;
   const my = ++lookupSeq;
   renderLookup(raw, '<span class="lk-loading">…</span>', rect);
   lookupTranslate(raw).then(r => {
     if(my!==lookupSeq || !lookupEl) return;
     const body = lookupEl.querySelector('.lk-body');
-    body.innerHTML = r.trans
+    body.innerHTML = (r.trans
       ? `<div class="lk-trans">${r.trans}</div><div class="lk-src">${r.src}</div>`
-      : '<div class="lk-trans none">Pas de traduction trouvée.</div>';
+      : '<div class="lk-trans none">Pas de traduction trouvée.</div>') +
+      '<button class="lk-ask">Demander à Claude</button>';
+    const sel = lastSel;
+    body.querySelector('.lk-ask').onclick = () => { hideLookup(); if (sel) askAbout(sel.postId, sel.text); };
     positionLookup(rect);                          // re-measure now that content changed
   });
 }
@@ -1105,13 +1168,188 @@ document.addEventListener('selectionchange', () => {
 document.addEventListener('keydown', e => { if(e.key==='Escape') hideLookup(); });
 window.addEventListener('scroll', hideLookup, true);
 
+// ── ASK (Demander à Claude) ──
+// A question box per entry. Each question goes to the Claude API straight from the browser,
+// with the learner's own key (kept in localStorage, like the ElevenLabs one). The entry's text,
+// the sentence open in Lire and any highlighted expression go along as context; the answer
+// streams in. The thread is kept per entry until the page reloads.
+const KEY_CLAUDE = 'felix_claude_key', KEY_CLAUDE_MODEL = 'felix_claude_model';
+// Selectable models (rough cost per question with a whole entry as context). `fallbacks`: the
+// server re-runs a declined request on another model — enabled where the API recommends it.
+const CLAUDE_MODELS = [
+  { id:'claude-opus-5',    label:'Opus 5 · ~3 ¢',            fallbacks:true },
+  { id:'claude-sonnet-5',  label:'Sonnet 5 · plus rapide, ~1 ¢' },
+  { id:'claude-haiku-4-5', label:'Haiku 4.5 · le plus rapide, < 1 ¢' },
+  { id:'claude-fable-5-1', label:'Fable 5.1 · le plus fin, ~6 ¢', fallbacks:true },
+];
+function askModel(){ const id = getLS(KEY_CLAUDE_MODEL); return CLAUDE_MODELS.find(m => m.id === id) || CLAUDE_MODELS[0]; }
+const ANTHROPIC_SDK = 'https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.128.0/+esm';
+const ASK = {};                 // postId -> {history:[{role,content}], ctx:{sentence, expr}, busy}
+let lastSel = null, anthropicMod = null;
+
+function askState(id){ return ASK[id] || (ASK[id] = { history: [], ctx: {}, busy: false }); }
+function currentReadSentence(postEl, post){
+  const s = postEl.querySelector('.sent.reading'); if(!s) return null;
+  const [i,j] = s.dataset.sent.split(':').map(Number);
+  return splitSentences(post.fr[i])[j];
+}
+// Open the panel for an entry, picking up the Lire sentence and the last highlighted expression.
+function openAsk(postEl){
+  const post = POSTS.find(x => x.id === postEl.id); if(!post) return;
+  const st = askState(post.id);
+  const sent = postEl.classList.contains('read-on') ? currentReadSentence(postEl, post) : null;
+  if(sent) st.ctx.sentence = sent;
+  if(lastSel && lastSel.postId === post.id) st.ctx.expr = lastSel.text;
+  renderAskCtx(postEl, st);
+  renderAskSetup(postEl, !claudeKey());
+  const sel = postEl.querySelector('.ask-model'), cur = askModel().id;
+  sel.innerHTML = CLAUDE_MODELS.map(m => `<option value="${m.id}"${m.id === cur ? ' selected' : ''}>${m.label}</option>`).join('');
+  const ta = postEl.querySelector('.ask-input'); if(ta) setTimeout(() => ta.focus(), 0);
+}
+// From the selection popup: open that entry's panel with the expression attached.
+function askAbout(postId, text){
+  const postEl = document.getElementById(postId); if(!postEl) return;
+  lastSel = { postId, text };
+  if(!document.getElementById('ask-'+postId).classList.contains('open')) postEl.querySelector('.act[data-toggle="ask"]').click();
+  else openAsk(postEl);
+  postEl.querySelector('.ask-block').scrollIntoView({ block:'nearest', behavior:'smooth' });
+}
+function renderAskCtx(postEl, st){
+  const chip = (k, label) => st.ctx[k]
+    ? `<div class="ask-chip"><span class="k">${label}</span><span class="v">${escHTML(st.ctx[k])}</span><button data-ask="drop" data-k="${k}" aria-label="Retirer">×</button></div>` : '';
+  postEl.querySelector('.ask-ctx').innerHTML = chip('expr','Expression') + chip('sentence','Phrase');
+}
+function renderAskSetup(postEl, open){
+  const box = postEl.querySelector('.ask-setup');
+  if(fromSecrets('claudeKey')){
+    box.innerHTML = `<div class="hint">La clé Anthropic vient du fichier local <b>secrets.js</b> (ignoré par git). Modifiez-la là-bas.</div>`;
+    box.classList.toggle('open', open); return;
+  }
+  box.innerHTML =
+    `<label>Clé API Anthropic (console.anthropic.com)</label>`+
+    `<input type="password" class="ask-key" placeholder="sk-ant-…" value="${escHTML(getLS(KEY_CLAUDE)||'')}">`+
+    `<div class="ask-row"><button class="ask-send" data-ask="save-key">Enregistrer</button></div>`+
+    `<div class="hint">La clé reste dans ce navigateur. Mettez une limite de dépenses sur la clé dans la console Anthropic.</div>`;
+  box.classList.toggle('open', open);
+}
+function onAskClick(b){
+  const postEl = b.closest('.post'), post = POSTS.find(x => x.id === postEl.id); if(!post) return;
+  const st = askState(post.id), act = b.dataset.ask;
+  if(act === 'drop'){ delete st.ctx[b.dataset.k]; renderAskCtx(postEl, st); }
+  else if(act === 'setup'){ renderAskSetup(postEl, !postEl.querySelector('.ask-setup').classList.contains('open')); }
+  else if(act === 'save-key'){ setLS(KEY_CLAUDE, postEl.querySelector('.ask-key').value.trim()); renderAskSetup(postEl, false); }
+  else if(act === 'send') sendAsk(postEl, post);
+}
+// The model choice is shared by every entry's panel and remembered.
+feed.addEventListener('change', e => {
+  if(!e.target.classList.contains('ask-model')) return;
+  setLS(KEY_CLAUDE_MODEL, e.target.value);
+  document.querySelectorAll('.ask-model').forEach(s => { s.value = e.target.value; });
+});
+// Enter sends, Shift+Enter makes a new line.
+feed.addEventListener('keydown', e => {
+  if(!(e.target.classList && e.target.classList.contains('ask-input')) || e.key !== 'Enter' || e.shiftKey) return;
+  e.preventDefault();
+  const postEl = e.target.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
+  if(post) sendAsk(postEl, post);
+});
+
+function askSystem(post){
+  return [
+    'You are a French tutor inside a reading app. The learner is an English speaker, around B1, preparing for the TCF Canada (target CLB 7 / B2), who learns through lots of varied reading.',
+    'They are reading a private diary entry written in French by Felix, a fictional young mountain guide in training in Chamonix. The entry is below; their questions are about its language.',
+    'How to answer: explain in English, give French in the examples. Be concise and concrete: answer the question asked, then at most one useful extra (a contrast, a second example, a pronunciation point). No over-explaining, no condescension. Plain text with light Markdown only (*italics* for French words, short "- " lists when they help). No headings, no tables.',
+    '',
+    `Entry #${post.no}, ${post.date}, ${post.kind}, level ${post.level}: ${post.title || '(note)'}`,
+    'French:', post.fr.join('\n\n'),
+    '', 'English translation:', post.en.join('\n\n'),
+  ].join('\n');
+}
+function askUserText(q, ctx){
+  const parts = [];
+  if(ctx.sentence) parts.push(`Sentence I'm looking at: « ${ctx.sentence} »`);
+  if(ctx.expr) parts.push(`Expression I highlighted: « ${ctx.expr} »`);
+  parts.push(q);
+  return parts.join('\n');
+}
+// Tiny, safe Markdown: escape first, then **bold**, *italics*, "- " lists, paragraphs.
+function mdLite(t){
+  const inline = s => escHTML(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+  return t.trim().split(/\n{2,}/).map(block => {
+    const lines = block.split('\n');
+    if(lines.every(l => /^\s*[-•]\s+/.test(l))) return '<ul>' + lines.map(l => `<li>${inline(l.replace(/^\s*[-•]\s+/,''))}</li>`).join('') + '</ul>';
+    return `<p>${lines.map(inline).join('<br>')}</p>`;
+  }).join('');
+}
+
+// The official SDK, loaded on first use from the CDN (the page has no build step).
+async function getAnthropic(){
+  if(!anthropicMod) anthropicMod = await import(ANTHROPIC_SDK);
+  const Anthropic = anthropicMod.default || anthropicMod.Anthropic;
+  return new Anthropic({ apiKey: claudeKey(), dangerouslyAllowBrowser: true });
+}
+
+async function sendAsk(postEl, post){
+  const st = askState(post.id);
+  const ta = postEl.querySelector('.ask-input'), q = ta.value.trim();
+  if(!q || st.busy) return;
+  if(!claudeKey()){ renderAskSetup(postEl, true); return; }
+  st.busy = true;
+  const sendBtn = postEl.querySelector('.ask-send[data-ask="send"]'); sendBtn.disabled = true;
+  const item = document.createElement('div');
+  item.innerHTML = `<div class="ask-q">${escHTML(q)}</div><div class="ask-a"><span class="lk-loading">Claude réfléchit…</span></div>`;
+  postEl.querySelector('.ask-thread').appendChild(item);
+  const ansEl = item.querySelector('.ask-a');
+  ta.value = '';
+  const model = askModel();
+  const userMsg = { role:'user', content: askUserText(q, st.ctx) };
+  // Earlier answers go back unchanged to the model that wrote them (thinking blocks included);
+  // to any other model, as plain text only.
+  const messages = [...st.history.map(h => h.role === 'user' ? h
+    : { role:'assistant', content: h.model === model.id ? h.content
+        : h.content.filter(b => b.type === 'text').map(b => ({ type:'text', text:b.text })) }), userMsg];
+  let text = '';
+  try{
+    const client = await getAnthropic();
+    const stream = client.beta.messages.stream({
+      model: model.id,
+      max_tokens: 64000,
+      system: askSystem(post),
+      messages,
+      cache_control: { type:'ephemeral' },
+      ...(model.fallbacks ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' } : {}),
+    });
+    for await (const ev of stream){
+      if(ev.type === 'content_block_delta' && ev.delta.type === 'text_delta'){
+        text += ev.delta.text; ansEl.innerHTML = mdLite(text);
+      }
+    }
+    const final = await stream.finalMessage();
+    if(final.stop_reason === 'refusal' || !text.trim()){
+      ansEl.innerHTML = '<span class="err">Pas de réponse pour cette question. Reformulez-la ?</span>';
+    } else {
+      if(final.stop_reason === 'max_tokens') ansEl.innerHTML += '<p class="err">(réponse coupée)</p>';
+      st.history = [...st.history, userMsg, { role:'assistant', content: final.content, model: final.model }];
+    }
+  }catch(err){
+    const status = err && err.status;
+    const msg = (status === 401 || status === 403) ? 'Clé API refusée — vérifiez-la (Clé API).'
+      : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
+      : 'Erreur : ' + ((err && err.message) || err);
+    ansEl.innerHTML = `<span class="err">${escHTML(msg)}</span>`;
+    ta.value = q;
+  }finally{
+    st.busy = false; sendBtn.disabled = false;
+  }
+}
+
 // ── INIT ──
 window.addEventListener('load', () => {
   setLearn(getLS(KEY_LEARN)==='1');   // plain diary by default
   showAll();                  // load + render every entry, oldest first
   const s=parseFloat(getLS(KEY_SPEED)); if(!isNaN(s)) speed=s;
   if(window.speechSynthesis) speechSynthesis.getVoices();
-  const key=getLS(KEY_API);
+  const key=elevenKey();
   if(key) fetchVoices(key,false);
   refreshReadbar();
 });
