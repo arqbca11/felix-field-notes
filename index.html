@@ -372,10 +372,13 @@ const KEY_API='elevenlabs_api_key', KEY_VOICE='elevenlabs_voice_id', KEY_VNAME='
 function getLS(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
 function setLS(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
 // API keys: the local, git-ignored secrets.js wins; otherwise the key pasted into the page.
-function fromSecrets(name){ const s = window.FELIX_SECRETS; return (s && typeof s[name] === 'string' && s[name].trim()) || ''; }
-function elevenKey(){ return fromSecrets('elevenlabsKey') || getLS(KEY_API); }
-function claudeKey(){ return fromSecrets('claudeKey') || getLS(KEY_CLAUDE); }
-function githubToken(){ return fromSecrets('githubToken') || getLS('felix_github_token'); }
+// Keys are plain ASCII; copy-paste can drag in invisible or typographic characters (nbsp,
+// zero-width, line breaks, “quotes”, …) that make fetch() throw on the header. Keep only visible ASCII.
+function cleanKey(k){ return (k || '').replace(/[^\x21-\x7E]/g, ''); }
+function fromSecrets(name){ const s = window.FELIX_SECRETS; return (s && typeof s[name] === 'string') ? cleanKey(s[name]) : ''; }
+function elevenKey(){ return fromSecrets('elevenlabsKey') || cleanKey(getLS(KEY_API)) || null; }
+function claudeKey(){ return fromSecrets('claudeKey') || cleanKey(getLS(KEY_CLAUDE)) || null; }
+function githubToken(){ return fromSecrets('githubToken') || cleanKey(getLS('felix_github_token')) || null; }
 
 // ── LEARN MODE ──
 // Off = a plain diary page. On = voice controls, level tags, Lire/Traduction/Notes,
@@ -1234,7 +1237,7 @@ function renderAskSetup(postEl, open){
   box.innerHTML =
     `<label>Clé API Anthropic (console.anthropic.com)</label>`+
     `<input type="password" class="ask-key" placeholder="sk-ant-…" value="${escHTML(getLS(KEY_CLAUDE)||'')}">`+
-    `<div class="ask-row"><button class="ask-send" data-ask="save-key">Enregistrer</button></div>`+
+    `<div class="ask-row"><button class="ask-send" data-ask="save-key">Enregistrer</button><span class="ask-keymsg" style="color:#a33"></span></div>`+
     `<div class="hint">La clé reste dans ce navigateur. Mettez une limite de dépenses sur la clé dans la console Anthropic.</div>`;
   box.classList.toggle('open', open);
 }
@@ -1243,7 +1246,14 @@ function onAskClick(b){
   const st = askState(post.id), act = b.dataset.ask;
   if(act === 'drop'){ delete st.ctx[b.dataset.k]; renderAskCtx(postEl, st); }
   else if(act === 'setup'){ renderAskSetup(postEl, !postEl.querySelector('.ask-setup').classList.contains('open')); }
-  else if(act === 'save-key'){ setLS(KEY_CLAUDE, postEl.querySelector('.ask-key').value.trim()); renderAskSetup(postEl, false); }
+  else if(act === 'save-key'){
+    const k = cleanKey(postEl.querySelector('.ask-key').value);
+    if(k && !/^sk-ant-[A-Za-z0-9_-]{20,}$/.test(k)){
+      postEl.querySelector('.ask-keymsg').textContent = 'Ça ne ressemble pas à une clé Anthropic (sk-ant-…). Recopiez-la depuis la console.';
+      return;
+    }
+    setLS(KEY_CLAUDE, k); renderAskSetup(postEl, false);
+  }
   else if(act === 'send') sendAsk(postEl, post);
 }
 // The model choice is shared by every entry's panel and remembered.
