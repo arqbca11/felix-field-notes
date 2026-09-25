@@ -1349,7 +1349,8 @@ async function sendAsk(postEl, post){
     }
   }catch(err){
     const status = err && err.status;
-    const msg = (status === 401 || status === 403) ? 'Clé API refusée — vérifiez-la (Clé API).'
+    const apiMsg = err && err.error && err.error.error && err.error.error.message;   // Anthropic's own explanation
+    const msg = (status === 401 || status === 403) ? `Clé API refusée — vérifiez-la (Clé API).${apiMsg ? ' Anthropic : « ' + apiMsg + ' »' : ''}`
       : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
       : 'Erreur : ' + ((err && err.message) || err);
     ansEl.innerHTML = `<span class="err">${escHTML(msg)}</span>`;
