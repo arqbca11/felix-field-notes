@@ -455,7 +455,9 @@ agent to launch it **in the background at most once every 20 hours** (a new sess
 back after a day); the last launch time lives in the git-ignored `.claude/knowledge-scout.last`
 (delete it to force a run). `/new-entries` picks one or two items per entry into the brief's
 *Real world* block. The pool is **texture, not canon**: the characters' story stays in §2–§3 and
-`seeds.md`. Real people: public role only, never invented quotes.
+`seeds.md`. Real people: public role only, never invented quotes. A standing **`## Canada`** section
+(Revelstoke, Rogers Pass, the ACMG and avalanche system, Canadian lore and nature, Québec) feeds
+§2d's craft rule (a), "make Canada physical": the scout adds 2–4 Canada items per refresh.
 
 ## 9. Other gotchas
 - `localStorage` via `getLS/setLS` only (try/catch). Keep it that way.

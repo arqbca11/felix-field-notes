@@ -62,6 +62,11 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
   in their public role and never "say" anything invented. Put the chosen items in the brief's
   `Real world` block, and at §5 mark them ` · utilisé : n°NN` in the pool. The pool is not canon:
   it shapes texture, never the characters' story (that stays in the bible and `seeds.md`).
+- The pool's **`## Canada`** section (lore as much as news: Revelstoke, Rogers Pass, the Swiss guides
+  of 1899, the ACMG, Avalanche Canada, the cedars, Québec) is the raw material for the bible's rule
+  that Canada be **physical, never a feeling** (§2d, craft (a)): in Canada or Eric entries, or as one
+  small remembered detail when something in the valley echoes it. Spread thin — the same one-line,
+  concrete touch the bible asks for — and never as foreshadowing of a return.
 - Lay the working set of details against the N slots: which detail lands in which entry (and
   how — as a beat, a prop, a remembered remark), which are held for later. Details shape the
   plan; they don't replace it (the calendar, the kinds, the threads, the one-in-five Addie rule

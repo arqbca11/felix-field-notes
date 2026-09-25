@@ -26,6 +26,31 @@ fine to confirm a fact. Categories:
 - **Événements** — races (Pierra Menta, Mezzalama…), festivals, film festivals, competitions.
 - **Vallée** — Chamonix/Argentière life that a local would notice (works, transport, prices).
 
+## Canada (a standing second focus)
+Felix spent three winters in **Revelstoke, BC** (ski instructor; touring at **Rogers Pass** with Eric,
+an ACMG ski-mountaineering guide from Québec), and the story will slowly turn him back toward
+Canada. The writers need Canada to be **physical and specific**, never a vague longing. So the pool
+also keeps a `## Canada` section — **lore as much as news**: famous places, people, events and the
+way things work there. Use French sources where they exist (Radio-Canada, Parcs Canada's French
+pages, Avalanche Canada / Avalanche Québec, Québec media), English ones otherwise. Sub-headings:
+- `### Lieux & montagnes` — Revelstoke (Mount Mackenzie, the resort's vertical), Rogers Pass and
+  Glacier National Park, the Selkirks and Columbia Mountains, the inland temperate rainforest
+  (cedars, hemlock), huts (Asulkan, Wendy Thompson…), the Bugaboos, the Rockies; in Québec, the
+  Chic-Chocs, Gaspésie, Montmorency falls, ice climbing around Québec City.
+- `### Histoire & légendes` — the CPR and the **Swiss guides brought to Glacier House (1899)**, the
+  1910 Rogers Pass avalanche, the Connaught tunnel and snowsheds, the army's avalanche artillery on
+  the highway, the birth of heli-skiing (Hans Gmoser, the Bugaboos), Conrad Kain; the 2003
+  Connaught Creek avalanche (sober, no names of young victims).
+- `### Gens` — public figures of Canadian ski-mountaineering and guiding (e.g. Greg Hill, Chic
+  Scott, Hans Gmoser…), public role only, no invented quotes.
+- `### Métier de guide & sécurité` — the **ACMG** pathway (apprentice/assistant → ski guide,
+  alpine guide, mountain guide) versus the French system, the AST 1/2 courses, Avalanche Canada's
+  forecasts and danger scale, Parks Canada's Rogers Pass winter permit system.
+- `### Nature & saisons` — snowpack character (deep, maritime-to-continental, persistent layers),
+  wildlife (grizzly, caribou of the Selkirks, wolverine), light, cold, the season's rhythm.
+On a normal refresh, add **2–4 Canada items** (lore counts; dated by the year of the event or
+`permanent` for a standing fact, marked `passé` / `à venir` / `permanent`).
+
 ## Rules
 1. **Facts only, in your own words.** 1–3 sentences per item, never copied text, always with the
    source URL and the event's date. If sources disagree or it's unconfirmed, say so or skip it.
