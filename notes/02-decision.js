@@ -11,14 +11,14 @@ FelixNotes.register({
     "Ça fait trois ans que je tourne autour de cette idée. Depuis le jour où Eric me l'a dite à voix haute, au bord de la piste, en enlevant ses peaux : « Tu devrais faire ça pour de vrai. » Je n'ai jamais répondu. Je suis parti en Europe, j'ai fait un été entier de routes et de sommets, et l'idée est restée là, dans le sac, avec les cailloux.",
     "Hier soir, je l'ai dit à table. Mon père a d'abord demandé de quoi j'allais vivre. C'est sa façon d'être inquiet : il pose des questions pratiques. J'ai répondu que j'avais des économies, que je prendrais des heures dans un magasin de ski en décembre, et que je ne demanderais rien à personne. Il a hoché la tête. Puis il a demandé si j'étais bien assuré, ce qui, chez lui, veut dire oui.",
     "Ma mère n'a presque rien dit. Elle a regardé la fenêtre, la pluie, et elle a dit : « Chamonix. » Juste le mot. Elle y est née ; elle sait ce que ça coûte et ce que ça donne. Chloé, au téléphone, a été plus directe : « Tu as décidé ça il y a trois ans. Tu viens seulement de le remarquer. » Elle a probablement raison. C'est souvent le cas, et c'est agaçant.",
-    "Donc voilà, c'est écrit : je rentre à Chamonix pour de bon, et je prépare le probatoire de guide. Il faut que je trouve un studio, que j'appelle Bertrand — un vieux guide qui grimpait avec mon grand-père — et que je regarde ma liste de courses en face. Il me manque de la glace, du mixte, quelques descentes sérieuses. J'ai un hiver pour ça.",
+    "Donc voilà, c'est écrit : je rentre à Chamonix pour de bon, et je prépare le probatoire de guide. Il faut que je trouve un studio, que j'appelle Bertrand — un vieux guide qui grimpait avec mon grand-père — et que je regarde ma liste de courses en face. Il me manque de la glace, du mixte, quelques descentes sérieuses, et l'ENSA en demande plus qu'avant : la liste exigée s'est allongée depuis 2025. J'ai un hiver pour ça.",
     "Train jeudi. Bath, Londres, Paris, Saint-Gervais, puis le petit train rouge qui monte dans la vallée. Je connais chaque virage. Cette fois, je ne repartirai pas."
   ],
   en:[
     "I've been circling this idea for three years. Since the day Eric said it out loud, at the edge of the piste, peeling off his skins: \"You should do this for real.\" I never answered. I left for Europe, did a whole summer of roads and summits, and the idea stayed there, in the pack, with the pebbles.",
     "Last night I said it at the table. My father first asked what I was going to live on. That's his way of worrying: he asks practical questions. I answered that I had savings, that I'd take shifts in a ski shop in December, and that I wouldn't ask anyone for anything. He nodded. Then he asked whether I was properly insured, which, coming from him, means yes.",
     "My mother said almost nothing. She looked at the window, the rain, and she said: \"Chamonix.\" Just the word. She was born there; she knows what it costs and what it gives. Chloé, on the phone, was more direct: \"You decided that three years ago. You've only just noticed.\" She's probably right. She often is, and it's annoying.",
-    "So there it is, in writing: I'm going back to Chamonix for good, and I'm preparing the guide entrance exam. I need to find a studio, call Bertrand (an old guide who climbed with my grandfather), and look my climbing list squarely in the face. I'm short on ice, on mixed, on a few serious descents. I have one winter for that.",
+    "So there it is, in writing: I'm going back to Chamonix for good, and I'm preparing the guide entrance exam. I need to find a studio, call Bertrand (an old guide who climbed with my grandfather), and look my climbing list squarely in the face. I'm short on ice, on mixed, on a few serious descents, and the ENSA asks for more than it used to: the required list has grown longer since 2025. I have one winter for that.",
     "Train on Thursday. Bath, London, Paris, Saint-Gervais, then the little red train that climbs into the valley. I know every bend. This time I won't be leaving again."
   ],
   simple:[
@@ -49,7 +49,7 @@ FelixNotes.register({
     [ // ¶ 3
       {fr:"Donc voilà, c'est écrit : je rentre à Chamonix pour toujours, et je vais préparer l'examen de guide.", en:"So there it is, it is written: I am going back to Chamonix for good, and I am going to prepare for the guide exam."},
       {fr:"Je dois trouver un petit appartement. Je dois appeler Bertrand, un vieux guide qui grimpait avec mon grand-père. Et je dois regarder ma liste de courses, la liste de toutes mes montagnes.", en:"I must find a small flat. I must call Bertrand, an old guide who used to climb with my grandfather. And I must look at my liste de courses, the list of all my mountains."},
-      {fr:"Il me manque de la glace, du mixte (de la glace et du rocher), et quelques descentes à ski difficiles.", en:"I am short of ice, of mixed climbing (ice and rock), and of a few difficult ski descents."},
+      {fr:"Il me manque de la glace, du mixte (de la glace et du rocher), et quelques descentes à ski difficiles. Et depuis 2025, l'école des guides (l'ENSA) demande une liste plus longue.", en:"I am short of ice, of mixed climbing (ice and rock), and of a few difficult ski descents. And since 2025, the guides' school (the ENSA) asks for a longer list."},
       {fr:"J'ai un hiver pour faire ça.", en:"I have one winter to do that."}
     ],
     [ // ¶ 4
@@ -115,7 +115,7 @@ FelixNotes.register({
         {t:"vieux guide", k:"muet", n:"x silent before a consonant: “vyeu gid”. (Before a vowel, vieux becomes vieil: un vieil ami.)"},
         {t:"grand-père", k:"muet", n:"d silent: “gran-pèr”. (Before a vowel, grand links with a t sound: un grand‿homme.)"} ],
       [ {t:"mixte", k:"mot", n:"x = ks: one syllable, “mikst” /mikst/."},
-        {t:"quelques descentes sérieuses", k:"muet", n:"All the plural s's are silent: “kèl-k' dé-sant sé-ryeuz”. The sc of descentes is one s sound."} ],
+        {t:"quelques descentes sérieuses", k:"muet", n:"All the plural s's are silent: “kèl-k' dé-sant sé-ryeuz”. The sc of descentes is one s sound."}, {t:"l'ENSA", k:"mot", n:"Read as a word, not letter by letter: “lèn-sa” /lɛn.sa/ (École nationale de ski et d'alpinisme)."}, {t:"en demande plus", k:"son", n:"plus meaning “more”: the s is usually said, “an d'mand pluss”. In ne… plus (no longer) it stays silent."}, {t:"s'est allongée", k:"liaison", n:"Liaison after est, usual when reading: “sè-ta-lon-jé”."}, {t:"2025", k:"mot", say:"deux mille vingt-cinq", n:"deux mille vingt-cinq: the t of vingt is said before a following number, “vint-sink”."} ],
       [ {t:"un hiver", k:"liaison", n:"Mute h, so liaison: “un-ni-vèr” /œ̃.n‿i.vɛʁ/."} ]
     ],
     [ // ¶ 4
@@ -128,6 +128,8 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['l\'ENSA','the École nationale de ski et d\'alpinisme, the national school that trains mountain guides'],
+    ['s\'allonger','to get longer'],
     ['tourner autour de','to circle around (an idea)'],
     ['une peau (de phoque)','a climbing skin (for ski touring)'],
     ['pour de vrai','for real'],

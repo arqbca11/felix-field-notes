@@ -9,14 +9,14 @@ FelixNotes.register({
   title:'Bertrand', titleEn:'Bertrand',
   place:'Les Praz de Chamonix', lat:45.9400, lng:6.8850,
   fr:[
-    "Bertrand habite aux Praz, dans une maison qui n'a pas changé depuis les années quatre-vingt, avec une table de cuisine sur laquelle il a posé ma liste de courses sans l'ouvrir. Il a d'abord regardé mes mains, puis mes chaussures, puis moi. Il a soixante-trois ans, des épaules de porteur et une voix qui ne monte jamais. Guide depuis 1988. Il a grimpé avec mon grand-père ; c'est la seule chose qu'il ait dite de lui, et il l'a dite comme on constate la météo.",
+    "Bertrand habite aux Praz, dans une maison qui n'a pas changé depuis les années quatre-vingt, avec une table de cuisine sur laquelle il a posé ma liste de courses sans l'ouvrir. Il a d'abord regardé mes mains, puis mes chaussures, puis moi. Il a soixante-trois ans, des épaules de porteur et une voix qui ne monte jamais. Guide depuis 1988, à la Compagnie — la plus vieille du monde, deux cents ans en 2021. Il a grimpé avec mon grand-père ; c'est la seule chose qu'il ait dite de lui, et il l'a dite comme on constate la météo.",
     "Ensuite il a lu. Longtemps. Il a tourné les pages avec un doigt, en s'arrêtant sur certaines lignes, sans jamais lever les yeux. Je me suis tu. J'ai appris ça au Canada, avec Eric : quand un homme lit ta liste, tu ne commentes pas ta liste. Au bout de dix minutes, il a replié la feuille en quatre et il a dit : « Le rocher, ça va. Le ski, ça va. La glace, il n'y a rien. »",
     "Ce n'était pas une question, alors je n'ai pas répondu. Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même. Il ne pense pas que ma liste soit suffisante pour mars. Il ne pense pas non plus qu'elle soit impossible. Entre les deux, il a dit « on verra », et chez lui, c'est une phrase complète.",
     "À un moment, j'ai parlé d'une face que je voulais « conquérir ». Il a levé un sourcil, rien de plus, et j'ai compris que le mot était mauvais. On ne conquiert rien, là-haut. On passe, si la montagne veut bien, et on redescend. Mon grand-père disait la même chose, avec d'autres mots. Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode.",
     "En partant, il m'a serré la main et il a regardé le ciel. « Jeudi, si ça tient, une arête aux Aiguilles Rouges. Pour voir comment tu marches. » Je marche bien. Mais je crois que ce n'est pas ça qu'il regardera."
   ],
   en:[
-    "Bertrand lives in Les Praz, in a house that hasn't changed since the eighties, with a kitchen table on which he set my climbing list without opening it. He looked first at my hands, then at my boots, then at me. He is sixty-three, with a porter's shoulders and a voice that never rises. A guide since 1988. He climbed with my grandfather; it's the only thing he said about him, and he said it the way you state the weather.",
+    "Bertrand lives in Les Praz, in a house that hasn't changed since the eighties, with a kitchen table on which he set my climbing list without opening it. He looked first at my hands, then at my boots, then at me. He is sixty-three, with a porter's shoulders and a voice that never rises. A guide since 1988, with the Compagnie — the oldest in the world, two hundred years old in 2021. He climbed with my grandfather; it's the only thing he said about him, and he said it the way you state the weather.",
     "Then he read. For a long time. He turned the pages with one finger, stopping on certain lines, without ever looking up. I kept quiet. I learned that in Canada, with Eric: when a man is reading your list, you don't comment on your list. After ten minutes he folded the sheet in four and said: \"The rock, that's fine. The skiing, fine. The ice, there's nothing.\"",
     "It wasn't a question, so I didn't answer. He went on: I need to do ice gullies this winter, mixed routes, two or three serious ice climbs before the exam comes round, and a few descents I wouldn't have chosen myself. He doesn't think my list is enough for March. He doesn't think it's impossible either. Between the two he said \"we'll see,\" and with him, that is a complete sentence.",
     "At one point I talked about a face I wanted to \"conquer.\" He raised one eyebrow, nothing more, and I understood the word was wrong. You don't conquer anything up there. You pass through, if the mountain is willing, and you come back down. My grandfather used to say the same thing, in other words. These are men whose modesty is not a politeness: it's a method.",
@@ -27,7 +27,7 @@ FelixNotes.register({
       {fr:"Bertrand habite aux Praz. Sa maison n'a pas changé depuis longtemps. Il a posé ma liste de courses sur la table. Il ne l'a pas ouverte.", en:"Bertrand lives in Les Praz. His house hasn't changed for a long time. He put my climbing list on the table. He did not open it."},
       {fr:"Il a regardé mes mains, puis mes chaussures, puis moi.", en:"He looked at my hands, then my shoes, then me."},
       {fr:"Il a soixante-trois ans. Il a de grosses épaules. Sa voix ne monte jamais.", en:"He is sixty-three. He has big shoulders. His voice never rises."},
-      {fr:"Il est guide depuis 1988.", en:"He has been a guide since 1988."},
+      {fr:"Il est guide depuis 1988. Il travaille à la Compagnie des guides de Chamonix. Elle a plus de deux cents ans : c'est la plus vieille du monde.", en:"He has been a guide since 1988. He works with the Chamonix Compagnie des Guides. It is more than two hundred years old: it's the oldest in the world."},
       {fr:"Il a grimpé avec mon grand-père. C'est la seule chose qu'il a dite sur lui. Il l'a dite comme on parle du temps.", en:"He climbed with my grandfather. It's the only thing he said about him. He said it the way you talk about the weather."}
     ],
     [ // ¶ 1
@@ -79,7 +79,7 @@ FelixNotes.register({
         {t:"porteur et une", k:"liaison", n:"The r of porteur links onto et, but nothing links after et: “por-teu-ré un”."},
         {t:"voix", k:"muet", n:"x silent: “vwa”."} ],
       [ {t:"depuis", k:"son", n:"e drops, s silent: “d'pui” /dəpɥi/."},
-        {t:"1988", k:"mot", say:"mille neuf cent quatre-vingt-huit", n:"mille neuf cent quatre-vingt-huit: “mil neuf san ka-tr'-vin-uit”. No t sound from vingt here; the t of huit is said."} ],
+        {t:"1988", k:"mot", say:"mille neuf cent quatre-vingt-huit", n:"mille neuf cent quatre-vingt-huit: “mil neuf san ka-tr'-vin-uit”. No t sound from vingt here; the t of huit is said."}, {t:"la plus vieille", k:"son", n:"vieille = “vyèy” /vjɛj/: ill = y, final e silent. The s of plus is silent before a consonant."}, {t:"deux cents ans", k:"liaison", n:"No liaison after deux (a consonant follows), a required one after cents: “deu san-zan” /dø sɑ̃.z‿ɑ̃/."}, {t:"2021", k:"mot", say:"deux mille vingt et un", n:"deux mille vingt et un: the t of vingt is said in vingt et un, “vin-té-un”."} ],
       [ {t:"grand-père", k:"muet", n:"d silent: “gran-pèr”."},
         {t:"qu'il ait dite", k:"son", n:"Subjunctive ait = “è” /ɛ/: “ki-lè dit”. The feminine t of dite is said."},
         {t:"et il", k:"liaison", n:"No liaison after et: “é il”."},
@@ -166,6 +166,7 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['la Compagnie (des Guides)','the Chamonix guides company, founded in 1821'],
     ['sur laquelle','on which (lequel/laquelle after a preposition)'],
     ['un porteur','a porter (here: broad, load-carrying shoulders)'],
     ['constater','to note, to observe (a plain fact)'],

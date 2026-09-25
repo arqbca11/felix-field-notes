@@ -15,13 +15,13 @@ FelixNotes.register({
     "Les Grands Montets ont ouvert ce week-end. Ce matin, j'ai pris la première benne, avant tout le monde. Premier jour de ski de la saison : les jambes se souviennent avant la tête. Le froid sur le visage, sec et franc. Trois descentes rapides sur la piste damée, de grandes courbes régulières. Puis j'ai regardé le hors-piste et j'ai dit non : le manteau neigeux est encore mince, et les cailloux affleurent sous la surface. Ce n'est pas de la prudence, c'est de la lecture. La montagne ne compte pas les mois où je n'étais pas là.",
     "Dimanche dernier, à la Crèmerie, la glace se formait mais ne tenait pas encore ; on est allés voir. Bertrand a lu ma première fiche debout dans la neige, sans enlever ses gants. Il me l'a rendue avec deux corrections. Elle était trop longue — « une fiche, ça ne raconte pas, ça note » — et j'avais oublié de marquer l'heure du retour à la voiture. Le soir, je l'ai réécrite en deux fois moins de mots, en gardant seulement ce qui comptait.",
     "Ce soir, Chloé a appelé d'Édimbourg. Elle venait de finir ses examens. Elle n'a pas demandé, elle a annoncé : elle a dit qu'elle viendrait pour Noël, qu'elle arriverait le 21, pour une semaine. J'ai répondu qu'il n'y avait qu'un lit ; elle a dit qu'elle dormirait par terre, et qu'elle avait dormi dans pire. Elle a ajouté que les parents viendraient trois jours et qu'ils prendraient un hôtel aux Houches, le village de maman. Et papa voulait savoir si mon assurance couvrait la glace — c'est Chloé qui a posé la question, en riant. Elle m'a dit de ne pas ranger le studio pour elle.",
-    "Avant de raccrocher, elle a demandé si j'étais content. J'ai dit : « Je crois. » Content, ici, ça veut dire fatigué, au clair, et dans la bonne vallée. Elle veut apprendre le ski de randonnée, la vraie montée aux peaux. Quand elle sera là, un matin, avant le magasin, je l'emmènerai à Lognan sur les vieux skis. Il faudra partir tôt, pour qu'elle voie le glacier au réveil. Je compte déjà les jours."
+    "Avant de raccrocher, elle a demandé si j'étais content. J'ai dit : « Je crois. » Content, ici, ça veut dire fatigué, au clair, et dans la bonne vallée. Elle veut apprendre le ski de randonnée, la vraie montée aux peaux. Quand elle sera là, un matin, avant le magasin, je l'emmènerai à Lognan sur les vieux skis, et si la nouvelle télécabine a ouvert pour Noël, on redescendra dedans. Il faudra partir tôt, pour qu'elle voie le glacier au réveil. Je compte déjà les jours."
   ],
   en:[
     "The Grands Montets opened this weekend. This morning I took the first cable car, before everyone else. First ski day of the season: the legs remember before the head does. The cold on the face, dry and sharp. Three fast runs on the groomed piste, big steady turns. Then I looked at the off-piste and said no: the snowpack is still thin, and the stones are just under the surface. It isn't caution, it's reading. The mountain doesn't count the months I wasn't there.",
     "Last Sunday, at the Crèmerie, the ice was forming but not holding yet; we went to look. Bertrand read my first record card standing in the snow, without taking off his gloves. He handed it back to me with two corrections. It was too long — \"a card doesn't tell a story, it notes\" — and I had forgotten to write down the time we got back to the car. That evening I rewrote it in half as many words, keeping only what mattered.",
     "This evening Chloé called from Edinburgh. She had just finished her exams. She didn't ask, she announced: she said she would come for Christmas, that she would arrive on the 21st, for a week. I answered that there was only one bed; she said she would sleep on the floor, and that she had slept in worse. She added that our parents would come for three days and that they would take a hotel in Les Houches, mum's village. And dad wanted to know whether my insurance covered ice — it was Chloé who asked the question, laughing. She told me not to tidy the studio for her.",
-    "Before hanging up, she asked whether I was content. I said: \"I think so.\" Content, here, means tired, clear, and in the right valley. She wants to learn ski touring, the real climb on skins. When she's here, one morning, before the shop, I'll take her up to Lognan on the old skis. We'll have to leave early, so that she sees the glacier at first light. I'm already counting the days."
+    "Before hanging up, she asked whether I was content. I said: \"I think so.\" Content, here, means tired, clear, and in the right valley. She wants to learn ski touring, the real climb on skins. When she's here, one morning, before the shop, I'll take her up to Lognan on the old skis, and if the new gondola has opened for Christmas, we'll ride it back down. We'll have to leave early, so that she sees the glacier at first light. I'm already counting the days."
   ],
   simple:[
     [ // ¶ 0
@@ -55,7 +55,7 @@ FelixNotes.register({
       {fr:"J'ai dit : « Je crois. »", en:"I said: “I think so.”"},
       {fr:"Ici, content veut dire fatigué, calme, et dans la bonne vallée.", en:"Here, happy means tired, calm, and in the right valley."},
       {fr:"Elle veut apprendre le ski de randonnée. C'est monter la montagne avec des peaux sous les skis.", en:"She wants to learn ski touring. It's climbing the mountain with skins under the skis."},
-      {fr:"Quand elle sera là, je l'emmènerai à Lognan un matin, avant le travail. Elle prendra les vieux skis.", en:"When she's here, I'll take her to Lognan one morning, before work. She'll take the old skis."},
+      {fr:"Quand elle sera là, je l'emmènerai à Lognan un matin, avant le travail. Elle prendra les vieux skis. Si la nouvelle télécabine est ouverte, on redescendra avec elle.", en:"When she's here, I'll take her to Lognan one morning, before work. She'll take the old skis. If the new gondola is open, we'll come back down in it."},
       {fr:"Il faudra partir tôt. Comme ça, elle verra le glacier le matin.", en:"We'll have to leave early. That way, she'll see the glacier in the morning."},
       {fr:"Je compte déjà les jours.", en:"I'm already counting the days."}
     ]
@@ -145,7 +145,7 @@ FelixNotes.register({
         {t:"sera", k:"son", n:"The e drops: “s'ra”."},
         {t:"l'emmènerai", k:"son", n:"emm = nasal “an” + m: “lan-mèn-ré” /lɑ̃.mɛn.ʁe/."},
         {t:"Lognan", k:"mot", n:"gn = “ny”, final n nasal: “lo-nyan” /lɔ.ɲɑ̃/."},
-        {t:"vieux skis", k:"muet", n:"x and s silent: “vyeu ski”."} ],
+        {t:"vieux skis", k:"muet", n:"x and s silent: “vyeu ski”."}, {t:"a ouvert", k:"son", n:"Two vowels meet with nothing between: “a ou-vèr”; the t of ouvert is silent."}, {t:"redescendra", k:"son", n:"First e drops, sc = one s: “r'dé-san-dra” /ʁə.de.sɑ̃.dʁa/."} ],
       [ {t:"faudra", k:"son", n:"au = /o/: “fo-dra”."},
         {t:"voie", k:"son", n:"Subjunctive of voir, but it sounds exactly like voit: “vwa”."},
         {t:"glacier au", k:"muet", n:"The r of -ier is silent, no link: “gla-syé o”."},
@@ -154,6 +154,7 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['redescendre','to go back down'],
     ['une benne','the cable car (colloquial; le téléphérique)'],
     ['une piste damée','a groomed / pisted run'],
     ['le manteau neigeux','the snowpack'],

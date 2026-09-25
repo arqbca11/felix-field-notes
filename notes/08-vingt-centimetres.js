@@ -10,12 +10,12 @@ FelixNotes.register({
   place:'Argentière', lat:45.9836, lng:6.9280,
   fr:[
     "Vingt centimètres à Argentière cette nuit, cinquante à Lognan d'après la webcam. Les mélèzes n'ont pas fini de jaunir, et ils sont déjà sous la neige, jaunes et blancs en même temps. Josiane, dans l'escalier, avec son seau : « Ça, c'est de la neige de Toussaint. Elle ne restera pas. » Elle a sûrement raison, mais je l'ai regardée tomber une bonne heure, debout devant la fenêtre, avec mon café.",
-    "Journée de matériel. J'ai tout étalé sur le lit : les crampons à affûter, les peaux à recoller, la nouvelle corde encore dans son emballage, et les deux piolets que j'ai achetés d'occasion à un ami de Bertrand, un vieux guide qui vend son matériel « parce que les genoux ont décidé pour lui ». Ils ont vingt ans et ils sont parfaits. J'ai affûté, recollé, rangé. Puis j'ai compté : il me reste de quoi tenir jusqu'en mars, si je ne casse rien et si je ne tombe pas malade. C'est juste, mais c'est possible.",
+    "Journée de matériel. J'ai tout étalé sur le lit : les crampons à affûter, les peaux à recoller, la nouvelle corde encore dans son emballage, et les deux piolets que j'ai achetés d'occasion à un ami de Bertrand, un vieux guide qui vend son matériel « parce que les genoux ont décidé pour lui ». Ils ont vingt ans et ils sont parfaits ; au magasin, les nouveaux piolets Petzl de cette année coûtent plus qu'un mois de loyer. J'ai affûté, recollé, rangé. Puis j'ai compté : il me reste de quoi tenir jusqu'en mars, si je ne casse rien et si je ne tombe pas malade. C'est juste, mais c'est possible.",
     "L'après-midi, je suis quand même monté à Lognan en courant, dans de grosses traces fraîches — pas les miennes, celles d'un chamois qui avait eu la même idée. En haut, tout était blanc, muet, fermé. Le téléphone a sonné dans la forêt : Théo. Il arrive samedi, pour le week-end de la Toussaint, « sans le vélo, pour une fois ». Il faudra que je range le studio. Il faudra surtout que je trouve où le faire dormir, dans quatorze mètres carrés."
   ],
   en:[
     "Twenty centimetres in Argentière overnight, fifty at Lognan according to the webcam. The larches haven't finished turning yellow and they're already under snow, yellow and white at the same time. Josiane, on the stairs, with her bucket: \"That's Toussaint snow. It won't stay.\" She's probably right, but I watched it fall for a good hour, standing at the window with my coffee.",
-    "Gear day. I spread everything out on the bed: the crampons to sharpen, the skins to re-glue, the new rope still in its packaging, and the two ice axes I bought second-hand from a friend of Bertrand's, an old guide selling his kit \"because the knees decided for him.\" They're twenty years old and they're perfect. I sharpened, re-glued, put away. Then I did the sums: I have enough left to last until March, if I don't break anything and don't fall ill. It's tight, but it's possible.",
+    "Gear day. I spread everything out on the bed: the crampons to sharpen, the skins to re-glue, the new rope still in its packaging, and the two ice axes I bought second-hand from a friend of Bertrand's, an old guide selling his kit \"because the knees decided for him.\" They're twenty years old and they're perfect; in the shop, this year's new Petzl axes cost more than a month's rent. I sharpened, re-glued, put away. Then I did the sums: I have enough left to last until March, if I don't break anything and don't fall ill. It's tight, but it's possible.",
     "In the afternoon I ran up to Lognan anyway, in big fresh tracks — not mine, those of a chamois who'd had the same idea. Up top everything was white, silent, closed. The phone rang in the forest: Théo. He arrives Saturday, for the Toussaint weekend, \"without the bike, for once.\" I'll have to tidy the studio. Above all I'll have to work out where to put him to sleep, in fourteen square metres."
   ],
   simple:[
@@ -29,7 +29,7 @@ FelixNotes.register({
     [ // ¶ 1
       {fr:"Aujourd'hui, je m'occupe de mon matériel.", en:"Today, I take care of my gear."},
       {fr:"J'ai mis tout mon matériel sur le lit. Les crampons, les peaux, la corde neuve. Et deux piolets, des outils pour monter sur la glace. Je les ai achetés à un ami de Bertrand. C'est un vieux guide qui vend ses affaires.", en:"I put all my gear on the bed. The crampons, the skins, the new rope. And two ice axes, tools to climb on ice. I bought them from a friend of Bertrand. He is an old guide who sells his things."},
-      {fr:"Les piolets ont vingt ans. Mais ils sont parfaits.", en:"The ice axes are twenty years old. But they are perfect."},
+      {fr:"Les piolets ont vingt ans. Mais ils sont parfaits. Les piolets neufs de cette année coûtent très cher : plus qu'un mois de loyer.", en:"The ice axes are twenty years old. But they are perfect. This year's new ice axes are very expensive: more than a month's rent."},
       {fr:"J'ai préparé mon matériel et je l'ai rangé.", en:"I got my gear ready and put it away."},
       {fr:"Puis j'ai compté mon argent. J'ai assez pour vivre jusqu'en mars. Mais je ne dois rien casser et je ne dois pas être malade.", en:"Then I counted my money. I have enough to live until March. But I must not break anything and I must not be ill."},
       {fr:"C'est un peu juste, mais c'est possible.", en:"It is a bit tight, but it is possible."}
@@ -81,7 +81,7 @@ FelixNotes.register({
         {t:"parce que", k:"son", n:"Two syllables: “pars-ke”."},
         {t:"genoux ont", k:"liaison", n:"“je-nou”; liaison onto ont is optional and mostly skipped: “je-nou on”."} ],
       [ {t:"Ils ont vingt ans", k:"liaison", n:"Two required liaisons: “il-zon vin-tan” /il.z‿ɔ̃ vɛ̃.t‿ɑ̃/. Before a vowel the t of vingt is said."},
-        {t:"ils sont", k:"son", n:"Contrast: no liaison here, and s vs z decides the verb. ils sont = “il son”, ils ont = “il-zon”."} ],
+        {t:"ils sont", k:"son", n:"Contrast: no liaison here, and s vs z decides the verb. ils sont = “il son”, ils ont = “il-zon”."}, {t:"Petzl", k:"mot", n:"The climbing-gear brand from near Grenoble: “pètzl” /pɛtzl/."}, {t:"coûtent", k:"muet", n:"The verb ending -ent is silent: “kout” /kut/, the same sound as coûte."}, {t:"plus qu'un mois de loyer", k:"son", n:"plus = “more”, s usually said: “pluss kun”; loyer = “lwa-yé” /lwa.je/."} ],
       [ {t:"J'ai affûté", k:"son", n:"Two vowels meet, no consonant: “jé a-fu-té”."} ],
       [ {t:"compté", k:"muet", n:"p silent: “kon-té” /kɔ̃.te/."},
         {t:"jusqu'en mars", k:"son", n:"“jus-kan mars”: the s of mars is said /maʁs/."},
@@ -113,6 +113,7 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['un loyer','rent'],
     ['d\'après','according to'],
     ['un seau','a bucket'],
     ['la Toussaint','All Saints\' Day (1 November) and the school holiday around it'],

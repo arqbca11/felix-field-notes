@@ -15,7 +15,7 @@ FelixNotes.register({
     "La traversée des Crochues n'est pas difficile : du gneiss rouge, sec malgré la neige de la semaine, quelques ressauts, deux ou trois pas exposés, un rappel court. Je l'ai grimpée des dizaines de fois. Mais je ne l'avais jamais grimpée en tenant quelqu'un au bout d'une corde courte, en choisissant chaque relais pour lui et non pour moi, en me retournant tous les trois mètres. À midi, j'avais mal au cou à force de regarder derrière.",
     "Il a parlé deux fois. La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. » La deuxième, à la brèche, quand je suis parti trop vite dans la désescalade : il n'a rien dit, il s'est simplement arrêté, et j'ai senti la corde se tendre dans mon dos. J'ai ralenti. Il est reparti.",
     "En bas, au bord du Lac Blanc gelé, il a mangé son sandwich et il a donné son verdict, aussi court que le reste : « Tu grimpes bien. Tu ne guides pas encore. Tu grimpes pour toi ; un guide grimpe pour celui qui est derrière. Quand tu auras compris ça dans les jambes, et pas seulement dans la tête, on reparlera. » Ce n'était pas une critique. C'était une description, et elle était juste.",
-    "On est redescendus au col des Montets en silence, à la nuit tombante. Dans la voiture, il a mis la radio. J'ai un caillou rouge des Crochues dans la poche, ce qui est idiot pour une montagne que je connais par cœur. Mais aujourd'hui, je ne l'ai pas grimpée : je l'ai guidée, mal, pour la première fois. Ça compte."
+    "On est redescendus au col des Montets en silence, à la nuit tombante. Dans la voiture, il a mis la radio : on parlait encore du Goûter, des chutes de pierres de l'été et des refuges fermés en août. J'ai un caillou rouge des Crochues dans la poche, ce qui est idiot pour une montagne que je connais par cœur. Mais aujourd'hui, je ne l'ai pas grimpée : je l'ai guidée, mal, pour la première fois. Ça compte."
   ],
   en:[
     "Last Thursday it didn't hold: rain below, snow above, and Bertrand sent a single word, \"Tuesday.\" Tuesday, then. Meeting at six at the Col des Montets, in the dark, with frost on the cars. The Index chairlift has been closed for a month, so we went up on foot, by the Lac Blanc trail, two and a half hours of walk-in with the pack and the rope. Bertrand walks the way he talks: without a word too many.",
@@ -23,7 +23,7 @@ FelixNotes.register({
     "The Crochues traverse isn't hard: red gneiss, dry despite the week's snow, a few rock steps, two or three exposed moves, a short abseil. I've climbed it dozens of times. But I had never climbed it holding someone on the end of a short rope, choosing every stance for him and not for me, turning around every three metres. By noon my neck hurt from looking back so much.",
     "He spoke twice. The first time, at the second pinnacle, when I tightened the rope a second too late: \"There, your client is already on the ground.\" The second, at the notch, when I set off too fast into the downclimb: he said nothing, he simply stopped, and I felt the rope go tight at my back. I slowed down. He started again.",
     "Down at the edge of the frozen Lac Blanc he ate his sandwich and gave his verdict, as short as the rest: \"You climb well. You don't guide yet. You climb for yourself; a guide climbs for the one behind him. When you've understood that in your legs, and not only in your head, we'll talk again.\" It wasn't a criticism. It was a description, and it was accurate.",
-    "We walked back down to the Col des Montets in silence, at nightfall. In the car he put the radio on. I have a red stone from the Crochues in my pocket, which is silly for a mountain I know by heart. But today I didn't climb it: I guided it, badly, for the first time. That counts."
+    "We walked back down to the Col des Montets in silence, at nightfall. In the car he put the radio on: they were still talking about the Goûter, the summer's rockfall and the huts closed in August. I have a red stone from the Crochues in my pocket, which is silly for a mountain I know by heart. But today I didn't climb it: I guided it, badly, for the first time. That counts."
   ],
   simple:[
     [ // ¶ 0
@@ -65,7 +65,7 @@ FelixNotes.register({
     ],
     [ // ¶ 5
       {fr:"Nous sommes redescendus au col des Montets en silence. La nuit tombait.", en:"We came back down to the Col des Montets in silence. Night was falling."},
-      {fr:"Dans la voiture, il a mis la radio.", en:"In the car, he put the radio on."},
+      {fr:"Dans la voiture, il a mis la radio. On parlait du Goûter, sur le Mont-Blanc : cet été, beaucoup de pierres sont tombées, et les refuges ont fermé en août.", en:"In the car, he put the radio on. They were talking about the Goûter, on Mont Blanc: this summer, a lot of stones fell, and the huts closed in August."},
       {fr:"J'ai une petite pierre rouge des Crochues dans la poche. C'est bête, parce que je connais très bien cette montagne.", en:"I have a small red stone from the Crochues in my pocket. It's silly, because I know this mountain very well."},
       {fr:"Mais aujourd'hui, je ne l'ai pas seulement grimpée. Je l'ai guidée, mal, pour la première fois.", en:"But today, I didn't just climb it. I guided it, badly, for the first time."},
       {fr:"Ça compte.", en:"That counts."}
@@ -174,7 +174,7 @@ FelixNotes.register({
       [ {t:"On est redescendus", k:"liaison", n:"Required on‿est: “o-nè”. redescendus: sc = s, “re-dé-san-du”."},
         {t:"nuit tombante", k:"muet", n:"t of nuit silent: “nui ton-bant”."} ],
       [ {t:"voiture", k:"son", n:"“vwa-tur” /vwa.tyʁ/, u = /y/."},
-        {t:"mis", k:"muet", n:"s silent: “mi”."} ],
+        {t:"mis", k:"muet", n:"s silent: “mi”."}, {t:"Goûter", k:"mot", n:"The hut and couloir on Mont Blanc's normal route: “gou-té” /ɡu.te/. The circumflex changes nothing."}, {t:"chutes de pierres", k:"son", n:"chutes has the French u: “shut” /ʃyt/, not “shoot”; pierres = “pyèr”, s silent."}, {t:"fermés en août", k:"liaison", n:"Liaison optional and usually skipped: “fèr-mé an ou”. août = “ou” (or “out”)."} ],
       [ {t:"caillou", k:"mot", n:"ill = “y”: “ka-you” /ka.ju/."},
         {t:"est idiot", k:"liaison", n:"Optional liaison: “è-ti-dyo” or “è i-dyo”. t of idiot silent."},
         {t:"montagne", k:"son", n:"gn = /ɲ/, like “ny” in canyon: “mon-tany”."},
@@ -185,6 +185,8 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['une chute de pierres','rockfall'],
+    ['un refuge','a mountain hut'],
     ['ça n\'a pas tenu','it didn\'t hold (the weather)'],
     ['le gel','frost'],
     ['un télésiège','a chairlift'],

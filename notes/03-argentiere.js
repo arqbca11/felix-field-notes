@@ -9,12 +9,12 @@ FelixNotes.register({
   place:'Argentière, vallée de Chamonix', lat:45.9836, lng:6.9280,
   fr:[
     "Quatorze mètres carrés, un lit, une table, une plaque de cuisson, et une fenêtre. Mais quelle fenêtre : en face, l'Aiguille Verte et les Drus, avec la première neige de la saison posée sur le haut. Josiane, la propriétaire, a soixante-douze ans et a tout de suite compris qui j'étais. « Le petit-fils de Marcel. Tu as ses mains. » Je ne savais pas que ça se voyait.",
-    "Je me suis installé en une heure : les skis sous le lit, les cordes au mur, les chaussures dans l'entrée. Puis je suis monté à Lognan en courant, par le sentier qui traverse la forêt. De vieux mélèzes commencent à jaunir ; l'air sent la résine et le froid. En haut, les Grands Montets étaient vides, les télécabines arrêtées jusqu'en décembre. J'ai touché la neige au bord du chemin : à peine quelques centimètres, dure comme du sel.",
+    "Je me suis installé en une heure : les skis sous le lit, les cordes au mur, les chaussures dans l'entrée. Puis je suis monté à Lognan en courant, par le sentier qui traverse la forêt. De vieux mélèzes commencent à jaunir ; l'air sent la résine et le froid. En haut, les Grands Montets étaient vides, les télécabines arrêtées jusqu'en décembre ; seuls des ouvriers finissaient la gare de la nouvelle télécabine, qui doit ouvrir pour Noël. J'ai touché la neige au bord du chemin : à peine quelques centimètres, dure comme du sel.",
     "Ce qui m'a frappé, c'est le silence. Pas celui de l'été, plein de gens et de sonnettes de vélo, mais un silence qui attend. La vallée se prépare, comme moi. J'ai signé pour des week-ends dans un magasin de location à Chamonix, à partir de décembre ; ça paiera le studio. Demain, j'appelle Bertrand. Ma mère m'a envoyé son numéro par SMS, avec un seul mot : « Vas-y. »"
   ],
   en:[
     "Fourteen square metres, a bed, a table, a hob, and a window. But what a window: straight across, the Aiguille Verte and the Drus, with the first snow of the season resting on the top. Josiane, the landlady, is seventy-two and understood at once who I was. \"Marcel's grandson. You have his hands.\" I didn't know it showed.",
-    "I moved in within an hour: skis under the bed, ropes on the wall, boots in the entrance. Then I ran up to Lognan, by the trail that cuts through the forest. Old larches are starting to turn yellow; the air smells of resin and cold. Up top, the Grands Montets were empty, the gondolas stopped until December. I touched the snow at the edge of the path: barely a few centimetres, hard as salt.",
+    "I moved in within an hour: skis under the bed, ropes on the wall, boots in the entrance. Then I ran up to Lognan, by the trail that cuts through the forest. Old larches are starting to turn yellow; the air smells of resin and cold. Up top, the Grands Montets were empty, the gondolas stopped until December; only a few workers were finishing the station of the new gondola, due to open for Christmas. I touched the snow at the edge of the path: barely a few centimetres, hard as salt.",
     "What struck me was the silence. Not the summer kind, full of people and bicycle bells, but a silence that is waiting. The valley is getting ready, like me. I've signed up for weekends at a rental shop in Chamonix, from December; that will pay for the studio. Tomorrow I'm calling Bertrand. My mother texted me his number with a single word: \"Go.\""
   ],
   simple:[
@@ -30,7 +30,7 @@ FelixNotes.register({
       {fr:"J'ai rangé mes affaires en une heure. Les skis sont sous le lit, les cordes au mur, les chaussures à l'entrée.", en:"I put my things away in an hour. The skis are under the bed, the ropes on the wall, the boots by the door."},
       {fr:"Après, j'ai couru jusqu'à Lognan. J'ai pris le petit chemin dans la forêt.", en:"Afterwards, I ran up to Lognan. I took the little path through the forest."},
       {fr:"Les vieux arbres deviennent jaunes. L'air sent la forêt et le froid.", en:"The old trees are turning yellow. The air smells of the forest and of cold."},
-      {fr:"En haut, il n'y avait personne aux Grands Montets. Les télécabines ne marchent pas avant décembre.", en:"Up top, there was nobody at the Grands Montets. The gondolas don't run before December."},
+      {fr:"En haut, il n'y avait personne aux Grands Montets. Les télécabines ne marchent pas avant décembre. Il y avait seulement des ouvriers : ils construisent une nouvelle télécabine, pour Noël.", en:"Up top, there was nobody at the Grands Montets. The gondolas don't run before December. There were only workers: they are building a new gondola, for Christmas."},
       {fr:"J'ai touché la neige au bord du chemin. Il y a seulement quelques centimètres, et elle est dure comme du sel.", en:"I touched the snow at the edge of the path. There are only a few centimetres, and it is hard like salt."}
     ],
     [ // ¶ 2
@@ -82,7 +82,7 @@ FelixNotes.register({
       [ {t:"En haut", k:"liaison", n:"Forbidden liaison: haut has an aspirated h. “an o”, never “an-no”."},
         {t:"Grands Montets", k:"mot", n:"All final consonants silent: “gran mon-tè” /ɡʁɑ̃ mɔ̃.tɛ/."},
         {t:"étaient", k:"son", n:"-aient = è: “é-tè” /e.tɛ/, the -ent is silent."},
-        {t:"jusqu'en", k:"son", n:"The s is said: “jus-kan” /ʒys.kɑ̃/."} ],
+        {t:"jusqu'en", k:"son", n:"The s is said: “jus-kan” /ʒys.kɑ̃/."}, {t:"seuls des ouvriers", k:"liaison", n:"Required liaison after des: “dé-zou-vri-yé” /de.z‿u.vʁi.je/. The s of seuls is silent."}, {t:"doit ouvrir", k:"liaison", n:"Optional liaison: careful “dwa-tou-vrir”, everyday “dwa ou-vrir”."}, {t:"Noël", k:"son", n:"Two syllables, the ë splits them: “no-èl” /nɔ.ɛl/."} ],
       [ {t:"chemin", k:"son", n:"The e drops: “sh'min” /ʃmɛ̃/."},
         {t:"à peine quelques", k:"son", n:"Fast speech: “a pèn kèl-k'”. Final e's and s silent."},
         {t:"centimètres", k:"son", n:"en = nasal /ɑ̃/: “san-ti-mètr” /sɑ̃.ti.mɛtʁ/."},
@@ -114,6 +114,8 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['un ouvrier / une ouvrière','a worker (on a building site)'],
+    ['une gare (de télécabine)','a lift station'],
     ['une plaque de cuisson','a hob, a cooktop'],
     ['la propriétaire','the landlady (le propriétaire: the landlord, the owner)'],
     ['un petit-fils','a grandson'],

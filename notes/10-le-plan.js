@@ -11,7 +11,7 @@ FelixNotes.register({
   title:'Le plan pour l\'hiver', titleEn:'The plan for the winter',
   place:'Les Praz de Chamonix', lat:45.9400, lng:6.8850,
   fr:[
-    "Cuisine de Bertrand, deuxième fois. Cette fois, il a sorti une feuille et il a écrit lui-même, mois par mois, de son écriture serrée. Décembre : la glace. La Crèmerie, au-dessus d'Argentière, dès qu'elle se forme, et Cogne, de l'autre côté du tunnel, où les cascades tiennent tout l'hiver. Janvier : le ski, les descentes qui manquent à ma liste, autour de la Vallée Blanche, quand la benne de l'Aiguille du Midi rouvrira. Février : de plus longues courses de ski, du côté d'Argentière, et une ou deux goulottes sérieuses. Mars : un raid de plusieurs jours, Chamonix–Zermatt, s'il y a de la neige et un partenaire. Puis le printemps, et le probatoire.",
+    "Cuisine de Bertrand, deuxième fois. Cette fois, il a sorti une feuille et il a écrit lui-même, mois par mois, de son écriture serrée. Décembre : la glace. La Crèmerie, au-dessus d'Argentière, dès qu'elle se forme, et Cogne, de l'autre côté du tunnel, où les cascades tiennent tout l'hiver. Janvier : le ski, les descentes qui manquent à ma liste, autour de la Vallée Blanche, quand la benne de l'Aiguille du Midi rouvrira. Février : de plus longues courses de ski, du côté d'Argentière, à peau de phoque depuis le bas, puisque le téléphérique du sommet des Grands Montets ne tourne plus depuis l'incendie de 2018, et une ou deux goulottes sérieuses. Mars : un raid de plusieurs jours, Chamonix–Zermatt, s'il y a de la neige et un partenaire. Puis le printemps, et le probatoire.",
     "Il a posé trois règles, sans lever le stylo. Je ne partirai jamais seul en glace. Je noterai tout après chaque course : les conditions, l'horaire, le matériel, ce qui a marché et ce qui n'a pas marché. Et je ne compterai pas les courses, je compterai les jours dehors. « Quand tu auras fait tout ça, on reparlera. Si tu ne l'as pas fait, on reparlera aussi, mais pas de la même chose. »",
     "Côté pratique : le magasin commence le 5 décembre, les week-ends et les vacances scolaires. Le studio est payé jusqu'à mars. Ce n'est pas confortable, mais c'est clair, et j'aime ce qui est clair.",
     "Et après ? Après, je ne sais pas. Peut-être le Canada, un jour, pour continuer là-bas ce que je commence ici. Eric dirait oui tout de suite. Il ne le dira pas, parce que je ne le lui demanderai pas cette année. L'année prochaine ? Dans cinq ans ? Jamais ? Je n'ai pas de réponse, et pour une fois, ça ne me dérange pas.",
@@ -19,7 +19,7 @@ FelixNotes.register({
     "La Crèmerie n'est pas encore formée. Alors, en attendant que la glace veuille bien : course à pied le matin, la salle le soir, et la feuille sur le mur, au-dessus de la table, là où je la verrai tous les jours."
   ],
   en:[
-    "Bertrand's kitchen, second time. This time he took out a sheet of paper and wrote it himself, month by month, in his cramped handwriting. December: ice. The Crèmerie, above Argentière, as soon as it forms, and Cogne, on the other side of the tunnel, where the icefalls hold all winter. January: skiing, the descents missing from my list, around the Vallée Blanche, once the Aiguille du Midi cable car reopens. February: longer ski routes, on the Argentière side, and one or two serious gullies. March: a multi-day tour, Chamonix–Zermatt, if there's snow and a partner. Then spring, and the exam.",
+    "Bertrand's kitchen, second time. This time he took out a sheet of paper and wrote it himself, month by month, in his cramped handwriting. December: ice. The Crèmerie, above Argentière, as soon as it forms, and Cogne, on the other side of the tunnel, where the icefalls hold all winter. January: skiing, the descents missing from my list, around the Vallée Blanche, once the Aiguille du Midi cable car reopens. February: longer ski routes, on the Argentière side, on skins from the bottom, since the top cable car of the Grands Montets hasn't run since the 2018 fire, and one or two serious gullies. March: a multi-day tour, Chamonix–Zermatt, if there's snow and a partner. Then spring, and the exam.",
     "He set three rules, without lifting the pen. I will never go out on ice alone. I will write everything down after each route: conditions, timings, gear, what worked and what didn't. And I won't count routes, I'll count days outside. \"When you've done all that, we'll talk again. If you haven't done it, we'll talk again too, but not about the same thing.\"",
     "Practical side: the shop starts on 5 December, weekends and school holidays. The studio is paid until March. It isn't comfortable, but it's clear, and I like what is clear.",
     "And after? After, I don't know. Maybe Canada, one day, to continue over there what I'm starting here. Eric would say yes straight away. He won't say it, because I won't ask him this year. Next year? In five years? Never? I have no answer, and for once, that doesn't bother me.",
@@ -33,7 +33,7 @@ FelixNotes.register({
       {fr:"En décembre : la glace.", en:"In December: ice."},
       {fr:"Je vais grimper à la Crèmerie, près d'Argentière, quand la glace arrive. Et aussi à Cogne, de l'autre côté du tunnel. Là-bas, les cascades de glace restent tout l'hiver.", en:"I am going to climb at the Crèmerie, near Argentière, when the ice comes. And also at Cogne, on the other side of the tunnel. There, the ice waterfalls stay all winter."},
       {fr:"En janvier : le ski. Il me manque des descentes pour ma liste. Je vais les faire autour de la Vallée Blanche, quand le téléphérique de l'Aiguille du Midi va rouvrir.", en:"In January: skiing. I am missing some descents for my list. I am going to do them around the Vallée Blanche, when the Aiguille du Midi cable car reopens."},
-      {fr:"En février : des sorties de ski plus longues, du côté d'Argentière. Et un ou deux couloirs de glace difficiles.", en:"In February: longer ski trips, on the Argentière side. And one or two hard ice gullies."},
+      {fr:"En février : des sorties de ski plus longues, du côté d'Argentière. On montera avec les peaux, parce que le téléphérique du haut des Grands Montets a brûlé en 2018 et ne marche plus. Et un ou deux couloirs de glace difficiles.", en:"In February: longer ski trips, on the Argentière side. We'll go up on skins, because the top cable car of the Grands Montets burned in 2018 and doesn't run any more. And one or two hard ice gullies."},
       {fr:"En mars : un grand voyage à ski de plusieurs jours, de Chamonix à Zermatt. Mais seulement s'il y a de la neige et un partenaire.", en:"In March: a big multi-day ski trip, from Chamonix to Zermatt. But only if there is snow and a partner."},
       {fr:"Après, c'est le printemps, et l'examen.", en:"After that, it is spring, and the exam."}
     ],
@@ -102,7 +102,7 @@ FelixNotes.register({
         {t:"plus longues", k:"muet", n:"The s of plus is silent before a consonant; gu = hard g: “plu long” /ply lɔ̃ɡ/."},
         {t:"et une ou deux", k:"liaison", n:"No liaison after et; then une slides onto ou: “é u-nou deu”."},
         {t:"goulottes", k:"mot", n:"A narrow ice or mixed gully: “gou-lot” /ɡu.lɔt/. Final s silent."},
-        {t:"sérieuses", k:"son", n:"-euses = “euz” /øz/: “sé-ryeuz” /se.ʁjøz/."} ],
+        {t:"sérieuses", k:"son", n:"-euses = “euz” /øz/: “sé-ryeuz” /se.ʁjøz/."}, {t:"à peau de phoque", k:"son", n:"eau = “o”; ph = f: “a po d' fok” /a po d fɔk/."}, {t:"puisque le téléphérique", k:"son", n:"puisque = “puis-k'”, the s is said; téléphérique = “té-lé-fé-rik”."}, {t:"depuis l'incendie", k:"son", n:"Two different nasals: in = /ɛ̃/, en = /ɑ̃/: “lin-san-di” /lɛ̃.sɑ̃.di/."}, {t:"2018", k:"mot", say:"deux mille dix-huit", n:"deux mille dix-huit: the x of dix links as z, “di-zuit”."} ],
       [ {t:"Mars", k:"son", n:"The s of mars IS pronounced: “mars” /maʁs/."},
         {t:"raid", k:"mot", n:"A multi-day ski traverse. The d is said: “rèd” /ʁɛd/."},
         {t:"plusieurs jours", k:"muet", n:"The s of plusieurs is silent before a consonant: “plu-zyeur jour”."},
@@ -195,6 +195,9 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['un téléphérique','a cable car'],
+    ['un incendie','a fire (a building or installation burning)'],
+    ['puisque','since, given that'],
     ['une feuille','a sheet of paper; a leaf'],
     ['une écriture serrée','cramped, tight handwriting'],
     ['une cascade (de glace)','an icefall, a frozen waterfall'],
