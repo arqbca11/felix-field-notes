@@ -245,7 +245,8 @@ settle whether it did); Bertrand's Compagnie, 200 years in 2021 (4); the Goûter
 new Petzl axes cost more than a month's rent (8); the Grands Montets top cable car gone since the 2018
 fire, so February's Argentière tours start on skins (10).
 Canada/Addie, same day: Eric's avalanche course at Rogers Pass on mornings when the army fired its
-avalanche guns above the highway (5); the Canadian training named as the ACMG (7); Addie photographed
+avalanche guns above the highway (5); the Canadian training named as the ACMG (7), and in the plan, the ACMG mountain-guide certificate
+"vaut le nôtre" (10, a second touch); Addie photographed
 the lichen hanging from the old cedars as well as the snow (14).
 
 **Open threads to pick up next:** **Christmas in Argentière** — Chloé arrives **21 Dec** for a week (floor of the

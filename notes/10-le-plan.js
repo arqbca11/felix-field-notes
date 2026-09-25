@@ -14,7 +14,7 @@ FelixNotes.register({
     "Cuisine de Bertrand, deuxième fois. Cette fois, il a sorti une feuille et il a écrit lui-même, mois par mois, de son écriture serrée. Décembre : la glace. La Crèmerie, au-dessus d'Argentière, dès qu'elle se forme, et Cogne, de l'autre côté du tunnel, où les cascades tiennent tout l'hiver. Janvier : le ski, les descentes qui manquent à ma liste, autour de la Vallée Blanche, quand la benne de l'Aiguille du Midi rouvrira. Février : de plus longues courses de ski, du côté d'Argentière, à peau de phoque depuis le bas, puisque le téléphérique du sommet des Grands Montets ne tourne plus depuis l'incendie de 2018, et une ou deux goulottes sérieuses. Mars : un raid de plusieurs jours, Chamonix–Zermatt, s'il y a de la neige et un partenaire. Puis le printemps, et le probatoire.",
     "Il a posé trois règles, sans lever le stylo. Je ne partirai jamais seul en glace. Je noterai tout après chaque course : les conditions, l'horaire, le matériel, ce qui a marché et ce qui n'a pas marché. Et je ne compterai pas les courses, je compterai les jours dehors. « Quand tu auras fait tout ça, on reparlera. Si tu ne l'as pas fait, on reparlera aussi, mais pas de la même chose. »",
     "Côté pratique : le magasin commence le 5 décembre, les week-ends et les vacances scolaires. Le studio est payé jusqu'à mars. Ce n'est pas confortable, mais c'est clair, et j'aime ce qui est clair.",
-    "Et après ? Après, je ne sais pas. Peut-être le Canada, un jour, pour continuer là-bas ce que je commence ici. Eric dirait oui tout de suite. Il ne le dira pas, parce que je ne le lui demanderai pas cette année. L'année prochaine ? Dans cinq ans ? Jamais ? Je n'ai pas de réponse, et pour une fois, ça ne me dérange pas.",
+    "Et après ? Après, je ne sais pas. Peut-être le Canada, un jour, pour continuer là-bas ce que je commence ici : le brevet de guide de montagne de l'ACMG vaut le nôtre. Eric dirait oui tout de suite. Il ne le dira pas, parce que je ne le lui demanderai pas cette année. L'année prochaine ? Dans cinq ans ? Jamais ? Je n'ai pas de réponse, et pour une fois, ça ne me dérange pas.",
     "En recopiant la feuille, je me suis arrêté sur « mars ». Mars, c'est le mois où elle venait à Revelstoke, chaque année. Si je ne suis pas là-bas en mars, je ne saurai pas si elle est revenue. Je ne le saurais pas de toute façon : je n'ai jamais eu son numéro. J'ai écrit « mars » sur ma feuille, et je suis passé à avril.",
     "La Crèmerie n'est pas encore formée. Alors, en attendant que la glace veuille bien : course à pied le matin, la salle le soir, et la feuille sur le mur, au-dessus de la table, là où je la verrai tous les jours."
   ],
@@ -22,7 +22,7 @@ FelixNotes.register({
     "Bertrand's kitchen, second time. This time he took out a sheet of paper and wrote it himself, month by month, in his cramped handwriting. December: ice. The Crèmerie, above Argentière, as soon as it forms, and Cogne, on the other side of the tunnel, where the icefalls hold all winter. January: skiing, the descents missing from my list, around the Vallée Blanche, once the Aiguille du Midi cable car reopens. February: longer ski routes, on the Argentière side, on skins from the bottom, since the top cable car of the Grands Montets hasn't run since the 2018 fire, and one or two serious gullies. March: a multi-day tour, Chamonix–Zermatt, if there's snow and a partner. Then spring, and the exam.",
     "He set three rules, without lifting the pen. I will never go out on ice alone. I will write everything down after each route: conditions, timings, gear, what worked and what didn't. And I won't count routes, I'll count days outside. \"When you've done all that, we'll talk again. If you haven't done it, we'll talk again too, but not about the same thing.\"",
     "Practical side: the shop starts on 5 December, weekends and school holidays. The studio is paid until March. It isn't comfortable, but it's clear, and I like what is clear.",
-    "And after? After, I don't know. Maybe Canada, one day, to continue over there what I'm starting here. Eric would say yes straight away. He won't say it, because I won't ask him this year. Next year? In five years? Never? I have no answer, and for once, that doesn't bother me.",
+    "And after? After, I don't know. Maybe Canada, one day, to continue over there what I'm starting here: the ACMG's mountain-guide certificate is worth ours. Eric would say yes straight away. He won't say it, because I won't ask him this year. Next year? In five years? Never? I have no answer, and for once, that doesn't bother me.",
     "Copying out the sheet, I stopped on \"March.\" March is the month she used to come to Revelstoke, every year. If I'm not there in March, I won't know whether she came back. I wouldn't know anyway: I never had her number. I wrote \"March\" on my sheet, and moved on to April.",
     "The Crèmerie hasn't formed yet. So, while waiting for the ice to be willing: running in the morning, the climbing gym in the evening, and the sheet on the wall, above the table, where I'll see it every day."
   ],
@@ -53,7 +53,7 @@ FelixNotes.register({
     [ // ¶ 3
       {fr:"Et après ?", en:"And after?"},
       {fr:"Après, je ne sais pas.", en:"After, I don't know."},
-      {fr:"Peut-être le Canada, un jour. Je veux continuer là-bas ce que je commence ici.", en:"Maybe Canada, one day. I want to continue over there what I am starting here."},
+      {fr:"Peut-être le Canada, un jour. Je veux continuer là-bas ce que je commence ici. Là-bas, le diplôme de guide de montagne (l'ACMG) vaut le diplôme français.", en:"Maybe Canada, one day. I want to continue over there what I am starting here. Over there, the mountain-guide certificate (the ACMG) is worth the French one."},
       {fr:"Eric dirait oui tout de suite.", en:"Eric would say yes right away."},
       {fr:"Mais il ne va rien dire. Parce que cette année, je ne vais pas lui demander.", en:"But he will not say anything. Because this year, I am not going to ask him."},
       {fr:"L'année prochaine ?", en:"Next year?"},
@@ -151,7 +151,7 @@ FelixNotes.register({
       [ {t:"Peut-être", k:"enchainement", n:"The t links: “peu-tètr” /pø.tɛtʁ/. In casual speech often just “p'tèt”."},
         {t:"continuer", k:"son", n:"“kon-ti-nu-é” /kɔ̃.ti.ny.e/; in speech the u often glides into é."},
         {t:"là-bas", k:"muet", n:"s silent: “la-ba”."},
-        {t:"commence ici", k:"enchainement", n:"The s sound of commence slides onto ici: “ko-man-si-si”."} ],
+        {t:"commence ici", k:"enchainement", n:"The s sound of commence slides onto ici: “ko-man-si-si”."}, {t:"le brevet", k:"muet", n:"The final t of brevet is silent: “l' breu-vè” /lə bʁə.vɛ/."}, {t:"de l'ACMG", k:"mot", n:"Letter by letter, the French way: “d' la-sé-èm-jé”."}, {t:"vaut le nôtre", k:"son", n:"vaut = “vo”, the t silent; nôtre has the closed ô: “notr” /notʁ/, unlike notre /nɔtʁ/."} ],
       [ {t:"Eric", k:"mot", n:"French-style: “é-rik” /e.ʁik/."},
         {t:"dirait oui", k:"liaison", n:"No liaison before oui — it blocks linking like an aspirated h: “di-rè | wi”."},
         {t:"tout de suite", k:"son", n:"Usually run together: “tout-suit” /tut.sɥit/."} ],
@@ -195,6 +195,8 @@ FelixNotes.register({
     ]
   ],
   vocab:[
+    ['un brevet','a certificate, a qualification (here: the guide\'s diploma)'],
+    ['le nôtre / la nôtre','ours'],
     ['un téléphérique','a cable car'],
     ['un incendie','a fire (a building or installation burning)'],
     ['puisque','since, given that'],
