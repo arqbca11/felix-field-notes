@@ -54,6 +54,14 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
   is waiting for. Plan against that gap: if the reader already suspects what the next entry
   reveals, you're late; if they have no idea, you're early. Anything the reader flags as a hole
   ("he could ask Eric") is either a story decision for the user or a beat to answer.
+- Read **`knowledge_pool.md`** (real-world facts gathered by the `knowledge-scout` agent: conditions,
+  gear, routes, public figures, events, the guide profession). Pick at most **one or two items per
+  entry**, only where they fit the date and the scene (an ice route Felix hears is in condition, a
+  race he reads about, a lift opening he waits for). Respect each item's date: `passé` items are
+  things he already knows or remembers, `à venir` ones he can plan around. Real people appear only
+  in their public role and never "say" anything invented. Put the chosen items in the brief's
+  `Real world` block, and at §5 mark them ` · utilisé : n°NN` in the pool. The pool is not canon:
+  it shapes texture, never the characters' story (that stays in the bible and `seeds.md`).
 - Lay the working set of details against the N slots: which detail lands in which entry (and
   how — as a beat, a prop, a remembered remark), which are held for later. Details shape the
   plan; they don't replace it (the calendar, the kinds, the threads, the one-in-five Addie rule

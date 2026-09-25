@@ -439,6 +439,17 @@ the main agent's decision.
 - `gram` `h`/`p`: single-quoted HTML strings → **escape every apostrophe** (`don\'t`, `c\'est`).
 - Never put French text into inline `onclick`. Handlers use `data-*` attributes.
 
+## 8b. The real world: `knowledge_pool.md`
+Real, dated, sourced facts (conditions, the guide profession, routes and lines, gear, public
+figures, events, valley life), gathered by the **`knowledge-scout`** agent
+(`.claude/agents/knowledge-scout.md`, Sonnet, web search, edits only the pool). A
+`UserPromptSubmit` hook (`.claude/settings.json` → `tools/knowledge-check.sh`) reminds the main
+agent to launch it **in the background at most once every 20 hours** (a new session, or coming
+back after a day); the last launch time lives in the git-ignored `.claude/knowledge-scout.last`
+(delete it to force a run). `/new-entries` picks one or two items per entry into the brief's
+*Real world* block. The pool is **texture, not canon**: the characters' story stays in §2–§3 and
+`seeds.md`. Real people: public role only, never invented quotes.
+
 ## 9. Other gotchas
 - `localStorage` via `getLS/setLS` only (try/catch). Keep it that way.
 - **API keys: `secrets.js`** (repo root, **git-ignored**; format in `secrets.example.js`) holds the

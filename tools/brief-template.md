@@ -17,6 +17,9 @@ Supplied details (user-provided; canon whether used or not — never contradict)
   narrator device: none | Felix writes "…" although the detail says …  (only for his own
     wants / plans / feelings — never for facts of the world)
 
+Real world (from knowledge_pool.md; facts, never invented quotes from real people):
+  use here: … (the item, its date, how it enters: something Felix reads / sees / plans around) | none
+
 Beats (concrete, in order):
   1. …
   2. …

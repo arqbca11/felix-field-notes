@@ -4,3 +4,6 @@ check.js
 
 # Local API keys — never commit (see secrets.example.js)
 secrets.js
+
+# Per-machine timestamp of the last knowledge-scout launch (hook state)
+.claude/knowledge-scout.last
