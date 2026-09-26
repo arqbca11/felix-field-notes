@@ -1,0 +1,19 @@
+{"ts":"2026-09-26T08:20:41.236Z","s":"tutsbm","e":"view","id":"bertrand","no":4}
+{"ts":"2026-09-26T08:20:49.448Z","s":"tutsbm","e":"sent","id":"bertrand","no":4,"i":1,"j":0,"t":"Ensuite il a lu."}
+{"ts":"2026-09-26T08:22:55.681Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"Explain 'Je me suis tu'. Does 'me...tu' means quiet?","expr":null,"sentence":"Ensuite il a lu."}
+{"ts":"2026-09-26T08:24:21.411Z","s":"tutsbm","e":"sent","id":"bertrand","no":4,"i":1,"j":4,"t":"J'ai appris ça au Canada, avec Eric : quand un homme lit ta liste, tu ne commentes pas ta liste."}
+{"ts":"2026-09-26T08:24:38.843Z","s":"tutsbm","e":"hard","id":"bertrand","no":4,"i":1,"j":4,"k":2,"t":"quand un homme","kind":"liaison"}
+{"ts":"2026-09-26T08:25:03.627Z","s":"tutsbm","e":"hard","id":"bertrand","no":4,"i":1,"j":4,"k":0,"t":"J'ai appris","kind":"son"}
+{"ts":"2026-09-26T08:26:09.794Z","s":"tutsbm","e":"sent","id":"bertrand","no":4,"i":1,"j":5,"t":"Au bout de dix minutes, il a replié la feuille en quatre et il a dit : « Le rocher, ça va."}
+{"ts":"2026-09-26T08:28:41.170Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"what's the difference between plié and replié","expr":null,"sentence":"Ensuite il a lu."}
+{"ts":"2026-09-26T08:31:55.993Z","s":"tutsbm","e":"sent","id":"bertrand","no":4,"i":2,"j":0,"t":"Ce n'était pas une question, alors je n'ai pas répondu."}
+{"ts":"2026-09-26T08:32:20.977Z","s":"tutsbm","e":"hard","id":"bertrand","no":4,"i":2,"j":0,"k":2,"t":"répondu","kind":"son"}
+{"ts":"2026-09-26T08:32:24.609Z","s":"tutsbm","e":"hard","id":"bertrand","no":4,"i":2,"j":0,"k":0,"t":"pas une question","kind":"liaison"}
+{"ts":"2026-09-26T08:34:45.994Z","s":"tutsbm","e":"sent","id":"bertrand","no":4,"i":2,"j":1,"t":"Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même."}
+{"ts":"2026-09-26T08:35:12.785Z","s":"tutsbm","e":"lookup","id":"bertrand","no":4,"t":"moi-même"}
+{"ts":"2026-09-26T08:35:27.134Z","s":"tutsbm","e":"lookup","id":"bertrand","no":4,"t":"moi-même"}
+{"ts":"2026-09-26T08:35:40.968Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"explain moi-même","expr":"moi-même","sentence":"Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même."}
+{"ts":"2026-09-26T08:46:13.767Z","s":"tutsbm","e":"lookup","id":"bertrand","no":4,"t":"il faut que je fasse"}
+{"ts":"2026-09-26T08:49:17.756Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"Explain the sentence structure 'il faut que je fasse....'","expr":"il faut que je fasse","sentence":"Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même."}
+{"ts":"2026-09-26T08:56:49.135Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"explain more about 'il faut qu'on y aille' what is the 'y' here","expr":"il faut que je fasse","sentence":"Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même."}
+{"ts":"2026-09-26T09:07:58.403Z","s":"tutsbm","e":"ask","id":"bertrand","no":4,"t":"explain 'n'aurtais pas choisies'","expr":"il faut que je fasse","sentence":"Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même."}
