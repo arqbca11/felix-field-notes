@@ -8,7 +8,7 @@
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
 > `node tools/learner-profile.mjs`.
 
-**Built:** 2026-09-26 08:37 UTC · **Events:** 0 · **Reading sessions:** 0 · **Questions:** 0 · **Items tracked:** 0
+**Built:** 2026-09-26 09:10 UTC · **Events:** 19 (view 1, sent 5, ask 6, hard 4, lookup 3) · **Reading sessions:** 1 · **From** 2026-09-26 **to** 2026-09-26 · **Questions:** 6 · **Items tracked:** 6
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.
@@ -28,7 +28,11 @@ _Nothing yet._
 ## Hardest sentences
 Played again in Lire or opened in Simplifier the most: a sign the sentence's structure, not one word, is the hurdle.
 
-_Nothing yet._
+- #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « Ensuite il a lu. »
+- #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « J'ai appris ça au Canada, avec Eric : quand un homme lit ta liste, tu ne commentes pas ta liste. »
+- #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « Au bout de dix minutes, il a replié la feuille en quatre et il a dit : « Le rocher, ça va. »
+- #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « Ce n'était pas une question, alors je n'ai pas répondu. »
+- #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même. »
 
 ## Dictation: most-missed words
 
@@ -37,7 +41,12 @@ _Nothing yet._
 ## Questions asked (latest 20)
 Raw, for the planner to group by topic (a tense, a construction, a sound): repeated topics count as lapses too.
 
-_None yet._
+- 2026-09-26 · #4 · « il faut que je fasse » — explain 'n'aurtais pas choisies'
+- 2026-09-26 · #4 · « il faut que je fasse » — explain more about 'il faut qu'on y aille' what is the 'y' here
+- 2026-09-26 · #4 · « il faut que je fasse » — Explain the sentence structure 'il faut que je fasse....'
+- 2026-09-26 · #4 · « moi-même » — explain moi-même
+- 2026-09-26 · #4 — what's the difference between plié and replié
+- 2026-09-26 · #4 — Explain 'Je me suis tu'. Does 'me...tu' means quiet?
 
 ## How this is computed
 A **struggle** is a hard spot clicked in Lire, a word looked up, a word missed in a dictation, or a

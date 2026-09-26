@@ -48,3 +48,47 @@ Sentences I asked about while reading, with the grammar and vocab involved. Newe
 **Vocab**
 - *voir* — to see; participle *vu(e)(s)*
 - *le / la / l' / les* — him, her, it, them (direct-object pronouns)
+
+---
+
+## 2026-09-26 — « Je me suis tu. » (#4 Bertrand, via Demander)
+
+*I kept quiet.*
+
+**Grammar**
+- **`se taire`**, a reflexive verb, in the passé composé with **être**: *je me suis tu*. The *tu* here is its **past participle**, not the pronoun "you": a trap because they look identical.
+- It agrees like any être participle: *il s'est tu*, *elle s'est **tue***, *ils se sont **tus***. Imperative: *Tais-toi !* (be quiet!).
+
+**Vocab**
+- *se taire* — to fall silent, to keep quiet; *je me tais*, *je me suis tu(e)*, *je me taisais*
+
+---
+
+## 2026-09-26 — « il a replié la feuille en quatre » (#4 Bertrand, via Demander)
+
+*he folded the sheet back up in four*
+
+**Grammar**
+- The prefix **`re-`** doesn't always mean "again": in *replier* it means folding something **back up**, closing it after it was open (Bertrand had the list spread out while he read).
+
+**Vocab**
+- *plier* — to fold (neutral) · *replier* — to fold back up, put away: *replier une carte*, *replier ses affaires* (to pack up)
+- *en quatre* — in four (in quarters)
+
+---
+
+## 2026-09-26 — « il faut que je fasse des goulottes cet hiver, […] et quelques descentes que je n'aurais pas choisies moi-même. » (#4 Bertrand, via Demander — 4 questions)
+
+*I need to do some gullies this winter, […] and a few descents I wouldn't have chosen myself.*
+
+**Grammar**
+- **`il faut que` + subjonctif**: a need for a specific person. *Faire* has an irregular subjunctive stem, *fass-*: *que je fasse, que tu fasses, que nous fassions*. Without a named subject: *il faut* + infinitive (*il faut partir*).
+- **`y`** = "there" (a place already understood), placed before the verb: *j'y vais*, *il faut qu'on y aille*, *n'y va pas*. It also replaces *à* + a thing: *je pense à ce problème* → *j'y pense*. Fixed expression: *On y va !*
+- **Conditionnel passé** = conditional of the auxiliary + past participle: *je n'aurais pas choisi* (I wouldn't have chosen), a choice that didn't happen (Bertrand chose for him).
+- **Agreement with a preceding direct object**: *que* stands for *descentes* (feminine plural) and comes before the verb → *choisies*. Compare *j'ai choisi des descentes* (no agreement).
+- **`moi-même`**: emphatic "myself" (*toi-même, lui-même, elle-même, nous-mêmes, vous-mêmes, eux-mêmes*): *même* takes an **-s** in the plural.
+
+**Vocab**
+- *une goulotte* — a narrow ice/mixed gully
+- *choisir* — to choose; *j'ai choisi*, *j'aurais choisi*
+- *moi-même* — myself (emphatic)
