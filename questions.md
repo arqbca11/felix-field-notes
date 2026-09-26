@@ -92,3 +92,25 @@ It's placed right before the verb, like other object pronouns: *j'y vais*, *il f
 Common everyday phrase: *On y va !* = "Let's go! / Here we go!" — even without a specific place in mind, it's used almost as a fixed expression to mean "let's get moving."
 
 ---
+
+## 2026-09-26 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « Il a continué : il faut que je fasse des goulottes cet hiver, du mixte, deux ou trois courses sérieuses en glace avant que le probatoire arrive, et quelques descentes que je n'aurais pas choisies moi-même. »
+**Expression :** « il faut que je fasse »
+**Q :** explain 'n'aurtais pas choisies'
+
+This is the **past conditional** (*conditionnel passé*), formed with *avoir* in the conditional + past participle. It means "I would not have chosen (this myself)."
+
+Structure: *aurais* (conditional of *avoir*) + *pas* + *choisi(es)* (past participle of *choisir*)
+
+- *j'aurais choisi* = "I would have chosen"
+- *je n'aurais pas choisi* = "I would not have chosen"
+
+**Why the extra -es on *choisies*?** Because of a grammar rule: when a direct object comes *before* the verb (here, *que*, referring back to *descentes*, feminine plural), the past participle must agree with it in gender and number.
+
+- *descentes* → feminine plural → *choisies* (not *choisi*)
+
+Compare: *j'ai choisi des descentes* (no agreement, object comes after) vs. *les descentes que j'ai choisies* (agreement, object *que=descentes* comes before).
+
+So the full sense: "a few descents that I wouldn't have chosen myself" — hypothetical, contrary to what actually happened (Bertrand chose them for him).
+
+---
