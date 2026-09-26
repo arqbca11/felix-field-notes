@@ -1,11 +1,14 @@
 # Learner profile — the forgetting curve (TEST MODE)
 
+> **About you, not about the story.** Your French: what you look up, click, mistype and forget, and when
+> it's due again. For what a reader of the *story* knows and suspects, see `STORY-READER.md`.
+>
 > **Observation only.** Built by `tools/learner-profile.mjs` from what the page logged in Learn mode
 > (`learning/*.jsonl`) and from `questions.md`. `/new-entries` reads it and **reports what it would
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
 > `node tools/learner-profile.mjs`.
 
-**Built:** 2026-09-26 07:42 UTC · **Events:** 0 · **Reading sessions:** 0 · **Questions:** 0 · **Items tracked:** 0
+**Built:** 2026-09-26 08:37 UTC · **Events:** 0 · **Reading sessions:** 0 · **Questions:** 0 · **Items tracked:** 0
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.

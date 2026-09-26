@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-/* Build LEARNER.md — the learner's forgetting curve — from what the page logged.
+/* Build LEARNER-PROFILE.md — the learner's forgetting curve — from what the page logged.
    Run from the field-notes/ folder:   node tools/learner-profile.mjs
    Inputs : learning/*.jsonl (events logged by index.html in Learn mode), questions.md (Demander),
             the entries (to recognise words and to know where an item was met again).
-   Env    : LEARN_DIR (default "learning"), NOW (ISO date, default now), OUT (default LEARNER.md).
+   Env    : LEARN_DIR (default "learning"), NOW (ISO date, default now), OUT (default LEARNER-PROFILE.md).
    TEST MODE (CLAUDE.md §8c): the profile is observed, not yet used to write entries.
 
    Model, per item (a pronunciation spot, a word or expression, a dictation word):
@@ -21,7 +21,7 @@ import vm from 'node:vm';
 const ROOT = process.cwd();
 const LEARN_DIR = path.resolve(ROOT, process.env.LEARN_DIR || 'learning');
 const NOW = process.env.NOW ? new Date(process.env.NOW) : new Date();
-const OUT = path.resolve(ROOT, process.env.OUT || 'LEARNER.md');
+const OUT = path.resolve(ROOT, process.env.OUT || 'LEARNER-PROFILE.md');
 const DAY = 86400000;
 
 // ── entries ──
@@ -131,7 +131,7 @@ const due = rows.filter(r => r.recall < 0.5).sort((a, b) => b.score - a.score);
 const fading = rows.filter(r => r.recall >= 0.5 && r.recall < 0.8).sort((a, b) => a.recall - b.recall);
 const solid = rows.filter(r => r.nClean >= 2 && r.h >= 14).sort((a, b) => b.h - a.h);
 
-// ── write LEARNER.md ──
+// ── write LEARNER-PROFILE.md ──
 const fmtD = t => new Date(t).toISOString().slice(0, 10);
 const pct = x => Math.round(x * 100) + ' %';
 const days = x => x < 1 ? `${Math.round(x * 24)} h` : `${x.toFixed(x < 10 ? 1 : 0)} j`;
@@ -155,6 +155,9 @@ const hardSent = [...sentences.values()].map(s => ({ ...s, n: s.lire + s.simple 
 
 const md = `# Learner profile — the forgetting curve (TEST MODE)
 
+> **About you, not about the story.** Your French: what you look up, click, mistype and forget, and when
+> it's due again. For what a reader of the *story* knows and suspects, see \`STORY-READER.md\`.
+>
 > **Observation only.** Built by \`tools/learner-profile.mjs\` from what the page logged in Learn mode
 > (\`learning/*.jsonl\`) and from \`questions.md\`. \`/new-entries\` reads it and **reports what it would
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:

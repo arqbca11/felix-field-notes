@@ -123,7 +123,7 @@ in charge and a room of agents that each know only what their job needs:
 `/new-entries N details…` runs a batch: writers strictly in sequence (each reads the last accepted
 entry as canon), the review before the next writer, the simplifier in the background. Details you
 hand in are canon whether an entry uses them or not; unused ones wait in `seeds.md`. After the
-batch, the readers re-read everything and write [`READER.md`](READER.md) — what an audience that
+batch, the readers re-read everything and write [`STORY-READER.md`](STORY-READER.md) — what an audience that
 can't see the bible currently knows, suspects, and is waiting for. That's how dramatic irony gets
 measured instead of guessed.
 
@@ -145,13 +145,19 @@ notes/
   02-decision.js
   …
 tools/validate.mjs   Syntax + data checks for the engine and every entry.
-tools/reader.sh      Rebuilds READER.md with a zero-context reader agent.
+tools/reader.sh      Rebuilds STORY-READER.md with a zero-context reader agent.
+tools/learner-profile.mjs  Builds LEARNER-PROFILE.md from the page's learning log.
+tools/knowledge-check.sh   Hook: launches the knowledge scout at most once a day.
 tools/brief-template.md  The brief a writer agent gets — the whole interface.
-.claude/agents/      entry-writer · continuity-reviewer · simplifier
+.claude/agents/      entry-writer · continuity-reviewer · simplifier · knowledge-scout
 .claude/skills/new-entries/  The batch workflow (/new-entries N details…).
 CLAUDE.md            The series bible + maintainer guide (voice, timeline, people, schema).
 WRITERS-ROOM.md      How the room works and why it looks like this.
-READER.md            The reader's memory — what the audience knows so far.
+STORY-READER.md      The STORY: what an imaginary reader of the notebook knows and suspects so far.
+LEARNER-PROFILE.md   YOU: your forgetting curve — what you look up, click and forget (test mode).
 seeds.md             Details supplied for future entries, waiting for their episode.
+knowledge_pool.md    The real world around the story: dated, sourced facts (Alps + Canada).
+questions.md         Your Demander questions and Claude's answers, saved by the page.
+learning/            The page's learning log (one .jsonl per day) + forgetting-curve dry runs.
 notes.md             The learner's study questions (sentence, grammar, vocab).
 ```

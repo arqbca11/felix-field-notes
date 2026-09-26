@@ -22,7 +22,7 @@ The system that produces the entries maps onto a TV writers' room almost role fo
 | Subtitler | `simplifier` agent | The A1/A2 layer, after the French is final. |
 | The whiteboard | `seeds.md` | Ideas that haven't found their episode. |
 | The readers | Zero-context agents (`tools/reader.sh`) | Read only the entries, in order, knowing nothing else. Stand in for the audience. |
-| The reader's memory | `READER.md` | What those readers currently know, suspect, and haven't been told. |
+| The reader's memory | `STORY-READER.md` | What those readers currently know, suspect, and haven't been told. |
 
 A code pipeline assumes its modules are independent. A room assumes the opposite: **each episode
 creates canon for the next one.** That single difference explains most of the design below.
@@ -86,7 +86,7 @@ reflex. No motto-ending, no bucket-list line. These are constraints on the **qua
 5. **Dramatic irony needs bookkeeping, and the audience has to be simulated.** Irony is the gap
    between what a reader has seen and what the character has admitted. The producer can't measure
    that gap from inside — they know the bible. So the audience is played by agents that read only
-   the entries, with no access to the bible, and `READER.md` is their running account of what they
+   the entries, with no access to the bible, and `STORY-READER.md` is their running account of what they
    know, suspect, and are waiting for. It's the only view of the story from outside.
 
 ## 4. The layers (as of entry 14)
@@ -114,10 +114,10 @@ on purpose to keep his head in France. Even the French is part of the self-persu
 
 ## 6. The reader's memory — how to use it
 
-`READER.md` is rebuilt from the entries alone (no bible, no briefs) by a fresh agent — see
+`STORY-READER.md` is rebuilt from the entries alone (no bible, no briefs) by a fresh agent — see
 `tools/reader.sh`. It records, entry by entry, what the readers now believe, what they suspect, what
 questions are open, and what the writer seems to be avoiding. Before planning a batch, read it: if
 the readers already suspect what you're about to reveal, you're late; if they have no idea, you're
 early. It is also the honest test of the spine — the fear of attachment should be visible to the
-readers before Felix admits it, and `READER.md` says whether it is. When the readers find a hole
+readers before Felix admits it, and `STORY-READER.md` says whether it is. When the readers find a hole
 ("he could ask Eric"), it goes to the producer as a question, not to a writer as a beat.

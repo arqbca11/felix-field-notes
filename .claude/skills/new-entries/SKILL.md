@@ -48,7 +48,7 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
   questions" so the writer weights it).
 
 ## 0c. The forgetting curve — TEST MODE (observe, don't apply)
-After the pull, run `node tools/learner-profile.mjs` to rebuild **`LEARNER.md`** from what the page
+After the pull, run `node tools/learner-profile.mjs` to rebuild **`LEARNER-PROFILE.md`** from what the page
 logged (`learning/*.jsonl`: hard spots clicked, sentences replayed, words looked up, dictation misses,
 entries met again) and from `questions.md`. **While the profile is in test mode (CLAUDE.md §8c), it
 must not change the briefs**: plan and write the batch exactly as if it didn't exist. Instead, once
@@ -57,11 +57,11 @@ the top *Due for repetition* items, and for each one where it **would** have gon
 a reused word in a fresh sentence, a marked liaison, a grammar note from a new angle, a short
 dictation-friendly sentence), plus which of them the batch happened to reuse anyway. Tell the user in
 two lines what the dry run would have changed. The user decides when to leave test mode; until then,
-nothing in `LEARNER.md` reaches a brief.
+nothing in `LEARNER-PROFILE.md` reaches a brief.
 
 ## 1. Plan the batch
 - Read `CLAUDE.md` §3 (entry log + **open threads**) and the last three entries in `notes/`.
-- Read **`READER.md`** (the reader's memory, rebuilt from the entries alone — see
+- Read **`STORY-READER.md`** (the reader's memory, rebuilt from the entries alone — see
   `WRITERS-ROOM.md` §6): what a reader who has seen only the pages currently knows, suspects and
   is waiting for. Plan against that gap: if the reader already suspects what the next entry
   reveals, you're late; if they have no idea, you're early. Anything the reader flags as a hole
@@ -169,5 +169,5 @@ Spot-check the calls it flags as uncertain.
    the *Learner questions read through* date in `CLAUDE.md` §4 to the newest question read. Tell
    the user in one line which questions shaped which entries. Never edit `questions.md` itself
    (the page appends to it; local edits would conflict).
-8. Commit (one commit for the batch, listing the entries and `READER.md`), then `git pull --rebase`
+8. Commit (one commit for the batch, listing the entries and `STORY-READER.md`), then `git pull --rebase`
    (the page may have committed questions meanwhile), then push. `secrets.js` must never be staged.

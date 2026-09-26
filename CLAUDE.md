@@ -473,7 +473,7 @@ localStorage (`felix_learn_log`) and are appended in batches to **`learning/YYYY
 repo through the same GitHub token as Demander (every few minutes, when the tab is hidden, and on the
 next visit if a save failed). Plain mode logs nothing. The repo is public; the log holds only
 entry ids, sentence text, words and timestamps (user's choice, 26 Sep 2026).
-**Profile (the script).** `node tools/learner-profile.mjs` → **`LEARNER.md`**: per item (pronunciation
+**Profile (the script).** `node tools/learner-profile.mjs` → **`LEARNER-PROFILE.md`**: per item (pronunciation
 spot, word/lemma, dictation word, questioned expression) a memory half-life — 1 day after the first
 lapse (½ if clicked ≥ 3 times), doubled by a clean meeting (entry met again, no struggle) at least
 half a half-life later, halved by a new lapse — and recall ≈ 2^(−days since ÷ half-life). Sections:

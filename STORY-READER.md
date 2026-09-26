@@ -1,5 +1,9 @@
 # The reader's memory
 
+> **About the story, not about you.** What an imaginary first-time reader of Felix's notebook knows, suspects
+> and is waiting for, rebuilt from the entries alone by `tools/reader.sh`; used to plan the plot. For *your*
+> French (what you look up, click and forget), see `LEARNER-PROFILE.md`.
+
 This is a record of what a reader knows, suspects, and is waiting for after reading only the fourteen entries of Felix's notebook so far, in order, once. It is not a summary of the story; it is a log of a reader's state of mind as it changed entry by entry. Nothing here comes from outside the pages.
 
 ## After entry 1 — 2026-09-20 — Bath, dans la cuisine

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rebuild READER.md — "the reader's memory" — from the entries alone.
+# Rebuild STORY-READER.md — "the reader's memory" — from the entries alone.
 # A fresh `claude -p` run from a scratch directory (no CLAUDE.md, no bible, no briefs) reads
 # only the French + English text of every entry and writes what a reader knows after each one.
 set -euo pipefail
@@ -22,6 +22,8 @@ fs.writeFileSync(process.argv[1],out.trim()+"\n");
 ' "$WORK/entries.txt"
 cp "$ROOT/tools/reader-prompt.md" "$WORK/prompt.md"
 cd "$WORK"
-claude -p --model "${READER_MODEL:-opus}" "$(cat prompt.md)" < entries.txt > "$ROOT/READER.md"
-echo "READER.md rebuilt from $(grep -c '^==================== ENTRY' entries.txt) entries."
+claude -p --model "${READER_MODEL:-opus}" "$(cat prompt.md)" < entries.txt > out.md
+# Keep the title line first, then the note that tells this file apart from LEARNER-PROFILE.md.
+{ head -n 1 out.md; echo; cat "$ROOT/tools/story-reader-note.md"; tail -n +2 out.md; } > "$ROOT/STORY-READER.md"
+echo "STORY-READER.md rebuilt from $(grep -c '^==================== ENTRY' entries.txt) entries."
 rm -rf "$WORK"

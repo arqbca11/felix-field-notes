@@ -1499,7 +1499,7 @@ async function saveAsk(post, q, ctx, answer, model, statusEl){
 // question asked, and an entry "met" (on screen ≥ 20 s — the exposures that tell remembering
 // from forgetting). Events queue in localStorage and are appended in batches to
 // learning/YYYY-MM-DD.jsonl in the repo (every few minutes, when the tab is hidden, and on the
-// next visit if a save failed). tools/learner-profile.mjs turns the log into LEARNER.md.
+// next visit if a save failed). tools/learner-profile.mjs turns the log into LEARNER-PROFILE.md.
 const KEY_LOG = 'felix_learn_log', LOG_SESSION = Math.random().toString(36).slice(2, 8);
 function readLog(){ try{ return JSON.parse(getLS(KEY_LOG) || '[]'); }catch(e){ return []; } }
 function logEvent(e, post, fields){
