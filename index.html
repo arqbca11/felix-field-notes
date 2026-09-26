@@ -926,7 +926,8 @@ function saveGhSettings(){
   }
   ghSay('');
   refreshReadbar();
-  // Send anything that was waiting, and say what happened.
+  // Send anything that was waiting (the learning log too), and say what happened.
+  if(githubToken()) flushLog();
   const waiting = readQueue().length;
   if(!githubToken() || !waiting){ document.getElementById('ghEntry').classList.remove('open'); return; }
   ghSay(`Envoi de ${waiting} question(s) en attente…`);
