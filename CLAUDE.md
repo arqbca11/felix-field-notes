@@ -463,6 +463,26 @@ back after a day); the last launch time lives in the git-ignored `.claude/knowle
 (Revelstoke, Rogers Pass, the ACMG and avalanche system, Canadian lore and nature, Québec) feeds
 §2d's craft rule (a), "make Canada physical": the scout adds 2–4 Canada items per refresh.
 
+## 8c. The learner's forgetting curve — **TEST MODE** (since 26 Sep 2026)
+**Logging (the page).** In Learn mode, `index.html` records learning events with a timestamp and a
+per-visit session id: `hard` (a Lire hard spot clicked), `sent` (a sentence played in Lire), `simple`
+(a sentence opened in Simplifier), `lookup` (select-to-translate), `dict` (a dictation checked: score
+and the words missed *within the stretch typed*), `ask` (a Demander question), and `view` (an entry
+in the middle of the screen for 20 s — an exposure, once per entry per visit). Events queue in
+localStorage (`felix_learn_log`) and are appended in batches to **`learning/YYYY-MM-DD.jsonl`** in the
+repo through the same GitHub token as Demander (every few minutes, when the tab is hidden, and on the
+next visit if a save failed). Plain mode logs nothing. The repo is public; the log holds only
+entry ids, sentence text, words and timestamps (user's choice, 26 Sep 2026).
+**Profile (the script).** `node tools/learner-profile.mjs` → **`LEARNER.md`**: per item (pronunciation
+spot, word/lemma, dictation word, questioned expression) a memory half-life — 1 day after the first
+lapse (½ if clicked ≥ 3 times), doubled by a clean meeting (entry met again, no struggle) at least
+half a half-life later, halved by a new lapse — and recall ≈ 2^(−days since ÷ half-life). Sections:
+due, fading, solid, hardest sentences, dictation misses, latest questions.
+**Test mode.** `/new-entries` rebuilds the profile and writes a **dry run** to `learning/dry-runs.md`
+(what it would have repeated, where) but **must not let it change any brief**. When the user decides
+to merge it into the writing flow, turn step 0c of the skill into "put the top due items in the
+briefs" and drop the test-mode lines here.
+
 ## 9. Other gotchas
 - `localStorage` via `getLS/setLS` only (try/catch). Keep it that way.
 - **API keys: `secrets.js`** (repo root, **git-ignored**; format in `secrets.example.js`) holds the

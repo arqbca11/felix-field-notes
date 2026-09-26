@@ -530,6 +530,7 @@ function buildFeed(){
       </div>
     </aside>`;
   feed.appendChild(card);
+  viewObserver.observe(card);
 }); }
 
 // ── TIME AXIS ──
@@ -666,6 +667,7 @@ function showReadSentence(postEl, post, i, j){
     (marks.length || !post.read ? '' : '<span class="read-none">Rien de difficile ici.</span>')+
     `<span class="read-note"></span></span>`;
   postEl.querySelector('.read-block').classList.add('has-items');
+  logEvent('sent', post, { i, j, t: splitSentences(post.fr[i])[j] });
   mirrorSimple(postEl, post);
   onPlay(slot.querySelector('.pp-btn'));
 }
@@ -687,6 +689,7 @@ function onHard(hardEl){
   hardEl.classList.add('on');
   card.querySelector('.read-note').innerHTML =
     `<span class="rn-t">${escHTML(m.t)}</span><span class="rn-k">${READ_KINDS[m.k] || m.k}</span>${m.n}`;
+  logEvent('hard', post, { i, j, k, t: m.t, kind: m.k });
   const playerId = `frag:${post.id}:${i}:${j}:${k}`;
   if(activePlayer === playerId){ stopAll(); return; }
   stopAll(); activePlayer = playerId;
@@ -708,7 +711,12 @@ feed.addEventListener('click', e => {
   }
   if (sent && sent.closest('.post.simple-on')) {
     const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
-    if (post) { sent.classList.toggle('on'); renderSimplePara(postEl, post, +sent.dataset.sent.split(':')[0]); }
+    if (post) {
+      const on = sent.classList.toggle('on');
+      const [i, j] = sent.dataset.sent.split(':').map(Number);
+      if (on) logEvent('simple', post, { i, j, t: splitSentences(post.fr[i])[j] });
+      renderSimplePara(postEl, post, i);
+    }
     return;
   }
   const playBtn = e.target.closest('[data-play]');
@@ -737,7 +745,10 @@ feed.addEventListener('click', e => {
     e.stopPropagation();
     const [pid, i] = checkBtn.dataset.check.split(':');
     const post = POSTS.find(x => x.id === pid);
-    if (post) checkDictation(checkBtn.closest('.dictation'), post.fr[+i]);
+    if (post) {
+      const r = checkDictation(checkBtn.closest('.dictation'), post.fr[+i]);
+      if (r) logEvent('dict', post, { i: +i, correct: r.correct, total: r.total, missed: r.missed });
+    }
     return;
   }
   const revealBtn = e.target.closest('[data-reveal]');
@@ -1026,7 +1037,7 @@ function checkDictation(box, expectedText){
   const typed = box.querySelector('.dict-input').value;
   const expTok = dictTokenize(expectedText), usrTok = dictTokenize(typed);
   res.classList.add('open');
-  if(!usrTok.length){ res.innerHTML = '<span class="dict-msg">Écrivez d\'abord ce que vous entendez.</span>'; return; }
+  if(!usrTok.length){ res.innerHTML = '<span class="dict-msg">Écrivez d\'abord ce que vous entendez.</span>'; return null; }
   const {expMatch, usrMatch} = dictAlign(expTok, usrTok);
   const correct = expMatch.filter(Boolean).length;
   const pct = Math.round(correct / expTok.length * 100);
@@ -1036,6 +1047,10 @@ function checkDictation(box, expectedText){
     `<span class="dict-score">${correct} / ${expTok.length} mots · ${pct} %</span>`+
     `<span class="dict-lbl">Texte original</span><span class="dict-line">${expHTML}</span>`+
     `<span class="dict-lbl">Votre réponse</span><span class="dict-line">${usrHTML}</span>`;
+  // For the learning log, only misses inside the stretch actually attempted (up to the last word
+  // matched): dictating half a paragraph shouldn't count the untyped half as mistakes.
+  const lastHit = expMatch.lastIndexOf(true);
+  return { correct, total: expTok.length, missed: expTok.filter((t,k) => !expMatch[k] && k < lastHit) };
 }
 
 // ── SELECTION DICTIONARY ──
@@ -1190,6 +1205,7 @@ function runLookup(){
   if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
   const selPost = host.closest('.post');
   lastSel = selPost ? { postId: selPost.id, text: raw } : null;
+  if(selPost) logEvent('lookup', POSTS.find(p => p.id === selPost.id), { t: raw });
   const my = ++lookupSeq;
   renderLookup(raw, '<span class="lk-loading">…</span>', rect);
   lookupTranslate(raw).then(r => {
@@ -1405,6 +1421,7 @@ async function sendAsk(postEl, post){
       postEl.querySelectorAll('.ask-thread .ask-failed').forEach(el => el.remove());
       const saved = document.createElement('div'); saved.className = 'ask-saved'; item.appendChild(saved);
       saveAsk(post, q, st.ctx, text, model.id, saved);
+      logEvent('ask', post, { t: q, expr: st.ctx.expr || null, sentence: st.ctx.sentence || null });
     }
   }catch(err){
     const status = err && err.status;
@@ -1476,6 +1493,71 @@ async function saveAsk(post, q, ctx, answer, model, statusEl){
       : `Pas encore enregistrée (${r.why}) — nouvel essai à la prochaine question.`;
 }
 
+// ── LEARNING LOG (the forgetting curve — TEST MODE, see CLAUDE.md §8c) ──
+// In Learn mode, each learning action is recorded with a timestamp: a hard spot clicked, a
+// sentence played in Lire or opened in Simplifier, a word looked up, a dictation checked, a
+// question asked, and an entry "met" (on screen ≥ 20 s — the exposures that tell remembering
+// from forgetting). Events queue in localStorage and are appended in batches to
+// learning/YYYY-MM-DD.jsonl in the repo (every few minutes, when the tab is hidden, and on the
+// next visit if a save failed). tools/learner-profile.mjs turns the log into LEARNER.md.
+const KEY_LOG = 'felix_learn_log', LOG_SESSION = Math.random().toString(36).slice(2, 8);
+function readLog(){ try{ return JSON.parse(getLS(KEY_LOG) || '[]'); }catch(e){ return []; } }
+function logEvent(e, post, fields){
+  if(!document.body.classList.contains('learn') || !post) return;
+  const q = readLog();
+  q.push({ ts: new Date().toISOString(), s: LOG_SESSION, e, id: post.id, no: post.no, ...fields });
+  if(q.length > 5000) q.splice(0, q.length - 5000);     // never let the local queue grow unbounded
+  setLS(KEY_LOG, JSON.stringify(q));
+  if(!logTimer) logTimer = setTimeout(() => { logTimer = null; flushLog(); }, 3 * 60 * 1000);
+}
+let logTimer = null, logFlushing = null;
+// Append text to a repo file through the contents API (re-read and retry on a 409).
+async function ghAppend(path, header, text, message){
+  const token = githubToken(); if(!token) return { ok:false, why:'nokey' };
+  const url = `https://api.github.com/repos/${ghRepo()}/contents/${path}`;
+  const headers = { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' };
+  for(let attempt = 0; attempt < 3; attempt++){
+    const cur = await fetch(url, { headers, cache:'no-store' });
+    if(!cur.ok && cur.status !== 404) return { ok:false, why:'http ' + cur.status };
+    const file = cur.ok ? await cur.json() : null;
+    const body = (file ? b64decode(file.content) : header) + text;
+    const put = await fetch(url, { method:'PUT', headers, body: JSON.stringify({
+      message, content: b64encode(body), ...(file ? { sha: file.sha } : {}) }) });
+    if(put.ok) return { ok:true };
+    if(put.status !== 409) return { ok:false, why:'http ' + put.status };
+  }
+  return { ok:false, why:'conflit' };
+}
+// Send the oldest day's events (one file per day keeps each file small).
+function flushLog(){
+  if(logFlushing) return logFlushing;
+  logFlushing = (async () => {
+    const q = readLog(); if(!q.length || !githubToken()) return;
+    const day = q[0].ts.slice(0, 10), batch = q.filter(ev => ev.ts.slice(0, 10) === day);
+    const r = await ghAppend(`learning/${day}.jsonl`, '', batch.map(ev => JSON.stringify(ev)).join('\n') + '\n',
+                             `learning: ${batch.length} events (${day})`);
+    if(!r.ok) return;
+    // Remove what was sent (events logged meanwhile were appended after it, so keep those).
+    setLS(KEY_LOG, JSON.stringify(readLog().filter((ev, n) => !(n < q.length && q[n].ts.slice(0, 10) === day))));
+    if(readLog().length) setTimeout(flushLog, 2000);   // another day still waiting
+  })().catch(() => {}).finally(() => { logFlushing = null; });
+  return logFlushing;
+}
+document.addEventListener('visibilitychange', () => { if(document.hidden) flushLog(); });
+
+// Exposure: an entry counts as "met" once per visit, after 20 s in the middle of the screen in Learn mode.
+const VIEW_MS = 20000, viewSeen = new Set(), viewTime = {}, viewVisible = new Set();
+const viewObserver = new IntersectionObserver(items => items.forEach(it => {
+  if(it.isIntersecting) viewVisible.add(it.target.id); else viewVisible.delete(it.target.id);
+}), { rootMargin: '-40% 0px -40% 0px', threshold: 0 });   // crossing the middle of the screen
+setInterval(() => {
+  if(document.hidden || !document.body.classList.contains('learn')) return;
+  viewVisible.forEach(id => {
+    viewTime[id] = (viewTime[id] || 0) + 5000;
+    if(viewTime[id] >= VIEW_MS && !viewSeen.has(id)){ viewSeen.add(id); logEvent('view', POSTS.find(p => p.id === id)); }
+  });
+}, 5000);
+
 // ── INIT ──
 window.addEventListener('load', () => {
   setLearn(getLS(KEY_LEARN)==='1');   // plain diary by default
@@ -1485,6 +1567,7 @@ window.addEventListener('load', () => {
   const key=elevenKey();
   if(key) fetchVoices(key,false);
   refreshReadbar();
+  setTimeout(flushLog, 4000);        // events left from an earlier visit
 });
 </script>
 </body>

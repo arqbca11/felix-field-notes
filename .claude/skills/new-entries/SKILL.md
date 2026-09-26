@@ -47,6 +47,18 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
 - Put what you take from them into each brief's grammar/vocab targets (say "from the learner's
   questions" so the writer weights it).
 
+## 0c. The forgetting curve — TEST MODE (observe, don't apply)
+After the pull, run `node tools/learner-profile.mjs` to rebuild **`LEARNER.md`** from what the page
+logged (`learning/*.jsonl`: hard spots clicked, sentences replayed, words looked up, dictation misses,
+entries met again) and from `questions.md`. **While the profile is in test mode (CLAUDE.md §8c), it
+must not change the briefs**: plan and write the batch exactly as if it didn't exist. Instead, once
+the briefs are written, append a dry run to **`learning/dry-runs.md`**: the date, the batch's entries,
+the top *Due for repetition* items, and for each one where it **would** have gone (which entry, how:
+a reused word in a fresh sentence, a marked liaison, a grammar note from a new angle, a short
+dictation-friendly sentence), plus which of them the batch happened to reuse anyway. Tell the user in
+two lines what the dry run would have changed. The user decides when to leave test mode; until then,
+nothing in `LEARNER.md` reaches a brief.
+
 ## 1. Plan the batch
 - Read `CLAUDE.md` §3 (entry log + **open threads**) and the last three entries in `notes/`.
 - Read **`READER.md`** (the reader's memory, rebuilt from the entries alone — see
