@@ -199,3 +199,17 @@ You use *dont* whenever the connection to the previous noun involves "of" — po
 So altogether: "These are men whose modesty is not politeness: it's a method" — *dont* lets you avoid saying *la modestie de ces hommes* twice.
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « « Jeudi, si ça tient, une arête aux Aiguilles Rouges. »
+**Q :** what does 'une arête aux' here mean
+
+In this context, *une arête* means a mountain **ridge** (a narrow rocky/snowy crest you climb along) — not the fish bone or the geometric "edge," which are the other common meanings of *arête*.
+
+*Aux* is just *à* + *les*, so *aux Aiguilles Rouges* = "in/at the Aiguilles Rouges" (a mountain range near Chamonix). Literally: "a ridge in the Aiguilles Rouges."
+
+- *une arête de poisson* = a fish bone
+- *l'arête du nez* = the bridge of the nose
+- *une arête rocheuse* = a rocky ridge (same idea as here)
+
+---
