@@ -139,7 +139,7 @@ it prevents.
 
 ```
 index.html           The app — open this. Engine only: layout, audio, reading UI.
-icon.svg             The tab icon (+ icon-32.png, icon-180.png): a sketched notebook, a peak, a ski line.
+icon.svg             The tab icon (+ icon-32.png, icon-180.png): a sketched notebook in axonometric view, a peak, a ski line.
 notes/
   manifest.js        Index of all entries, oldest → newest. All are displayed, in this order.
   01-bath-cuisine.js One file per entry: text + translation + vocab + grammar.
