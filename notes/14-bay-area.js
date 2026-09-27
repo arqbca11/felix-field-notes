@@ -2,7 +2,8 @@
    shop (school holidays starting, a queue): a couple from San Francisco, the woman says "the
    Bay Area" the way people from there say it, and that evening the rest comes back. Felix
    remembers Addie — his private-lesson client at Revelstoke, twice last season (Jan + Mar
-   2026); how she photographed snow on branches and understood a slope before letting it go;
+   2026); how she stopped at every flat spot for the view and talked about it, her humour, the
+   American resorts she'd skied, how she understood a slope before letting it go;
    how she listened; the line he may have crossed anyway just by talking; what he never did
    (conditionnel passé); and, in writing for the first time, that going back to Canada is
    partly about her. He has no number, no email — only her Chinese name, Anyu. Chloé arrives
@@ -127,8 +128,6 @@ FelixNotes.register({
     ]
   ],
   vocab:[
-    ['un lichen','lichen (here: the grey strands hanging from old cedars)'],
-    ['pendre','to hang (down)'],
     ['vif / vive','lively'],
     ['un replat','a flat spot, a shelf (on a slope)'],
     ['une mer de nuages','a sea of clouds'],

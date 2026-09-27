@@ -1,7 +1,8 @@
 /* Entry 5 — Revelstoke, first snow. A `memory`: Eric sends a photo of the first snow on
    Mount Mackenzie; Felix remembers his first Canadian season (Dec 2023), Eric's Québécois
-   French at the avalanche course, and — lightly, for the first time in the notebook —
-   Addie photographing snow on cedar branches; the professional line he never crossed; the
+   French and his practical, smiling advice at the avalanche course, and — lightly, for the
+   first time in the notebook — Addie, who stopped mid-slope for the sea of clouds over the
+   Columbia and made him laugh; the professional line he never crossed; the
    last day, late March 2026. He never had her contact (bible §2c). B1+.
    Grammar: plus-que-parfait; imparfait for habits; j'aurais dû + reported speech backshift;
    ne … que / ne … jamais; memory time markers. Escaping: CLAUDE.md §8. */
