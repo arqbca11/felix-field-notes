@@ -315,9 +315,9 @@ matching `simple` block show no button. Learn-only, like everything else languag
 **Lire (reworked 24 Sep 2026).** *Lire* is now a toggle like *Simplifier*. When on, clicking a
 sentence plays it (`.sent.reading`) and shows it in the `.read-block`, which is **sticky at the top of
 the right column** (one `.read-slot`, only the last clicked sentence), with its **hard spots**
-underlined (`.hard`); clicking one plays just that fragment and shows its note. Lire and Simplifier
-live together in `.side-top` at the top of the right column (always Lire first), sticky while Lire
-is on; the other panels stack underneath in the order they were opened. *Simplifier* can be on at
+underlined (`.hard`); clicking one plays just that fragment and shows its note. Lire, Simplifier and
+Demander live together in `.side-top` at the top of the right column (in that order), sticky while
+Lire or Demander is on; the other panels stack underneath in the order they were opened. *Simplifier* can be on at
 the same time: then the simplified column mirrors the sentence being read (`mirrorSimple`).
 The whole-entry sequential reader moved into that panel as *Tout lire*. Hard spots are **data** — the
 entry's optional `read` field (§6); entries without it still read sentence by sentence, with no
@@ -333,10 +333,11 @@ to any other model (so switching mid-thread is safe). The learner's own key is i
 `localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
 French + English (system prompt), the sentence open in Lire and the last highlighted expression
 (removable chips). The selection popup has a *Demander à Claude* link that opens the panel with
-that expression. The thread lives in memory per entry until reload, **newest answer first**. The question
-box (`.ask-compose`: Phrase/Expression chips, input, buttons) is **sticky just below the Lire/Simplifier
-group** (`--ask-top`, measured with a ResizeObserver); the Demander block is kept last in the column and
-stretched to the entry's end, so only the answers scroll underneath. While the panel is open, the
+that expression. The conversation lives in memory per entry until reload, but **only the latest answer is
+shown**, right under the question box (a long answer scrolls inside its own box, `max-height:45vh`). The
+whole Demander block (Phrase/Expression chips, input, buttons, latest answer) lives **inside `.side-top`**,
+after Lire and Simplifier, and the group is pinned while Lire *or* Demander is on, so the three move as
+one unit and never overlap; near an entry's end they scroll away together. While the panel is open, the
 Phrase/Expression follow the latest sentence clicked (Lire, Simplifier, or Demander alone) or word highlighted. **Saving:** every answered
 question is appended to **`questions.md`** in the GitHub repo through GitHub's contents API, with the
 learner's fine-grained token (this repo only, Contents read/write) from `secrets.js` or the
