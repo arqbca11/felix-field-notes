@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- Felix · Notes de terrain — a fine-line pen sketch: a spiral notebook seen from the front,
        a mountain with a dashed ski track. Black and white only. -->
-  <g transform="matrix(1.0239 0 0 1.0239 -3.94 -3.12)" fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="matrix(1.2053 0 0 1.0782 -10.43 -4.98)" fill="none" stroke="#111111" stroke-linecap="round" stroke-linejoin="round">
   <!-- page stack: a few page edges peeking out below and to the right (thickness) -->
   <g stroke-width="0.35" opacity="0.85">
     <path d="M14.6 60.1 C28 60.8, 44 59.9, 58.4 60.4 L58.8 7.4"/>
