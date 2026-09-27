@@ -674,6 +674,7 @@ function showReadSentence(postEl, post, i, j){
     `<span class="read-note"></span></span>`;
   postEl.querySelector('.read-block').classList.add('has-items');
   logEvent('sent', post, { i, j, t: splitSentences(post.fr[i])[j] });
+  askFollow(postEl, post, { sentence: splitSentences(post.fr[i])[j] });
   mirrorSimple(postEl, post);
   onPlay(slot.querySelector('.pp-btn'));
 }
@@ -720,7 +721,7 @@ feed.addEventListener('click', e => {
     if (post) {
       const on = sent.classList.toggle('on');
       const [i, j] = sent.dataset.sent.split(':').map(Number);
-      if (on) logEvent('simple', post, { i, j, t: splitSentences(post.fr[i])[j] });
+      if (on) { logEvent('simple', post, { i, j, t: splitSentences(post.fr[i])[j] }); askFollow(postEl, post, { sentence: splitSentences(post.fr[i])[j] }); }
       renderSimplePara(postEl, post, i);
     }
     return;
@@ -1212,7 +1213,7 @@ function runLookup(){
   if(!rect || (!rect.width && !rect.height)){ hideLookup(); return; }
   const selPost = host.closest('.post');
   lastSel = selPost ? { postId: selPost.id, text: raw } : null;
-  if(selPost) logEvent('lookup', POSTS.find(p => p.id === selPost.id), { t: raw });
+  if(selPost){ const sp = POSTS.find(p => p.id === selPost.id); logEvent('lookup', sp, { t: raw }); askFollow(selPost, sp, { expr: raw }); }
   const my = ++lookupSeq;
   renderLookup(raw, '<span class="lk-loading">…</span>', rect);
   lookupTranslate(raw).then(r => {
@@ -1291,6 +1292,14 @@ function openAsk(postEl){
   const sel = postEl.querySelector('.ask-model'), cur = askModel().id;
   sel.innerHTML = CLAUDE_MODELS.map(m => `<option value="${m.id}"${m.id === cur ? ' selected' : ''}>${m.label}</option>`).join('');
   const ta = postEl.querySelector('.ask-input'); if(ta) setTimeout(() => ta.focus(), 0);
+}
+// While the panel is open, its context follows what the learner does next: the sentence just
+// clicked in Lire or Simplifier becomes the Phrase, the word just highlighted the Expression.
+function askFollow(postEl, post, fields){
+  if(!postEl || !post || !postEl.querySelector('.ask-block.open')) return;
+  const st = askState(post.id);
+  Object.assign(st.ctx, fields);
+  renderAskCtx(postEl, st);
 }
 // From the selection popup: open that entry's panel with the expression attached.
 function askAbout(postId, text){
