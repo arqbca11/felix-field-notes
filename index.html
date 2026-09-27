@@ -127,6 +127,8 @@
 
   /* SIMPLIFY — click a sentence on the left, its A1/A2 version appears on the right */
   .post.simple-on .sent{cursor:pointer;border-bottom:1px dotted var(--line);transition:background .15s;}
+  .post.ask-on .sent{cursor:pointer;border-bottom:1px dotted var(--line);}
+  .post.ask-on:not(.read-on):not(.simple-on) .sent:hover,.post.ask-on .sent.asked{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
   .post.simple-on .sent:hover{background:var(--wash);box-shadow:0 0 0 3px var(--wash);}
   .post.simple-on .sent.on{background:var(--wash);box-shadow:0 0 0 3px var(--wash);border-bottom-color:var(--ink);}
   .simple-block{display:none;}
@@ -415,6 +417,8 @@ function setLearn(on){
     document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open').forEach(el => el.classList.remove('open'));
     document.querySelectorAll('.post.simple-on').forEach(p => clearSimple(p));
     document.querySelectorAll('.post.read-on').forEach(p => clearRead(p));
+    document.querySelectorAll('.post.ask-on').forEach(p => p.classList.remove('ask-on'));
+    document.querySelectorAll('.sent.asked').forEach(x => x.classList.remove('asked'));
     document.querySelectorAll('.act.on').forEach(b => b.classList.remove('on'));
     document.querySelectorAll('.post.split').forEach(p => p.classList.remove('split'));
     document.querySelectorAll('.article p.dictating').forEach(p => p.classList.remove('dictating'));
@@ -716,6 +720,12 @@ feed.addEventListener('click', e => {
     if (post) showReadSentence(postEl, post, i, j);
     return;
   }
+  if (sent && sent.closest('.post.ask-on') && !sent.closest('.post.simple-on')) {
+    const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
+    const [i, j] = sent.dataset.sent.split(':').map(Number);
+    if (post) askFollow(postEl, post, { sentence: splitSentences(post.fr[i])[j] });
+    return;
+  }
   if (sent && sent.closest('.post.simple-on')) {
     const postEl = sent.closest('.post'), post = POSTS.find(x => x.id === postEl.id);
     if (post) {
@@ -793,7 +803,7 @@ feed.addEventListener('click', e => {
       else clearSimple(post);
     }
     if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } }
-    if (btn.dataset.toggle === 'ask' && open) openAsk(post);
+    if (btn.dataset.toggle === 'ask') { post.classList.toggle('ask-on', open); if (open) openAsk(post); else post.querySelectorAll('.sent.asked').forEach(x => x.classList.remove('asked')); }
     post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open'));
   }
 });
@@ -1288,6 +1298,7 @@ function openAsk(postEl){
   if(sent) st.ctx.sentence = sent;
   if(lastSel && lastSel.postId === post.id) st.ctx.expr = lastSel.text;
   renderAskCtx(postEl, st);
+  markAsked(postEl, post, st.ctx.sentence);
   renderAskSetup(postEl, !claudeKey());
   const sel = postEl.querySelector('.ask-model'), cur = askModel().id;
   sel.innerHTML = CLAUDE_MODELS.map(m => `<option value="${m.id}"${m.id === cur ? ' selected' : ''}>${m.label}</option>`).join('');
@@ -1300,6 +1311,13 @@ function askFollow(postEl, post, fields){
   const st = askState(post.id);
   Object.assign(st.ctx, fields);
   renderAskCtx(postEl, st);
+  if(fields.sentence) markAsked(postEl, post, fields.sentence);
+}
+function markAsked(postEl, post, sentence){
+  postEl.querySelectorAll('.sent.asked').forEach(x => x.classList.remove('asked'));
+  if(!sentence) return;
+  const el = [...postEl.querySelectorAll('.article .sent')].find(x => { const [i,j] = x.dataset.sent.split(':').map(Number); return splitSentences(post.fr[i])[j] === sentence; });
+  if(el) el.classList.add('asked');
 }
 // From the selection popup: open that entry's panel with the expression attached.
 function askAbout(postId, text){
@@ -1330,7 +1348,7 @@ function renderAskSetup(postEl, open){
 function onAskClick(b){
   const postEl = b.closest('.post'), post = POSTS.find(x => x.id === postEl.id); if(!post) return;
   const st = askState(post.id), act = b.dataset.ask;
-  if(act === 'drop'){ delete st.ctx[b.dataset.k]; renderAskCtx(postEl, st); }
+  if(act === 'drop'){ delete st.ctx[b.dataset.k]; renderAskCtx(postEl, st); if(b.dataset.k === 'sentence') markAsked(postEl, post, null); }
   else if(act === 'setup'){ renderAskSetup(postEl, !postEl.querySelector('.ask-setup').classList.contains('open')); }
   else if(act === 'save-key'){
     const k = cleanKey(postEl.querySelector('.ask-key').value);
