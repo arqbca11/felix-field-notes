@@ -21,3 +21,6 @@
 {"ts":"2026-09-27T07:18:32.038Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":2,"k":1,"t":"là-haut","kind":"liaison"}
 {"ts":"2026-09-27T07:18:48.055Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":3,"t":"On passe, si la montagne veut bien, et on redescend."}
 {"ts":"2026-09-27T07:19:05.955Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":3,"k":2,"t":"et on","kind":"liaison"}
+{"ts":"2026-09-27T07:23:05.357Z","s":"cltj16","e":"view","id":"bertrand","no":4}
+{"ts":"2026-09-27T07:23:11.607Z","s":"cltj16","e":"sent","id":"bertrand","no":4,"i":3,"j":4,"t":"Mon grand-père disait la même chose, avec d'autres mots."}
+{"ts":"2026-09-27T07:23:50.208Z","s":"cltj16","e":"sent","id":"bertrand","no":4,"i":3,"j":5,"t":"Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode."}
