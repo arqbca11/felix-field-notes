@@ -140,3 +140,20 @@ The real rule of thumb:
 So it's not a "singular noun" rule — it's a "what type of word pair" rule.
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « À un moment, j'ai parlé d'une face que je voulais « conquérir ». »
+**Q :** my example is mot était mauvais. why is there no liaison on mot était
+
+Same principle as before: liaison between a **noun and the verb that follows it** is not made in standard French — it's essentially forbidden here, not just optional.
+
+*Le mot était mauvais* → no liaison: /lə mo etɛ movɛ/, not *mot-était*.
+
+Liaison mainly happens in a few fixed slots:
+- determiner + noun: *un_homme*, *les_hommes*
+- pronoun + verb: *ils_ont*, *nous_avons*
+- some adjective + noun: *un grand_homme*
+
+But once you've moved past the subject noun to its verb, French treats that as a normal word boundary with no liaison — the *t* of *mot* stays silent. This is actually one of the clues that helps you locate where a subject ends and a verb begins when listening.
+
+---
