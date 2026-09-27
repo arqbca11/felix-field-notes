@@ -20,3 +20,4 @@
 {"ts":"2026-09-27T07:18:25.123Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":2,"t":"On ne conquiert rien, là-haut."}
 {"ts":"2026-09-27T07:18:32.038Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":2,"k":1,"t":"là-haut","kind":"liaison"}
 {"ts":"2026-09-27T07:18:48.055Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":3,"t":"On passe, si la montagne veut bien, et on redescend."}
+{"ts":"2026-09-27T07:19:05.955Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":3,"k":2,"t":"et on","kind":"liaison"}
