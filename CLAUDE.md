@@ -97,15 +97,26 @@ more personal than in the blog, but not more decorated.
   Québécois, Felix's Lyonnais — a running source of jokes: *char*, *tuque*, *tabarnak*, *c'est correct*).
   ACMG ski-mountaineering guide, ~55, based in Revelstoke; runs backcountry days out of Rogers Pass
   and taught the AST courses Felix took. **He does not work for the Revelstoke Mountain Resort ski
-  school** and has no access to its clients — he is not a way to reach Addie, and Felix knows it. Big, calm, unhurried, deadly serious about snow. **He is the one who
-  said Felix should do this properly** (become a guide), the first person to say it out loud.
+  school** and has no access to its clients — he is not a way to reach Addie, and Felix knows it. **Warm and observant** (corrected 27 Sep 2026 —
+  he is *not* a man of few words; that's Bertrand): he notices things about people, talks easily, and is
+  generous with **practical advice** — how to read a slope, which course to take next, how to pace a season,
+  what an ACMG examiner looks for. An encourager: he saw what Felix could be before Felix did, and said so.
+  Deadly serious about snow, never cold about people. **He cares about Felix a great deal — and that is the
+  one thing he says least**: it shows in the advice, the follow-up questions, the photo sent on the first
+  snow, not in declarations. **He is the one who said Felix should do this properly** (become a guide), the
+  first person to say it out loud.
   Fond of *« La montagne, elle te dit non. Toi, tu l'écoutes. »* Present only in memory; an email or
   a message from him is allowed, rarely.
 - **Addie** — **A.B.**; he mostly writes *Addie*, sometimes just *A.* He knows her Chinese name,
   **Anyu**, and uses it almost never (maybe once, when it matters). Chinese, grew up in China, came to
   California for graduate school, works in the Bay Area. Late twenties. Intermediate skier who wanted
-  to learn off-piste properly: methodical, unafraid of steep terrain but wants to understand it, asks
-  real questions, quietly funny, photographs trees and snow textures rather than views. **His
+  to learn off-piste properly: **lively** and curious, unafraid of steep terrain but wants to understand it,
+  asks real questions, and has a **cute, sneaky sense of humour** that made him laugh at unexpected moments.
+  **She loved the views of Revelstoke** — the terrain, the sea of clouds over the Columbia valley, the low
+  light of the short winter days — and talked about them; it's a big reason she kept coming back (corrected
+  27 Sep 2026: not "trees and snow textures rather than views"). She'd tell him about the other places she
+  had skied in the States, including the famous ones he had never been to (Tahoe, being from the Bay Area;
+  Jackson Hole, Alta, Mammoth…). **His
   private-lesson client** at Revelstoke across all three seasons (Feb + Mar 2024, Feb 2025, **Jan + Mar 2026**).
   Great days every time; they talked a lot about skiing and the outdoors, and about their travels in
   North America, since both had come to this continent from elsewhere (his bikepacking ride to
@@ -143,8 +154,8 @@ more personal than in the blog, but not more decorated.
   whether she really liked him that way, and whether he should have stepped outside the ski lesson. At
   the time he thought it wasn't appropriate. He keeps thinking about her anyway.
   **Rules:** restraint. No messages, no calls, no way to reach her (unless the user decides otherwise).
-  She appears in maybe one entry in five, triggered by something concrete (a photo from Eric, a snow
-  texture, a Californian in a café). Never sentimental narration, never a plot twist without the user
+  She appears in maybe one entry in five, triggered by something concrete (a photo from Eric, a sea of clouds
+  over the valley, the name of an American ski resort, a Californian in a café). Never sentimental narration, never a plot twist without the user
   asking. The unanswered question *is* the thread; don't resolve it.
 - **Théo** — childhood friend from the Chamonix summers, son of a family friend, now in Lyon. The
   Vancouver–SF bikepacking partner (Aug–Sep 2024; Théo flew over for it). Talker, mechanic, terrible
@@ -197,7 +208,7 @@ more personal than in the blog, but not more decorated.
   running). **He still can't fully face this**, and the notebook shouldn't hand it to him: the reader
   is allowed to see through the reasons before he does (the same dramatic irony as *« pour de bon »*).
   The Chamonix year is where he finds out, slowly, that he **loves and misses the quiet, down-to-earth
-  nature of Canada** — Eric's silence about snow, flat voices, no one performing the mountains. And the
+  nature of Canada** — Eric's warmth and plain, practical advice, people who don't perform the mountains. And the
   lesson is not Addie herself but what her memory proves: **attachment is an unavoidable part of life.**
   He left, he was out of contact for more than a year, and the memory of skiing and talking with her
   didn't go away. **Rules:** never stated as a thesis; it shows as behaviour, understatement and
@@ -206,8 +217,8 @@ more personal than in the blog, but not more decorated.
   after Chamonix has paid off (probatoire / Bertrand). Until then he keeps giving the reasonable
   reasons, and they keep sounding slightly too reasonable.
   **How the writer carries it (craft, not plot):** (a) make Canada *physical*, never a feeling —
-  small specific things, spread thin: Eric's *« c'est correct »* meaning ten different things, nobody
-  talking on the skin track at Rogers Pass, the flat light in the cedars, a bakery; (b) let events
+  small specific things, spread thin: Eric's *« c'est correct »* meaning ten different things, his advice
+  given in passing on the skin track at Rogers Pass, the sea of clouds over the Columbia, a bakery; (b) let events
   quietly contradict his reasons without him noticing — "my friends are leaving" (so who writes to
   him?), "social butterfly" (a 14 m² studio and the same three people); (c) **Bertrand is the
   counterweight**: a man who stayed, forty years in one valley — the living case for Chamonix, never
@@ -246,8 +257,8 @@ new Petzl axes cost more than a month's rent (8); the Grands Montets top cable c
 fire, so February's Argentière tours start on skins (10).
 Canada/Addie, same day: Eric's avalanche course at Rogers Pass on mornings when the army fired its
 avalanche guns above the highway (5); the Canadian training named as the ACMG (7), and in the plan, the ACMG mountain-guide certificate
-"vaut le nôtre" (10, a second touch); Addie photographed
-the lichen hanging from the old cedars as well as the snow (14).
+"vaut le nôtre" (10, a second touch); (14's lichen line was replaced on 27 Sep by the
+corrected Addie: the views of Revelstoke, the sea of clouds, the American resorts, her humour).
 
 **Open threads to pick up next:** **Christmas in Argentière** — Chloé arrives **21 Dec** for a week (floor of the
 14 m²), parents **Marianne and David** come for three days over Christmas, hotel in **Les Houches** (a family `entry`
