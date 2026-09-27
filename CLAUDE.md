@@ -333,7 +333,11 @@ to any other model (so switching mid-thread is safe). The learner's own key is i
 `localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
 French + English (system prompt), the sentence open in Lire and the last highlighted expression
 (removable chips). The selection popup has a *Demander à Claude* link that opens the panel with
-that expression. The thread lives in memory per entry until reload. **Saving:** every answered
+that expression. The thread lives in memory per entry until reload, **newest answer first**. The question
+box (`.ask-compose`: Phrase/Expression chips, input, buttons) is **sticky just below the Lire/Simplifier
+group** (`--ask-top`, measured with a ResizeObserver); the Demander block is kept last in the column and
+stretched to the entry's end, so only the answers scroll underneath. While the panel is open, the
+Phrase/Expression follow the latest sentence clicked (Lire, Simplifier, or Demander alone) or word highlighted. **Saving:** every answered
 question is appended to **`questions.md`** in the GitHub repo through GitHub's contents API, with the
 learner's fine-grained token (this repo only, Contents read/write) from `secrets.js` or the
 **GitHub** panel in the top-right corner (`felix_github_token`, repo in `felix_github_repo`).

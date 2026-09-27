@@ -177,14 +177,18 @@
 
   /* ASK — Demander: questions about the entry, answered by Claude */
   .ask-block{display:none;font-family:var(--sans);font-size:13.5px;color:var(--soft);}
-  .ask-block.open{display:block;}
+  .ask-block.open{display:block;flex:1 0 auto;}   /* last in the column, stretched to the entry's end, so its question box can stay pinned */
   .ask-ctx{display:flex;flex-direction:column;gap:4px;margin:0 0 10px;}
   .ask-ctx:empty{display:none;}
   .ask-chip{display:flex;gap:8px;align-items:baseline;}
   .ask-chip .k{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);flex-shrink:0;}
   .ask-chip .v{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);flex:1;min-width:0;}
   .ask-chip button{color:var(--muted);flex-shrink:0;} .ask-chip button:hover{color:var(--ink);}
-  .ask-thread{display:flex;flex-direction:column;gap:14px;margin:0 0 12px;}
+  .ask-thread{display:flex;flex-direction:column;gap:14px;margin:14px 0 0;}
+  /* The question box (with its Phrase/Expression) stays visible while scrolling, pinned just below the
+     Lire/Simplifier group (--ask-top, measured in JS); only the answers scroll underneath. */
+  .ask-compose{position:sticky;top:var(--ask-top,56px);z-index:1;background:#fff;padding:6px 0 10px;
+    border-bottom:1px solid var(--line);box-shadow:0 -8px 0 0 #fff;}
   .ask-thread:empty{display:none;}
   .ask-q{color:var(--ink);font-weight:600;}
   .ask-a{font-size:14px;line-height:1.65;color:var(--soft);margin-top:3px;}
@@ -529,18 +533,21 @@ function buildFeed(){
       <div class="ask-block" id="ask-${post.id}">
         <div class="nsec-label">Demander à Claude</div>
         <div class="ask-setup"></div>
-        <div class="ask-ctx"></div>
-        <div class="ask-thread"></div>
-        <textarea class="ask-input" rows="2" placeholder="Une question sur une expression, une phrase, la grammaire…"></textarea>
-        <div class="ask-row">
-          <button class="ask-send" data-ask="send">Envoyer</button>
-          <select class="ask-model" aria-label="Modèle"></select>
-          <button class="ask-link" data-ask="setup">Clé API</button>
+        <div class="ask-compose">
+          <div class="ask-ctx"></div>
+          <textarea class="ask-input" rows="2" placeholder="Une question sur une expression, une phrase, la grammaire…"></textarea>
+          <div class="ask-row">
+            <button class="ask-send" data-ask="send">Envoyer</button>
+            <select class="ask-model" aria-label="Modèle"></select>
+            <button class="ask-link" data-ask="setup">Clé API</button>
+          </div>
         </div>
+        <div class="ask-thread"></div>
       </div>
     </aside>`;
   feed.appendChild(card);
   viewObserver.observe(card);
+  askTopObserver.observe(card.querySelector('.side-top'));
 }); }
 
 // ── TIME AXIS ──
@@ -798,11 +805,12 @@ feed.addEventListener('click', e => {
     const post = btn.closest('.post');
     // Lire + Simplifier keep their fixed place in .side-top; other panels go to the bottom when opened.
     if (open && !block.closest('.side-top')) block.parentNode.appendChild(block);
+    const askBlock = post.querySelector('.ask-block'); if (askBlock) askBlock.parentNode.appendChild(askBlock);   // Demander always last
     if (btn.dataset.toggle === 'simple') {
       if (open) { post.classList.add('simple-on'); const p = POSTS.find(x => x.id === post.id); if (p) mirrorSimple(post, p); }
       else clearSimple(post);
     }
-    if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } }
+    if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } updateAskTop(post); }
     if (btn.dataset.toggle === 'ask') { post.classList.toggle('ask-on', open); if (open) openAsk(post); else post.querySelectorAll('.sent.asked').forEach(x => x.classList.remove('asked')); }
     post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open'));
   }
@@ -1319,6 +1327,14 @@ function markAsked(postEl, post, sentence){
   const el = [...postEl.querySelectorAll('.article .sent')].find(x => { const [i,j] = x.dataset.sent.split(':').map(Number); return splitSentences(post.fr[i])[j] === sentence; });
   if(el) el.classList.add('asked');
 }
+// Where the question box pins: just below the Lire/Simplifier group while that group is sticky
+// (Lire on), otherwise just below the top controls.
+function updateAskTop(postEl){
+  const top = postEl.querySelector('.side-top');
+  const sticky = postEl.classList.contains('read-on') && top && top.offsetHeight > 0;
+  postEl.style.setProperty('--ask-top', (sticky ? 56 + top.offsetHeight + 12 : 56) + 'px');
+}
+const askTopObserver = new ResizeObserver(items => items.forEach(it => updateAskTop(it.target.closest('.post'))));
 // From the selection popup: open that entry's panel with the expression attached.
 function askAbout(postId, text){
   const postEl = document.getElementById(postId); if(!postEl) return;
@@ -1418,7 +1434,7 @@ async function sendAsk(postEl, post){
   const sendBtn = postEl.querySelector('.ask-send[data-ask="send"]'); sendBtn.disabled = true;
   const item = document.createElement('div');
   item.innerHTML = `<div class="ask-q">${escHTML(q)}</div><div class="ask-a"><span class="lk-loading">Claude réfléchit…</span></div>`;
-  postEl.querySelector('.ask-thread').appendChild(item);
+  postEl.querySelector('.ask-thread').prepend(item);        // newest first, right under the question box
   const ansEl = item.querySelector('.ask-a');
   ta.value = '';
   const model = askModel();
