@@ -124,3 +124,19 @@ So the full sense: "a few descents that I wouldn't have chosen myself" — hypot
 The quotation marks around *« conquérir »* aren't grammatical — they show Felix quoting his own word choice, flagging that it's the wrong word (as the next lines explain: *on ne conquiert rien, là-haut*). It's the diary equivalent of air quotes.
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « À un moment, j'ai parlé d'une face que je voulais « conquérir ». »
+**Q :** No liaison from a singular noun: is this an universal rule?
+
+Not quite the right framing — liaison isn't about singular vs. plural nouns, it's about which words are *allowed* to liaise with the next word, and singular indefinite articles absolutely do liaise: *un_ami*, *un_moment*.
+
+In your example, *une face que* has no liaison simply because *que* starts with a consonant sound — liaison only happens before a vowel or mute *h*, regardless of number. If the next word started with a vowel, you'd get liaison even after a singular noun in some cases: *un homme_agréable* is debatable/optional, but *un_homme* (article+noun) is obligatory.
+
+The real rule of thumb:
+- Determiner + noun: liaison is (almost) always made — *un_ami*, *les_amis*, *ces_hommes*.
+- Noun + following word (adjective, verb): liaison is rare and mostly optional/literary — *un moment agréable* is usually said without linking *t*, though a formal speaker might.
+
+So it's not a "singular noun" rule — it's a "what type of word pair" rule.
+
+---
