@@ -114,3 +114,13 @@ Compare: *j'ai choisi des descentes* (no agreement, object comes after) vs. *les
 So the full sense: "a few descents that I wouldn't have chosen myself" — hypothetical, contrary to what actually happened (Bertrand chose them for him).
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « À un moment, j'ai parlé d'une face que je voulais « conquérir ». »
+**Q :** why is conquérir used here
+
+*Vouloir* is followed by a bare infinitive, so *je voulais conquérir* (I wanted to conquer) — no *de* or *à* needed: *vouloir* + infinitive is direct, like *je veux partir*.
+
+The quotation marks around *« conquérir »* aren't grammatical — they show Felix quoting his own word choice, flagging that it's the wrong word (as the next lines explain: *on ne conquiert rien, là-haut*). It's the diary equivalent of air quotes.
+
+---
