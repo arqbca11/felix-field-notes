@@ -8,3 +8,10 @@
 {"ts":"2026-09-27T06:08:17.323Z","s":"ms4uyd","e":"view","id":"decision","no":2}
 {"ts":"2026-09-27T06:09:22.323Z","s":"ms4uyd","e":"view","id":"revelstoke","no":5}
 {"ts":"2026-09-27T06:10:17.985Z","s":"0pznkm","e":"view","id":"decision","no":2}
+{"ts":"2026-09-27T07:12:23.357Z","s":"0j2ibb","e":"view","id":"bertrand","no":4}
+{"ts":"2026-09-27T07:12:29.722Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":0,"t":"À un moment, j'ai parlé d'une face que je voulais « conquérir »."}
+{"ts":"2026-09-27T07:12:41.904Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":0,"k":0,"t":"À un moment","kind":"son"}
+{"ts":"2026-09-27T07:13:07.954Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":0,"k":2,"t":"conquérir","kind":"mot"}
+{"ts":"2026-09-27T07:13:49.093Z","s":"0j2ibb","e":"ask","id":"bertrand","no":4,"t":"why is conquérir used here","expr":null,"sentence":"À un moment, j'ai parlé d'une face que je voulais « conquérir »."}
+{"ts":"2026-09-27T07:14:28.372Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":1,"t":"Il a levé un sourcil, rien de plus, et j'ai compris que le mot était mauvais."}
+{"ts":"2026-09-27T07:15:04.538Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":1,"k":2,"t":"mot était","kind":"liaison"}
