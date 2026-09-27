@@ -45,3 +45,8 @@
 {"ts":"2026-09-27T07:54:13.440Z","s":"q31pdu","e":"ask","id":"bertrand","no":4,"t":"what does 'une arête aux' here mean","expr":null,"sentence":"« Jeudi, si ça tient, une arête aux Aiguilles Rouges."}
 {"ts":"2026-09-27T07:54:33.146Z","s":"q31pdu","e":"sent","id":"bertrand","no":4,"i":3,"j":5,"t":"Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode."}
 {"ts":"2026-09-27T07:55:15.831Z","s":"q31pdu","e":"ask","id":"bertrand","no":4,"t":"Explain the structure of the sentence, 'Ce sont... dont la.. n'est pas une..'","expr":null,"sentence":"Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode."}
+{"ts":"2026-09-27T08:03:52.828Z","s":"q31pdu","e":"sent","id":"bertrand","no":4,"i":4,"j":0,"t":"En partant, il m'a serré la main et il a regardé le ciel."}
+{"ts":"2026-09-27T08:04:00.060Z","s":"q31pdu","e":"sent","id":"bertrand","no":4,"i":4,"j":2,"t":"Pour voir comment tu marches. »"}
+{"ts":"2026-09-27T08:04:14.827Z","s":"q31pdu","e":"sent","id":"bertrand","no":4,"i":4,"j":4,"t":"Mais je crois que ce n'est pas ça qu'il regardera."}
+{"ts":"2026-09-27T08:05:09.945Z","s":"q31pdu","e":"hard","id":"bertrand","no":4,"i":4,"j":4,"k":1,"t":"regardera","kind":"son"}
+{"ts":"2026-09-27T08:05:33.892Z","s":"q31pdu","e":"view","id":"revelstoke","no":5}
