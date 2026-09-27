@@ -15,3 +15,8 @@
 {"ts":"2026-09-27T07:13:49.093Z","s":"0j2ibb","e":"ask","id":"bertrand","no":4,"t":"why is conquérir used here","expr":null,"sentence":"À un moment, j'ai parlé d'une face que je voulais « conquérir »."}
 {"ts":"2026-09-27T07:14:28.372Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":1,"t":"Il a levé un sourcil, rien de plus, et j'ai compris que le mot était mauvais."}
 {"ts":"2026-09-27T07:15:04.538Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":1,"k":2,"t":"mot était","kind":"liaison"}
+{"ts":"2026-09-27T07:16:00.740Z","s":"0j2ibb","e":"ask","id":"bertrand","no":4,"t":"No liaison from a singular noun: is this an universal rule?","expr":null,"sentence":"À un moment, j'ai parlé d'une face que je voulais « conquérir »."}
+{"ts":"2026-09-27T07:17:21.861Z","s":"0j2ibb","e":"ask","id":"bertrand","no":4,"t":"my example is mot était mauvais. why is there no liaison on mot était","expr":null,"sentence":"À un moment, j'ai parlé d'une face que je voulais « conquérir »."}
+{"ts":"2026-09-27T07:18:25.123Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":2,"t":"On ne conquiert rien, là-haut."}
+{"ts":"2026-09-27T07:18:32.038Z","s":"0j2ibb","e":"hard","id":"bertrand","no":4,"i":3,"j":2,"k":1,"t":"là-haut","kind":"liaison"}
+{"ts":"2026-09-27T07:18:48.055Z","s":"0j2ibb","e":"sent","id":"bertrand","no":4,"i":3,"j":3,"t":"On passe, si la montagne veut bien, et on redescend."}
