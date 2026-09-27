@@ -213,3 +213,21 @@ In this context, *une arête* means a mountain **ridge** (a narrow rocky/snowy c
 - *une arête rocheuse* = a rocky ridge (same idea as here)
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode. »
+**Q :** Explain the structure of the sentence, 'Ce sont... dont la.. n'est pas une..'
+
+Breaking it down:
+
+- **Ce sont des hommes** = "These/they are men" — *ce sont* (not *ils sont*) because it's identifying/pointing to a category, typical with *des + noun*.
+- **dont la modestie...** = "whose modesty..." — *dont* replaces *de ces hommes* and works like "whose" when the following noun belongs to the antecedent. Structure: *dont* + article + noun (+ rest of clause), never *dont leur*.
+- **n'est pas une politesse : c'est une méthode** = "is not a politeness: it's a method" — straightforward negation + contrast.
+
+So literally: "They are men, the modesty of whom is not a politeness: it's a method" → naturally in English, "They are men whose modesty is not politeness — it's a method."
+
+Note the *dont* pattern is common and worth drilling:
+- *l'homme dont je parle* = the man I'm talking about (dont = *de qui/duquel*)
+- *la maison dont le toit est rouge* = the house whose roof is red
+
+---
