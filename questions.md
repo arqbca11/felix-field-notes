@@ -181,3 +181,21 @@ Here *si* means "if," introducing a condition: "You pass through, if the mountai
 Watch out: this conditional *si* is different from the *si* that means "yes" (to contradict a negative: *Tu n'as pas réussi? — Si!*) or the *si* meaning "so" (*il est si fort*). Same spelling, different jobs, and here context makes it clearly the "if" one.
 
 ---
+
+## 2026-09-27 · #4 Bertrand · claude-sonnet-5
+**Phrase :** « Ce sont des hommes dont la modestie n'est pas une politesse : c'est une méthode. »
+**Q :** What is 'Ce sont... dont la... n'est pas...' sentence structure here?
+
+Two things stacked together here.
+
+**"Ce sont des hommes"** — "These are men," using *ce sont* (not *ils sont*) because it's identifying/pointing to a category, like *c'est* but plural. Standard pattern for definitions.
+
+**"dont la modestie n'est pas..."** — a relative clause hooked onto *hommes* with *dont*, which replaces *de* + noun. Here it stands in for *leur modestie* / *la modestie de ces hommes*. So the full logic is:
+
+*la modestie de ces hommes n'est pas une politesse* → *ces hommes, dont la modestie n'est pas une politesse*
+
+You use *dont* whenever the connection to the previous noun involves "of" — possession, or a verb/adjective that takes *de* (*parler de*, *avoir besoin de*, etc.). Here it's possession: whose modesty.
+
+So altogether: "These are men whose modesty is not politeness: it's a method" — *dont* lets you avoid saying *la modestie de ces hommes* twice.
+
+---
