@@ -327,3 +327,23 @@ In your sentence: *la première fois que j'étais monté là-haut... je ne savai
 You could also say *la première fois que je suis montais là-haut* — wait, no: with *que* + "first time," French often defaults to plus-que-parfait when looking back at a completed prior event before commenting on it, but *je suis monté* would work fine too in a simpler retelling: *la première fois que je suis monté là-haut, je ne savais rien* is equally natural and common. The plus-que-parfait just adds a slightly more literary, "looking back from a further point" feel — appropriate for diary reflection.
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié. »
+**Expression :** « appris »
+**Q :** explain 'qui me l'a appris'
+
+This is *c'est... qui* emphasis structure + two stacked pronouns.
+
+**Structure:** *C'est Eric qui...* = "It's Eric who..." — a common way to emphasize the subject in French (like English "It was Eric who...").
+
+**The pronouns in *me l'a appris*:**
+- *me* = indirect object, "to me"
+- *l'* = direct object, "it" (elided *le*), referring back to the previous sentence's idea — that Canadian snow is deeper, heavier, and lies better
+- *a appris* = passé composé of *apprendre* ("to teach/learn")
+
+So *me l'a appris* = "taught it to me." Full sentence: "It's Eric who taught it to me" (referring to that fact about the snow).
+
+Order note: with two object pronouns stacked before the verb, indirect usually comes before direct when both are *me/te/nous/vous* + *le/la/les*: *me l'a appris*, *te les ai donnés*, etc. This fixed order is worth memorizing since it doesn't map onto English word order at all.
+
+---
