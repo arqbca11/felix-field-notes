@@ -14,3 +14,9 @@
 {"ts":"2026-09-29T07:28:43.447Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"...que je connais par cœur. Is ..que..par a sentence structure?","expr":"nette","sentence":"Le mont Mackenzie tout blanc en haut, les cèdres encore verts en bas, et entre les deux cette ligne nette que je connais par cœur."}
 {"ts":"2026-09-29T07:29:06.732Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":0,"j":3,"t":"À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort."}
 {"ts":"2026-09-29T07:30:02.542Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain d'un coupt","expr":"nette","sentence":"À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort."}
+{"ts":"2026-09-29T07:31:02.983Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":1,"j":1,"t":"La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien."}
+{"ts":"2026-09-29T07:31:10.556Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"savais"}
+{"ts":"2026-09-29T07:31:37.656Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"monté"}
+{"ts":"2026-09-29T07:31:57.072Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"étais"}
+{"ts":"2026-09-29T07:32:45.909Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"compare j'étais monté and je suis monté","expr":"étais","sentence":"La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien."}
+{"ts":"2026-09-29T07:34:01.248Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":1,"j":1,"k":1,"t":"2023","kind":"mot"}
