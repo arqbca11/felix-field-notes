@@ -14,6 +14,8 @@
 <!-- Entry index (which entries exist + their order). Entries themselves load from notes/*.js -->
 <!-- Optional local API keys (git-ignored; see secrets.example.js). Absent on the published site. -->
 <script src="secrets.js"></script>
+<!-- A short, approximate learner summary (built by tools/learner-profile.mjs), sent with Demander questions. -->
+<script src="learning/summary.js"></script>
 <script src="engine/sentences.js"></script>
 <script src="notes/manifest.js"></script>
 <style>
@@ -1391,6 +1393,7 @@ function askSystem(post){
     `Entry #${post.no}, ${post.date}, ${post.kind}, level ${post.level}: ${post.title || '(note)'}`,
     'French:', post.fr.join('\n\n'),
     '', 'English translation:', post.en.join('\n\n'),
+    ...(window.FELIX_LEARNER_SUMMARY ? ['', 'About this learner (approximate, from their reading log and past questions — use it lightly: connect an answer to something they struggled with before when it genuinely helps, never recite it or comment on it):', window.FELIX_LEARNER_SUMMARY] : []),
   ].join('\n');
 }
 function askUserText(q, ctx){

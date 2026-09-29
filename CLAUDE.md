@@ -494,6 +494,13 @@ spot, word/lemma, dictation word, questioned expression) a memory half-life — 
 lapse (½ if clicked ≥ 3 times), doubled by a clean meeting (entry met again, no struggle) at least
 half a half-life later, halved by a new lapse — and recall ≈ 2^(−days since ÷ half-life). Sections:
 due, fading, solid, hardest sentences, dictation misses, latest questions.
+**The learner summary (not test mode — live since 29 Sep 2026).** The same script also writes
+**`learning/summary.js`**: 5–12 plain, approximate lines (recent questions, words looked up and spots
+clicked this week, what's fading or solid, entries read). The page loads it and Demander sends it to
+Claude as background ("use it lightly… never recite it"), so answers can connect to past struggles. It's
+refreshed once a day by the main session (the daily hook asks: pull, run the script, commit the profile
+and summary, push) and at every `/new-entries`. Approximate is fine by design: the goal is the feeling
+that the app knows the learner, not bookkeeping.
 **Test mode.** `/new-entries` rebuilds the profile and writes a **dry run** to `learning/dry-runs.md`
 (what it would have repeated, where) but **must not let it change any brief**. When the user decides
 to merge it into the writing flow, turn step 0c of the skill into "put the top due items in the
