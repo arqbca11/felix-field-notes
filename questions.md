@@ -405,3 +405,17 @@ Literal sense: "the view that Addie loved most, the one [view] for which she'd s
 Compare with a masculine noun: *le tableau pour lequel elle a payé cher* = "the painting for which she paid a lot." Same structure, just *lequel* instead of *laquelle*.
 
 ---
+
+## 2026-09-29 · #6 Les Crochues, en guide · claude-sonnet-5
+**Phrase :** « La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. » »
+**Expression :** « deuxième gendarme »
+**Q :** Explain 'deuxième gendarme' to me
+
+"Gendarme" normally means "police officer" (gendarmerie), but in mountaineering it's a technical term for a rock pinnacle or tower along a ridge — a distinct rocky outcrop that sticks up like a sentinel blocking the way.
+
+So "deuxième gendarme" = "the second gendarme/pinnacle," referring to the second in a series of these rock towers along the Crochues traverse. Climbers often number them (first gendarme, second gendarme...) as landmarks for navigation and route description.
+
+- *Il a escaladé le premier gendarme.* - "He climbed the first pinnacle."
+- The word choice makes sense visually: these rock towers often look like standing figures guarding the ridge, hence "gendarme" (guard/sentinel).
+
+---
