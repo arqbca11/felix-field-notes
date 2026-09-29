@@ -57,6 +57,9 @@ On a normal refresh, add **2–4 Canada items** (lore counts; dated by the year 
 2. **Real people:** public figures in their public role only. Record what they did, never invent
    or paraphrase quotes. No private individuals. For accidents and deaths: the fact and place, no
    victims' names, a sober tone — writers may touch it only with respect.
+3a. **Real time vs story time:** anything scheduled after *today's real date* has **not happened yet**,
+   even if it's before the story's date. Write it as announced or planned (« date annoncée », « prévu »),
+   never as done, and never add details (weather, results, crowds) that no source has reported.
 3. **The story's calendar:** the notebook's current date is the date of the last entry in
    `CLAUDE.md` §3, and it may run ahead of today's real date. Mark each item's time relative to
    the story: `passé` (already happened by the story's current date — usable as something Felix
