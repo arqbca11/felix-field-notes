@@ -231,3 +231,21 @@ Note the *dont* pattern is common and worth drilling:
 - *la maison dont le toit est rouge* = the house whose roof is red
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « Eric m'a envoyé une photo ce matin, et un message, comme toujours : « Ça commence. »
+**Q :** explain m'a envoyé here
+
+*M'a envoyé* = "sent to me" (not "sent me/myself" — it's not reflexive here).
+
+Breakdown:
+- *m'* = *me* (indirect object pronoun, elided before a vowel) → "to me"
+- *a envoyé* = passé composé of *envoyer* ("to send")
+
+*Envoyer* naturally takes an indirect object: you send something *à quelqu'un*. So *il m'a envoyé une photo* = *il a envoyé une photo à moi* = "he sent a photo to me."
+
+Word order note: unlike English, the pronoun goes *before* the verb: *m'a envoyé*, not *a envoyé moi*.
+
+Contrast with direct object: if you said *il m'a vu* ("he saw me"), *m'* is a direct object there — same form, different grammatical role, since *voir quelqu'un* takes no *à*.
+
+---
