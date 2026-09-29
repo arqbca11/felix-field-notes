@@ -8,7 +8,7 @@
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
 > `node tools/learner-profile.mjs`.
 
-**Built:** 2026-09-29 21:26 UTC · **Events:** 133 (view 25, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 21 · **From** 2026-09-26 **to** 2026-09-29 · **Questions:** 26 · **Items tracked:** 41
+**Built:** 2026-09-29 21:38 UTC · **Events:** 133 (view 25, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 21 · **From** 2026-09-26 **to** 2026-09-29 · **Questions:** 26 · **Items tracked:** 41
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.
@@ -20,8 +20,8 @@ Recall between 50 and 80 %: worth a touch in the next week.
 
 | Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now |
 |---|---|---|---|---|---|---|
-| étais | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 58 % |
-| écrit | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 67 % |
+| étais | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 57 % |
+| écrit | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 66 % |
 | répondu | prononciation · son | 1 (1) | 2 | 2026-09-28 | 4.0 j | 75 % |
 
 ## Solid
