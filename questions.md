@@ -249,3 +249,18 @@ Word order note: unlike English, the pronoun goes *before* the verb: *m'a envoy�
 Contrast with direct object: if you said *il m'a vu* ("he saw me"), *m'* is a direct object there — same form, different grammatical role, since *voir quelqu'un* takes no *à*.
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « Eric m'a envoyé une photo ce matin, et un message, comme toujours : « Ça commence. »
+**Q :** why is it a in stead of à in m'a envoyé
+
+Good catch on the confusion — but these are two totally different words that just sound identical.
+
+- *a* (no accent) = the verb *avoir*, third person singular present ("has") — here it's the auxiliary for passé composé: *a envoyé* = "has sent"
+- *à* (with accent) = the preposition "to/at"
+
+So *m'a envoyé* = *m'* (to me) + *a* (has) + *envoyé* (sent) = "has sent to me." The *à* you'd expect for *envoyer à quelqu'un* is already absorbed into the pronoun *m'*.
+
+Quick test: with *il/elle* you'd write *il a envoyé* (avoir), but *il va à Paris* (preposition) — completely unrelated despite sounding the same in careless speech (they're not even pronounced identically: *a* is shorter, *à* can be slightly longer, but most French speakers won't stress this distinction).
+
+---
