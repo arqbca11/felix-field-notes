@@ -311,3 +311,19 @@ Related expressions, easy to mix up:
 Small note: you highlighted *nette* but your question was about *d'un coup* — just flagging in case that was a mismatch on your end.
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien. »
+**Expression :** « étais »
+**Q :** compare j'étais monté and je suis monté
+
+Both use *être* as the auxiliary (movement verbs like *monter, aller, venir, partir* do this), but the tense is different:
+
+- *je suis monté* = passé composé = "I went up / I have gone up" — a completed action, the main timeline
+- *j'étais monté* = plus-que-parfait (pluperfect) = "I had gone up" — an action that happened *before* another past point being discussed
+
+In your sentence: *la première fois que j'étais monté là-haut... je ne savais rien* — the pluperfect frames the trip up the mountain as already completed background, from which the narrator then looks at what he *didn't know* (also past). It's the same relationship as English "the first time I had gone up there... I knew nothing."
+
+You could also say *la première fois que je suis montais là-haut* — wait, no: with *que* + "first time," French often defaults to plus-que-parfait when looking back at a completed prior event before commenting on it, but *je suis monté* would work fine too in a simpler retelling: *la première fois que je suis monté là-haut, je ne savais rien* is equally natural and common. The plus-que-parfait just adds a slightly more literary, "looking back from a further point" feel — appropriate for diary reflection.
+
+---
