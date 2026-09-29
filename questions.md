@@ -347,3 +347,19 @@ So *me l'a appris* = "taught it to me." Full sentence: "It's Eric who taught it 
 Order note: with two object pronouns stacked before the verb, indirect usually comes before direct when both are *me/te/nous/vous* + *le/la/les*: *me l'a appris*, *te les ai donnés*, etc. This fixed order is worth memorizing since it doesn't map onto English word order at all.
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié. »
+**Expression :** « appris »
+**Q :** l'a appris: is l here 'it', and a 'avoir'?
+
+Yes, exactly right on both counts.
+
+- *l'* = *le*, elided before the vowel sound of *a* → "it" (direct object pronoun)
+- *a* = *avoir*, present tense, third person singular → auxiliary for passé composé
+
+So *l'a appris* = "has taught it" / "taught it." Same pattern you saw before with *m'a envoyé* — pronoun + *avoir* + past participle, all packed together in speech and writing.
+
+Quick way to spot it: if you see a pronoun elided with *a* (*l'a, t'a, m'a*), it's almost always *avoir* forming a compound past tense, not the preposition *à* (which doesn't elide this way — *à* stays *à* regardless of what follows).
+
+---
