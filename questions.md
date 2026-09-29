@@ -363,3 +363,25 @@ So *l'a appris* = "has taught it" / "taught it." Same pattern you saw before wit
 Quick way to spot it: if you see a pronoun elided with *a* (*l'a, t'a, m'a*), it's almost always *avoir* forming a compound past tense, not the preposition *à* (which doesn't elide this way — *à* stays *à* regardless of what follows).
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié. »
+**Expression :** « moitié »
+**Q :** je ne comprenais qu'à moitié: explain the qu'à here
+
+This is *ne... que* ("only") + the expression *à moitié* ("halfway").
+
+- *ne... que* = "only" — a restrictive structure, not a negation of existence but of extent. *Je ne comprenais que...* = "I only understood..."
+- *à moitié* = "halfway / half" (fixed expression)
+
+So *qu'à moitié* is just *que* + *à moitié* running together: "only halfway."
+
+Full phrase: *je ne comprenais qu'à moitié* = "I only understood halfway" / "I only half understood."
+
+Watch the pattern — *ne... que* sandwiches the verb the same way *ne... pas* does, but means "only" instead of negating:
+- *je ne comprenais pas* = "I didn't understand"
+- *je ne comprenais que...* = "I only understood..."
+
+Other common *à moitié* uses: *une bouteille à moitié vide* (half-empty bottle), *à moitié prix* (half price).
+
+---
