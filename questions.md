@@ -264,3 +264,16 @@ So *m'a envoyé* = *m'* (to me) + *a* (has) + *envoyé* (sent) = "has sent to me
 Quick test: with *il/elle* you'd write *il a envoyé* (avoir), but *il va à Paris* (preposition) — completely unrelated despite sounding the same in careless speech (they're not even pronounced identically: *a* is shorter, *à* can be slightly longer, but most French speakers won't stress this distinction).
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « Tu skies où c't'hiver ? » »
+**Expression :** « c't'hiver »
+**Q :** is c't'hiver unique to Quebec? Because winter is a big thing there?
+
+Not unique to Québec, but more common there in casual writing/texting.
+
+*C't'hiver* is just a spoken-style contraction of *cet hiver* ("this winter") — *cet* → *c't'* by dropping the vowel sound and running it into the next word, the way fast spoken French often does. You'd hear similar contractions in France too: *c't'après-midi* (*cet après-midi*), *c'te fois* (*cette fois*).
+
+What is more Québécois here is the *habit* of writing speech this phonetically in casual texts — France French speakers tend to write more "correctly" even in texts, while Québécois informal writing often transcribes the spoken contraction more freely. So it's not about winter being special culturally, it's about how Eric texts (matching his established québécois voice in the diary — cf. *ç'a* type contractions, and his accent Felix mentions struggling with).
+
+---
