@@ -43,3 +43,7 @@
 {"ts":"2026-09-29T07:54:32.519Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":2,"j":0,"k":4,"t":"pour laquelle","kind":"son"}
 {"ts":"2026-09-29T07:54:56.107Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain celle pour laquelle","expr":"aimait","sentence":"Sur la photo, derrière le sommet, on devine la vallée de la Columbia sous les nuages : la vue qu'Addie aimait le plus, celle pour laquelle elle s'arrêtait au milieu d'une pente."}
 {"ts":"2026-09-29T20:47:26.044Z","s":"j9vvee","e":"view","id":"crochues","no":6}
+{"ts":"2026-09-29T20:54:00.649Z","s":"az0o88","e":"view","id":"bertrand","no":4}
+{"ts":"2026-09-29T20:54:55.649Z","s":"az0o88","e":"view","id":"revelstoke","no":5}
+{"ts":"2026-09-29T20:55:30.648Z","s":"az0o88","e":"view","id":"crochues","no":6}
+{"ts":"2026-09-29T20:56:01.921Z","s":"az0o88","e":"sent","id":"crochues","no":6,"i":0,"j":3,"t":"Le télésiège de l'Index est fermé depuis un mois, alors on est montés à pied, par le sentier du Lac Blanc, deux heures et demie de marche d'approche avec le sac et la corde."}
