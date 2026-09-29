@@ -1144,7 +1144,10 @@ function cleanTerm(s){
     .replace(/\s+/g,' ').trim();
 }
 function sameAs(a,b){ return normTerm(a)===normTerm(b); }
-function stripHTML(h){ return h.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); }
+// Wiktionary embeds <style> blocks (TemplateStyles) inside some definitions: drop their content too,
+// or the CSS text shows up in the popup (e.g. the second sense of « croire »).
+function stripHTML(h){ return h.replace(/<(style|script)[^>]*>[\s\S]*?<\/\1>/gi,'').replace(/<link[^>]*>/gi,'')
+  .replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim(); }
 const ELISION = /^(l|d|j|n|s|c|m|t|qu)'(?=\S)/i;
 
 // 1) English Wiktionary, French section: real dictionary senses with part of speech.
