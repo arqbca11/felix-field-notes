@@ -4,3 +4,8 @@
 {"ts":"2026-09-29T07:18:01.621Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":0,"j":0,"k":3,"t":"comme toujours","kind":"muet"}
 {"ts":"2026-09-29T07:18:29.025Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain m'a envoyé here","expr":null,"sentence":"Eric m'a envoyé une photo ce matin, et un message, comme toujours : « Ça commence."}
 {"ts":"2026-09-29T07:20:58.187Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"why is it a in stead of à in m'a envoyé","expr":null,"sentence":"Eric m'a envoyé une photo ce matin, et un message, comme toujours : « Ça commence."}
+{"ts":"2026-09-29T07:24:06.527Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"écrit"}
+{"ts":"2026-09-29T07:24:26.219Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":0,"j":1,"t":"Tu skies où c't'hiver ? »"}
+{"ts":"2026-09-29T07:24:32.485Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":0,"j":1,"k":1,"t":"c't'hiver","kind":"mot"}
+{"ts":"2026-09-29T07:25:24.259Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"c't'hiver"}
+{"ts":"2026-09-29T07:25:50.570Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"is c't'hiver unique to Quebec? Because winter is a big thing there?","expr":"c't'hiver","sentence":"Tu skies où c't'hiver ? »"}
