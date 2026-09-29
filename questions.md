@@ -385,3 +385,23 @@ Watch the pattern — *ne... que* sandwiches the verb the same way *ne... pas* d
 Other common *à moitié* uses: *une bouteille à moitié vide* (half-empty bottle), *à moitié prix* (half price).
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « Sur la photo, derrière le sommet, on devine la vallée de la Columbia sous les nuages : la vue qu'Addie aimait le plus, celle pour laquelle elle s'arrêtait au milieu d'une pente. »
+**Expression :** « aimait »
+**Q :** explain celle pour laquelle
+
+*Celle pour laquelle* = "the one for which."
+
+- *celle* = demonstrative pronoun, feminine singular, standing in for *la vue* ("the view") to avoid repeating it — "the one"
+- *laquelle* = relative pronoun, feminine singular, used after a preposition (here *pour*)
+
+You can't use plain *que* or *qui* after a preposition in French — you need *lequel/laquelle/lesquels/lesquelles* (agreeing in gender/number with the noun it replaces). So:
+- *pour laquelle* = "for which" (agrees with *la vue*, feminine)
+- *pour lequel* = "for which" (if the noun were masculine)
+
+Literal sense: "the view that Addie loved most, the one [view] for which she'd stop in the middle of a slope" — she'd stop *for* that view, hence *pour laquelle*.
+
+Compare with a masculine noun: *le tableau pour lequel elle a payé cher* = "the painting for which she paid a lot." Same structure, just *lequel* instead of *laquelle*.
+
+---
