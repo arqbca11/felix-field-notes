@@ -293,3 +293,21 @@ So literally: "this sharp line that I know by heart." *Que* connects the relativ
 Compare: *je connais cette chanson par cœur* ("I know this song by heart") — same *par cœur*, no *que* needed at all when there's no relative clause.
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort. »
+**Expression :** « nette »
+**Q :** explain d'un coupt
+
+*D'un coup* = "all at once / suddenly / in one go." It describes something happening abruptly, as a single event rather than gradually.
+
+Here: *la première neige arrive... d'un coup* = "the first snow arrives... all at once" — one night it's just there, no gradual buildup.
+
+Related expressions, easy to mix up:
+- *tout d'un coup* = "all of a sudden" (more emphatic on the surprise)
+- *d'un seul coup* = "in a single go/blow" (emphasizes it's one action, not repeated)
+- *coup* alone shows up everywhere in idioms: *un coup d'œil* (a glance), *tout à coup* (suddenly), *après coup* (afterward, in hindsight)
+
+Small note: you highlighted *nette* but your question was about *d'un coup* — just flagging in case that was a mismatch on your end.
+
+---
