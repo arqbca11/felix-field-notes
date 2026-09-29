@@ -7,3 +7,6 @@ secrets.js
 
 # Per-machine timestamp of the last knowledge-scout launch (hook state)
 .claude/knowledge-scout.last
+
+# Private developer notes (links, drafts)
+DEV-NOTES.md
