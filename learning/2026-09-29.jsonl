@@ -23,3 +23,10 @@
 {"ts":"2026-09-29T07:34:12.514Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":1,"j":2,"t":"Je croyais savoir : j'avais grandi sur les skis, j'avais fait de la peau de phoque avec mon grand-père depuis l'âge de douze ans."}
 {"ts":"2026-09-29T07:34:52.738Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"peau de phoque"}
 {"ts":"2026-09-29T07:35:23.987Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"croyais"}
+{"ts":"2026-09-29T07:37:14.362Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":1,"j":4,"t":"Elle est plus profonde, plus lourde, et elle ment mieux."}
+{"ts":"2026-09-29T07:37:28.386Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"mieux"}
+{"ts":"2026-09-29T07:37:50.103Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"profonde"}
+{"ts":"2026-09-29T07:37:55.119Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"lourde"}
+{"ts":"2026-09-29T07:39:20.060Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":1,"j":5,"t":"C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié."}
+{"ts":"2026-09-29T07:39:40.301Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"appris"}
+{"ts":"2026-09-29T07:40:12.283Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain 'qui me l'a appris'","expr":"appris","sentence":"C'est Eric qui me l'a appris, pendant le cours d'avalanche au col Rogers, les matins où l'armée tirait au canon sur les pentes au-dessus de la route, avec son français du Québec que je ne comprenais qu'à moitié."}
