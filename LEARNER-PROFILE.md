@@ -8,7 +8,7 @@
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
 > `node tools/learner-profile.mjs`.
 
-**Built:** 2026-09-29 21:38 UTC · **Events:** 133 (view 25, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 21 · **From** 2026-09-26 **to** 2026-09-29 · **Questions:** 26 · **Items tracked:** 41
+**Built:** 2026-09-29 21:42 UTC · **Events:** 133 (view 25, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 21 · **From** 2026-09-26 **to** 2026-09-29 · **Questions:** 26 · **Items tracked:** 41
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.

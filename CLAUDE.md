@@ -496,9 +496,11 @@ half a half-life later, halved by a new lapse — and recall ≈ 2^(−days sinc
 due, fading, solid, hardest sentences, dictation misses, latest questions.
 **The learner summary (not test mode — live since 29 Sep 2026).** The same script also writes
 **`learning/summary.js`**: 5–12 plain, approximate lines (questions, words looked up, spots clicked, what's
-fading or solid, entries read), **recency-weighted**: each occurrence counts 2^(−age/7 days) and repeats add
-up, below 0.3 it's dropped — a one-off fades out after ~12 days, a topic asked three times after ~3 weeks
-without coming back to it; each item carries its age ("×3, last 2 days ago"). The page loads it and Demander sends it to
+fading or solid, entries read), **recency-weighted in reading days** (days the learner used the app, not
+calendar days — time away doesn't fade anything): each occurrence counts 2^(−reading days since / 7) and
+repeats add up, below 0.3 it's dropped — a one-off fades after ~12 reading days, a topic asked three times
+after ~3 weeks of reading without coming back to it; each item carries its age ("×3, last 2 reading days
+ago"). The forgetting-curve estimates in LEARNER-PROFILE.md stay on calendar time (you forget while away). The page loads it and Demander sends it to
 Claude as background ("use it lightly… never recite it"), so answers can connect to past struggles. It's
 refreshed once a day by the main session (the daily hook asks: pull, run the script, commit the profile
 and summary, push) and at every `/new-entries`. Approximate is fine by design: the goal is the feeling

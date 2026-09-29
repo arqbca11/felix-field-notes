@@ -207,12 +207,16 @@ fs.writeFileSync(OUT, md);
 // ── A short, approximate summary for the page's Demander (learning/summary.js) ──
 // A few plain lines, so Claude on the page can connect an answer to what the learner has struggled
 // with before. Approximate on purpose: it only needs to feel like "it knows me".
-// Recency-weighted: each occurrence counts 2^(−age/7 days) — it halves every week — and repeats add
-// up, so what keeps coming back stays on top: a one-off drops out after ~12 days, a topic asked
-// three times after ~3 weeks without coming back to it.
+// Recency-weighted, with age counted in READING DAYS (days the learner actually used the app), not
+// calendar days: ten days away don't fade anything, ten days of daily reading do. Each occurrence
+// counts 2^(−reading days since / 7) and repeats add up, so what keeps coming back stays on top: a
+// one-off drops out after ~12 reading days, a topic asked three times after ~3 weeks of reading
+// without coming back to it.
 const HALF = 7, KEEP = 0.3;                                    // weight below KEEP = not worth mentioning
-const age = t => (NOW - t) / DAY;
-const ago = t => { const d = Math.round(age(t)); return d <= 0 ? 'today' : d === 1 ? 'yesterday' : `${d} days ago`; };
+const dayOf = t => new Date(t).toISOString().slice(0, 10);
+const READING_DAYS = [...new Set([...events.map(e => dayOf(e.time)), ...questions.map(q => q.date)])].sort();
+const age = t => { const d = dayOf(t); return READING_DAYS.filter(x => x > d && x <= dayOf(NOW)).length; };   // reading days since
+const ago = t => { const d = age(t); return d === 0 ? 'latest reading day' : d === 1 ? '1 reading day ago' : `${d} reading days ago`; };
 function faded(list, keyOf, labelOf, timeOf){                  // → [{label, n, last, w}] by weight
   const g = new Map();
   for (const x of list) {
@@ -224,21 +228,21 @@ function faded(list, keyOf, labelOf, timeOf){                  // → [{label, n
   }
   return [...g.values()].filter(v => v.w >= KEEP).sort((a, b) => b.w - a.w);
 }
-const tag = v => `${v.n > 1 ? `×${v.n}, ` : ''}last ${ago(v.last)}`;
+const tag = v => `${v.n > 1 ? `×${v.n}, last ` : ''}${ago(v.last)}`;
 const qTime = q => new Date(q.date + 'T12:00:00Z').getTime();
 const qTopics = faded(questions, q => q.expr ? 'e|' + lemmaOf(q.expr) : 'q|' + norm(q.q).slice(0, 40),
   q => q.expr ? `« ${q.expr} »${q.q ? ` (${q.q.slice(0, 60)})` : ''}` : q.q.slice(0, 70), qTime).slice(0, 8);
 const lookups = faded(events.filter(e => e.e === 'lookup'), e => lemmaOf(e.t), e => e.t, e => e.time).slice(0, 10);
 const hardSpots = faded(events.filter(e => e.e === 'hard'), e => norm(e.t), e => e.t, e => e.time).slice(0, 8);
-const recentDue = due.filter(r => age(r.tLast) <= 14).slice(0, 6);
+const recentDue = due.filter(r => age(r.tLast) <= 10).slice(0, 6);
 const replays = [...sentences.values()].filter(s => s.lire + s.simple >= 2).length;
 const readNos = [...new Set(events.filter(e => e.e === 'view').map(e => e.no))].sort((a, b) => a - b);
 const lines = [
-  `Approximate, from the learner's reading log and saved questions (updated ${NOW.toISOString().slice(0, 10)}). Recent and repeated things weigh most; anything not revisited for a couple of weeks has been dropped.`,
+  `Approximate, from the learner's reading log and saved questions (updated ${NOW.toISOString().slice(0, 10)}). Ages are in reading days (days they used the app): recent and repeated things weigh most; what they haven't come back to over ~2 weeks of reading has been dropped; time away doesn't count.`,
   qTopics.length ? `- On their mind lately (questions): ${qTopics.map(v => `${v.label} [${tag(v)}]`).join('; ')}.` : '',
   lookups.length ? `- Words they've been looking up: ${lookups.map(v => `${v.label} [${tag(v)}]`).join(', ')}.` : '',
   hardSpots.length ? `- Pronunciation spots they clicked: ${hardSpots.map(v => `${v.label} [${tag(v)}]`).join(', ')}.` : '',
-  recentDue.length ? `- Probably fading (struggled within the last 2 weeks, not met again since): ${recentDue.map(r => r.it.label.split(' → ').pop()).join(', ')}.` : '',
+  recentDue.length ? `- Probably fading (struggled within the last ~10 reading days, not met again since): ${recentDue.map(r => r.it.label.split(' → ').pop()).join(', ')}.` : '',
   solid.length ? `- Solid by now: ${solid.slice(0, 6).map(r => r.it.label.split(' → ').pop()).join(', ')}.` : '',
   replays ? `- Replays or simplifies long sentences fairly often (${replays} sentence${replays > 1 ? 's' : ''} more than once).` : '',
   dictMiss.size ? `- Dictation slips: ${[...dictMiss.keys()].slice(0, 8).join(', ')}.` : '',
