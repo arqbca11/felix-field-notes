@@ -48,3 +48,9 @@
 {"ts":"2026-09-29T20:55:30.648Z","s":"az0o88","e":"view","id":"crochues","no":6}
 {"ts":"2026-09-29T20:56:01.921Z","s":"az0o88","e":"sent","id":"crochues","no":6,"i":0,"j":3,"t":"Le télésiège de l'Index est fermé depuis un mois, alors on est montés à pied, par le sentier du Lac Blanc, deux heures et demie de marche d'approche avec le sac et la corde."}
 {"ts":"2026-09-29T20:57:18.269Z","s":"az0o88","e":"sent","id":"crochues","no":6,"i":2,"j":2,"t":"Mais je ne l'avais jamais grimpée en tenant quelqu'un au bout d'une corde courte, en choisissant chaque relais pour lui et non pour moi, en me retournant tous les trois mètres."}
+{"ts":"2026-09-29T21:14:03.386Z","s":"j9vvee","e":"sent","id":"crochues","no":6,"i":2,"j":2,"t":"Mais je ne l'avais jamais grimpée en tenant quelqu'un au bout d'une corde courte, en choisissant chaque relais pour lui et non pour moi, en me retournant tous les trois mètres."}
+{"ts":"2026-09-29T21:14:56.068Z","s":"j9vvee","e":"view","id":"vingt-centimetres","no":8}
+{"ts":"2026-09-29T21:15:36.860Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"en"}
+{"ts":"2026-09-29T21:15:51.053Z","s":"j9vvee","e":"sent","id":"crochues","no":6,"i":3,"j":1,"t":"La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. »"}
+{"ts":"2026-09-29T21:16:33.027Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"terre"}
+{"ts":"2026-09-29T21:16:41.893Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"gendarme"}
