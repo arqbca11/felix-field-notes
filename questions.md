@@ -419,3 +419,17 @@ So "deuxième gendarme" = "the second gendarme/pinnacle," referring to the secon
 - The word choice makes sense visually: these rock towers often look like standing figures guarding the ridge, hence "gendarme" (guard/sentinel).
 
 ---
+
+## 2026-09-29 · #6 Les Crochues, en guide · claude-sonnet-5
+**Phrase :** « La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. » »
+**Expression :** « déjà par terre »
+**Q :** And what about 'déjà par terre'
+
+"Par terre" literally means "on the ground," and "déjà" means "already." Together: "already on the ground."
+
+Here it's used figuratively in a climbing context — Bertrand (playing the client) is saying that because Felix tightened the rope a second too late, if he'd actually fallen, he'd already be on the ground (i.e., the rope wouldn't have caught him in time). It's a blunt, concrete way of saying "you were too slow — your client would already be dead/injured."
+
+- *Ne reste pas par terre, lève-toi !* - "Don't stay on the ground, get up!"
+- Note "par terre" is a fixed expression — you can't swap *terre* for *sol* here even though both mean "ground"; *par terre* is the idiomatic phrase for "on the floor/ground."
+
+---
