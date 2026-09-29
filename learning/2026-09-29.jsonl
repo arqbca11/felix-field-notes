@@ -9,3 +9,8 @@
 {"ts":"2026-09-29T07:24:32.485Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":0,"j":1,"k":1,"t":"c't'hiver","kind":"mot"}
 {"ts":"2026-09-29T07:25:24.259Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"c't'hiver"}
 {"ts":"2026-09-29T07:25:50.570Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"is c't'hiver unique to Quebec? Because winter is a big thing there?","expr":"c't'hiver","sentence":"Tu skies où c't'hiver ? »"}
+{"ts":"2026-09-29T07:27:11.267Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":0,"j":2,"t":"Le mont Mackenzie tout blanc en haut, les cèdres encore verts en bas, et entre les deux cette ligne nette que je connais par cœur."}
+{"ts":"2026-09-29T07:27:50.125Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"nette"}
+{"ts":"2026-09-29T07:28:43.447Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"...que je connais par cœur. Is ..que..par a sentence structure?","expr":"nette","sentence":"Le mont Mackenzie tout blanc en haut, les cèdres encore verts en bas, et entre les deux cette ligne nette que je connais par cœur."}
+{"ts":"2026-09-29T07:29:06.732Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":0,"j":3,"t":"À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort."}
+{"ts":"2026-09-29T07:30:02.542Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain d'un coupt","expr":"nette","sentence":"À Revelstoke, la première neige arrive toujours comme ça, d'un coup, une nuit d'octobre, et le lendemain toute la ville parle plus fort."}
