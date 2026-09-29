@@ -20,3 +20,6 @@
 {"ts":"2026-09-29T07:31:57.072Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"étais"}
 {"ts":"2026-09-29T07:32:45.909Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"compare j'étais monté and je suis monté","expr":"étais","sentence":"La première fois que j'étais monté là-haut, en décembre 2023, je ne savais rien."}
 {"ts":"2026-09-29T07:34:01.248Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":1,"j":1,"k":1,"t":"2023","kind":"mot"}
+{"ts":"2026-09-29T07:34:12.514Z","s":"j9vvee","e":"sent","id":"revelstoke","no":5,"i":1,"j":2,"t":"Je croyais savoir : j'avais grandi sur les skis, j'avais fait de la peau de phoque avec mon grand-père depuis l'âge de douze ans."}
+{"ts":"2026-09-29T07:34:52.738Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"peau de phoque"}
+{"ts":"2026-09-29T07:35:23.987Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"croyais"}
