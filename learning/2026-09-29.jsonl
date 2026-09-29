@@ -41,3 +41,4 @@
 {"ts":"2026-09-29T07:54:00.753Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":2,"j":0,"k":3,"t":"qu'Addie aimait","kind":"enchainement"}
 {"ts":"2026-09-29T07:54:11.277Z","s":"j9vvee","e":"lookup","id":"revelstoke","no":5,"t":"aimait"}
 {"ts":"2026-09-29T07:54:32.519Z","s":"j9vvee","e":"hard","id":"revelstoke","no":5,"i":2,"j":0,"k":4,"t":"pour laquelle","kind":"son"}
+{"ts":"2026-09-29T07:54:56.107Z","s":"j9vvee","e":"ask","id":"revelstoke","no":5,"t":"explain celle pour laquelle","expr":"aimait","sentence":"Sur la photo, derrière le sommet, on devine la vallée de la Columbia sous les nuages : la vue qu'Addie aimait le plus, celle pour laquelle elle s'arrêtait au milieu d'une pente."}
