@@ -277,3 +277,19 @@ Not unique to Québec, but more common there in casual writing/texting.
 What is more Québécois here is the *habit* of writing speech this phonetically in casual texts — France French speakers tend to write more "correctly" even in texts, while Québécois informal writing often transcribes the spoken contraction more freely. So it's not about winter being special culturally, it's about how Eric texts (matching his established québécois voice in the diary — cf. *ç'a* type contractions, and his accent Felix mentions struggling with).
 
 ---
+
+## 2026-09-29 · #5 Revelstoke, première neige · claude-sonnet-5
+**Phrase :** « Le mont Mackenzie tout blanc en haut, les cèdres encore verts en bas, et entre les deux cette ligne nette que je connais par cœur. »
+**Expression :** « nette »
+**Q :** ...que je connais par cœur. Is ..que..par a sentence structure?
+
+No, *que* and *par* aren't linked as a structure — they're two separate, unrelated things that happen to sit near each other.
+
+- *que* = relative pronoun, object of *connais*: "...cette ligne... **que** je connais" = "...that line **that** I know." It refers back to *cette ligne nette*.
+- *par cœur* = fixed expression meaning "by heart" (memorized, known intimately)
+
+So literally: "this sharp line that I know by heart." *Que* connects the relative clause to *ligne*; *par cœur* is just an adverbial phrase modifying *connais*, unrelated to *que*.
+
+Compare: *je connais cette chanson par cœur* ("I know this song by heart") — same *par cœur*, no *que* needed at all when there's no relative clause.
+
+---
