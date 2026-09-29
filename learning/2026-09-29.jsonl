@@ -54,3 +54,7 @@
 {"ts":"2026-09-29T21:15:51.053Z","s":"j9vvee","e":"sent","id":"crochues","no":6,"i":3,"j":1,"t":"La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. »"}
 {"ts":"2026-09-29T21:16:33.027Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"terre"}
 {"ts":"2026-09-29T21:16:41.893Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"gendarme"}
+{"ts":"2026-09-29T21:18:01.278Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"deuxième gendarme"}
+{"ts":"2026-09-29T21:18:12.448Z","s":"j9vvee","e":"ask","id":"crochues","no":6,"t":"Explain 'deuxième gendarme' to me","expr":"deuxième gendarme","sentence":"La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. »"}
+{"ts":"2026-09-29T21:18:28.161Z","s":"j9vvee","e":"lookup","id":"crochues","no":6,"t":"déjà par terre"}
+{"ts":"2026-09-29T21:18:36.677Z","s":"j9vvee","e":"ask","id":"crochues","no":6,"t":"And what about 'déjà par terre'","expr":"déjà par terre","sentence":"La première, au deuxième gendarme, quand j'ai tendu la corde une seconde trop tard : « Là, ton client est déjà par terre. »"}
