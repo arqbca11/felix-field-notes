@@ -8,21 +8,38 @@
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
 > `node tools/learner-profile.mjs`.
 
-**Built:** 2026-09-29 21:42 UTC · **Events:** 133 (view 25, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 21 · **From** 2026-09-26 **to** 2026-09-29 · **Questions:** 26 · **Items tracked:** 41
+**Built:** 2026-10-23 19:57 UTC · **Events:** 134 (view 26, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 22 · **From** 2026-09-26 **to** 2026-09-30 · **Questions:** 26 · **Items tracked:** 41
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.
 
-_Nothing yet._
+| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now | What a brief would do |
+|---|---|---|---|---|---|---|---|
+| il faut que je fasse | mot | 2 (4) | 2 | 2026-09-29 | 2.0 j | 0 % | reuse « il faut que je fasse » in a fresh context; vocab row again |
+| moi-même | mot | 2 (3) | 2 | 2026-09-29 | 2.0 j | 0 % | reuse « moi-même » in a fresh context; vocab row again |
+| nette → net | mot | 2 (3) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « net » in a fresh context; vocab row again |
+| appris | mot | 2 (3) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « appris » in a fresh context; vocab row again |
+| étais | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « étais » in a fresh context; vocab row again |
+| deuxième gendarme | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « deuxième gendarme » in a fresh context; vocab row again |
+| déjà par terre | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « déjà par terre » in a fresh context; vocab row again |
+| c't'hiver | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « c't'hiver » in a fresh context; vocab row again |
+| moitié | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « moitié » in a fresh context; vocab row again |
+| aimait | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « aimait » in a fresh context; vocab row again |
+| écrit | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « écrit » in a fresh context; vocab row again |
+| terre | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « terre » in a fresh context; vocab row again |
+| gendarme | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « gendarme » in a fresh context; vocab row again |
+| À un moment | prononciation · son | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « À un moment » (or the same son) in a new sentence, and mark it in `read` |
+| conquérir | prononciation · mot | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « conquérir » (or the same mot) in a new sentence, and mark it in `read` |
+| mot était | prononciation · liaison | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « mot était » (or the same liaison) in a new sentence, and mark it in `read` |
+| et on | prononciation · liaison | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « et on » (or the same liaison) in a new sentence, and mark it in `read` |
+| dont la | prononciation · muet | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « dont la » (or the same muet) in a new sentence, and mark it in `read` |
+| main et il a | prononciation · liaison | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « main et il a » (or the same liaison) in a new sentence, and mark it in `read` |
+| regardera | prononciation · son | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « regardera » (or the same son) in a new sentence, and mark it in `read` |
 
 ## Fading soon
 Recall between 50 and 80 %: worth a touch in the next week.
 
-| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now |
-|---|---|---|---|---|---|---|
-| étais | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 57 % |
-| écrit | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 66 % |
-| répondu | prononciation · son | 1 (1) | 2 | 2026-09-28 | 4.0 j | 75 % |
+_Nothing yet._
 
 ## Solid
 Met again cleanly at least twice, half-life of two weeks or more: no need to repeat on purpose.
