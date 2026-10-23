@@ -348,9 +348,10 @@ question in localStorage (`felix_write`) and restored on reload; each correction
 **Demander (added 24 Sep 2026).** An action button that opens a question box in the right column
 (`.ask-block`, stacks like the other panels). Questions go to the **Claude API straight from the
 browser** (the official SDK loaded on first use from jsDelivr as ESM, `dangerouslyAllowBrowser`,
-streaming). A picker next to *Envoyer* chooses the model (`CLAUDE_MODELS`: Opus 5 default, Sonnet 5,
-Haiku 4.5, Fable 5.1; remembered as `felix_claude_model`); `fallbacks:"default"` is sent only for
-Opus 5 / Fable 5.1. Earlier answers go back unchanged to the model that wrote them, as plain text
+streaming). A picker next to *Envoyer* chooses the model (`CLAUDE_MODELS`: Opus 5.5 default, Opus 4.8,
+Sonnet 5.5, Haiku 5.5, Fable 5.1 — updated 23 Oct 2026; remembered as `felix_claude_model`, an old
+saved id falls back to the default); `fallbacks:"default"` is sent only for Opus 5.5 / Sonnet 5.5 /
+Fable 5.1. Earlier answers go back unchanged to the model that wrote them, as plain text
 to any other model (so switching mid-thread is safe). The learner's own key is in
 `localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
 French + English (system prompt), the sentence open in Lire and the last highlighted expression

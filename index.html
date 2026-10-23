@@ -1315,9 +1315,10 @@ const KEY_CLAUDE = 'felix_claude_key', KEY_CLAUDE_MODEL = 'felix_claude_model';
 // Selectable models (rough cost per question with a whole entry as context). `fallbacks`: the
 // server re-runs a declined request on another model — enabled where the API recommends it.
 const CLAUDE_MODELS = [
-  { id:'claude-opus-5',    label:'Opus 5 · ~3 ¢',            fallbacks:true },
-  { id:'claude-sonnet-5',  label:'Sonnet 5 · plus rapide, ~1 ¢' },
-  { id:'claude-haiku-4-5', label:'Haiku 4.5 · le plus rapide, < 1 ¢' },
+  { id:'claude-opus-5-5',   label:'Opus 5.5 · ~2 ¢',           fallbacks:true },
+  { id:'claude-opus-4-8',   label:'Opus 4.8 · ~3 ¢' },
+  { id:'claude-sonnet-5-5', label:'Sonnet 5.5 · plus rapide, ~1 ¢', fallbacks:true },
+  { id:'claude-haiku-5-5',  label:'Haiku 5.5 · le plus rapide, < 0,1 ¢' },
   { id:'claude-fable-5-1', label:'Fable 5.1 · le plus fin, ~6 ¢', fallbacks:true },
 ];
 function askModel(){ const id = getLS(KEY_CLAUDE_MODEL); return CLAUDE_MODELS.find(m => m.id === id) || CLAUDE_MODELS[0]; }
