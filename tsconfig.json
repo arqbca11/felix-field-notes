@@ -1,0 +1,19 @@
+{
+  // The page engine: src/*.ts → engine/*.js, plain scripts (no modules), loaded by index.html
+  // with <script src>. The compiled JS is committed so the page opens via file:// and GitHub
+  // Pages serves it as-is. Rebuild after any change in src/:  npm run build
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "rootDir": "src",
+    "outDir": "engine",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "removeComments": false,
+    "newLine": "lf",
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["src/**/*.ts"]
+}

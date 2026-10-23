@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Build LEARNER-PROFILE.md — the learner's forgetting curve — from what the page logged.
-   Run from the field-notes/ folder:   node tools/learner-profile.mjs
+   Run from the field-notes/ folder:   node tools/learner-profile.ts
    Inputs : learning/*.jsonl (events logged by index.html in Learn mode), questions.md (Demander),
             the entries (to recognise words and to know where an item was met again).
    Env    : LEARN_DIR (default "learning"), NOW (ISO date, default now), OUT (default LEARNER-PROFILE.md).
@@ -25,43 +25,60 @@ const NOW = process.env.NOW ? new Date(process.env.NOW) : new Date();
 const OUT = path.resolve(ROOT, process.env.OUT || 'LEARNER-PROFILE.md');
 const DAY = 86400000;
 
+/** One line of learning/*.jsonl (written by the page's logEvent), plus its parsed time. */
+interface LogEvent {
+  ts: string; s: string; e: string; id: string; no: number; time: number;
+  t?: string; kind?: string; i?: number; j?: number; missed?: string[];
+  mistakes?: { wrong: string; right: string; rule: string }[];
+}
+/** One Demander record from questions.md. */
+interface Question { date: string; no: number; title: string; expr: string | null; sentence: string | null; q: string }
+interface Item {
+  key: string; label: string; type: string; kind?: string; entry?: string;
+  struggles: { time: number; session: string }[]; where: Set<string>;
+}
+interface SentenceStat { entry: string; no: number; text?: string; lire: number; simple: number; sessions: Set<string> }
+interface WriteMistake { time: number; entry: string; no: number; rule: string; wrong: string; right: string }
+interface TimelineEvent { time: number; lapse?: boolean; n?: number; clean?: boolean; entry?: string; session?: string }
+
 // ── entries ──
-const POSTS = [];
-const sb = { window: {}, console, FelixNotes: { register: p => POSTS.push(p), verb: (inf, ...t) => ({ inf, conj: t }) } };
+const POSTS: Entry[] = [];
+const sb: Record<string, any> = { window: {} as Partial<Window>, console,   // the vm sandbox
+  FelixNotes: { register: (p: Entry) => POSTS.push(p), verb: (inf: string, ...t: Persons[]) => ({ inf, conj: t }) } };
 sb.window.FelixNotes = sb.FelixNotes;
 vm.createContext(sb);
 vm.runInContext(fs.readFileSync(path.join(ROOT, 'notes/manifest.js'), 'utf8'), sb);
-sb.window.NOTES_MANIFEST.forEach(e => vm.runInContext(fs.readFileSync(path.join(ROOT, e.file), 'utf8'), sb));
+(sb.window.NOTES_MANIFEST as ManifestEntry[]).forEach(e => vm.runInContext(fs.readFileSync(path.join(ROOT, e.file), 'utf8'), sb));
 const byId = Object.fromEntries(POSTS.map(p => [p.id, p]));
 
-const norm = s => (s || '').toLowerCase().replace(/[’]/g, "'").replace(/[.,;:!?«»"“”()\[\]…—–]/g, ' ').replace(/\s+/g, ' ').trim();
+const norm = (s: string | null | undefined): string => (s || '').toLowerCase().replace(/[’]/g, "'").replace(/[.,;:!?«»"“”()\[\]…—–]/g, ' ').replace(/\s+/g, ' ').trim();
 // Word → lemma, from the entries' vocab (keys, infinitives and every conjugated form).
-const LEMMA = new Map();
-const bare = k => k.replace(/^(un|une|des|le|la|les|du|de la|de l'|l')\s*/, '').trim();   // "des cailloux" → "cailloux"
+const LEMMA = new Map<string, string>();
+const bare = (k: string) => k.replace(/^(un|une|des|le|la|les|du|de la|de l'|l')\s*/, '').trim();   // "des cailloux" → "cailloux"
 POSTS.forEach(p => (p.vocab || []).forEach(v => {
   const key = norm(v[0].replace(/\(.*?\)/g, '')); if (!key) return;
   const lemma = v[2] && v[2].inf ? norm(v[2].inf) : bare(key.split(' / ')[0]);
   [key, ...key.split(' / ')].forEach(k => [k, bare(k)].forEach(x => { if (x && !LEMMA.has(x)) LEMMA.set(x, lemma); }));
-  if (v[2] && v[2].conj) v[2].conj.flat(2).forEach(form => {
+  if (v[2] && v[2].conj) v[2].conj.flat(2).forEach((form: string | Persons) => {
     const f = norm(String(form)); if (!f) return;
     if (!LEMMA.has(f)) LEMMA.set(f, lemma);
     const last = f.split(/[ ']/).pop(); if (last && last.length > 3 && !LEMMA.has(last)) LEMMA.set(last, lemma);
   });
 }));
-const lemmaOf = t => LEMMA.get(norm(t)) || LEMMA.get(norm(t).replace(/^(l|d|j|n|s|c|m|t|qu)'/, '')) || norm(t);
+const lemmaOf = (t: string): string => LEMMA.get(norm(t)) || LEMMA.get(norm(t).replace(/^(l|d|j|n|s|c|m|t|qu)'/, '')) || norm(t);
 const entryText = Object.fromEntries(POSTS.map(p => [p.id, ' ' + norm(p.fr.join(' ')) + ' ']));
 const STOP = new Set('le la les un une des de du d l j à au aux et ou en y ne pas que qui ce se sa son ses mon ma mes il elle on je tu nous vous ils elles a est'.split(' '));
 
 // ── events ──
-const events = [];
+const events: LogEvent[] = [];
 if (fs.existsSync(LEARN_DIR)) for (const f of fs.readdirSync(LEARN_DIR).filter(f => f.endsWith('.jsonl')).sort()) {
   for (const line of fs.readFileSync(path.join(LEARN_DIR, f), 'utf8').split('\n')) {
     if (!line.trim()) continue;
-    try { const e = JSON.parse(line); e.time = new Date(e.ts).getTime(); if (!isNaN(e.time)) events.push(e); } catch { /* skip a bad line */ }
+    try { const e: LogEvent = JSON.parse(line); e.time = new Date(e.ts).getTime(); if (!isNaN(e.time)) events.push(e); } catch { /* skip a bad line */ }
   }
 }
 // Demander questions (questions.md): each is a struggle on its highlighted expression, dated by day.
-const questions = [];
+const questions: Question[] = [];
 const qPath = path.join(ROOT, 'questions.md');
 if (fs.existsSync(qPath)) {
   for (const block of fs.readFileSync(qPath, 'utf8').split(/\n(?=## \d{4}-\d{2}-\d{2})/)) {
@@ -74,20 +91,20 @@ if (fs.existsSync(qPath)) {
 events.sort((a, b) => a.time - b.time);
 
 // ── items ──
-const items = new Map();   // key -> {label, type, kind, struggles:[{time, session}], where:Set}
-function struggle(key, label, type, time, session, extra = {}) {
+const items = new Map<string, Item>();
+function struggle(key: string, label: string, type: string, time: number, session: string, extra: { kind?: string; entry?: string } = {}) {
   if (!items.has(key)) items.set(key, { key, label, type, struggles: [], where: new Set(), ...extra });
-  const it = items.get(key); it.struggles.push({ time, session });
+  const it = items.get(key)!; it.struggles.push({ time, session });
   if (extra.entry) it.where.add(extra.entry);
 }
-const sentences = new Map();   // hard sentences: id:i:j -> {text, lire, simple, sessions}
-const dictMiss = new Map();
-const writeMistakes = [];   // {time, entry, no, rule, wrong, right}
+const sentences = new Map<string, SentenceStat>();   // hard sentences, by id:i:j
+const dictMiss = new Map<string, number>();
+const writeMistakes: WriteMistake[] = [];
 for (const e of events) {
   const entry = e.id;
   if (e.e === 'hard' && e.t) struggle('pron|' + norm(e.t), e.t, 'prononciation', e.time, e.s, { kind: e.kind, entry });
   else if (e.e === 'lookup' && e.t) { const l = lemmaOf(e.t); struggle('word|' + l, l === norm(e.t) ? e.t : `${e.t} → ${l}`, 'mot', e.time, e.s, { entry }); }
-  else if (e.e === 'dict') (e.missed || []).map(norm).filter(w => w && !STOP.has(w)).forEach(w => {
+  else if (e.e === 'dict') (e.missed || []).map(w => norm(w)).filter(w => w && !STOP.has(w)).forEach(w => {
     struggle('spell|' + w, w, 'dictée', e.time, e.s, { entry });
     dictMiss.set(w, (dictMiss.get(w) || 0) + 1);
   });
@@ -102,15 +119,15 @@ for (const e of events) {
 }
 for (const q of questions) if (q.expr) {
   const t = new Date(q.date + 'T12:00:00Z').getTime();
-  struggle('word|' + lemmaOf(q.expr), q.expr, 'question', t, 'q-' + q.date, { entry: (POSTS.find(p => p.no === q.no) || {}).id });
+  struggle('word|' + lemmaOf(q.expr), q.expr, 'question', t, 'q-' + q.date, { entry: POSTS.find(p => p.no === q.no)?.id });
 }
 const views = events.filter(e => e.e === 'view');
 const writes = events.filter(e => e.e === 'write');
 
 // ── the curve ──
-function curve(it) {
+function curve(it: Item) {
   const struggleSessions = new Set(it.struggles.map(s => s.session));
-  const lapses = [];
+  const lapses: { time: number; session: string; n: number }[] = [];
   for (const s of it.struggles) {
     const last = lapses[lapses.length - 1];
     if (last && last.session === s.session) last.n++; else lapses.push({ time: s.time, session: s.session, n: 1 });
@@ -122,19 +139,20 @@ function curve(it) {
     ? writes.filter(w => !struggleSessions.has(w.s)).map(w => ({ time: w.time, clean: true, entry: w.id }))
     : views.filter(v => !struggleSessions.has(v.s) && entryText[v.id] && entryText[v.id].includes(needle))
                      .map(v => ({ time: v.time, clean: true, entry: v.id }));
-  const timeline = [...lapses.map(l => ({ ...l, lapse: true })), ...clean].sort((a, b) => a.time - b.time);
-  let h = null, tLast = null, nLapses = 0, nClean = 0;
+  const timeline: TimelineEvent[] = [...lapses.map(l => ({ ...l, lapse: true })), ...clean].sort((a, b) => a.time - b.time);
+  let h: number | null = null, tLast = 0, nLapses = 0, nClean = 0;
   for (const ev of timeline) {
     if (ev.lapse) {
-      h = h === null ? (ev.n >= 3 ? 0.5 : 1) : Math.max(0.25, h * 0.5);
+      h = h === null ? (ev.n! >= 3 ? 0.5 : 1) : Math.max(0.25, h * 0.5);
       tLast = ev.time; nLapses++;
     } else if (h !== null && (ev.time - tLast) / DAY >= h / 2) {
       h = Math.min(120, h * 2); tLast = ev.time; nClean++;
     }
   }
-  const since = (NOW - tLast) / DAY, recall = Math.pow(2, -since / h);
+  const half = h ?? 1;   // every item has at least one lapse, so h is set
+  const since = (NOW.getTime() - tLast) / DAY, recall = Math.pow(2, -since / half);
   const intensity = lapses.reduce((a, l) => a + l.n, 0);
-  return { h, tLast, since, recall, nLapses, nClean, intensity,
+  return { h: half, tLast, since, recall, nLapses, nClean, intensity,
            score: (1 - recall) * (1 + 0.5 * (nLapses - 1)) * Math.min(2, 1 + (intensity - 1) * 0.15) };
 }
 const rows = [...items.values()].map(it => ({ it, ...curve(it) }));
@@ -143,24 +161,25 @@ const fading = rows.filter(r => r.recall >= 0.5 && r.recall < 0.8).sort((a, b) =
 const solid = rows.filter(r => r.nClean >= 2 && r.h >= 14).sort((a, b) => b.h - a.h);
 
 // ── write LEARNER-PROFILE.md ──
-const fmtD = t => new Date(t).toISOString().slice(0, 10);
-const pct = x => Math.round(x * 100) + ' %';
-const days = x => x < 1 ? `${Math.round(x * 24)} h` : `${x.toFixed(x < 10 ? 1 : 0)} j`;
-const cell = s => String(s).replace(/\|/g, '\\|');
-const would = r => ({
+const fmtD = (t: number) => new Date(t).toISOString().slice(0, 10);
+const pct = (x: number) => Math.round(x * 100) + ' %';
+const days = (x: number) => x < 1 ? `${Math.round(x * 24)} h` : `${x.toFixed(x < 10 ? 1 : 0)} j`;
+const cell = (s: unknown) => String(s).replace(/\|/g, '\\|');
+type Row = ReturnType<typeof curve> & { it: Item };
+const would = (r: Row) => (({
   prononciation: `reuse « ${r.it.label} » (or the same ${r.it.kind || 'pattern'}) in a new sentence, and mark it in \`read\``,
   mot: `reuse « ${r.it.label.split(' → ').pop()} » in a fresh context; vocab row again`,
   dictée: `put « ${r.it.label} » in a short, dictation-friendly sentence`,
   question: `a grammar/usage note on « ${r.it.label} » from a new angle, plus one example`,
   écriture: `a writing question that invites the "${r.it.label}" pattern again, and a gram note on it`,
-}[r.it.type] || 'reuse it');
-const table = (list, withWould) => list.length ? [
+} as Record<string, string>)[r.it.type] || 'reuse it');
+const table = (list: Row[], withWould: boolean) => list.length ? [
   `| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now${withWould ? ' | What a brief would do' : ''} |`,
   `|---|---|---|---|---|---|---|${withWould ? '---|' : ''}`,
   ...list.map(r => `| ${cell(r.it.label)} | ${r.it.type}${r.it.kind ? ' · ' + r.it.kind : ''} | ${r.nLapses} (${r.intensity}) | ${r.nClean} | ${fmtD(r.tLast)} | ${days(r.h)} | ${pct(r.recall)}${withWould ? ' | ' + cell(would(r)) : ''} |`)
 ].join('\n') : '_Nothing yet._';
 
-const byType = events.reduce((m, e) => (m[e.e] = (m[e.e] || 0) + 1, m), {});
+const byType = events.reduce((m, e) => (m[e.e] = (m[e.e] || 0) + 1, m), {} as Record<string, number>);
 const sessions = new Set(events.map(e => e.s));
 const hardSent = [...sentences.values()].map(s => ({ ...s, n: s.lire + s.simple * 1.5 + (s.sessions.size - 1) }))
   .sort((a, b) => b.n - a.n).slice(0, 12);
@@ -170,10 +189,10 @@ const md = `# Learner profile — the forgetting curve (TEST MODE)
 > **About you, not about the story.** Your French: what you look up, click, mistype and forget, and when
 > it's due again. For what a reader of the *story* knows and suspects, see \`STORY-READER.md\`.
 >
-> **Observation only.** Built by \`tools/learner-profile.mjs\` from what the page logged in Learn mode
+> **Observation only.** Built by \`tools/learner-profile.ts\` from what the page logged in Learn mode
 > (\`learning/*.jsonl\`) and from \`questions.md\`. \`/new-entries\` reads it and **reports what it would
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
-> \`node tools/learner-profile.mjs\`.
+> \`node tools/learner-profile.ts\`.
 
 **Built:** ${NOW.toISOString().slice(0, 16).replace('T', ' ')} UTC · **Events:** ${events.length}${events.length ? ` (${Object.entries(byType).map(([k, v]) => `${k} ${v}`).join(', ')})` : ''} · **Reading sessions:** ${sessions.size}${events.length ? ` · **From** ${fmtD(events[0].time)} **to** ${fmtD(events[events.length - 1].time)}` : ''} · **Questions:** ${questions.length} · **Items tracked:** ${rows.length}
 
@@ -230,12 +249,13 @@ fs.writeFileSync(OUT, md);
 // one-off drops out after ~12 reading days, a topic asked three times after ~3 weeks of reading
 // without coming back to it.
 const HALF = 7, KEEP = 0.3;                                    // weight below KEEP = not worth mentioning
-const dayOf = t => new Date(t).toISOString().slice(0, 10);
+const dayOf = (t: number) => new Date(t).toISOString().slice(0, 10);
 const READING_DAYS = [...new Set([...events.map(e => dayOf(e.time)), ...questions.map(q => q.date)])].sort();
-const age = t => { const d = dayOf(t); return READING_DAYS.filter(x => x > d && x <= dayOf(NOW)).length; };   // reading days since
-const ago = t => { const d = age(t); return d === 0 ? 'latest reading day' : d === 1 ? '1 reading day ago' : `${d} reading days ago`; };
-function faded(list, keyOf, labelOf, timeOf){                  // → [{label, n, last, w}] by weight
-  const g = new Map();
+const age = (t: number) => { const d = dayOf(t); return READING_DAYS.filter(x => x > d && x <= dayOf(NOW.getTime())).length; };   // reading days since
+const ago = (t: number) => { const d = age(t); return d === 0 ? 'latest reading day' : d === 1 ? '1 reading day ago' : `${d} reading days ago`; };
+interface Faded { label: string; n: number; last: number; w: number }
+function faded<T>(list: T[], keyOf: (x: T) => string | undefined, labelOf: (x: T) => string, timeOf: (x: T) => number): Faded[] {                  // → [{label, n, last, w}] by weight
+  const g = new Map<string, Faded>();
   for (const x of list) {
     const k = keyOf(x); if (!k) continue;
     const w = Math.pow(2, -age(timeOf(x)) / HALF);
@@ -245,12 +265,12 @@ function faded(list, keyOf, labelOf, timeOf){                  // → [{label, n
   }
   return [...g.values()].filter(v => v.w >= KEEP).sort((a, b) => b.w - a.w);
 }
-const tag = v => `${v.n > 1 ? `×${v.n}, last ` : ''}${ago(v.last)}`;
-const qTime = q => new Date(q.date + 'T12:00:00Z').getTime();
+const tag = (v: Faded) => `${v.n > 1 ? `×${v.n}, last ` : ''}${ago(v.last)}`;
+const qTime = (q: Question) => new Date(q.date + 'T12:00:00Z').getTime();
 const qTopics = faded(questions, q => q.expr ? 'e|' + lemmaOf(q.expr) : 'q|' + norm(q.q).slice(0, 40),
   q => q.expr ? `« ${q.expr} »${q.q ? ` (${q.q.slice(0, 60)})` : ''}` : q.q.slice(0, 70), qTime).slice(0, 8);
-const lookups = faded(events.filter(e => e.e === 'lookup'), e => lemmaOf(e.t), e => e.t, e => e.time).slice(0, 10);
-const hardSpots = faded(events.filter(e => e.e === 'hard'), e => norm(e.t), e => e.t, e => e.time).slice(0, 8);
+const lookups = faded(events.filter(e => e.e === 'lookup'), e => lemmaOf(e.t!), e => e.t!, e => e.time).slice(0, 10);
+const hardSpots = faded(events.filter(e => e.e === 'hard'), e => norm(e.t), e => e.t!, e => e.time).slice(0, 8);
 const writeSlips = faded(writeMistakes, m => norm(m.rule), m => `${m.rule} (« ${m.wrong} » → « ${m.right} »)`, m => m.time).slice(0, 6);
 const recentDue = due.filter(r => age(r.tLast) <= 10).slice(0, 6);
 const replays = [...sentences.values()].filter(s => s.lire + s.simple >= 2).length;
@@ -270,7 +290,7 @@ const lines = [
 const summary = lines.length > 1 ? lines.join('\n') : '';
 const SUMMARY_JS = path.resolve(ROOT, process.env.SUMMARY_OUT || 'learning/summary.js');
 fs.mkdirSync(path.dirname(SUMMARY_JS), { recursive: true });
-fs.writeFileSync(SUMMARY_JS, `/* Generated by tools/learner-profile.mjs — a short, approximate learner summary that the page's
+fs.writeFileSync(SUMMARY_JS, `/* Generated by tools/learner-profile.ts — a short, approximate learner summary that the page's
    Demander sends to Claude as background. Don't edit by hand; rerun the script. */
 window.FELIX_LEARNER_SUMMARY = ${JSON.stringify(summary)};
 `);

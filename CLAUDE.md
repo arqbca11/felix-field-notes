@@ -6,8 +6,9 @@ text-to-speech, dictation, select-to-translate), but this is **Felix's private n
 blog: entries of any length, written for himself, after the summer journey ended.
 
 `index.html` is an engine-only **template**. Each entry lives in its own `notes/NN-slug.js` resource
-file, indexed by `notes/manifest.js`. The page shows **every entry, oldest first**, in one plain column. No build step — open
-the HTML directly. This folder is its **own git repo** (remote: `felix-field-notes`); the parent repo
+file, indexed by `notes/manifest.js`. The page shows **every entry, oldest first**, in one plain column. Open the HTML
+directly: no build step to *read* it (the engine is TypeScript in `src/`, compiled into `engine/` and
+committed — see §9). This folder is its **own git repo** (remote: `felix-field-notes`); the parent repo
 ignores it.
 
 > Built for a learner targeting **TCF Canada (CLB 7 / B2)**, now moving from A2 into **B1–B2**, who
@@ -438,7 +439,7 @@ FelixNotes.register({
 persons** with pronoun and auxiliary baked in (`"j'ai skié"`, `"je suis parti(e)"`). Double-quote the
 form strings. Mark a vocab entry as a verb only when you give real conjugations.
 
-`simple` must match the shared sentence split exactly: run `node tools/split.mjs notes/NN-slug.js`
+`simple` must match the shared sentence split exactly: run `node tools/split.ts notes/NN-slug.js`
 to see the numbered sentences, then write one `{fr,en}` per line. The validator checks the counts;
 the page silently hides the *Simplifier* button if they don't match. The **`simplifier`** subagent
 (`.claude/agents/simplifier.md`, Opus) writes this block for one file — run it after `entry-writer`.
@@ -476,7 +477,7 @@ the main agent's decision.
 3c. Add the `read` block (Lire's hard spots, §6) — 2–4 marks per sentence, accuracy over quantity.
 3d. The `write` block (Écrire, §6) comes from `entry-writer`; check it in review (varied angles, no spoilers).
 4. Append a line to the **entry log** (§3) and update *open threads*.
-5. Run `node tools/validate.mjs` (§10).
+5. Run `node tools/validate.ts` (§10).
 
 ## 8. String-escaping gotchas
 - `fr`/`en` paragraphs: **double quotes** → apostrophes are safe.
@@ -508,7 +509,7 @@ localStorage (`felix_learn_log`) and are appended in batches to **`learning/YYYY
 repo through the same GitHub token as Demander (every few minutes, when the tab is hidden, and on the
 next visit if a save failed). Plain mode logs nothing. The repo is public; the log holds only
 entry ids, sentence text, words and timestamps (user's choice, 26 Sep 2026).
-**Profile (the script).** `node tools/learner-profile.mjs` → **`LEARNER-PROFILE.md`**: per item (pronunciation
+**Profile (the script).** `node tools/learner-profile.ts` → **`LEARNER-PROFILE.md`**: per item (pronunciation
 spot, word/lemma, dictation word, questioned expression, **writing rule** — met cleanly again by a later
 answer without that mistake) a memory half-life — 1 day after the first
 lapse (½ if clicked ≥ 3 times), doubled by a clean meeting (entry met again, no struggle) at least
@@ -538,12 +539,23 @@ briefs" and drop the test-mode lines here.
   `claudeKey()` / `elevenKey()` / `githubToken()`: the file wins, else the key pasted into the page
   (localStorage). **Never read, print, or commit `secrets.js`**; before any commit, confirm it isn't
   staged (`git check-ignore secrets.js`).
-- `notes/*.js` are plain scripts (no `import`/`export`), registering via `FelixNotes.register`.
+- `notes/*.js` are plain scripts (no `import`/`export`), registering via `FelixNotes.register`. They stay
+  JS on purpose (data the writer agents produce, no compile step), but are type-checked against the
+  `Entry` schema in `src/types.d.ts` (`tsconfig.notes.json`). A new field in §6 goes into that type too.
+- **TypeScript (since 23 Oct 2026).** The engine is `src/app.ts` + `src/sentences.ts`, compiled by `tsc`
+  to plain scripts in `engine/` (no modules, no bundler: top-level functions stay global because
+  `index.html`'s `onclick` attributes call them). **Never edit `engine/*.js` by hand**; edit `src/`,
+  `npm run build`, commit both. The tools are `tools/*.ts`, run directly by Node ≥ 23 (type stripping:
+  erasable syntax only, no enums). Type-checks: `npm run typecheck`, also run by the validator.
 
 ## 10. Validate
 ```bash
-node tools/validate.mjs     # syntax-checks index.html's inline script + every notes file,
-                            # then asserts fr/en alignment, kinds, levels, conj shapes, manifest order
+npm install                 # once: the TypeScript toolchain (node_modules/, git-ignored)
+npm run build               # after editing src/*.ts: recompiles engine/*.js (commit both)
+node tools/validate.ts      # syntax-checks engine/*.js + every notes file; type-checks src/, tools/
+                            # and every entry against the schema (src/types.d.ts); fails if engine/
+                            # is stale; then asserts fr/en alignment, kinds, levels, conj shapes,
+                            # manifest order
 ```
 Run it after every edit. A `node --check` failure is almost always an unescaped apostrophe in a
 `gram` string.

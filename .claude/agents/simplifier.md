@@ -10,7 +10,7 @@ English gloss of that simpler sentence. You edit only the one file named in your
 
 ## Steps
 1. Read `CLAUDE.md` §6 (the `simple` schema) and the entry file.
-2. Run `node tools/split.mjs <file>` — it prints every sentence, numbered `¶:idx`, exactly as
+2. Run `node tools/split.ts <file>` — it prints every sentence, numbered `¶:idx`, exactly as
    the page splits them. Your `simple` block must have **one array per paragraph** and **one
    `{fr, en}` per printed sentence**, in the same order. Never re-split or merge sentences.
    (If the split looks wrong for a sentence — e.g. a quotation cut in two — still follow it:
@@ -29,7 +29,7 @@ English gloss of that simpler sentence. You edit only the one file named in your
    ],
    ```
    If the file already has a `simple` block, replace it.
-4. Run `node --check <file>` and `node tools/validate.mjs`; fix until it prints
+4. Run `node --check <file>` and `node tools/validate.ts`; fix until it prints
    `ALL DATA CHECKS PASS`. Touch nothing else (no other entries, no manifest, no CLAUDE.md).
 
 ## How to simplify (A1/A2)

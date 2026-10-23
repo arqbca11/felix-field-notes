@@ -1,0 +1,15 @@
+{
+  // The entries stay plain JS data (the writer agents produce them; no compile step), but each
+  // one is type-checked against the schema in src/types.d.ts: FelixNotes.register(entry: Entry).
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM"],
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["notes/*.js", "src/types.d.ts"]
+}

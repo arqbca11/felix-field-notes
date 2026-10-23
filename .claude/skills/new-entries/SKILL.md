@@ -48,7 +48,7 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
   questions" so the writer weights it).
 
 ## 0c. The forgetting curve — TEST MODE (observe, don't apply)
-After the pull, run `node tools/learner-profile.mjs` to rebuild **`LEARNER-PROFILE.md`** from what the page
+After the pull, run `node tools/learner-profile.ts` to rebuild **`LEARNER-PROFILE.md`** from what the page
 logged (`learning/*.jsonl`: hard spots clicked, sentences replayed, words looked up, dictation misses,
 mistakes Claude corrected in her written answers (Écrire, by rule), entries met again) and from `questions.md`. **While the profile is in test mode (CLAUDE.md §8c), it
 must not change the briefs**: plan and write the batch exactly as if it didn't exist. Instead, once
@@ -148,7 +148,7 @@ silent letters, tricky sounds, names). Once an entry's French is final, delegate
 `general-purpose` agent in the **background** (like the simplifier; they edit different fields of
 the same file, so run them one after the other on a given file, not at the same time): tell it to
 read the `read` blocks of `notes/01-bath-cuisine.js` and `notes/02-decision.js` as the model, use
-`node tools/split.mjs`, put the block after `simple` and before `vocab`, prefer accuracy over
+`node tools/split.ts`, put the block after `simple` and before `vocab`, prefer accuracy over
 quantity (call a liaison optional when speakers vary), and finish with `ALL DATA CHECKS PASS`.
 Spot-check the calls it flags as uncertain.
 
@@ -161,7 +161,7 @@ Spot-check the calls it flags as uncertain.
    date supplied); leave banked-and-still-unused details where they are; retired ones go to
    *Retired* with the reason. Tell the user, in one line, which details were used where and
    which are banked.
-5. `node tools/validate.mjs` must print `ALL DATA CHECKS PASS`.
+5. `node tools/validate.ts` must print `ALL DATA CHECKS PASS`.
 6. Rebuild the reader's memory: `bash tools/reader.sh` (a fresh zero-context run over all
    entries; a few minutes). Skim the new sections and tell the user in a few lines what the
    reader now suspects that they didn't before — that is the batch's real result.

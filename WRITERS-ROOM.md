@@ -57,7 +57,7 @@ contradicted.
 **Restraint is a budget, and budgets are enforced by review.** One or two reflective lines per entry,
 *earned by a concrete scene*. Addie in at most one entry in five. No "she'd have loved this" as a
 reflex. No motto-ending, no bucket-list line. These are constraints on the **quality of restraint**;
-`validate.mjs` can't check them; a reviewer, or a reader, can.
+`validate.ts` can't check them; a reviewer, or a reader, can.
 
 ## 3. Where literature differs from code — and the design has to differ
 
@@ -74,7 +74,7 @@ reflex. No motto-ending, no bucket-list line. These are constraints on the **qua
    to avoid foreclosing it, and must not let Felix know it. That's a two-level knowledge model, encoded
    in plain text. Nothing in a code pipeline is hidden from a subagent on purpose.
 
-3. **Validation is mostly not mechanical.** `validate.mjs` checks shapes: paragraph counts, six
+3. **Validation is mostly not mechanical.** `validate.ts` checks shapes: paragraph counts, six
    persons per tense, escaping. Whether a reflective line is earned, whether a reason "sounds slightly
    too reasonable", whether the French sits at B1+ — only a reader can judge. Review is the test suite.
 

@@ -1,0 +1,18 @@
+{
+  "name": "felix-field-notes",
+  "private": true,
+  "type": "module",
+  "description": "Felix · Notes de terrain — a French-learning diary. Engine in TypeScript, compiled to plain JS that is committed (no build needed to open the page).",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.tools.json && tsc -p tsconfig.notes.json",
+    "validate": "node tools/validate.ts",
+    "profile": "node tools/learner-profile.ts",
+    "split": "node tools/split.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3"
+  }
+}

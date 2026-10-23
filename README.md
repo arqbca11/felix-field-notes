@@ -52,7 +52,8 @@ the topic; each one carries a level tag.
 
 ## 🚀 Getting started
 
-No installation, no build step, no server.
+No installation, no build step, no server. (The engine is written in TypeScript, but the compiled
+JavaScript is committed, so reading needs nothing; only changing the engine needs `npm install`.)
 
 1. **Download** this project (green **Code → Download ZIP** on GitHub, then unzip — or `git clone`).
 2. **Double-click `index.html`** to open it in any modern browser.
@@ -98,7 +99,7 @@ Each entry is a small, self-contained file — you don't touch `index.html`.
    `notes/06-yourslug.js` and edit the content: French paragraphs (`fr`), English (`en`), `vocab`,
    `gram`, optional `place`.
 2. Add one line to `notes/manifest.js`, at the **bottom** (newest last), with the entry's ISO date.
-3. Run `node tools/validate.mjs`, then reopen `index.html`.
+3. Run `node tools/validate.ts`, then reopen `index.html`.
 
 Full schema, the character bible, and the writing rules are in [`CLAUDE.md`](CLAUDE.md).
 
@@ -138,16 +139,21 @@ it prevents.
 ## 📁 Project structure
 
 ```
-index.html           The app — open this. Engine only: layout, audio, reading UI.
+index.html           The app — open this. Markup + styles; loads the engine below.
+src/                 The engine in TypeScript: app.ts (the page), sentences.ts (the shared
+                     sentence splitter), types.d.ts (the entry schema + page globals).
+engine/              The compiled engine (app.js, sentences.js) — committed, so the page opens
+                     directly and GitHub Pages serves it as-is. Rebuild: npm run build.
+package.json, tsconfig*.json  The TypeScript toolchain (npm install once).
 icon.svg             The tab icon (+ icon-32/64/180.png): a fine-line sketch of a kraft-paper notebook, a peak, a ski track.
 notes/
   manifest.js        Index of all entries, oldest → newest. All are displayed, in this order.
   01-bath-cuisine.js One file per entry: text + translation + vocab + grammar.
   02-decision.js
   …
-tools/validate.mjs   Syntax + data checks for the engine and every entry.
+tools/validate.ts    Syntax, types, engine freshness + data checks for every entry.
 tools/reader.sh      Rebuilds STORY-READER.md with a zero-context reader agent.
-tools/learner-profile.mjs  Builds LEARNER-PROFILE.md from the page's learning log.
+tools/learner-profile.ts  Builds LEARNER-PROFILE.md from the page's learning log.
 tools/knowledge-check.sh   Hook: launches the knowledge scout at most once a day.
 tools/brief-template.md  The brief a writer agent gets — the whole interface.
 .claude/agents/      entry-writer · continuity-reviewer · simplifier · knowledge-scout

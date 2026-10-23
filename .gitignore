@@ -10,3 +10,6 @@ secrets.js
 
 # Private developer notes (links, drafts)
 DEV-NOTES.md
+
+# TypeScript toolchain (npm install)
+node_modules/
