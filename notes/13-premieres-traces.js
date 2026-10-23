@@ -23,6 +23,11 @@ FelixNotes.register({
     "This evening Chloé called from Edinburgh. She had just finished her exams. She didn't ask, she announced: she said she would come for Christmas, that she would arrive on the 21st, for a week. I answered that there was only one bed; she said she would sleep on the floor, and that she had slept in worse. She added that our parents would come for three days and that they would take a hotel in Les Houches, mum's village. And dad wanted to know whether my insurance covered ice — it was Chloé who asked the question, laughing. She told me not to tidy the studio for her.",
     "Before hanging up, she asked whether I was content. I said: \"I think so.\" Content, here, means tired, clear, and in the right valley. She wants to learn ski touring, the real climb on skins. When she's here, one morning, before the shop, I'll take her up to Lognan on the old skis, and if the new gondola has opened for Christmas, we'll ride it back down. We'll have to leave early, so that she sees the glacier at first light. I'm already counting the days."
   ],
+  write:[
+    { q:"Raconte l'appel de Chloé à quelqu'un d'autre : qu'est-ce qu'elle a annoncé ?", en:"Retell Chloé's call to someone else: what did she announce?", try:"elle a dit qu'elle + conditionnel" },
+    { q:"« Ce n'est pas de la prudence, c'est de la lecture. » Quelle différence vois-tu entre les deux ?", en:"“It isn't caution, it's reading.” What difference do you see between the two?" },
+    { q:"Imagine la matinée de Felix et Chloé à Lognan. Qu'est-ce qu'ils feront ?", en:"Imagine Felix and Chloé's morning at Lognan. What will they do?", try:"Quand elle sera là, ils…" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"La station de ski a ouvert ce week-end.", en:"The ski resort opened this weekend."},

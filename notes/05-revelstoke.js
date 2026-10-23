@@ -22,6 +22,11 @@ FelixNotes.register({
     "In the photo, behind the summit, you can just make out the Columbia valley under the clouds: the view Addie loved most, the one she would stop for in the middle of a slope. She said a sea of clouds, seen from above, was well worth an hour less skiing, and she said it so seriously that I burst out laughing. I never found out whether she was right. I never had her number either: she was my client, I was her instructor, and there was a line I didn't want to cross. At the end of March, on the last day, I told her I didn't know whether I'd be back the following winter. She looked a little disappointed, but she didn't ask for more. I should have said something else. I know it, I didn't do it, and I still don't know whether I was right.",
     "I answered Eric: \"Here. Home. I'm doing the list.\" He answered right away: three pieces of advice for the ice, and at the end a single question, as if in passing: was I eating enough? Then I put the phone down and went out for a run. The snow, here too, won't be long."
   ],
+  write:[
+    { q:"Que faisait Eric pendant le cours d'avalanche au col Rogers ?", en:"What did Eric do during the avalanche course at Rogers Pass?", try:"il disait…, puis il expliquait…" },
+    { q:"Felix écrit : « J'aurais dû dire autre chose. » Qu'est-ce qu'il aurait pu dire, à ton avis ?", en:"Felix writes: “I should have said something else.” What could he have said, in your opinion?", try:"il aurait pu dire que…" },
+    { q:"Et toi, une mer de nuages vaut-elle une heure de ski en moins ? Pourquoi ?", en:"And you, is a sea of clouds worth an hour less skiing? Why?" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Eric m'a envoyé une photo ce matin. Il écrit toujours un petit message. Il a écrit : « Ça commence. »", en:"Eric sent me a photo this morning. He always writes a little message. He wrote: “It's starting.”"},

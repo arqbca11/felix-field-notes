@@ -22,6 +22,11 @@ FelixNotes.register({
     "At one point I talked about a face I wanted to \"conquer.\" He raised one eyebrow, nothing more, and I understood the word was wrong. You don't conquer anything up there. You pass through, if the mountain is willing, and you come back down. My grandfather used to say the same thing, in other words. These are men whose modesty is not a politeness: it's a method.",
     "As I left he shook my hand and looked at the sky. \"Thursday, if it holds, a ridge in the Aiguilles Rouges. To see how you walk.\" I walk well. But I think that isn't what he'll be looking at."
   ],
+  write:[
+    { q:"Pourquoi Bertrand lève-t-il un sourcil quand Felix dit « conquérir » ?", en:"Why does Bertrand raise an eyebrow when Felix says “conquer”?" },
+    { q:"Imagine ce que Bertrand pense pendant les dix minutes de lecture. Écris une ou deux de ses pensées.", en:"Imagine what Bertrand thinks during the ten minutes of reading. Write one or two of his thoughts.", try:"Je ne pense pas qu'il soit…" },
+    { q:"Selon toi, qu'est-ce que Bertrand regardera jeudi, si ce n'est pas la marche ?", en:"In your view, what will Bertrand watch on Thursday, if it isn't the walking?", try:"il regardera si…" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Bertrand habite aux Praz. Sa maison n'a pas changé depuis longtemps. Il a posé ma liste de courses sur la table. Il ne l'a pas ouverte.", en:"Bertrand lives in Les Praz. His house hasn't changed for a long time. He put my climbing list on the table. He did not open it."},

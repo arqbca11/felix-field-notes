@@ -18,6 +18,11 @@ FelixNotes.register({
     "Gear day. I spread everything out on the bed: the crampons to sharpen, the skins to re-glue, the new rope still in its packaging, and the two ice axes I bought second-hand from a friend of Bertrand's, an old guide selling his kit \"because the knees decided for him.\" They're twenty years old and they're perfect; in the shop, this year's new Petzl axes cost more than a month's rent. I sharpened, re-glued, put away. Then I did the sums: I have enough left to last until March, if I don't break anything and don't fall ill. It's tight, but it's possible.",
     "In the afternoon I ran up to Lognan anyway, in big fresh tracks — not mine, those of a chamois who'd had the same idea. Up top everything was white, silent, closed. The phone rang in the forest: Théo. He arrives Saturday, for the Toussaint weekend, \"without the bike, for once.\" I'll have to tidy the studio. Above all I'll have to work out where to put him to sleep, in fourteen square metres."
   ],
+  write:[
+    { q:"Qu'est-ce que Felix a fait pendant sa journée de matériel ?", en:"What did Felix do on his gear day?", try:"il a affûté…, puis il a…" },
+    { q:"Où Felix peut-il faire dormir Théo dans quatorze mètres carrés ? Propose une solution.", en:"Where can Felix put Théo to sleep in fourteen square metres? Suggest a solution.", try:"Il faudra qu'il + subjonctif" },
+    { q:"Et toi, qu'est-ce que tu achèterais d'occasion, et qu'est-ce que tu voudrais neuf ? Pourquoi ?", en:"And you, what would you buy second-hand, and what would you want new? Why?" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Il a neigé cette nuit. Vingt centimètres à Argentière. Cinquante à Lognan, dit la webcam.", en:"It snowed last night. Twenty centimetres in Argentière. Fifty at Lognan, the webcam says."},

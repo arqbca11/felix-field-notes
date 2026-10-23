@@ -44,6 +44,14 @@ You are the **writer**, not the planner. The main agent owns the story, the bibl
 - **Grammar notes:** the count the brief asks for (notes: 1–3; others: 4–5). English
   explanation, French examples in `<span class="ex">…</span>`, glosses after
   `<span class="arrow">→</span>`. Each note must quote the entry's own sentences.
+- **Writing questions (`write`, CLAUDE.md §6):** 2 questions for a `note`, 3 otherwise, answered
+  by the learner in French in 1–2 sentences and corrected by Claude. Mix: at least one about the
+  content (needs a real sentence, not a yes/no or a copied word) and at least one open (her opinion,
+  her own experience, or creative: imagine a character's thought, write the line Felix didn't).
+  Be inventive; don't reuse a template from the last entries. Where natural, a question invites a
+  pattern the entry teaches, with an optional `try` nudge (≤ 8 words, e.g. `"si j'avais…, j'aurais…"`).
+  Address the learner as « tu »; **the learner is a woman** (`tu es arrivée`). No spoilers, and keep
+  the Addie restraint (questions about her only when she is in the entry; never push to resolve).
 - **Escaping (§8):** `fr`/`en` strings double-quoted; vocab keys with apostrophes escaped
   (`'l\'arête'`); every apostrophe in `gram` `h`/`p` strings escaped as `\'`.
 
@@ -56,4 +64,4 @@ reviews your file.
 When the file is written, run `node --check notes/NN-slug.js` and fix any syntax error
 (almost always an unescaped apostrophe in a `gram` string). Then report, briefly:
 the French word count, the vocab count (and how many verbs carry conjugations), the number
-of grammar notes, which earlier pattern you reused, and any bible ambiguity you noticed.
+of grammar notes, the writing questions (French, one line each), which earlier pattern you reused, and any bible ambiguity you noticed.

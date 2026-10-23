@@ -217,6 +217,32 @@
   .lk-ask{display:inline-block;margin-top:8px;font-size:12px;color:var(--soft);text-decoration:underline;text-underline-offset:3px;}
   .lk-ask:hover{color:var(--ink);}
 
+  /* WRITE — Écrire: 2–3 questions on the entry, answered in a sentence or two, corrected by Claude */
+  .write-block{display:none;font-family:var(--sans);font-size:13.5px;color:var(--soft);margin-bottom:28px;}
+  .write-block.open{display:block;}
+  .wq{padding:12px 0 16px;border-top:1px solid var(--line);}
+  .wq-q{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--ink);}
+  .wq-en{font-size:13px;color:var(--muted);margin:2px 0 0;}
+  .wq-try{font-size:12.5px;color:var(--soft);margin:6px 0 0;}
+  .wq-try i{font-family:var(--serif);font-size:15px;color:var(--ink);}
+  .wq .ask-input{margin-top:10px;font-family:var(--serif);font-size:17px;line-height:1.55;}
+  .wq-result{margin-top:12px;}
+  .wq-result:empty{display:none;}
+  .wq-fixed{font-family:var(--serif);font-size:17px;line-height:1.6;color:var(--ink);}
+  .wq-fixed del{color:#a33;text-decoration-color:#a33;}
+  .wq-fixed ins{text-decoration:none;border-bottom:1.5px solid var(--ink);}
+  .wq-lbl{display:block;font-size:11px;color:var(--muted);margin:10px 0 2px;letter-spacing:.3px;}
+  .wq-lbl:first-child{margin-top:0;}
+  .wq-mis{margin:2px 0 0 0;padding:0;list-style:none;}
+  .wq-mis li{margin:0 0 5px;line-height:1.55;}
+  .wq-mis .w{font-family:var(--serif);font-size:15px;color:#a33;text-decoration:line-through;}
+  .wq-mis .r{font-family:var(--serif);font-size:15px;color:var(--ink);}
+  .wq-mis .k{font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:0 4px;}
+  .wq-better{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);}
+  .wq-comment{line-height:1.6;}
+  .wq-comment em{font-family:var(--serif);font-size:15px;color:var(--ink);}
+  .wq-result .err{color:#a33;}
+
   .notes{display:none;}
   .notes.open{display:block;}
   .nsec-label{font-family:var(--sans);font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
@@ -419,7 +445,7 @@ function setLearn(on){
   setLS(KEY_LEARN, on ? '1' : '0');
   if(!on){
     stopAll(); hideLookup();
-    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open').forEach(el => el.classList.remove('open'));
+    document.querySelectorAll('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open, .write-block.open').forEach(el => el.classList.remove('open'));
     document.querySelectorAll('.post.simple-on').forEach(p => clearSimple(p));
     document.querySelectorAll('.post.read-on').forEach(p => clearRead(p));
     document.querySelectorAll('.post.ask-on').forEach(p => p.classList.remove('ask-on'));
@@ -457,6 +483,7 @@ function buildFeed(){
   const kind = post.kind || 'entry';
   card.className = 'post ' + kind; card.id = post.id;
   const hasVocab = !!(post.vocab && post.vocab.length), hasGram = !!(post.gram && post.gram.length);
+  const hasWrite = !!(post.write && post.write.length);
 
   // Every sentence is wrapped (Lire plays sentences on click; Simplifier rewrites them).
   // The Simplifier button only shows when the entry's `simple` block matches the split.
@@ -500,6 +527,7 @@ function buildFeed(){
         ${simpleOK ? `<button class="act" data-toggle="simple" data-id="${post.id}">Simplifier</button>` : ''}
         ${hasVocab ? `<button class="act" data-toggle="vocab" data-id="${post.id}">Vocabulaire</button>` : ''}
         ${hasGram ? `<button class="act" data-toggle="gram" data-id="${post.id}">Grammaire</button>` : ''}
+        ${hasWrite ? `<button class="act" data-toggle="write" data-id="${post.id}">Écrire</button>` : ''}
         <button class="act" data-toggle="ask" data-id="${post.id}">Demander</button>
       </div>`;
 
@@ -545,6 +573,7 @@ function buildFeed(){
       <div class="en-block" id="en-${post.id}">${enHTML}</div>
       ${hasVocab ? `<div class="notes" id="vocab-${post.id}"><div class="nsec-label">Vocabulaire</div><table>${vocabRows}</table></div>` : ''}
       ${hasGram ? `<div class="notes" id="gram-${post.id}"><div class="nsec-label">Grammaire</div>${gramHTML}</div>` : ''}
+      ${hasWrite ? `<div class="write-block" id="write-${post.id}"><div class="nsec-label">Écrire</div>${writeHTML(post)}</div>` : ''}
     </aside>`;
   feed.appendChild(card);
   viewObserver.observe(card);
@@ -794,6 +823,8 @@ feed.addEventListener('click', e => {
     }
     return;
   }
+  const writeBtn = e.target.closest('[data-write]');
+  if (writeBtn) { e.stopPropagation(); checkWrite(writeBtn); return; }
   const askBtn = e.target.closest('[data-ask]');
   if (askBtn) { e.stopPropagation(); onAskClick(askBtn); return; }
   const btn = e.target.closest('.act'); if (!btn) return;
@@ -811,7 +842,7 @@ feed.addEventListener('click', e => {
     }
     if (btn.dataset.toggle === 'read') { if (open) post.classList.add('read-on'); else { stopAll(); clearRead(post); } }
     if (btn.dataset.toggle === 'ask') { post.classList.toggle('ask-on', open); if (open) openAsk(post); else post.querySelectorAll('.sent.asked').forEach(x => x.classList.remove('asked')); }
-    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open'));
+    post.classList.toggle('split', !!post.querySelector('.en-block.open, .notes.open, .simple-block.open, .read-block.open, .ask-block.open, .write-block.open'));
   }
 });
 
@@ -1481,6 +1512,124 @@ async function sendAsk(postEl, post){
     st.busy = false; sendBtn.disabled = false;
   }
 }
+
+// ── WRITE (Écrire) ──
+// Each entry may carry 2–3 questions (`write`, CLAUDE.md §6) answered in a sentence or two.
+// "Corriger" sends the answer to Claude (same key and model as Demander) for a structured
+// correction: the corrected text, each mistake with a short rule tag, a more natural version,
+// and a word on the content. Answers and corrections stay in this browser; each correction is
+// logged ('write', with the mistakes) so tools/learner-profile.mjs can follow them on the curve.
+const KEY_WRITE = 'felix_write';
+function readWrites(){ try{ return JSON.parse(getLS(KEY_WRITE) || '{}'); }catch(e){ return {}; } }
+function saveWrite(key, val){ const w = readWrites(); w[key] = val; setLS(KEY_WRITE, JSON.stringify(w)); }
+function writeHTML(post){
+  const saved = readWrites();
+  return post.write.map((w, k) => {
+    const s = saved[`${post.id}:${k}`];
+    return `<div class="wq" data-k="${k}">`+
+      `<div class="wq-q">${w.q}</div>`+
+      (w.en ? `<div class="wq-en">${w.en}</div>` : '')+
+      (w.try ? `<div class="wq-try">Essayez : <i>${w.try}</i></div>` : '')+
+      `<textarea class="ask-input wq-input" rows="2" placeholder="Une ou deux phrases…">${s ? escHTML(s.a) : ''}</textarea>`+
+      `<div class="ask-row"><button class="ask-send" data-write="check" data-k="${k}">Corriger</button></div>`+
+      `<div class="wq-result">${s && s.r ? renderCorrection(s.a, s.r) : ''}</div>`+
+    `</div>`;
+  }).join('');
+}
+// Word-level diff of the learner's answer against the corrected one (the dictation's alignment).
+function diffHTML(mine, fixed){
+  const a = dictTokenize(fixed), b = dictTokenize(mine), { expMatch, usrMatch } = dictAlign(a, b);
+  const out = []; let i = 0, j = 0;
+  while(i < a.length || j < b.length){
+    if(i < a.length && j < b.length && expMatch[i] && usrMatch[j]){ out.push(escHTML(a[i])); i++; j++; }
+    else {
+      if(j < b.length && !usrMatch[j]){ out.push(`<del>${escHTML(b[j])}</del>`); j++; continue; }
+      if(i < a.length && !expMatch[i]){ out.push(`<ins>${escHTML(a[i])}</ins>`); i++; continue; }
+      break;                                              // can't happen with an LCS alignment; never loop
+    }
+  }
+  return out.join(' ');
+}
+function renderCorrection(mine, r){
+  const inline = s => escHTML(s).replace(/\*(.+?)\*/g,'<em>$1</em>');
+  const clean = !r.mistakes.length;
+  return (clean ? `<span class="wq-lbl">Aucune faute ✓</span>`
+      : `<span class="wq-lbl">Version corrigée</span><div class="wq-fixed">${diffHTML(mine, r.corrected)}</div>`+
+        `<ul class="wq-mis">${r.mistakes.map(m => `<li><span class="w">${escHTML(m.wrong)}</span> → <span class="r">${escHTML(m.right)}</span><span class="k">${escHTML(m.rule)}</span>${inline(m.note)}</li>`).join('')}</ul>`)+
+    (r.better && r.better.trim() !== r.corrected.trim() ? `<span class="wq-lbl">Plus naturel</span><div class="wq-better">${escHTML(r.better)}</div>` : '')+
+    (r.comment ? `<span class="wq-lbl">Commentaire</span><div class="wq-comment">${inline(r.comment)}</div>` : '');
+}
+const WRITE_SCHEMA = {
+  type:'object', additionalProperties:false,
+  required:['corrected','mistakes','better','comment'],
+  properties:{
+    corrected:{ type:'string' },
+    mistakes:{ type:'array', items:{ type:'object', additionalProperties:false,
+      required:['wrong','right','rule','note'],
+      properties:{ wrong:{type:'string'}, right:{type:'string'}, rule:{type:'string'}, note:{type:'string'} } } },
+    better:{ type:'string' },
+    comment:{ type:'string' },
+  },
+};
+const WRITE_RULES = ['gender','agreement','article','preposition','tense choice','conjugation','auxiliary être/avoir',
+  'past participle agreement','subjunctive','conditional','pronoun','word order','negation','elision','spelling/accents',
+  'word choice','anglicism','missing word'];
+function writeSystem(post){
+  return [
+    'You correct short written answers in a French reading app. The learner is an English speaker, around B1, preparing for the TCF Canada (target B2). They just read a diary entry by Felix (a fictional young mountain guide in training in Chamonix) and answered a question about it in French, in a sentence or two.',
+    'Correct like a good teacher: fix real errors (grammar, agreement, spelling and accents, wrong word, anglicisms), keep their meaning, their ideas and their own words wherever they are correct. Do not rewrite for style in "corrected".',
+    '- corrected: their answer with only the necessary fixes. If there is nothing to fix, repeat it exactly.',
+    `- mistakes: one item per error, in order. wrong = the exact words they wrote (short span), right = the fix, rule = a short English label (prefer one of: ${WRITE_RULES.join(', ')}), note = one short English line explaining why (French in *asterisks*). Empty array if none.`,
+    '- better: the same idea as a natural native speaker would write it at B1–B2 (one or two sentences, still simple). Empty string if theirs is already natural.',
+    '- comment: one or two short English sentences on the content: for a question about the entry, whether the answer fits what Felix wrote (gently say what they missed); for an opinion or imagination question, respond to the idea itself like an interested reader. Warm, never condescending, no generic praise. If they wrote in English or off-topic, say so kindly and still correct what is there.',
+    '',
+    `Entry #${post.no}, ${post.date}, level ${post.level}: ${post.title || '(note)'}`,
+    'French:', post.fr.join('\n\n'),
+    '', 'English translation:', post.en.join('\n\n'),
+    ...(window.FELIX_LEARNER_SUMMARY ? ['', 'About this learner (approximate; use lightly, e.g. if a mistake is one they keep making, the note may say so briefly):', window.FELIX_LEARNER_SUMMARY] : []),
+  ].join('\n');
+}
+async function checkWrite(btn){
+  const postEl = btn.closest('.post'), post = POSTS.find(x => x.id === postEl.id); if(!post) return;
+  const box = btn.closest('.wq'), k = +box.dataset.k, w = post.write[k];
+  const ta = box.querySelector('.wq-input'), mine = ta.value.trim(), res = box.querySelector('.wq-result');
+  if(!mine || btn.disabled) return;
+  if(!claudeKey()){ res.innerHTML = '<span class="err">Il faut une clé API Claude : ouvrez Demander → Clé API.</span>'; return; }
+  btn.disabled = true; res.innerHTML = '<span class="lk-loading">Claude corrige…</span>';
+  const model = askModel();
+  try{
+    const client = await getAnthropic();
+    const stream = client.beta.messages.stream({
+      model: model.id,
+      max_tokens: 16000,
+      system: writeSystem(post),
+      messages: [{ role:'user', content: `Question: « ${w.q} » (${w.en || ''})\nMy answer: ${mine}` }],
+      output_config: { format: { type:'json_schema', schema: WRITE_SCHEMA } },
+      cache_control: { type:'ephemeral' },
+      ...(model.fallbacks ? { betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' } : {}),
+    });
+    const final = await stream.finalMessage();
+    const text = final.content.filter(b => b.type === 'text').map(b => b.text).join('');
+    if(final.stop_reason === 'refusal' || !text.trim()) throw new Error('pas de réponse — réessayez ?');
+    const r = JSON.parse(text);
+    res.innerHTML = renderCorrection(mine, r);
+    saveWrite(`${post.id}:${k}`, { a: mine, r, ts: new Date().toISOString() });
+    logEvent('write', post, { k, q: w.q, t: mine, fixed: r.corrected,
+      mistakes: r.mistakes.map(m => ({ wrong: m.wrong, right: m.right, rule: m.rule })) });
+  }catch(err){
+    const status = err && err.status;
+    const msg = (status === 401 || status === 403) ? 'Clé API refusée — vérifiez-la (Demander → Clé API).'
+      : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
+      : 'Erreur : ' + ((err && err.message) || err);
+    res.innerHTML = `<span class="err">${escHTML(msg)}</span>`;
+  }finally{ btn.disabled = false; }
+}
+// Cmd/Ctrl+Enter corrects (plain Enter is a new line: it's writing, not chat).
+feed.addEventListener('keydown', e => {
+  if(!(e.target.classList && e.target.classList.contains('wq-input')) || e.key !== 'Enter' || !(e.metaKey || e.ctrlKey)) return;
+  e.preventDefault();
+  checkWrite(e.target.closest('.wq').querySelector('[data-write]'));
+});
 
 // ── SAVE Q&A TO THE REPO ──
 // Each finished question + answer is appended to questions.md in the learner's GitHub repo

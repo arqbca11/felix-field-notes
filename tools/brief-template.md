@@ -33,6 +33,8 @@ Grammar targets:
   - new / stretch: …
 Grammar notes: N (note kind 1–3; others 4–5)
 Vocab: N–N entries; every verb with FelixNotes.verb; suggested verbs: …
+Writing questions: 2 (note) | 3 — angles: content … / opinion or personal … / creative …;
+  invite: … (a grammar target, via `try`)   (learner = she; no spoilers; Addie only if present)
 
 Ending: motion toward … (no moral, no bucket-list line)
 Do NOT: … (anything the writer must avoid this time)

@@ -11,6 +11,10 @@ FelixNotes.register({
   en:[
     "On the list of things I tell no one: from time to time I look up the dates of the guide training in Canada, with the ACMG, the one Eric did. Not for next year. Maybe in a few years. Maybe never. I look anyway, and I close the page before I've finished reading."
   ],
+  write:[
+    { q:"À ton avis, pourquoi Felix referme-t-il la page avant d'avoir fini de lire ?", en:"Why do you think Felix closes the page before he has finished reading?" },
+    { q:"Et toi, quel projet ou quel endroit regardes-tu de temps en temps, « quand même » ?", en:"And you, what project or place do you look at now and then, “all the same”?", try:"Peut-être un jour. Peut-être jamais." },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Il y a des choses que je ne dis à personne. Parfois, je regarde les dates de la formation de guide au Canada, à l'ACMG. C'est la formation d'Eric.", en:"There are things I tell no one. Sometimes I look at the dates of the guide training in Canada, at the ACMG. It is Eric's training."},

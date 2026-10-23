@@ -7,7 +7,8 @@
    TEST MODE (CLAUDE.md §8c): the profile is observed, not yet used to write entries.
 
    Model, per item (a pronunciation spot, a word or expression, a dictation word):
-   - a STRUGGLE is a click on a hard spot, a lookup, a dictation miss, or a question about it;
+   - a STRUGGLE is a click on a hard spot, a lookup, a dictation miss, a question about it, or a
+     mistake in a written answer (Écrire — tracked by its rule: "gender", "auxiliary être/avoir"…);
      all struggles in one reading session count as one LAPSE (with an intensity = how many);
    - a CLEAN MEETING is an entry containing the item, on screen ≥ 20 s in Learn mode, in a
      session with no struggle on that item;
@@ -81,6 +82,7 @@ function struggle(key, label, type, time, session, extra = {}) {
 }
 const sentences = new Map();   // hard sentences: id:i:j -> {text, lire, simple, sessions}
 const dictMiss = new Map();
+const writeMistakes = [];   // {time, entry, no, rule, wrong, right}
 for (const e of events) {
   const entry = e.id;
   if (e.e === 'hard' && e.t) struggle('pron|' + norm(e.t), e.t, 'prononciation', e.time, e.s, { kind: e.kind, entry });
@@ -88,6 +90,10 @@ for (const e of events) {
   else if (e.e === 'dict') (e.missed || []).map(norm).filter(w => w && !STOP.has(w)).forEach(w => {
     struggle('spell|' + w, w, 'dictée', e.time, e.s, { entry });
     dictMiss.set(w, (dictMiss.get(w) || 0) + 1);
+  });
+  else if (e.e === 'write') (e.mistakes || []).filter(m => m && m.rule).forEach(m => {
+    struggle('write|' + norm(m.rule), m.rule, 'écriture', e.time, e.s, { entry });
+    writeMistakes.push({ time: e.time, entry, no: e.no, rule: m.rule, wrong: m.wrong, right: m.right });
   });
   else if (e.e === 'sent' || e.e === 'simple') {
     const k = `${entry}:${e.i}:${e.j}`, s = sentences.get(k) || { entry, no: e.no, text: e.t, lire: 0, simple: 0, sessions: new Set() };
@@ -99,6 +105,7 @@ for (const q of questions) if (q.expr) {
   struggle('word|' + lemmaOf(q.expr), q.expr, 'question', t, 'q-' + q.date, { entry: (POSTS.find(p => p.no === q.no) || {}).id });
 }
 const views = events.filter(e => e.e === 'view');
+const writes = events.filter(e => e.e === 'write');
 
 // ── the curve ──
 function curve(it) {
@@ -109,7 +116,11 @@ function curve(it) {
     if (last && last.session === s.session) last.n++; else lapses.push({ time: s.time, session: s.session, n: 1 });
   }
   const needle = ' ' + norm(it.label.split(' → ')[0]) + ' ';
-  const clean = views.filter(v => !struggleSessions.has(v.s) && entryText[v.id] && entryText[v.id].includes(needle))
+  // A writing rule is met cleanly by a later written answer without that mistake; anything else by
+  // an entry on screen that contains it.
+  const clean = it.type === 'écriture'
+    ? writes.filter(w => !struggleSessions.has(w.s)).map(w => ({ time: w.time, clean: true, entry: w.id }))
+    : views.filter(v => !struggleSessions.has(v.s) && entryText[v.id] && entryText[v.id].includes(needle))
                      .map(v => ({ time: v.time, clean: true, entry: v.id }));
   const timeline = [...lapses.map(l => ({ ...l, lapse: true })), ...clean].sort((a, b) => a.time - b.time);
   let h = null, tLast = null, nLapses = 0, nClean = 0;
@@ -141,6 +152,7 @@ const would = r => ({
   mot: `reuse « ${r.it.label.split(' → ').pop()} » in a fresh context; vocab row again`,
   dictée: `put « ${r.it.label} » in a short, dictation-friendly sentence`,
   question: `a grammar/usage note on « ${r.it.label} » from a new angle, plus one example`,
+  écriture: `a writing question that invites the "${r.it.label}" pattern again, and a gram note on it`,
 }[r.it.type] || 'reuse it');
 const table = (list, withWould) => list.length ? [
   `| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now${withWould ? ' | What a brief would do' : ''} |`,
@@ -189,6 +201,11 @@ ${hardSent.length ? hardSent.map(s => `- #${s.no} (${s.entry}) — Lire ×${s.li
 
 ${dictMiss.size ? [...dictMiss.entries()].sort((a, b) => b[1] - a[1]).slice(0, 20).map(([w, n]) => `« ${w} » ×${n}`).join(' · ') : '_Nothing yet._'}
 
+## Writing: latest corrections
+Mistakes Claude corrected in the learner's own answers (Écrire), newest first; the rule is the item on the curve.
+
+${writeMistakes.length ? writeMistakes.slice(-20).reverse().map(m => `- ${fmtD(m.time)} · #${m.no} · ${m.rule}: « ${m.wrong} » → « ${m.right} »`).join('\n') : '_Nothing yet._'}
+
 ## Questions asked (latest 20)
 Raw, for the planner to group by topic (a tense, a construction, a sound): repeated topics count as lapses too.
 
@@ -196,9 +213,9 @@ ${questions.length ? questions.slice(-20).reverse().map(q => `- ${q.date} · #${
 
 ## How this is computed
 A **struggle** is a hard spot clicked in Lire, a word looked up, a word missed in a dictation, or a
-question about a highlighted expression; the struggles of one reading session make one **lapse**. A
+question about a highlighted expression, or a mistake in a written answer (by its rule); the struggles of one reading session make one **lapse**. A
 **clean meeting** is an entry that contains the item, on screen for 20 s in Learn mode, in a session
-with no struggle on it. Each item has a memory **half-life**: 1 day after the first lapse (half a day
+with no struggle on it (for a writing rule: a later written answer without that mistake). Each item has a memory **half-life**: 1 day after the first lapse (half a day
 if it was clicked three times or more), **doubled** by a clean meeting at least half a half-life
 later, **halved** by a new lapse. **Recall now** ≈ 2^(−days since the last event ÷ half-life).
 `;
@@ -234,6 +251,7 @@ const qTopics = faded(questions, q => q.expr ? 'e|' + lemmaOf(q.expr) : 'q|' + n
   q => q.expr ? `« ${q.expr} »${q.q ? ` (${q.q.slice(0, 60)})` : ''}` : q.q.slice(0, 70), qTime).slice(0, 8);
 const lookups = faded(events.filter(e => e.e === 'lookup'), e => lemmaOf(e.t), e => e.t, e => e.time).slice(0, 10);
 const hardSpots = faded(events.filter(e => e.e === 'hard'), e => norm(e.t), e => e.t, e => e.time).slice(0, 8);
+const writeSlips = faded(writeMistakes, m => norm(m.rule), m => `${m.rule} (« ${m.wrong} » → « ${m.right} »)`, m => m.time).slice(0, 6);
 const recentDue = due.filter(r => age(r.tLast) <= 10).slice(0, 6);
 const replays = [...sentences.values()].filter(s => s.lire + s.simple >= 2).length;
 const readNos = [...new Set(events.filter(e => e.e === 'view').map(e => e.no))].sort((a, b) => a - b);
@@ -245,6 +263,7 @@ const lines = [
   recentDue.length ? `- Probably fading (struggled within the last ~10 reading days, not met again since): ${recentDue.map(r => r.it.label.split(' → ').pop()).join(', ')}.` : '',
   solid.length ? `- Solid by now: ${solid.slice(0, 6).map(r => r.it.label.split(' → ').pop()).join(', ')}.` : '',
   replays ? `- Replays or simplifies long sentences fairly often (${replays} sentence${replays > 1 ? 's' : ''} more than once).` : '',
+  writeSlips.length ? `- Mistakes in their own written answers: ${writeSlips.map(v => `${v.label} [${tag(v)}]`).join('; ')}.` : '',
   dictMiss.size ? `- Dictation slips: ${[...dictMiss.keys()].slice(0, 8).join(', ')}.` : '',
   readNos.length ? `- Has read entries ${readNos.join(', ')} in Learn mode.` : '',
 ].filter(Boolean);

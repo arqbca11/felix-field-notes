@@ -32,6 +32,9 @@ Then check, in this order, and report each as PASS or a concrete finding (quote 
    right (check irregulars and reflexive auxiliaries).
 8. **Grammar notes.** Count meets the kind's minimum; each note quotes the entry; explanations
    are concise and correct.
+8b. **Writing questions (`write`).** 2 for a note, 3 otherwise; at least one on the content and one
+   open; answerable in 1–2 sentences at the entry's level; no spoilers; Addie restraint; learner
+   addressed as « tu », feminine agreement; French correct; `en` faithful.
 9. **Escaping.** Run `node --check` on the file; look for unescaped apostrophes in `gram`.
 
 End with a one-line verdict: READY, READY WITH FIXES (list them), or BLOCKED (why).

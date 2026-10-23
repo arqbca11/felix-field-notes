@@ -29,6 +29,11 @@ FelixNotes.register({
     "What I didn't do fits in two sentences. On the last day, in March, I had told her I didn't know whether I'd come back the following winter; she had looked a little disappointed, and she hadn't asked for anything more. If I had asked, in January, what would she have answered? I could have asked for an address, the way you do with anyone. I tell myself it wasn't appropriate, at the time. I'm not sure that was the real reason.",
     "So I'm writing it for the first time. When I think about going back to Canada, it isn't only for the training; it's also the idea that I might see her again over there. And how would it even work? She came to Revelstoke; me, I might not be there. I don't even have her number, or an email address, or the name of the company she works for. You can keep someone for years without the slightest way to reach them. A woman whose address I don't know, and whose Chinese name I do — Anyu. The couple left. Tomorrow, the ice; Chloé arrives on the 21st. The question stays open."
   ],
+  write:[
+    { q:"Comment était Addie pendant les montées ? Décris-la avec deux détails.", en:"What was Addie like on the climbs up? Describe her with two details.", try:"elle s'arrêtait…, elle parlait…" },
+    { q:"Si Felix avait demandé une adresse en janvier, qu'est-ce qui aurait changé, selon toi ?", en:"If Felix had asked for an address in January, what would have changed, in your view?", try:"si + plus-que-parfait → conditionnel passé" },
+    { q:"« On croit donner une leçon, et l'on finit par se raconter. » Ça t'est déjà arrivé ?", en:"“You think you're giving a lesson, and you end up telling your own story.” Has that happened to you?", try:"j'ai fini par…" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"C'est samedi. Je travaille au magasin. Ce sont les premières vacances scolaires.", en:"It's Saturday. I work at the shop. These are the first school holidays."},

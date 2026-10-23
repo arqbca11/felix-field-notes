@@ -11,6 +11,10 @@ FelixNotes.register({
   en:[
     "Bath, seven in the morning. It's raining, obviously. My mother set the coffee down in front of me without a word, and I understood that she already knew what I hadn't yet said out loud."
   ],
+  write:[
+    { q:"Qu'est-ce que la mère de Felix avait déjà compris, et comment le montre-t-elle ?", en:"What had Felix's mother already understood, and how does she show it?", try:"elle avait compris que…" },
+    { q:"Et toi, raconte un moment où quelqu'un a deviné ce que tu n'avais pas encore dit.", en:"And you: tell about a time someone guessed what you hadn't said yet." },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Je suis à Bath. Il est sept heures du matin.", en:"I am in Bath. It is seven in the morning."},

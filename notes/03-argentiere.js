@@ -17,6 +17,11 @@ FelixNotes.register({
     "I moved in within an hour: skis under the bed, ropes on the wall, boots in the entrance. Then I ran up to Lognan, by the trail that cuts through the forest. Old larches are starting to turn yellow; the air smells of resin and cold. Up top, the Grands Montets were empty, the gondolas stopped until December; only a few workers were finishing the station of the new gondola, due to open for Christmas. I touched the snow at the edge of the path: barely a few centimetres, hard as salt.",
     "What struck me was the silence. Not the summer kind, full of people and bicycle bells, but a silence that is waiting. The valley is getting ready, like me. I've signed up for weekends at a rental shop in Chamonix, from December; that will pay for the studio. Tomorrow I'm calling Bertrand. My mother texted me his number with a single word: \"Go.\""
   ],
+  write:[
+    { q:"Qu'est-ce qui se passait en haut, à Lognan, quand Felix est arrivé ?", en:"What was going on up at Lognan when Felix arrived?", try:"il y avait… / des ouvriers finissaient…" },
+    { q:"Josiane dit : « Tu as ses mains. » À ton avis, qu'est-ce qu'elle voit vraiment ?", en:"Josiane says: “You have his hands.” What do you think she really sees?" },
+    { q:"Et toi, la dernière fois que tu es arrivée dans un endroit nouveau, qu'est-ce qui t'a frappé ?", en:"And you, the last time you arrived somewhere new, what struck you?", try:"Ce qui m'a frappé, c'est…" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Mon studio est très petit. Il y a un lit, une table, une petite cuisine et une fenêtre.", en:"My studio is very small. There is a bed, a table, a little kitchen and a window."},

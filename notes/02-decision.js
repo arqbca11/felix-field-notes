@@ -21,6 +21,11 @@ FelixNotes.register({
     "So there it is, in writing: I'm going back to Chamonix for good, and I'm preparing the guide entrance exam. I need to find a studio, call Bertrand (an old guide who climbed with my grandfather), and look my climbing list squarely in the face. I'm short on ice, on mixed, on a few serious descents, and the ENSA asks for more than it used to: the required list has grown longer since 2025. I have one winter for that.",
     "Train on Thursday. Bath, London, Paris, Saint-Gervais, then the little red train that climbs into the valley. I know every bend. This time I won't be leaving again."
   ],
+  write:[
+    { q:"Comment le père de Felix a-t-il réagi ? Raconte-le avec tes mots.", en:"How did Felix's father react? Tell it in your own words.", try:"il a demandé si…" },
+    { q:"Chloé dit que Felix a décidé il y a trois ans. Es-tu d'accord avec elle ? Pourquoi ?", en:"Chloé says Felix decided three years ago. Do you agree with her? Why?" },
+    { q:"Et toi, avant un grand changement dans ta vie, qu'est-ce qu'il faut que tu fasses ?", en:"And you, before a big change in your life, what do you need to do?", try:"il faut que je + subjonctif" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"J'ai cette idée depuis trois ans.", en:"I have had this idea for three years."},

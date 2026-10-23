@@ -50,12 +50,12 @@ Then read the entries in `questions.md` dated **after** the *Learner questions r
 ## 0c. The forgetting curve — TEST MODE (observe, don't apply)
 After the pull, run `node tools/learner-profile.mjs` to rebuild **`LEARNER-PROFILE.md`** from what the page
 logged (`learning/*.jsonl`: hard spots clicked, sentences replayed, words looked up, dictation misses,
-entries met again) and from `questions.md`. **While the profile is in test mode (CLAUDE.md §8c), it
+mistakes Claude corrected in her written answers (Écrire, by rule), entries met again) and from `questions.md`. **While the profile is in test mode (CLAUDE.md §8c), it
 must not change the briefs**: plan and write the batch exactly as if it didn't exist. Instead, once
 the briefs are written, append a dry run to **`learning/dry-runs.md`**: the date, the batch's entries,
 the top *Due for repetition* items, and for each one where it **would** have gone (which entry, how:
 a reused word in a fresh sentence, a marked liaison, a grammar note from a new angle, a short
-dictation-friendly sentence), plus which of them the batch happened to reuse anyway. Tell the user in
+dictation-friendly sentence, a writing question whose `try` invites a rule she keeps getting wrong), plus which of them the batch happened to reuse anyway. Tell the user in
 two lines what the dry run would have changed. The user decides when to leave test mode; until then,
 nothing in `LEARNER-PROFILE.md` reaches a brief.
 
@@ -93,7 +93,8 @@ nothing in `LEARNER-PROFILE.md` reaches a brief.
 ## 2. Write one brief per entry
 Use `tools/brief-template.md`. A brief must be **self-contained**: the writer has no memory of
 this conversation. Give concrete beats, names only from the bible, the reflective-line budget,
-the grammar targets, the vocab count, the length, and the ending's direction.
+the grammar targets, the vocab count, the length, the writing questions' angles (`write`: 2 for a
+note, 3 otherwise; content + open/creative, varied from the last entries), and the ending's direction.
 
 Fill the **`Supplied details`** block in every brief: the details this entry **uses** (and how),
 and the details that are **canon but not for this entry** (so the writer doesn't contradict them

@@ -29,6 +29,11 @@ FelixNotes.register({
     "Home at dusk, condensation on the windscreen, the tunnel the other way. That's when Bertrand talked about my grandfather, at length for him: three minutes. They had done the Couturier couloir, on the Aiguille Verte, in 1986. Marcel in front, fifty-five degrees of snow and ice, and not ten words all day; at the top he only said: \"Right, we go down.\" Then: \"You have his hands. You don't have his silence yet.\" I didn't answer, which was the answer.",
     "Eight in the evening, Argentière, first record card, as the second rule requires. Conditions: minus twelve, brittle ice in the morning, softer in the afternoon. Timings: four hours of climbing. Gear: eight screws, six placed. What worked: the feet, two old axes. What didn't work: the second screw, which I didn't trust for a second, and the idea that you only get caught out on hard icefalls. When I have twenty cards like that one, I'll know what I'm worth on ice. I'll show it to him on Sunday. Saturday, the shop. Sunday, we'll see about the ice."
   ],
+  write:[
+    { q:"Que voulait dire Bertrand par « Celle-là, elle tenait ton chapeau. Pas toi. » ?", en:"What did Bertrand mean by “That one would have held your hat. Not you.”?", try:"il voulait dire que…" },
+    { q:"Felix pense qu'on se connaît mieux en ayant mal ensemble qu'en parlant. Es-tu d'accord ? Donne un exemple.", en:"Felix thinks people know each other better by hurting together than by talking. Do you agree? Give an example." },
+    { q:"Imagine le couloir Couturier en 1986. Raconte un moment de la journée de Marcel en deux phrases.", en:"Imagine the Couturier couloir in 1986. Tell one moment of Marcel's day in two sentences.", try:"passé composé + imparfait" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Je suis parti des Praz à cinq heures et demie. J'étais dans la voiture de Bertrand.", en:"I left Les Praz at half past five. I was in Bertrand's car."},

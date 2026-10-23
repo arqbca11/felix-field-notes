@@ -308,7 +308,7 @@ cycle, in-memory audio cache with prefetch, select-to-translate (curated vocab �
 "form of" links → Google Translate endpoint for phrases → MyMemory last, echoes rejected), per-paragraph dictation with diff scoring, translation and notes toggles (the entry widens
 to two columns), per-verb conjugation panels.
 
-**Action buttons (9 Sep 2026):** *Lire · Traduction · Simplifier · Vocabulaire · Grammaire*. Vocabulary
+**Action buttons (9 Sep 2026):** *Lire · Traduction · Simplifier · Vocabulaire · Grammaire · Écrire · Demander*. Vocabulary
 and grammar are **separate toggles** (long entries made the combined "Notes de français" too tall);
 each opens its own `.notes` block (`vocab-<id>`, `gram-<id>`) and either one widens the entry.
 
@@ -333,6 +333,17 @@ the same time: then the simplified column mirrors the sentence being read (`mirr
 The whole-entry sequential reader moved into that panel as *Tout lire*. Hard spots are **data** — the
 entry's optional `read` field (§6); entries without it still read sentence by sentence, with no
 underlines. Sentences are now wrapped in `.sent` on every entry, not only those with `simple`.
+
+**Écrire (added 23 Oct 2026).** An action button (only when the entry has `write`, §6) that opens a
+`.write-block` panel stacking under the others: 2–3 questions, each answered in French in a sentence
+or two, then *Corriger* (or Cmd/Ctrl+Enter). The answer goes to Claude with the same key and model
+picker as Demander, with the entry as context and **structured output** (`output_config.format`
+json_schema): `corrected` (minimal fixes), `mistakes` (`wrong`, `right`, a short English `rule` tag
+such as *gender* / *auxiliary être/avoir* / *subjunctive*, a one-line `note`), `better` (a more natural
+version) and `comment` (on the content or her idea). The panel shows a word diff (struck red →
+underlined), the mistakes, the natural version, the comment. Answers and corrections are kept per
+question in localStorage (`felix_write`) and restored on reload; each correction is logged as a
+`write` event with its mistakes (§8c). The questions are **data**, written by `entry-writer`.
 
 **Demander (added 24 Sep 2026).** An action button that opens a question box in the right column
 (`.ask-block`, stacks like the other panels). Questions go to the **Claude API straight from the
@@ -413,6 +424,10 @@ FelixNotes.register({
     [ [ {t:"trois ans", k:"liaison", n:"Required liaison: “troi-z-an”."} ], [], … ],  // one array per SENTENCE
     …                                //   t = exact text in the sentence; k = mot | liaison | enchainement |
   ],                                 //   muet | son; n = short English note; say = optional text to speak
+  write:[                           // optional — Écrire (§5): 2 questions for a note, 3 otherwise,
+    { q:"Pourquoi … ?", en:"Why … ?", try:"parce que + imparfait" },   // try = optional ≤ 8-word nudge
+    …                                //   answered in 1–2 sentences; content + opinion/creative mix;
+  ],                                 //   learner = « tu », feminine agreement
   vocab:[ ['mot fr','gloss'], ['verbe','to …', FelixNotes.verb('verbe', pres, pc, imp, fut)], … ],
   gram:[ {h:'Heading', p:'Explanation with <span class="ex">…</span>'}, … ]
 });
@@ -457,6 +472,7 @@ the main agent's decision.
    subjunctive beat in play across neighbouring entries.
 3b. Run the `simplifier` subagent on the new file so it ships with its `simple` block.
 3c. Add the `read` block (Lire's hard spots, §6) — 2–4 marks per sentence, accuracy over quantity.
+3d. The `write` block (Écrire, §6) comes from `entry-writer`; check it in review (varied angles, no spoilers).
 4. Append a line to the **entry log** (§3) and update *open threads*.
 5. Run `node tools/validate.mjs` (§10).
 
@@ -483,14 +499,16 @@ back after a day); the last launch time lives in the git-ignored `.claude/knowle
 **Logging (the page).** In Learn mode, `index.html` records learning events with a timestamp and a
 per-visit session id: `hard` (a Lire hard spot clicked), `sent` (a sentence played in Lire), `simple`
 (a sentence opened in Simplifier), `lookup` (select-to-translate), `dict` (a dictation checked: score
-and the words missed *within the stretch typed*), `ask` (a Demander question), and `view` (an entry
+and the words missed *within the stretch typed*), `ask` (a Demander question), `write` (an Écrire answer corrected by Claude: the question, her answer, the
+corrected text, and each mistake's `wrong`/`right`/`rule`), and `view` (an entry
 in the middle of the screen for 20 s — an exposure, once per entry per visit). Events queue in
 localStorage (`felix_learn_log`) and are appended in batches to **`learning/YYYY-MM-DD.jsonl`** in the
 repo through the same GitHub token as Demander (every few minutes, when the tab is hidden, and on the
 next visit if a save failed). Plain mode logs nothing. The repo is public; the log holds only
 entry ids, sentence text, words and timestamps (user's choice, 26 Sep 2026).
 **Profile (the script).** `node tools/learner-profile.mjs` → **`LEARNER-PROFILE.md`**: per item (pronunciation
-spot, word/lemma, dictation word, questioned expression) a memory half-life — 1 day after the first
+spot, word/lemma, dictation word, questioned expression, **writing rule** — met cleanly again by a later
+answer without that mistake) a memory half-life — 1 day after the first
 lapse (½ if clicked ≥ 3 times), doubled by a clean meeting (entry met again, no struggle) at least
 half a half-life later, halved by a new lapse — and recall ≈ 2^(−days since ÷ half-life). Sections:
 due, fading, solid, hardest sentences, dictation misses, latest questions.

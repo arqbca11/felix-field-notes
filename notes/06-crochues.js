@@ -25,6 +25,11 @@ FelixNotes.register({
     "Down at the edge of the frozen Lac Blanc he ate his sandwich and gave his verdict, as short as the rest: \"You climb well. You don't guide yet. You climb for yourself; a guide climbs for the one behind him. When you've understood that in your legs, and not only in your head, we'll talk again.\" It wasn't a criticism. It was a description, and it was accurate.",
     "We walked back down to the Col des Montets in silence, at nightfall. In the car he put the radio on: they were still talking about the Goûter, the summer's rockfall and the huts closed in August. I have a red stone from the Crochues in my pocket, which is silly for a mountain I know by heart. But today I didn't climb it: I guided it, badly, for the first time. That counts."
   ],
+  write:[
+    { q:"Comment Bertrand a-t-il joué le client ? Donne deux exemples.", en:"How did Bertrand play the client? Give two examples.", try:"il s'arrêtait…, il posait…" },
+    { q:"Que veut dire Bertrand par « un guide grimpe pour celui qui est derrière » ?", en:"What does Bertrand mean by “a guide climbs for the one behind”?" },
+    { q:"Écris une phrase à la Bertrand pour quelqu'un que tu connais : « Quand tu auras…, on reparlera. »", en:"Write a Bertrand-style sentence for someone you know: “When you've…, we'll talk again.”", try:"Quand tu auras + participe passé" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Jeudi dernier, le temps était mauvais. Il y avait de la pluie en bas et de la neige en haut. Bertrand a écrit un seul mot : « mardi ».", en:"Last Thursday, the weather was bad. There was rain low down and snow high up. Bertrand wrote just one word: “Tuesday.”"},

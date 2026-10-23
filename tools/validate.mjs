@@ -5,6 +5,7 @@
       fr/en aligned, known kind + level, ISO date matches the manifest, manifest is
       chronological and numbered in order, conjugation objects have 6 persons per tense,
       and an optional `simple` block has one {fr,en} per sentence of engine/sentences.js's split.
+      An optional `write` block has 2–3 {q,en,try?} questions (Écrire).
    Prints which entries the page would display. Exit code 1 on any failure. */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -103,6 +104,15 @@ M.forEach((e, i) => {
         if (!m || !m.t || !m.n || !KINDS_R.has(m.k)) fail(`READ ${i}:${j}:${k} needs {t,k,n} with a known kind`, p.id);
         else if (!sents[j].includes(m.t)) fail(`READ ${i}:${j}:${k} "${m.t}" not found in sentence`, p.id);
       }));
+    });
+  } else simpleTag += '  ';
+  // `write` (optional): 2–3 questions answered in French and corrected by Claude (Écrire)
+  if (p.write != null) {
+    simpleTag += 'W ';
+    if (!Array.isArray(p.write) || p.write.length < 2 || p.write.length > 3) fail('WRITE: need 2–3 questions', p.id);
+    else p.write.forEach((w, k) => {
+      if (!w || typeof w.q !== 'string' || !w.q.trim() || typeof w.en !== 'string' || !w.en.trim()) fail(`WRITE ${k} needs {q,en}`, p.id);
+      if (w && w.try != null && (typeof w.try !== 'string' || !w.try.trim())) fail(`WRITE ${k}: try must be a non-empty string`, p.id);
     });
   } else simpleTag += '  ';
   const minGram =p.kind === 'note' ? 1 : 3;

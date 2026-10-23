@@ -22,6 +22,11 @@ FelixNotes.register({
     "On Sunday we walked up to the Col des Montets, in last week's snow, Théo in town shoes. He complained for two hours, which, with him, is a form of happiness. At the top he asked: \"And Canada, is that over?\" I said I didn't know. He laughed: \"You say that about everything these days.\" He's right, and he's the only one who can tell me so like that. He knew me before I could do anything at all; that gives you rights.",
     "He leaves tomorrow morning on the first train. He left a new inner tube on my table. I don't have a bike here. I don't know why. With Théo you never know why, and you keep it anyway."
   ],
+  write:[
+    { q:"Raconte une galère du voyage Vancouver–San Francisco, mais du point de vue de Théo.", en:"Tell one mishap from the Vancouver–San Francisco trip, but from Théo's point of view.", try:"on était…, quand soudain…" },
+    { q:"Pourquoi Felix aime-t-il autant ce voyage à vélo ?", en:"Why does Felix love that bike trip so much?", try:"C'est le seul voyage où…" },
+    { q:"Et toi, dans ton groupe d'amis, qui trouve le chemin et qui trouve les gens ?", en:"And you, in your group of friends, who finds the way and who finds the people?", try:"C'est moi qui… et lui qui…" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Théo est arrivé samedi. Il a pris le train de Lyon. Son sac était trop grand. Il n'avait pas de plan. Il a parlé sans arrêt jusqu'au studio.", en:"Théo arrived on Saturday. He took the train from Lyon. His bag was too big. He had no plan. He talked nonstop all the way to the studio."},

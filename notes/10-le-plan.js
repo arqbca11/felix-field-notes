@@ -26,6 +26,11 @@ FelixNotes.register({
     "Copying out the sheet, I stopped on \"March.\" March is the month she used to come to Revelstoke, every year. If I'm not there in March, I won't know whether she came back. I wouldn't know anyway: I never had her number. I wrote \"March\" on my sheet, and moved on to April.",
     "The Crèmerie hasn't formed yet. So, while waiting for the ice to be willing: running in the morning, the climbing gym in the evening, and the sheet on the wall, above the table, where I'll see it every day."
   ],
+  write:[
+    { q:"Choisis deux des trois règles de Bertrand et explique-les.", en:"Pick two of Bertrand's three rules and explain them.", try:"Felix ne partira jamais…" },
+    { q:"Pourquoi compter les jours dehors plutôt que les courses ? Es-tu d'accord avec Bertrand ?", en:"Why count days outside rather than routes? Do you agree with Bertrand?" },
+    { q:"Fais ton propre plan pour les trois prochains mois, comme Bertrand : un mois, une phrase.", en:"Make your own plan for the next three months, like Bertrand: one month, one sentence.", try:"En janvier, je + futur simple" },
+  ],
   simple:[
     [ // ¶ 0
       {fr:"Je suis chez Bertrand, dans sa cuisine. C'est la deuxième fois.", en:"I am at Bertrand's place, in his kitchen. It is the second time."},
