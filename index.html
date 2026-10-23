@@ -44,7 +44,9 @@
   body:not(.learn) .article p{padding-left:0;}
   .rb-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
   .rb-link:hover{color:var(--ink);text-decoration-color:var(--ink);}
-  #ghEntry.open{display:block;}
+  #ghEntry.open,#claudeEntry.open{display:block;}
+  #claudeMsg{color:var(--muted);} #claudeMsg.err{color:#a33;}
+  select.ke-input{cursor:pointer;}
   #ghMsg{color:var(--muted);} #ghMsg.err{color:#a33;}
   .key-entry,.voice-picker{display:none;width:min(340px,calc(100vw - 36px));margin-top:8px;padding:12px 14px 13px;background:#fff;border:1px solid var(--line);font-family:var(--sans);font-size:13px;color:var(--soft);}
   .ke-label{margin-bottom:8px;}
@@ -204,16 +206,6 @@
   .ask-row{display:flex;gap:16px;align-items:baseline;margin-top:8px;font-size:12.5px;}
   .ask-send{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
   .ask-send:disabled{color:var(--muted);cursor:default;}
-  .ask-model{font:inherit;font-size:12px;color:var(--soft);background:#fff;border:none;border-bottom:1px solid var(--line);padding:0 2px 1px;cursor:pointer;outline:none;max-width:100%;}
-  .ask-model:hover,.ask-model:focus{border-bottom-color:var(--ink);color:var(--ink);}
-  .ask-link{color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);}
-  .ask-link:hover{color:var(--ink);}
-  .ask-setup{display:none;margin:0 0 12px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .ask-setup.open{display:block;}
-  .ask-setup label{display:block;font-size:12px;color:var(--muted);margin:0 0 3px;}
-  .ask-setup input{width:100%;border:1px solid var(--line);padding:7px 9px;font:inherit;font-size:13px;color:var(--ink);outline:none;}
-  .ask-setup input:focus{border-color:var(--ink);}
-  .ask-setup .hint{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.5;}
   .lk-ask{display:inline-block;margin-top:8px;font-size:12px;color:var(--soft);text-decoration:underline;text-underline-offset:3px;}
   .lk-ask:hover{color:var(--ink);}
 
@@ -328,8 +320,20 @@
       <span>Voix : <span id="rbVoice">—</span></span>
       <button class="rb-link" id="rbSpeed" onclick="cycleSpeed()">1.0×</button>
       <button class="rb-link" id="voiceBtn" onclick="voiceBtnClick()">Changer de voix</button>
+      <button class="rb-link" id="claudeBtn" onclick="toggleClaudeEntry()">Claude</button>
       <button class="rb-link" id="ghBtn" onclick="toggleGhEntry()">GitHub</button>
     </div>
+  </div>
+  <div class="key-entry learn-only" id="claudeEntry">
+    <div class="ke-label">Clé API Claude <span>(console.anthropic.com — pour Demander et Écrire)</span></div>
+    <div class="ke-row">
+      <input class="ke-input" id="claudeKeyInput" type="password" placeholder="sk-ant-…"/>
+      <button class="ke-btn" onclick="saveClaudeKey()">Enregistrer</button>
+    </div>
+    <div class="ke-label" style="margin:10px 0 6px">Modèle</div>
+    <div class="ke-row"><select class="ke-input" id="claudeModel" aria-label="Modèle" onchange="setClaudeModel(this.value)"></select></div>
+    <div class="ke-msg" id="claudeMsg"></div>
+    <div class="ke-label" style="margin:8px 0 0"><span>La clé reste dans ce navigateur. Mettez une limite de dépenses sur la clé dans la console Anthropic.</span></div>
   </div>
   <div class="key-entry learn-only" id="ghEntry">
     <div class="ke-label">Jeton GitHub <span>(optionnel — enregistre vos questions dans questions.md du dépôt)</span></div>
@@ -457,6 +461,7 @@ function setLearn(on){
     document.getElementById('keyEntry').style.display='none';
     document.getElementById('voicePicker').style.display='none'; pickerOpen=false;
     document.getElementById('ghEntry').classList.remove('open');
+    document.getElementById('claudeEntry').classList.remove('open');
   }
 }
 function toggleLearn(){ setLearn(!document.body.classList.contains('learn')); }
@@ -557,14 +562,11 @@ function buildFeed(){
       </div>` : ''}
       <div class="ask-block" id="ask-${post.id}">
         <div class="nsec-label">Demander à Claude</div>
-        <div class="ask-setup"></div>
         <div class="ask-compose">
           <div class="ask-ctx"></div>
           <textarea class="ask-input" rows="2" placeholder="Une question sur une expression, une phrase, la grammaire…"></textarea>
           <div class="ask-row">
             <button class="ask-send" data-ask="send">Envoyer</button>
-            <select class="ask-model" aria-label="Modèle"></select>
-            <button class="ask-link" data-ask="setup">Clé API</button>
           </div>
           <div class="ask-thread"></div>
         </div>
@@ -954,6 +956,7 @@ function refreshReadbar(){
   document.getElementById('voiceBtn').textContent = key ? 'Changer de voix' : 'Connecter ElevenLabs';
   document.getElementById('rbSpeed').textContent = speed.toFixed(1)+'×';
   document.getElementById('ghBtn').textContent = githubToken() ? 'GitHub ✓' : 'GitHub';
+  document.getElementById('claudeBtn').textContent = claudeKey() ? 'Claude ✓' : 'Claude';
 }
 // ── GITHUB TOKEN (for saving questions to the repo) ──
 const KEY_GH = 'felix_github_token', KEY_GH_REPO = 'felix_github_repo', GH_DEFAULT_REPO = 'arqbca11/felix-field-notes';
@@ -1341,9 +1344,7 @@ function openAsk(postEl){
   if(lastSel && lastSel.postId === post.id) st.ctx.expr = lastSel.text;
   renderAskCtx(postEl, st);
   markAsked(postEl, post, st.ctx.sentence);
-  renderAskSetup(postEl, !claudeKey());
-  const sel = postEl.querySelector('.ask-model'), cur = askModel().id;
-  sel.innerHTML = CLAUDE_MODELS.map(m => `<option value="${m.id}"${m.id === cur ? ' selected' : ''}>${m.label}</option>`).join('');
+  if(!claudeKey()) openClaudeEntry('Ajoutez votre clé API Claude pour poser une question.');
   const ta = postEl.querySelector('.ask-input'); if(ta) setTimeout(() => ta.focus(), 0);
 }
 // While the panel is open, its context follows what the learner does next: the sentence just
@@ -1374,40 +1375,40 @@ function renderAskCtx(postEl, st){
     ? `<div class="ask-chip"><span class="k">${label}</span><span class="v">${escHTML(st.ctx[k])}</span><button data-ask="drop" data-k="${k}" aria-label="Retirer">×</button></div>` : '';
   postEl.querySelector('.ask-ctx').innerHTML = chip('expr','Expression') + chip('sentence','Phrase');
 }
-function renderAskSetup(postEl, open){
-  const box = postEl.querySelector('.ask-setup');
-  if(fromSecrets('claudeKey')){
-    box.innerHTML = `<div class="hint">La clé Anthropic vient du fichier local <b>secrets.js</b> (ignoré par git). Modifiez-la là-bas.</div>`;
-    box.classList.toggle('open', open); return;
-  }
-  box.innerHTML =
-    `<label>Clé API Anthropic (console.anthropic.com)</label>`+
-    `<input type="password" class="ask-key" placeholder="sk-ant-…" value="${escHTML(getLS(KEY_CLAUDE)||'')}">`+
-    `<div class="ask-row"><button class="ask-send" data-ask="save-key">Enregistrer</button><span class="ask-keymsg" style="color:#a33"></span></div>`+
-    `<div class="hint">La clé reste dans ce navigateur. Mettez une limite de dépenses sur la clé dans la console Anthropic.</div>`;
-  box.classList.toggle('open', open);
-}
 function onAskClick(b){
   const postEl = b.closest('.post'), post = POSTS.find(x => x.id === postEl.id); if(!post) return;
   const st = askState(post.id), act = b.dataset.ask;
   if(act === 'drop'){ delete st.ctx[b.dataset.k]; renderAskCtx(postEl, st); if(b.dataset.k === 'sentence') markAsked(postEl, post, null); }
-  else if(act === 'setup'){ renderAskSetup(postEl, !postEl.querySelector('.ask-setup').classList.contains('open')); }
-  else if(act === 'save-key'){
-    const k = cleanKey(postEl.querySelector('.ask-key').value);
-    if(k && !/^sk-ant-[A-Za-z0-9_-]{20,}$/.test(k)){
-      postEl.querySelector('.ask-keymsg').textContent = 'Ça ne ressemble pas à une clé Anthropic (sk-ant-…). Recopiez-la depuis la console.';
-      return;
-    }
-    setLS(KEY_CLAUDE, k); renderAskSetup(postEl, false);
-  }
   else if(act === 'send') sendAsk(postEl, post);
 }
-// The model choice is shared by every entry's panel and remembered.
-feed.addEventListener('change', e => {
-  if(!e.target.classList.contains('ask-model')) return;
-  setLS(KEY_CLAUDE_MODEL, e.target.value);
-  document.querySelectorAll('.ask-model').forEach(s => { s.value = e.target.value; });
-});
+// The key and the model live in the "Claude" panel at the top right, shared by Demander and Écrire.
+function openClaudeEntry(msg){
+  const el = document.getElementById('claudeEntry');
+  el.classList.add('open');
+  const fromFile = !!fromSecrets('claudeKey'), inp = document.getElementById('claudeKeyInput');
+  inp.value = fromFile ? '' : (getLS(KEY_CLAUDE) || '');
+  inp.placeholder = fromFile ? 'Clé lue depuis secrets.js' : 'sk-ant-…';
+  inp.disabled = fromFile;
+  const cur = askModel().id;
+  document.getElementById('claudeModel').innerHTML =
+    CLAUDE_MODELS.map(m => `<option value="${m.id}"${m.id === cur ? ' selected' : ''}>${m.label}</option>`).join('');
+  claudeSay(msg || (fromFile ? 'La clé vient du fichier local secrets.js (ignoré par git).' : ''));
+}
+function toggleClaudeEntry(){
+  if(document.getElementById('claudeEntry').classList.contains('open')) document.getElementById('claudeEntry').classList.remove('open');
+  else openClaudeEntry();
+}
+function claudeSay(t, err){ const m = document.getElementById('claudeMsg'); m.textContent = t; m.classList.toggle('err', !!err); }
+function setClaudeModel(id){ setLS(KEY_CLAUDE_MODEL, id); }
+function saveClaudeKey(){
+  if(!fromSecrets('claudeKey')){
+    const k = cleanKey(document.getElementById('claudeKeyInput').value);
+    if(k && !/^sk-ant-[A-Za-z0-9_-]{20,}$/.test(k)){ claudeSay('Ça ne ressemble pas à une clé Anthropic (sk-ant-…). Recopiez-la depuis la console.', true); return; }
+    setLS(KEY_CLAUDE, k);
+  }
+  refreshReadbar();
+  document.getElementById('claudeEntry').classList.remove('open');
+}
 // Enter sends, Shift+Enter makes a new line.
 feed.addEventListener('keydown', e => {
   if(!(e.target.classList && e.target.classList.contains('ask-input')) || e.key !== 'Enter' || e.shiftKey) return;
@@ -1456,7 +1457,7 @@ async function sendAsk(postEl, post){
   const st = askState(post.id);
   const ta = postEl.querySelector('.ask-input'), q = ta.value.trim();
   if(!q || st.busy) return;
-  if(!claudeKey()){ renderAskSetup(postEl, true); return; }
+  if(!claudeKey()){ openClaudeEntry('Ajoutez votre clé API Claude pour poser une question.'); return; }
   st.busy = true;
   const sendBtn = postEl.querySelector('.ask-send[data-ask="send"]'); sendBtn.disabled = true;
   const item = document.createElement('div');
@@ -1503,7 +1504,7 @@ async function sendAsk(postEl, post){
   }catch(err){
     const status = err && err.status;
     const apiMsg = err && err.error && err.error.error && err.error.error.message;   // Anthropic's own explanation
-    const msg = (status === 401 || status === 403) ? `Clé API refusée — vérifiez-la (Clé API).${apiMsg ? ' Anthropic : « ' + apiMsg + ' »' : ''}`
+    const msg = (status === 401 || status === 403) ? `Clé API refusée — vérifiez-la (Claude, en haut à droite).${apiMsg ? ' Anthropic : « ' + apiMsg + ' »' : ''}`
       : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
       : 'Erreur : ' + ((err && err.message) || err);
     ansEl.innerHTML = `<span class="err">${escHTML(msg)}</span>`;
@@ -1595,7 +1596,7 @@ async function checkWrite(btn){
   const box = btn.closest('.wq'), k = +box.dataset.k, w = post.write[k];
   const ta = box.querySelector('.wq-input'), mine = ta.value.trim(), res = box.querySelector('.wq-result');
   if(!mine || btn.disabled) return;
-  if(!claudeKey()){ res.innerHTML = '<span class="err">Il faut une clé API Claude : ouvrez Demander → Clé API.</span>'; return; }
+  if(!claudeKey()){ res.innerHTML = '<span class="err">Il faut une clé API Claude (Claude, en haut à droite).</span>'; openClaudeEntry('Ajoutez votre clé API Claude pour la correction.'); return; }
   btn.disabled = true; res.innerHTML = '<span class="lk-loading">Claude corrige…</span>';
   const model = askModel();
   try{
@@ -1619,7 +1620,7 @@ async function checkWrite(btn){
       mistakes: r.mistakes.map(m => ({ wrong: m.wrong, right: m.right, rule: m.rule })) });
   }catch(err){
     const status = err && err.status;
-    const msg = (status === 401 || status === 403) ? 'Clé API refusée — vérifiez-la (Demander → Clé API).'
+    const msg = (status === 401 || status === 403) ? 'Clé API refusée — vérifiez-la (Claude, en haut à droite).'
       : status === 429 ? 'Trop de requêtes pour le moment — réessayez dans un instant.'
       : 'Erreur : ' + ((err && err.message) || err);
     res.innerHTML = `<span class="err">${escHTML(msg)}</span>`;

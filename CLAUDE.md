@@ -337,7 +337,7 @@ underlines. Sentences are now wrapped in `.sent` on every entry, not only those 
 **Écrire (added 23 Oct 2026).** An action button (only when the entry has `write`, §6) that opens a
 `.write-block` panel stacking under the others: 2–3 questions, each answered in French in a sentence
 or two, then *Corriger* (or Cmd/Ctrl+Enter). The answer goes to Claude with the same key and model
-picker as Demander, with the entry as context and **structured output** (`output_config.format`
+as Demander (the *Claude* panel, top right), with the entry as context and **structured output** (`output_config.format`
 json_schema): `corrected` (minimal fixes), `mistakes` (`wrong`, `right`, a short English `rule` tag
 such as *gender* / *auxiliary être/avoir* / *subjunctive*, a one-line `note`), `better` (a more natural
 version) and `comment` (on the content or her idea). The panel shows a word diff (struck red →
@@ -348,12 +348,13 @@ question in localStorage (`felix_write`) and restored on reload; each correction
 **Demander (added 24 Sep 2026).** An action button that opens a question box in the right column
 (`.ask-block`, stacks like the other panels). Questions go to the **Claude API straight from the
 browser** (the official SDK loaded on first use from jsDelivr as ESM, `dangerouslyAllowBrowser`,
-streaming). A picker next to *Envoyer* chooses the model (`CLAUDE_MODELS`: Opus 5.5 default, Opus 4.8,
+streaming). The **Claude** panel in the top-right bar (next to GitHub; *Claude ✓* once a key is set — moved
+there 23 Oct 2026, shared by Demander and Écrire) holds the key and chooses the model (`CLAUDE_MODELS`: Opus 5.5 default, Opus 4.8,
 Sonnet 5.5, Haiku 5.5, Fable 5.1 — updated 23 Oct 2026; remembered as `felix_claude_model`, an old
 saved id falls back to the default); `fallbacks:"default"` is sent only for Opus 5.5 / Sonnet 5.5 /
 Fable 5.1. Earlier answers go back unchanged to the model that wrote them, as plain text
 to any other model (so switching mid-thread is safe). The learner's own key is in
-`localStorage` (`felix_claude_key`; set via the panel's *Clé API* link). Context sent: the entry's
+`localStorage` (`felix_claude_key`; set in that top-right *Claude* panel, which opens by itself when a key is missing). Context sent: the entry's
 French + English (system prompt), the sentence open in Lire and the last highlighted expression
 (removable chips). The selection popup has a *Demander à Claude* link that opens the panel with
 that expression. The conversation lives in memory per entry until reload, but **only the latest answer is
