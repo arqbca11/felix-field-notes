@@ -3,12 +3,12 @@
 > **About you, not about the story.** Your French: what you look up, click, mistype and forget, and when
 > it's due again. For what a reader of the *story* knows and suspects, see `STORY-READER.md`.
 >
-> **Observation only.** Built by `tools/learner-profile.mjs` from what the page logged in Learn mode
+> **Observation only.** Built by `tools/learner-profile.ts` from what the page logged in Learn mode
 > (`learning/*.jsonl`) and from `questions.md`. `/new-entries` reads it and **reports what it would
 > have done**, but does **not** change any brief because of it yet (CLAUDE.md §8c). Regenerate any time:
-> `node tools/learner-profile.mjs`.
+> `node tools/learner-profile.ts`.
 
-**Built:** 2026-10-23 19:57 UTC · **Events:** 134 (view 26, sent 38, ask 28, hard 17, lookup 25) · **Reading sessions:** 22 · **From** 2026-09-26 **to** 2026-09-30 · **Questions:** 26 · **Items tracked:** 41
+**Built:** 2026-10-30 21:00 UTC · **Events:** 144 (view 33, sent 38, ask 28, hard 17, lookup 25, write 3) · **Reading sessions:** 27 · **From** 2026-09-26 **to** 2026-10-23 · **Questions:** 26 · **Items tracked:** 41
 
 ## Due for repetition
 Recall estimated below 50 %: the items the next entries would bring back, most urgent first.
@@ -20,14 +20,11 @@ Recall estimated below 50 %: the items the next entries would bring back, most u
 | nette → net | mot | 2 (3) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « net » in a fresh context; vocab row again |
 | appris | mot | 2 (3) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « appris » in a fresh context; vocab row again |
 | étais | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « étais » in a fresh context; vocab row again |
-| deuxième gendarme | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « deuxième gendarme » in a fresh context; vocab row again |
-| déjà par terre | mot | 2 (2) | 0 | 2026-09-29 | 12 h | 0 % | reuse « déjà par terre » in a fresh context; vocab row again |
 | c't'hiver | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « c't'hiver » in a fresh context; vocab row again |
 | moitié | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « moitié » in a fresh context; vocab row again |
 | aimait | mot | 2 (2) | 2 | 2026-09-30 | 2.0 j | 0 % | reuse « aimait » in a fresh context; vocab row again |
-| écrit | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « écrit » in a fresh context; vocab row again |
-| terre | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « terre » in a fresh context; vocab row again |
-| gendarme | mot | 1 (1) | 0 | 2026-09-29 | 1.0 j | 0 % | reuse « gendarme » in a fresh context; vocab row again |
+| deuxième gendarme | mot | 2 (2) | 1 | 2026-10-23 | 1.0 j | 1 % | reuse « deuxième gendarme » in a fresh context; vocab row again |
+| déjà par terre | mot | 2 (2) | 1 | 2026-10-23 | 1.0 j | 1 % | reuse « déjà par terre » in a fresh context; vocab row again |
 | À un moment | prononciation · son | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « À un moment » (or the same son) in a new sentence, and mark it in `read` |
 | conquérir | prononciation · mot | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « conquérir » (or the same mot) in a new sentence, and mark it in `read` |
 | mot était | prononciation · liaison | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « mot était » (or the same liaison) in a new sentence, and mark it in `read` |
@@ -35,16 +32,23 @@ Recall estimated below 50 %: the items the next entries would bring back, most u
 | dont la | prononciation · muet | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « dont la » (or the same muet) in a new sentence, and mark it in `read` |
 | main et il a | prononciation · liaison | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « main et il a » (or the same liaison) in a new sentence, and mark it in `read` |
 | regardera | prononciation · son | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « regardera » (or the same son) in a new sentence, and mark it in `read` |
+| comme toujours | prononciation · muet | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « comme toujours » (or the same muet) in a new sentence, and mark it in `read` |
+| c't'hiver | prononciation · mot | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « c't'hiver » (or the same mot) in a new sentence, and mark it in `read` |
+| savais | mot | 1 (1) | 1 | 2026-09-29 | 2.0 j | 0 % | reuse « savais » in a fresh context; vocab row again |
 
 ## Fading soon
 Recall between 50 and 80 %: worth a touch in the next week.
 
-_Nothing yet._
+| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now |
+|---|---|---|---|---|---|---|
+| répondu | prononciation · son | 1 (1) | 4 | 2026-10-23 | 16 j | 74 % |
 
 ## Solid
 Met again cleanly at least twice, half-life of two weeks or more: no need to repeat on purpose.
 
-_Nothing yet._
+| Item | Type | Lapses (struggles) | Clean meetings | Last | Half-life | Recall now |
+|---|---|---|---|---|---|---|
+| répondu | prononciation · son | 1 (1) | 4 | 2026-10-23 | 16 j | 74 % |
 
 ## Hardest sentences
 Played again in Lire or opened in Simplifier the most: a sign the sentence's structure, not one word, is the hurdle.
@@ -63,6 +67,11 @@ Played again in Lire or opened in Simplifier the most: a sign the sentence's str
 - #4 (bertrand) — Lire ×1, Simplifier ×0, 1 session(s): « Entre les deux, il a dit « on verra », et chez lui, c'est une phrase complète. »
 
 ## Dictation: most-missed words
+
+_Nothing yet._
+
+## Writing: latest corrections
+Mistakes Claude corrected in the learner's own answers (Écrire), newest first; the rule is the item on the curve.
 
 _Nothing yet._
 
@@ -92,8 +101,8 @@ Raw, for the planner to group by topic (a tense, a construction, a sound): repea
 
 ## How this is computed
 A **struggle** is a hard spot clicked in Lire, a word looked up, a word missed in a dictation, or a
-question about a highlighted expression; the struggles of one reading session make one **lapse**. A
+question about a highlighted expression, or a mistake in a written answer (by its rule); the struggles of one reading session make one **lapse**. A
 **clean meeting** is an entry that contains the item, on screen for 20 s in Learn mode, in a session
-with no struggle on it. Each item has a memory **half-life**: 1 day after the first lapse (half a day
+with no struggle on it (for a writing rule: a later written answer without that mistake). Each item has a memory **half-life**: 1 day after the first lapse (half a day
 if it was clicked three times or more), **doubled** by a clean meeting at least half a half-life
 later, **halved** by a new lapse. **Recall now** ≈ 2^(−days since the last event ÷ half-life).
